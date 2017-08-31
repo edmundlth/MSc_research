@@ -1,0 +1,102 @@
+
+
+
+
+\section{Polyhomogeneity of Riemann Map for polygonal region} 
+
+\begin{theorem}[Riemann Mapping Theorem]
+Let $\Omega \subset \C$ be a simply connected region which is not the whole plane and $z_0 \in \Omega$. There exists a unique one-to-one analytic function $f: \Omega \to D$, with $D = \{z \in \C \, |\, |z| < 1\}$ being the open unit disk, such that $f(z_0) = 0$ and $f'(z_0) > 0$. 
+\end{theorem}
+%%% FIXME: Proof needed
+
+It can also be shown that if the boundary, $\partial \Omega$ of the region is a Jordan Curve, the Riemann Map can be extended to an analytic one-to-one function on $\overline{\Omega}$ onto the closed unit disk, i.e. $f: \overline{\Omega} \to \overline{D}$. When extended, map $f: \Omega \to D$, simply by virtue of being a topological map (i.e. homeomorphism), will map boundary to boundary. 
+
+
+\subsection{Riemann Map for polygonal region}
+In this section we shall exhibit an explicit formula for the (inverse of ) Riemann map for a polygonal region $\Omega \subset \C$. An $n$-gon can be specified by an ordered sequence of $n$ distinct complex numbers $(z_k)_{1 \leq k \leq n}$. We shall let $(\alpha_k \, \pi)_{1 \leq k \leq n}$ denote the interior angles at $z_k$, and $(\beta_k \, \pi)$ the corresponding exterior angles. Since the (extended) Riemann Map will map boundary to boundary, the points $z_k$ will be mapped to $w_k \in S^1 \subset \overline{D}$. With these notations in place, we shall give the following formula for the conformal of $\Omega$ to $D$. 
+\begin{theorem}[Schwarz-Christoffel Formula]
+The function $ z = F(w)$ which map $D$, the open unit disk, conformally onto an $n$-gon defined by  $(z_k)_{1 \leq k \leq n}$ with exterior angles $(\beta_k \, \pi)_{1 \leq k \leq n}$ is given by 
+\begin{align} \label{eq: schwarz-christoffel formula}
+F(w) = C \, \int_0^w \prod_{k = 1}^n (\eta - w_k)^{- \beta_k} \, d\eta + C'
+\end{align}
+for some $C, C' \in \C$, with $z_k = \lim_{w \to w_k} F(w)$. 
+\end{theorem}
+
+\subsection{Polyhomegeity} 
+In order to understand the behaviour of the conformal map as we approach a corner of the polygon, we shall seek asymptotic expansion of the map $F$ in terms of $r$, the distance from a particular $w_l \in \{w_1, w_2, \dots, w_n\}$. To this end, we shall apply the following theorem repeatedly. 
+
+%%% FIXME: Need to citation. 
+\begin{theorem}[Generalised Binomial Theorem] \label{thm: generalised binomial theorem}
+For $x, \alpha \in \C$, 
+\begin{align*}
+(1 + x)^\alpha = \sum_{k = 0}^\infty {\alpha \choose k} \, x^k
+\end{align*}
+where 
+\begin{align*}
+{\alpha \choose k } = \frac{(\alpha)_k}{k!} = \frac{(\alpha) (\alpha - 1) \dots (\alpha -k + 1)}{k !}.
+\end{align*}
+The series is absolutely convergent for any $\alpha \in \C$ if $|x| < 1$. 
+\end{theorem}
+
+
+Let $\alpha = w_l - re^{i \theta}$, where $r \in \R_{> 0}$ and $\theta \in [-\pi, \pi]$ are such that $\alpha$ stays in the open unit disk, i.e. $|\alpha| < 1$. Let $I(w)$ denote the integral in the Schwarz-Christoffel Formula. Observe that
+\begin{align*}
+I(\alpha) 
+&= \int_0^\alpha \prod_{k = 1}^n (\eta - w_k)^{-\beta_k} \, d\eta \\
+&= \alpha \int_0^1 \prod_{k = 1}^n (\alpha t - w_k)^{-\beta_k} \, dt \tag*{using a radial path $t \mapsto \alpha t$} \\
+&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \left(1 - \frac{\alpha t}{w_k}\right)^{-\beta_k} \, dt \\
+&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \sum_{j_k = 0}^\infty {- \beta_k \choose j_k} \left(- \frac{\alpha t}{w_k}\right)^{j_k} \, dt \\
+\end{align*}
+using the Generalised Binomial theorem, with 
+$${-\beta_k \choose j_k} = \frac{(-\beta_k)_{j_k}}{j_k!} = \frac{(-\beta_k) (-\beta_k - 1) \dots (-\beta_k - j_k  + 1)}{j_k!}.$$
+We note that $\left| - \frac{\alpha t}{w_k} \right| < 1$, and thus the series is absolutely convergent. Taking finite product of absolutely convergent series, we get
+\begin{align*}
+I(\alpha) 
+&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1  \sum_{j_1 = 0}^\infty\sum_{j_2 = 0}^\infty \dots \sum_{j_n = 0}^\infty  \frac{(-\beta_1)_{j_1}(-\beta_2)_{j_2} \dots (-\beta_n)_{j_n}}{j_1! j_2! \dots j_n!} w_1^{-j_1} w_2^{-j_2} \dots w_n^{-j_n} (-\alpha t)^{j_1 + j_2 + \dots + j_n} \, dt \\
+\end{align*}
+%%  FIXME: Justification of interchanging integral and sums!
+The absolute value of each summand of the series in the integrand is dominated by the corresponding summand with $t = 1$. Since, the resulting series with $t = 1$ is again absolutely convergent, the series is uniformly convergent (by Weierstrass M-test). Therefore, we can Interchanging sums and integral and get 
+\begin{align*}
+I(\alpha) 
+&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} w_1^{-j_1}  \dots w_n^{-j_n} (-\alpha)^{j_1 + j_2 + \dots + j_n} \int_0^1 t^{j_1 + \dots + j_n} \, dt \\
+&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-\alpha)^{j_1 + j_2 + \dots + j_n}\\
+&= \sum_{(j_1, \dots, j_n) \in \N^n} \beta_{j_1j_2 \dots j_n} \alpha^{j_1 + \dots + j_n + 1}
+\end{align*}
+where 
+\begin{align*}
+\beta_{j_1 \dots j_n} = \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-1)^{j_1 + j_2 + \dots + j_n}. 
+\end{align*}
+%%% Justification for absolute convergence?? 
+The series is absolutely convergent for $|\alpha| < 1$. We can reenumerate $\N^n$ and rearrange the sum to be
+\begin{align*}
+I(\alpha) &= \sum_{m = 0}^\infty \beta_m \alpha^{m + 1} \\
+\beta_m &= \sum_{j_1 + \dots j_n = m} \beta_{j_1 \dots j_n}
+\end{align*}
+which give us
+\begin{align*}
+I(\alpha) 
+&= \sum_{m = 0}^\infty \beta_m \left(w_l - re^{i \theta} \right)^{m + 1} \\
+&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \left(1 - \frac{re^{i \theta}}{w_l} \right)^{m + 1} \\
+&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \sum_{s = 0}^{m + 1} {m + 1 \choose s} \left(-\frac{re^{i \theta}}{w_l} \right)^{s} \\
+&= \sum_{k = 0}^{\infty} \gamma_k\, r^k
+\end{align*}
+with 
+\begin{align*}
+\gamma_k = \sum_{m = 0}^\infty \beta_m w_l^{m + 1} {m + 1 \choose k} \left(-\frac{e^{i \theta}}{w_l} \right)^{k}. 
+\end{align*}
+We have thus exhibit $I$ and therefore $F$ as a convergent power series of $r$. \footnote{This is perhaps expected since we have proven that the Riemann map extended to an analytic function on $\overline{\Omega}$. }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
