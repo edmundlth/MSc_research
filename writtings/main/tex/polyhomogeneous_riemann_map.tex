@@ -1,6 +1,8 @@
+\documentclass{article}
+\usepackage{../thesis_notes}
 
 
-
+\begin{document}
 
 \section{Polyhomogeneity of Riemann Map for polygonal region} 
 
@@ -23,70 +25,125 @@ for some $C, C' \in \C$, with $z_k = \lim_{w \to w_k} F(w)$.
 \end{theorem}
 
 \subsection{Polyhomegeity} 
-In order to understand the behaviour of the conformal map as we approach a corner of the polygon, we shall seek asymptotic expansion of the map $F$ in terms of $r$, the distance from a particular $w_l \in \{w_1, w_2, \dots, w_n\}$. To this end, we shall apply the following theorem repeatedly. 
-
-%%% FIXME: Need to citation. 
-\begin{theorem}[Generalised Binomial Theorem] \label{thm: generalised binomial theorem}
-For $x, \alpha \in \C$, 
+In order to understand the behaviour of the conformal map as we approach a corner of the polygon, we shall seek asymptotic expansion of the map $F$ in terms of $r$, the distance from a particular $w \in \{w_1, w_2, \dots, w_n\}$. Rename the points $w_k$ if necessary, we may assume $w = w_1$ and $\beta = \beta_1 \in (-1, 1)$. Let $I(\omega)$ denote the integral in the expression of $F$. Observe that for $\alpha \in D$
 \begin{align*}
-(1 + x)^\alpha = \sum_{k = 0}^\infty {\alpha \choose k} \, x^k
+I(\alpha) = \int_0^\alpha (\eta - w)^{-\beta} \prod_{k = 2}^n (\eta - w_k)^{-\beta_k} \, d\eta. 
 \end{align*}
-where 
+Let $\epsilon > 0 $ be the minimum distance between $w$ and $w_k, \, k  \in \{2, 3, \dots, n\}$, we know that the product
 \begin{align*}
-{\alpha \choose k } = \frac{(\alpha)_k}{k!} = \frac{(\alpha) (\alpha - 1) \dots (\alpha -k + 1)}{k !}.
+p(\eta) = p(\eta; w_2, \dots, w_n, \beta_2, \dots, \beta_n) = \prod_{k = 2}^n (\eta - w_k)^{-\beta_k} 
 \end{align*}
-The series is absolutely convergent for any $\alpha \in \C$ if $|x| < 1$. 
-\end{theorem}
-
-
-Let $\alpha = w_l - re^{i \theta}$, where $r \in \R_{> 0}$ and $\theta \in [-\pi, \pi]$ are such that $\alpha$ stays in the open unit disk, i.e. $|\alpha| < 1$. Let $I(w)$ denote the integral in the Schwarz-Christoffel Formula. Observe that
+is holomorphic in the domain $B_\epsilon(w) = \{z\, |\, |z - w| < \epsilon\}$, and thus have an absolutely and uniformly convergent Taylor expansion around $\eta = w$ given by 
+\begin{align} \label{eq: product expansion} 
+p(\eta) = \sum_{m = 0}^\infty a_m (\eta - w)^m. 
+\end{align}
+In other words, the radius of convergence of (\ref{eq: product expansion}) is precisely $\epsilon$ since it is the distance to the nearest branch point. \\
+\noindent Now, fix $a \in D \cup B_\epsilon(w) \neq \emptyset$ and observe that for any $\alpha(r, \theta) = w + re^{i \theta}, \, r \in (0, \epsilon)$, we have 
 \begin{align*}
 I(\alpha) 
-&= \int_0^\alpha \prod_{k = 1}^n (\eta - w_k)^{-\beta_k} \, d\eta \\
-&= \alpha \int_0^1 \prod_{k = 1}^n (\alpha t - w_k)^{-\beta_k} \, dt \tag*{using a radial path $t \mapsto \alpha t$} \\
-&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \left(1 - \frac{\alpha t}{w_k}\right)^{-\beta_k} \, dt \\
-&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \sum_{j_k = 0}^\infty {- \beta_k \choose j_k} \left(- \frac{\alpha t}{w_k}\right)^{j_k} \, dt \\
+&= I(a) + \int_a^\alpha (\eta - w)^{-\beta} \sum_{m = 0}^\infty a_m (\eta - w)^m \, d\eta \\
+&= I(a) + \sum_{m = 0}^N  a_m \int_a^\alpha (\eta - w)^{-\beta}   (\eta - w)^m \, d\eta +  \int_a^\alpha (\eta - w)^{-\beta} \sum_{m = N + 1}^\infty a_m (\eta - w)^m \, d\eta \\ 
+&= I(a) + \sum_{m = 0}^N  \frac{a_m}{m - \beta + 1} (\alpha - \omega)^{m - \beta + 1} + R_N(\alpha) \\
 \end{align*}
-using the Generalised Binomial theorem, with 
-$${-\beta_k \choose j_k} = \frac{(-\beta_k)_{j_k}}{j_k!} = \frac{(-\beta_k) (-\beta_k - 1) \dots (-\beta_k - j_k  + 1)}{j_k!}.$$
-We note that $\left| - \frac{\alpha t}{w_k} \right| < 1$, and thus the series is absolutely convergent. Taking finite product of absolutely convergent series, we get
+where the error term $R_N(\alpha) = R_N(r, \theta)$ is given by 
 \begin{align*}
-I(\alpha) 
-&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1  \sum_{j_1 = 0}^\infty\sum_{j_2 = 0}^\infty \dots \sum_{j_n = 0}^\infty  \frac{(-\beta_1)_{j_1}(-\beta_2)_{j_2} \dots (-\beta_n)_{j_n}}{j_1! j_2! \dots j_n!} w_1^{-j_1} w_2^{-j_2} \dots w_n^{-j_n} (-\alpha t)^{j_1 + j_2 + \dots + j_n} \, dt \\
+R_N(\alpha) = \sum_{m = 0}^N \frac{a_m}{m - \beta + 1} (a - \omega)^{m - \beta + 1} +  \int_a^\alpha (\eta - w)^{-\beta} \sum_{m = N + 1}^\infty a_m (\eta - w)^m \, d\eta. 
 \end{align*}
-%%  FIXME: Justification of interchanging integral and sums!
-The absolute value of each summand of the series in the integrand is dominated by the corresponding summand with $t = 1$. Since, the resulting series with $t = 1$ is again absolutely convergent, the series is uniformly convergent (by Weierstrass M-test). Therefore, we can Interchanging sums and integral and get 
+Observe that, we choose $a$ to lie on the ray joining $w$ and $\alpha$, for any straight line path $\gamma$ from $a$ to $\alpha$, the integral in $R_N$ is bounded by 
 \begin{align*}
-I(\alpha) 
-&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} w_1^{-j_1}  \dots w_n^{-j_n} (-\alpha)^{j_1 + j_2 + \dots + j_n} \int_0^1 t^{j_1 + \dots + j_n} \, dt \\
-&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-\alpha)^{j_1 + j_2 + \dots + j_n}\\
-&= \sum_{(j_1, \dots, j_n) \in \N^n} \beta_{j_1j_2 \dots j_n} \alpha^{j_1 + \dots + j_n + 1}
+& \epsilon^{ - \beta + 1} \left(\sum_{m = N + 1}^\infty \frac{|a_m|}{|m - \beta + 1|} \epsilon^{m}\right)
+\int_a^{\alpha} |\eta - w|^{-\beta} \, d\eta \\
+&= \epsilon^{ - \beta + 1} \left(\sum_{m = N + 1}^\infty \frac{|a_m|}{|m - \beta + 1|} \epsilon^{m}\right)
+\int_0^{1} (r + x)^{-\beta} \, dx \\
+&=  \frac{\epsilon^{ 1 - \beta}}{1 - \beta} \left(\sum_{m = N + 1}^\infty \frac{|a_m|}{|m - \beta + 1|} \epsilon^{m}\right) \left((1 + r)^{ 1 - \beta} - r^{1 - \beta}\right) \\
 \end{align*}
-where 
+which converges to $0$ as $N \to \infty$ since $1 - \beta > 0 $ and the sum is the tail end of a convergent power series. Furthermore, 
 \begin{align*}
-\beta_{j_1 \dots j_n} = \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-1)^{j_1 + j_2 + \dots + j_n}. 
+\left |\sum_{m = 0}^N \frac{a_m}{m - \beta + 1} (\eta - w)^{m - \beta + 1}\right| 
+&\leq \sum_{m = 0}^\infty \frac{|a_m|}{|m - \beta + 1|} (\epsilon)^{m - \beta + 1}
 \end{align*}
-%%% Justification for absolute convergence?? 
-The series is absolutely convergent for $|\alpha| < 1$. We can reenumerate $\N^n$ and rearrange the sum to be
+which is a constant since the series converges. We therefore conclude that
 \begin{align*}
-I(\alpha) &= \sum_{m = 0}^\infty \beta_m \alpha^{m + 1} \\
-\beta_m &= \sum_{j_1 + \dots j_n = m} \beta_{j_1 \dots j_n}
+|R_N| \to 
 \end{align*}
-which give us
-\begin{align*}
-I(\alpha) 
-&= \sum_{m = 0}^\infty \beta_m \left(w_l - re^{i \theta} \right)^{m + 1} \\
-&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \left(1 - \frac{re^{i \theta}}{w_l} \right)^{m + 1} \\
-&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \sum_{s = 0}^{m + 1} {m + 1 \choose s} \left(-\frac{re^{i \theta}}{w_l} \right)^{s} \\
-&= \sum_{k = 0}^{\infty} \gamma_k\, r^k
-\end{align*}
-with 
-\begin{align*}
-\gamma_k = \sum_{m = 0}^\infty \beta_m w_l^{m + 1} {m + 1 \choose k} \left(-\frac{e^{i \theta}}{w_l} \right)^{k}. 
-\end{align*}
-We have thus exhibit $I$ and therefore $F$ as a convergent power series of $r$. \footnote{This is perhaps expected since we have proven that the Riemann map extended to an analytic function on $\overline{\Omega}$. }
 
 
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+%To this end, we shall apply the following theorem repeatedly. 
+%
+%%%% FIXME: Need citation. 
+%\begin{theorem}[Generalised Binomial Theorem] \label{thm: generalised binomial theorem}
+%For $x, \alpha \in \C$, 
+%\begin{align*}
+%(1 + x)^\alpha = \sum_{k = 0}^\infty {\alpha \choose k} \, x^k
+%\end{align*}
+%where 
+%\begin{align*}
+%{\alpha \choose k } = \frac{(\alpha)_k}{k!} = \frac{(\alpha) (\alpha - 1) \dots (\alpha -k + 1)}{k !}.
+%\end{align*}
+%The series is absolutely convergent for any $\alpha \in \C$ if $|x| < 1$. 
+%\end{theorem}
+%
+%
+%Let $\alpha = w_l - re^{i \theta}$, where $r \in \R_{> 0}$ and $\theta \in [-\pi, \pi]$ are such that $\alpha$ stays in the open unit disk, i.e. $|\alpha| < 1$. Let $I(w)$ denote the integral in the Schwarz-Christoffel Formula. Observe that
+%\begin{align*}
+%I(\alpha) 
+%&= \int_0^\alpha \prod_{k = 1}^n (\eta - w_k)^{-\beta_k} \, d\eta \\
+%&= \alpha \int_0^1 \prod_{k = 1}^n (\alpha t - w_k)^{-\beta_k} \, dt \tag*{using a radial path $t \mapsto \alpha t$} \\
+%&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \left(1 - \frac{\alpha t}{w_k}\right)^{-\beta_k} \, dt \\
+%&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1 \prod_{k = 1}^n \sum_{j_k = 0}^\infty {- \beta_k \choose j_k} \left(- \frac{\alpha t}{w_k}\right)^{j_k} \, dt \\
+%\end{align*}
+%using the Generalised Binomial theorem, with 
+%$${-\beta_k \choose j_k} = \frac{(-\beta_k)_{j_k}}{j_k!} = \frac{(-\beta_k) (-\beta_k - 1) \dots (-\beta_k - j_k  + 1)}{j_k!}.$$
+%We note that $\left| - \frac{\alpha t}{w_k} \right| < 1$, and thus the series is absolutely convergent. Taking finite product of absolutely convergent series, we get
+%\begin{align*}
+%I(\alpha) 
+%&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \, \int_0^1  \sum_{j_1 = 0}^\infty\sum_{j_2 = 0}^\infty \dots \sum_{j_n = 0}^\infty  \frac{(-\beta_1)_{j_1}(-\beta_2)_{j_2} \dots (-\beta_n)_{j_n}}{j_1! j_2! \dots j_n!} w_1^{-j_1} w_2^{-j_2} \dots w_n^{-j_n} (-\alpha t)^{j_1 + j_2 + \dots + j_n} \, dt \\
+%\end{align*}
+%%%  FIXME: Justification of interchanging integral and sums!
+%The absolute value of each summand of the series in the integrand is dominated by the corresponding summand with $t = 1$. Since, the resulting series with $t = 1$ is again absolutely convergent, the series is uniformly convergent (by Weierstrass M-test). Therefore, we can Interchanging sums and integral and get 
+%\begin{align*}
+%I(\alpha) 
+%&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} w_1^{-j_1}  \dots w_n^{-j_n} (-\alpha)^{j_1 + j_2 + \dots + j_n} \int_0^1 t^{j_1 + \dots + j_n} \, dt \\
+%&= \alpha \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \,  \sum_{(j_1, \dots, j_n) \in \N^n}  \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-\alpha)^{j_1 + j_2 + \dots + j_n}\\
+%&= \sum_{(j_1, \dots, j_n) \in \N^n} \beta_{j_1j_2 \dots j_n} \alpha^{j_1 + \dots + j_n + 1}
+%\end{align*}
+%where 
+%\begin{align*}
+%\beta_{j_1 \dots j_n} = \left(\prod_{k = 1}^n (-w_k)^{-\beta_k} \right) \frac{(-\beta_1)_{j_1} \dots (-\beta_n)_{j_n}}{j_1! \dots j_n!} \frac{w_1^{-j_1}  \dots w_n^{-j_n}}{j_1 + j_2 + \dots + j_n + 1} (-1)^{j_1 + j_2 + \dots + j_n}. 
+%\end{align*}
+%%%% Justification for absolute convergence?? 
+%The series is absolutely convergent for $|\alpha| < 1$. We can reenumerate $\N^n$ and rearrange the sum to be
+%\begin{align*}
+%I(\alpha) &= \sum_{m = 0}^\infty \beta_m \alpha^{m + 1} \\
+%\beta_m &= \sum_{j_1 + \dots j_n = m} \beta_{j_1 \dots j_n}
+%\end{align*}
+%which give us
+%\begin{align*}
+%I(\alpha) 
+%&= \sum_{m = 0}^\infty \beta_m \left(w_l - re^{i \theta} \right)^{m + 1} \\
+%&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \left(1 - \frac{re^{i \theta}}{w_l} \right)^{m + 1} \\
+%&= \sum_{m = 0}^\infty \beta_m w_l^{m + 1} \sum_{s = 0}^{m + 1} {m + 1 \choose s} \left(-\frac{re^{i \theta}}{w_l} \right)^{s} \\
+%&= \sum_{k = 0}^{\infty} \gamma_k\, r^k
+%\end{align*}
+%with 
+%\begin{align*}
+%\gamma_k = \sum_{m = 0}^\infty \beta_m w_l^{m + 1} {m + 1 \choose k} \left(-\frac{e^{i \theta}}{w_l} \right)^{k}. 
+%\end{align*}
+%We have thus exhibit $I$ and therefore $F$ as a convergent power series of $r$. \footnote{This is perhaps expected since we have proven that the Riemann map extended to an analytic function on $\overline{\Omega}$. }
+%
+%
 
 
 
