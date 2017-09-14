@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{mystyle}
+\usepackage{standalone} 
+\usepackage{import} % use \import{directory}{filename} to include standalone texfiles
+
+
+\title{Polyhomogeneity of Laplacian Eigenfunctions Polygonal Domain \\  Preliminary Research Plan}
+\author{Edmund Lau  (Student ID: 668624)} 
+\date{\today}
+
+
+
+\begin{document}
+\maketitle
+%\tableofcontents
+%\listoffigures
+%\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{The General Problem}
+The general setting in which this research problem is embedded is the differential analysis of manifolds with corners as expounded in the yet unfinished work of Melrose \cite{rbm_daomwc}. We are interested in understanding differential operators, their solutions and spectral behaviour on ``singular" spaces such as manifolds which are smooth almost everywhere except at certain special points or locus. As such, we will generally be working in the category of manifold with corners (mwc): topological space that is locally homeomorphic to the model spaces $\R_+^{k} \times \R^{n - k}$, where $\R_+^k = [0, \infty)^k$. Like ordinary manifold, mwc's can be given smooth structures making them into smooth ($C^\infty$) manifold with corners. 
+
+\section{Our Problem}
+We will tackle a specific problem of this kind, namely we want to show that the near the corners of a polygon (i.e. a 2 dimensional mwc $P \subset \R^2 \cong \C$), the eigenfunctions of the Laplace operator, $\triangle = \partial_x^2 + \partial_y^2$, is \emph{polyhomogeneous}. In analogy with the cases with smooth or analytic functions with expansion in powers of $x$, polyhomogeneous functions are functions that has expansions in terms of the form $x^z log^nx$  near a corner point in a mwc. The space of polyhomogeneous functions $\A^E(M)$ of a mwc form a broad class of ``nice" function suitable for the study of differential operators and functions on the space. Here, we shall give only the definition of polyhomogeneity on a simple mwc, namely the positive quadrant $\R_+^2$. 
+
+\begin{definition}[Polyhomogeneous function on $\R_+^2$] \cite{grieser_scales_blow_up}
+Set $M = \R_+^2$ to be the manifold with corners with and $H = \partial M$ be the boundary hypersurfaces and $M^o$ the interior. 
+\begin{enumerate}
+\item An \textbf{index set} is a discrete (in the product topology) set $E \subset \C \times \N$ such that for every $N \in \R$, the set $\{(z, p) \in E \, |\, \Re z < N\}$ is finite. 
+\item A function $f: M^0 \to \R$ is said to have asymptotic expansion in $x$ as $x \to 0$ with index set $E$, i.e. 
+\begin{align*}
+f(x, y) \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x
+\end{align*}
+if for all $N \in \R$, $\alpha, \beta \in \N$, there exist, uniformly for every compact subset of $\R_+$, a constant $C$ that depends only on $N, \alpha, \beta$, such that 
+\begin{align*}
+\left | (x\partial_x)^\alpha \partial_y^\beta \left( f(x, y) -  \sum_{\substack{(z, p) \in E \\ \Re z \leq N}} a_{z, p}(y) x^z \log^p x \right ) \right | \leq C_{\alpha, \beta, N} x^N
+\end{align*}
+\item Given an index sets $E, F$, a function $f: M^0 \to \R$ is \textbf{polyhomogeneous} with respect to $E, F$ (denote $f \in \A^{E, F}(M)$) if $f \in C^\infty(M^0)$, if 
+\begin{enumerate}
+\item $f$ is smooth on the interior, $f \in C^\infty(M^0)$, 
+\item $\forall y > 0, f$ has asymptotic expansion in as $x \to 0$ with respect to $E$, $f \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x$, 
+\item $\forall x > 0, f$ has asymptotic expansion as $y \to 0$ with respect to $F$, $f \sim \sum_{(w, k) \in E} b_{w, k}(y) y^w \log^k y$, and
+\item $\forall (z, p) \in E, a_{z, p} \in \A^F(\R_+)$ and $\forall (w, k) \in F, b_{w, k} \in \A^E(\R_+)$,
+\end{enumerate}
+where polyhomogeneity in $\R_+$, i.e. in defining $\A^E(\R_+)$, we have analogous definition with the coefficients in the asymptotic expansion replaces with constants in $\R$. 
+\end{enumerate}
+\end{definition}
+We shall also use tools from geometric resolution analysis, in particular, we will be using the \emph{blow up} construction on mwc which is a coordinate independent way of introducing polar coordinate locally near a point in mwc. This construction allow us to study the singular behaviour in a mwc in the blow up space where the singular function is \emph{resolved} to smooth or, in most cases, polyhomogeneous functions. 
+\begin{definition}[Real blow up] 
+
+\end{definition}
+
+
+\section{Current results} 
+Since we are working in 2 dimensions, we can use powerful tools from complex analysis. In particular, for polygonal regions, we have an explicit biholomorphism (a Riemann map) from the unit open disk centered at 0, $D \subset \C$ given by the Schwarz-Christoffel Formula, allowing us to pull back a function of interest on the polygon to the unit disk. 
+\begin{theorem}[Schwarz-Christoffel Formula]
+The function $ z = F(w)$ which map $D$, the open unit disk, conformally onto an $n$-gon defined by  $(z_k)_{1 \leq k \leq n}$ with exterior angles $(\beta_k \, \pi)_{1 \leq k \leq n}$ is given by 
+\begin{align} \label{eq: schwarz-christoffel formula}
+F(w) = C \, \int_0^w \prod_{k = 1}^n (\eta - w_k)^{- \beta_k} \, d\eta + C'
+\end{align}
+for some $C, C' \in \C$, with $z_k = \lim_{w \to w_k} F(w)$. 
+\end{theorem}
+Our aim is to show that (the inverse of) this biholomorphism defined on the interior of the polygon is polyhomogeneous. Having established that, we will be able to transform the eigenvalue problem, $(\triangle - \lambda) u = 0$, to the well understood eigenvalue problem on the unit disk.  To this end, we have so far obtained an asymptotic expansion of $F$, the Riemann map, that suggest polyhomogeneity of its inverse. 
+
+\section{Literature and research plan} 
+In order to fully understand the problem and its significance in the larger context of mathematical analysis, knowledge from different branches of general and geometrical analysis is required. For the former, we shall refer to Taylor's book on PDE \cite{taylor_pde} for concepts such as distributions, Fourier analysis, Sobolev spaces and so on. Other references includes Lee's book on manifolds \cite{LeeSM} and Melrose's work on differential analysis on mwc \cite{rbm_daomwc} which discuss the problem in its full generality and detail. Exposition and application of the theory of geometrical resolution analysis can be obtained from Melrose's treatment of the famous Atiyah-Patodi-Singer Index theorem \cite{rbm_aps} and his other published lectures \cite{rbm_geo_analysis}, \cite{rbm_intro_microlocal} and Grieser's expositiory papers \cite{grieser_scales_blow_up}, \cite{grieser_b_calculus}. 
+
+It is our intend to be familiar with the analytical concepts by trying to solve the problem discussed above. There are potential generalisations of the problem as well as application of the techniques learnt on a different problem in analysis. 
+
+
+
+
+%\nocite{}
+\pagebreak 
+\bibliographystyle{acm}
+\bibliography{../main/main}
+
+\end{document}

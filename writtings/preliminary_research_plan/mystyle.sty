@@ -1,0 +1,83 @@
+\ProvidesPackage{mystyle}
+
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage{mdframed}
+\usepackage{tikz} 
+\usepackage{tikz-cd} 
+
+% Hyperref styles 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Graphics and captions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{graphicx} 
+\graphicspath{{./images/}} % Location of the graphics files
+\usepackage[font=normal,labelfont=bf, margin=5pt]{caption} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defining theorem environments 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm}
+\theoremstyle{plain}% default
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{claim}{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{exmp}{Example}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem*{case}{Case}
+
+
+%%% Framed theorem environment
+\newenvironment{ftheorem}{\begin{mdframed}\begin{theorem}}
+  {\end{theorem}\end{mdframed}}
+\newenvironment{flemma}{\begin{mdframed}\begin{lemma}}
+  {\end{lemma}\end{mdframed}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Style choices 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definitions and New commands 
+%%%%%%%%%%%%%%%%%%%%%
+\def\R{\ensuremath {\mathbb R}}
+\def\Q{\ensuremath {\mathbb Q}}
+\def\C{\ensuremath {\mathbb C}}
+\def\N{\ensuremath {\mathbb N}}
+\def\Z{\ensuremath {\mathbb Z}}
+\def\B{\ensuremath {\cal B}}
+\def\A{\ensuremath {{\cal A}}}
+
+
+
+
+
+
+
+
