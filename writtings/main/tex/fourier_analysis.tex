@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First created 08/03/2018
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+\usepackage{../thesis_notes}
+
+\title{Fourier Analysis and Distributions\\
+\large Notes from Taylors PDE Vol 1 Chapter 3}
+\date{}
+\newcommand\anglebrac[1]{\langle #1 \rangle}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Historically, Fourier analysis was the first to give formulas to various linear PDE with constant coefficient, in particular the three classical PDE: 
+\begin{enumerate}
+\item Laplace equation: $\Delta u = f$
+\item Heat equation : $\partial_t u - \Delta u = f$
+\item Wave equation : $\partial^2_t u - \Delta u = f$. 
+\end{enumerate}
+We shall introduce the Fourier transform first on the space of (real or complex-valued) functions on $\mathbb{T}^n$, i.e. the Fourier series associated to periodic functions in $n$ variables which provide basic results for harmonic functions in the plane (functions with $\Delta u = 0$) and their connection to holomorphic functions. We will then define the Fourier transform on $\R^n$ and its inversion formula. We shall also introduce the notion of ``distributions", a generalisation of functions on $\R^n$, which is the natural space to which the solutions to the classical PDE above belongs. 
+
+\section{Fourier Series}
+We shall focus on the torus $\mathbb{T}^n \cong \R^n / \Z^n \cong S^1 \times \dots \times S^1$ and (real or complex valued) integrable functions on the space, i.e. $L^1(\T^n; \C)$. Given such a function $f: \T^n \to \C$, we define its Fourier series $\hat{f}: \Z^n \to \C$ to be 
+\begin{align} \label{eq: fourier series}
+\F f(k) := \hat{f}(k) = \frac{1}{(2 \pi)^n} \int_{\T^n} f(\theta) e^{-ik \cdot \theta}\, d\theta. 
+\end{align}
+
+We shall note that the transformation is a continuous linear map between integrable functions on $\T^n$ to the space of bounded functions on $\Z^n$, that is
+\begin{align*}
+\F : L^1(\T^n) \to l^\infty(\Z^n). 
+\end{align*}
+Furthermore, if $f$ is smooth ($f \in C^\infty(\T^n)$) then integration by part gives, 
+\begin{align} \label{eq: integration by parts} 
+k^\alpha \hat{f}(k) = \frac{1}{(2 \pi)^n} \int_{\T^n} (D^\alpha f)(\theta) e^{-ik \cdot \theta} \, d\theta
+\end{align}
+where
+\begin{align*}
+\alpha &= (\alpha_1, \alpha_2, \dots, \alpha_n) \\
+k^\alpha &= k^{\alpha_1}_1 \dots k^{\alpha_n}_n \\
+D^\alpha &= D^{\alpha_1}_1 \dots D^{\alpha_n}_n \\
+ D_j &= -i \, \partial_{\theta_j}
+\end{align*}
+This allow conversion of linear differential operators into algebraic expression in the frequency domain. Observe that since $D^\alpha f$ are smooth functions on the compact set $\T^n$, and the integral 
+
+A consequence of this is that for all smooth functions, $f$ on $\T^n$ and for all $N \in \N$, 
+\begin{align*}
+\sup_{k \in \Z^n} \langle k \rangle^N |\hat{f}(k)| 
+\end{align*}
+
+
+
+
+
+ 
+\end{document}

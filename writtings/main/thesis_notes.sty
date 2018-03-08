@@ -3,6 +3,8 @@
 
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage{amsmath, amssymb}
+\usepackage{mdframed}
+
 
 % Hyperref styles 
 \usepackage{hyperref}
@@ -44,6 +46,15 @@
 \newtheorem{case}{Case}
 
 
+%%% Framed theorem environment
+\newenvironment{ftheorem}{\begin{mdframed}\begin{theorem}}
+  {\end{theorem}\end{mdframed}}
+\newenvironment{flemma}{\begin{mdframed}\begin{lemma}}
+  {\end{lemma}\end{mdframed}}
+\newenvironment{fdefinition}{\begin{mdframed}\begin{definition}}
+  {\end{definition}\end{mdframed}}
+
+
 
 
 
@@ -57,13 +68,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definitions and New commands 
 %%%%%%%%%%%%%%%%%%%%%
-\def\R{\ensuremath {\mathbb R}}
-\def\Q{\ensuremath {\mathbb Q}}
-\def\C{\ensuremath {\mathbb C}}
-\def\N{\ensuremath {\mathbb N}}
-\def\Z{\ensuremath {\mathbb Z}}
-\def\B{\ensuremath {\cal B}}
-\def\A{\ensuremath {\cal A}}
+\def\R{{\ensuremath {\mathbb R}}}
+\def\Q{{\ensuremath {\mathbb Q}}}
+\def\C{{\ensuremath {\mathbb C}}}
+\def\N{{\ensuremath {\mathbb N}}}
+\def\Z{{\ensuremath {\mathbb Z}}}
+\def\T{{\ensuremath {\mathbb T}}}
+\def\B{{\ensuremath {\cal B}}}
+\def\A{{\ensuremath {\cal A}}}
+\def\F{{\ensuremath {\cal F}}}
+
 
 
 

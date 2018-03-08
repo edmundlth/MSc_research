@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage{../thesis_notes}
+
+\title{}
+\date{}
+
+\begin{document}
+%\maketitle
+Techniques such as the match asymptotic expansion method for solving differential equations that exhibit different behaviour at multiple scales can be formalised into a rigorous framework known as geometric resolution analysis (GRA). In this general framework, we introduces constructions such as \emph{blow up} and \emph{resolution} to study ``singular behaviour". A natural category for the study of singular spaces is the category of manifolds with corners (mwc). We shall also introduce a class of functions, called polyhomogeneous functions, that is just ``nice" enough for such study: a function space big enough to capture all interesting singular behaviours but restrictive enough for systematic study. 
+
+
+\section{Manifold with corners (mwc)}
+We shall built up the notion of mwc and motivate each component of its definition. 
+\subsection{Model spaces and definitions}
+intuitively, an $n$-dimensional manifold with corners are topological spaces which are locally modelled upon $\R^n_k = \R^k_+ \times \R^{n - k}$ for some $k$, where $\R_+$ is the non-negative real line and $\R^k_+ = (\R_+)^k$. More formally, 
+
+\begin{fdefinition}[$t$-manifold]
+An $n$-dimensional manifold with corners $M$ be a second countable Hausdorff topological space such that for all $p \in M$, there is an open neighbourhood $U \ni p$ and a homeomorphism $\phi: U \to V$ where $V$ is an open subset of the model spaces $ \R^k_+ \times \R^{n - k}$ for some $0 \leq k \leq n$. 
+\end{fdefinition}
+
+We call the pair $(U, \phi)$ a chart around $p$, $U$ the coordinate domain, $V$ the parameter space for $U$ and $\phi^{-1}$ a parametrisation for $U$, i.e. a local parametrisation for $M$. The smallest $k$ that admits such homeomorphism for any given $p$ is call the codimension of $p$. 
+\begin{fdefinition} 
+Let $M$ be a mwc. 
+\begin{enumerate}
+\item $p \in M$ is in the interior $M^\circ$ of $M$ if it has codimension 0. $M^0$ is an ordinary manifold (without corners).
+\item Let $B \subset M$ the set with codim 1. A boundary hypersurface (bhf) is the closure (in $M$) of the connected component (in $B$) of a point with codimension 1 (in $M$). 
+\item A corner is a point with codimension $\geq 2$. 
+\end{enumerate}
+\end{fdefinition}
+
+As with ordinary manifold, mwc can be given smooth structures by defining smoothness of maps locally via the notion of smoothness in the model spaces, that is we shall first give mwc's smooth structures. 
+
+\begin{fdefinition}[Smooth structure on $t$-manifold]
+We first need to defined smoothness on the model spaces. A map between open subsets of $\R^k_+ \times \R^{n - k}$ is smooth if it can be extended to a smooth function on $\R^n$. 
+
+\noindent A smooth mwc is a mwc, $M$, such that the transition map between any two charts $(U, \phi), (U', \psi)$, namely
+\begin{align*}
+\psi \circ \phi^{-1} : \phi(U \cap U') \to \psi(U \cap U') \\
+\end{align*}
+is a diffeomorphism on the model spaces. 
+\end{fdefinition}
+
+\noindent Now we can define a notion of smooth maps between mwc. 
+\begin{fdefinition}[smooth up to the boundary]
+A map between mwc's is smooth (or smooth up to the boundary for emphasis) if it has a smooth parametrisation, i.e. if $M, N$ are mwc's and given $f: M \to N$, $f$ is smooth at $p \in M$ if there is exist charts $(U, \phi)$ of $M$ containing $p$ and $(U', \psi)$ of $N$ containing $f(p)$ such that $\psi \circ f \circ \phi^{-1}$ is smooth. The space of smooth functions on $M$ is denoted as $C^\infty(M)$. 
+
+\noindent Or equivalently, $f$ is smooth (using the usual notion of smoothness on manifold) in the interior of $M$, i.e. $f \in C^\infty(M^\circ)$ and, in some parametrisation of $f$, all it's derivatives are bounded on $K \cap M^\circ$ for all compact subset $K \subset M$.  
+\end{fdefinition}
+
+
+
+\begin{exmp}[$t$-manifolds] \hfill \\
+\begin{enumerate}
+\item The model spaces, $\R^k_+ \times \R^{n - k}$, themselves are exemplary $t$-manifolds. 
+\item All manifolds are $t$-manifolds with codim $ = 0$ at all points. 
+\item All $n$-cubes. 
+\item A 2D tear drop is a $t$-manifold. However, we shall see that it is not a manifold with corners which requires that its bhf be embedded (defined later). 
+\item A cone is \emph{not} a $t$-manifold. 
+%% FIXME: We know that the interior any neighbourhood of the cone point is diffeomorphic to an open set in $\R^3$. Now, let $But there cannot be any linear isomorphism of $\R^3$ that  between 
+\item A pyramid is \emph{not} a $t$-manifold. Not all polytopes are $t$-manifolds.
+\end{enumerate}
+\end{exmp}
+
+
+\subsection{Submanifolds} 
+There a various notion of sub-mwc of varying degree of generality. One of the most common notion of (embedded) submanifold \emph{without} boundary are those of embedded submanifolds that are locally given by a linear subspace of the parameter space. in the case of $t$-manifold, we can give a similar notion. 
+
+\begin{fdefinition}[$t$-submanifold] 
+Let $M$ be a $t$-manifold. A subset $S$ of $M$ is a $t$-submanifold if for every $s \in S$, there is a local chart $\phi: U \to V \subset \R^n_k$ of $M$ containing $s$, such that
+\begin{align*}
+\phi: S \cap U \to G \cdot (\R^{n'}_{k'} \times \{0\}) \cap V
+\end{align*}
+where $G \in \mathrm{GL}_n(\R)$, for some $n', k' \in \N$. 
+\end{fdefinition}
+
+For example, the diagonal $\Delta = \{(x, x) \, |\, x \in [0, 1]\}$ of the unit square is a $t$-submanifold. However, it is often more natural to work with a more restricted notion of submanifold. Here, we shall introduce the notion of $d$-submanifold (d for ``decomposable") and of $p$-submanifold (p for ``product"). These are submanifolds which are locally given by the vanishing and restriction to non-negative part of coordinates. 
+
+\begin{fdefinition}[$d$-submanifold] 
+A submanifold $S \subset M$ of a $t$-manifold $M$ is a $d$-submanifold if for all $s \in S$, there is a local chart $\phi: U \to V$ at $s$ such that the coordinate domain $U$ satisfies 
+\begin{align*}
+\phi(U \cap S) = L \cap \phi(U)
+\end{align*}
+where $L \subset \R^n_k$ is of the form 
+\begin{align*}
+L = \{x \in \R^n_k \, |\, x_{l + 1} = \dots = x_k = 0, \, x_{k + 1} \geq 0, \, \dots, x_{k + j} \geq 0, \, x_{k + j + 1} = \dots = x_{k + j + r} = 0\} 
+\end{align*}
+for some $0 \leq l, r, j \in \Z$. 
+\end{fdefinition}
+
+\begin{fdefinition}[$p$-submanifold]
+A $p$-submanifold is a $d$-submanifold with $j = 0$ in the definition above. That is, it is locally given by the vanishing of some coordinates. 
+\end{fdefinition}
+We note that 
+\begin{align*}
+S \text{ a $p$-submanifold of $M$ } \implies \partial S \subset \partial M
+\end{align*}
+and if in addition to $j = 0$, we also have $r = 0$ in the definition of $d$-submanifold above, the resulting $p$-submanifold is (contained in) bhf of $M$. 
+
+\subsection{Manifold with corners}
+We are now ready to define mwc in general. 
+\begin{fdefinition}[Manifold with corners]
+A mwc is a $t$-manifold such that each boundary hypersuface is a $t$-submanifold (and hence a $p$-submanifold). 
+\end{fdefinition}
+
+
+The embedded condition for bhf's ensures that the natural condition that each bhf is (sub-)mwc is satisfied. 
+
+
+
+\pagebreak 
+\section{Polyhomogeneous functions}
+Since we are interested in ``singular" behaviours, the space of smooth functions is too restrictive. The space of polyhomogeneous functions $\A^E(M)$ of a mwc form a broad class of ``nice" function suitable for the study of differential operators and functions on the space. Roughly, in analogy with the cases with smooth or analytic functions with expansion in powers of $x$, polyhomogeneous functions are functions that has expansions in terms of the form $x^z log^nx$  near a corner point in a mwc.  
+
+
+\subsection{In model spaces $\R^n_k$}
+We shall first study the notion of polyhomogeneity in a simple model space $\R^2_2 = \R^2_+$. It is straight forward to generalise to $\R^n_k$ and from there generalising (locally using charts) to mwcs. 
+\begin{fdefinition}[Polyhomogeneous function on $\R_+^2$]
+Set $M = \R_+^2$ to be the manifold with corners with and $H = \partial M$ be the boundary hypersurfaces and $M^o$ the interior. 
+\begin{enumerate}
+\item An \textbf{index set} is a discrete (in the product topology) set $E \subset \C \times \N$ such that for every $N \in \R$, the set $\{(z, p) \in E \, |\, \Re z < N\}$ is finite. 
+\item A function $f: M^0 \to \R$ is said to have asymptotic expansion in $x$ as $x \to 0$ with index set $E$, i.e. 
+\begin{align*}
+f(x, y) \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x
+\end{align*}
+if for all $N \in \R$, $\alpha, \beta \in \N$, there exist, uniformly for every compact subset of $\R_+$, a constant $C$ that depends only on $N, \alpha, \beta$, such that 
+\begin{align*}
+\left | (x\partial_x)^\alpha \partial_y^\beta \left( f(x, y) -  \sum_{\substack{(z, p) \in E \\ \Re z \leq N}} a_{z, p}(y) x^z \log^p x \right ) \right | \leq C_{\alpha, \beta, N} x^N
+\end{align*}
+\item Given an index sets $E, F$, a function $f: M^0 \to \R$ is \textbf{polyhomogeneous} with respect to $E, F$ (denote $f \in {\A}^{E, F}(M)$) if $f \in C^\infty(M^0)$, if 
+\begin{enumerate}
+\item $f$ is smooth on the interior, $f \in C^\infty(M^0)$, 
+\item $\forall y > 0, f$ has asymptotic expansion in as $x \to 0$ with respect to $E$ of the form  $$f \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x, $$ 
+\item $\forall x > 0, f$ has asymptotic expansion as $y \to 0$ with respect to $F$ of the form  $$f \sim \sum_{(w, k) \in E} b_{w, k}(y) y^w \log^k y,$$ and
+\item $\forall (z, p) \in E, a_{z, p} \in \A^F(\R_+)$ and $\forall (w, k) \in F, b_{w, k} \in \A^E(\R_+)$,
+\end{enumerate}
+where polyhomogeneity in $\R_+$, i.e. in defining $\A^E(\R_+)$, we have analogous definition with the coefficients in the asymptotic expansion replaces with constants in $\R$. 
+\end{enumerate}
+\end{fdefinition}
+
+An important point to note in the above definition is that all the coefficients in the expansions lies in the \emph{same singularity class}. This means that the euclidean norm function $r(x, y) = \sqrt{x^2 + y^2}$ is \emph{not} polyhomogeneous because, when we take asymptotic expansion in $x$ as $x \to 0$ \footnote{Taylor theorem guarantee uniqueness of expansion}
+\begin{align*}
+r(x, y) = y \sqrt{1 + (x / y)^2} = \sum_{n = 0}^\infty c_n y^{1 - 2n} x^{2n}
+\end{align*}
+we find that the coefficient functions in $y$ become more and more singular as $n \to \infty$. Since condition 1 in the definition above requires that the index set has bounded negative real part for $z$, $r$ cannot be polyhomogeneous. 
+
+
+\pagebreak
+\section{Blow up and resolution} 
+Blow up can be informally describe as a coordinate independent way of introducing polar coordinate near a corner point in a mwc. The reason for such a construction is that we want to understand the singular behaviour of operators and maps near the corner points on mwc's by ``looking through", i.e. resolve, them as less singular (e.g. smooth) objects in the blow up space. This way, we can appeal to and therefore focus on the well-studied theory of ``nice" or smooth functions. 
+
+\begin{fdefinition}[Blow up] 
+Let $M$ be a mwc and $S \subset M$ be a $p$-submanifold. The blow up, $[M, S]$ of $M$ along $S$ is locally given by the following construction. In coordinate (of $M$), the pair $(M, S) \cong (\R^n, \R^k \times \{0\})$. Thus, the blow up is locally modelled by the blow up of the model spaces 
+\begin{align*}
+[\R^n, \R^k \times \{0\}^{n -k}] = \R^k \times [\R^{n - k}, 0]
+\end{align*}
+where $ [\R^{j}, 0] = [0, \infty)_r \times S^{j - 1}$
+\end{fdefinition}
+
+
+
+\end{document}

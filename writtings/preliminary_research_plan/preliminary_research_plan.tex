@@ -20,10 +20,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{The General Problem}
+\section{The General Setting}
 The general setting in which this research problem is embedded is the differential analysis of manifolds with corners as expounded in the yet unfinished work of Melrose \cite{rbm_daomwc}. We are interested in understanding differential operators, their solutions and spectral behaviour on ``singular" spaces such as manifolds which are smooth almost everywhere except at certain special points or locus. As such, we will generally be working in the category of manifold with corners (mwc): topological space that is locally homeomorphic to the model spaces $\R_+^{k} \times \R^{n - k}$, where $\R_+^k = [0, \infty)^k$. Like ordinary manifold, mwc's can be given smooth structures making them into smooth ($C^\infty$) manifold with corners. 
 
-\section{Our Problem}
+\section{Polygons, Polyhomogeneity and Laplacian eigenfunction}
 We will tackle a specific problem of this kind, namely we want to show that the near the corners of a polygon (i.e. a 2 dimensional mwc $P \subset \R^2 \cong \C$), the eigenfunctions of the Laplace operator, $\triangle = \partial_x^2 + \partial_y^2$, is \emph{polyhomogeneous}. In analogy with the cases with smooth or analytic functions with expansion in powers of $x$, polyhomogeneous functions are functions that has expansions in terms of the form $x^z log^nx$  near a corner point in a mwc. The space of polyhomogeneous functions $\A^E(M)$ of a mwc form a broad class of ``nice" function suitable for the study of differential operators and functions on the space. Here, we shall give only the definition of polyhomogeneity on a simple mwc, namely the positive quadrant $\R_+^2$. 
 
 \begin{definition}[Polyhomogeneous function on $\R_+^2$] \cite{grieser_scales_blow_up}
@@ -48,15 +48,15 @@ if for all $N \in \R$, $\alpha, \beta \in \N$, there exist, uniformly for every 
 where polyhomogeneity in $\R_+$, i.e. in defining $\A^E(\R_+)$, we have analogous definition with the coefficients in the asymptotic expansion replaces with constants in $\R$. 
 \end{enumerate}
 \end{definition}
-We shall also use tools from geometric resolution analysis, in particular, we will be using the \emph{blow up} construction on mwc which is a coordinate independent way of introducing polar coordinate locally near a point in mwc. This construction allow us to study the singular behaviour in a mwc in the blow up space where the singular function is \emph{resolved} to smooth or, in most cases, polyhomogeneous functions. 
-\begin{definition}[Real blow up] 
+We shall also use tools from geometric resolution analysis, in particular, we will be using the \emph{blow up} construction on mwc which is a coordinate independent way of introducing polar coordinate locally near a point in mwc. This construction allow us to study the singular behaviour in a mwc in the blow up space (a new mwc) where the singular function is \emph{resolved} to smooth or, in most cases, polyhomogeneous functions. Here, we shall again introduce (real) blow up only on $M = \R^2_+$. 
+\begin{definition}[Real blow up for $M = \R^2_+$] 
 
 \end{definition}
 
 
 \section{Current results} 
 Since we are working in 2 dimensions, we can use powerful tools from complex analysis. In particular, for polygonal regions, we have an explicit biholomorphism (a Riemann map) from the unit open disk centered at 0, $D \subset \C$ given by the Schwarz-Christoffel Formula, allowing us to pull back a function of interest on the polygon to the unit disk. 
-\begin{theorem}[Schwarz-Christoffel Formula]
+\begin{theorem}[Schwarz-Christoffel Formula \cite{ahlfors_complex}]
 The function $ z = F(w)$ which map $D$, the open unit disk, conformally onto an $n$-gon defined by  $(z_k)_{1 \leq k \leq n}$ with exterior angles $(\beta_k \, \pi)_{1 \leq k \leq n}$ is given by 
 \begin{align} \label{eq: schwarz-christoffel formula}
 F(w) = C \, \int_0^w \prod_{k = 1}^n (\eta - w_k)^{- \beta_k} \, d\eta + C'
@@ -68,7 +68,7 @@ Our aim is to show that (the inverse of) this biholomorphism defined on the inte
 \section{Literature and research plan} 
 In order to fully understand the problem and its significance in the larger context of mathematical analysis, knowledge from different branches of general and geometrical analysis is required. For the former, we shall refer to Taylor's book on PDE \cite{taylor_pde} for concepts such as distributions, Fourier analysis, Sobolev spaces and so on. Other references includes Lee's book on manifolds \cite{LeeSM} and Melrose's work on differential analysis on mwc \cite{rbm_daomwc} which discuss the problem in its full generality and detail. Exposition and application of the theory of geometrical resolution analysis can be obtained from Melrose's treatment of the famous Atiyah-Patodi-Singer Index theorem \cite{rbm_aps} and his other published lectures \cite{rbm_geo_analysis}, \cite{rbm_intro_microlocal} and Grieser's expositiory papers \cite{grieser_scales_blow_up}, \cite{grieser_b_calculus}. 
 
-It is our intend to be familiar with the analytical concepts by trying to solve the problem discussed above. There are potential generalisations of the problem as well as application of the techniques learnt on a different problem in analysis. 
+It is our intend to be familiar with the analytical concepts by tackling the problem discussed above as well as generalising it in various  There are potential generalisations of the problem as well as application of the techniques on a different problem in the currrently active field of microlocal analysis. 
 
 
 
