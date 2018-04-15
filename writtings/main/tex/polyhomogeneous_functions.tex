@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{../thesis_style}
+
+\title{}
+\date{}
+
+\begin{document}
+\section{Polyhomogeneous functions}
+Since we are interested in ``singular" behaviours, the space of smooth functions is too restrictive. The space of polyhomogeneous functions $\A^E(M)$ of a mwc form a broad class of ``nice" function suitable for the study of differential operators and functions on the space. Roughly, in analogy with the cases with smooth or analytic functions with expansion in powers of $x$, polyhomogeneous functions are functions that has expansions in terms of the form $x^z log^nx$  near a corner point in a mwc.  
+
+
+\subsection{In model spaces $\R^n_k$}
+We shall first study the notion of polyhomogeneity in a simple model space $\R^2_2 = \R^2_+$. It is straight forward to generalise to $\R^n_k$ and from there generalising (locally using charts) to mwcs. 
+\begin{fdefinition}[Polyhomogeneous function on $\R_+^2$]
+Set $M = \R_+^2$ to be the manifold with corners with and $H = \partial M$ be the boundary hypersurfaces and $M^o$ the interior. 
+\begin{enumerate}
+\item An \textbf{index set} is a discrete (in the product topology) set $E \subset \C \times \N$ such that for every $N \in \R$, the set $\{(z, p) \in E \, |\, \Re z < N\}$ is finite. 
+\item A function $f: M^0 \to \R$ is said to have asymptotic expansion in $x$ as $x \to 0$ with index set $E$, i.e. 
+\begin{align*}
+f(x, y) \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x
+\end{align*}
+if for all $N \in \R$, $\alpha, \beta \in \N$, there exist, uniformly for every compact subset of $\R_+$, a constant $C$ that depends only on $N, \alpha, \beta$, such that 
+\begin{align*}
+\left | (x\partial_x)^\alpha \partial_y^\beta \left( f(x, y) -  \sum_{\substack{(z, p) \in E \\ \Re z \leq N}} a_{z, p}(y) x^z \log^p x \right ) \right | \leq C_{\alpha, \beta, N} x^N
+\end{align*}
+\item Given an index sets $E, F$, a function $f: M^0 \to \R$ is \textbf{polyhomogeneous} with respect to $E, F$ (denote $f \in {\A}^{E, F}(M)$) if $f \in C^\infty(M^0)$, if 
+\begin{enumerate}
+\item $f$ is smooth on the interior, $f \in C^\infty(M^0)$, 
+\item $\forall y > 0, f$ has asymptotic expansion in as $x \to 0$ with respect to $E$ of the form  $$f \sim \sum_{(z, p) \in E} a_{z, p}(y) x^z \log^p x, $$ 
+\item $\forall x > 0, f$ has asymptotic expansion as $y \to 0$ with respect to $F$ of the form  $$f \sim \sum_{(w, k) \in E} b_{w, k}(y) y^w \log^k y,$$ and
+\item $\forall (z, p) \in E, a_{z, p} \in \A^F(\R_+)$ and $\forall (w, k) \in F, b_{w, k} \in \A^E(\R_+)$,
+\end{enumerate}
+where polyhomogeneity in $\R_+$, i.e. in defining $\A^E(\R_+)$, we have analogous definition with the coefficients in the asymptotic expansion replaces with constants in $\R$. 
+\end{enumerate}
+\end{fdefinition}
+
+An important point to note in the above definition is that all the coefficients in the expansions lies in the \emph{same singularity class}. This means that the euclidean norm function $r(x, y) = \sqrt{x^2 + y^2}$ is \emph{not} polyhomogeneous because, when we take asymptotic expansion in $x$ as $x \to 0$ \footnote{Taylor theorem guarantee uniqueness of expansion}
+\begin{align*}
+r(x, y) = y \sqrt{1 + (x / y)^2} = \sum_{n = 0}^\infty c_n y^{1 - 2n} x^{2n}
+\end{align*}
+we find that the coefficient functions in $y$ become more and more singular as $n \to \infty$. Since condition 1 in the definition above requires that the index set has bounded negative real part for $z$, $r$ cannot be polyhomogeneous. 
+
+
+\pagebreak
+\section{Blow up and resolution} 
+Blow up can be informally describe as a coordinate independent way of introducing polar coordinate near a corner point in a mwc. The reason for such a construction is that we want to understand the singular behaviour of operators and maps near the corner points on mwc's by ``looking through", i.e. resolve, them as less singular (e.g. smooth) objects in the blow up space. This way, we can appeal to and therefore focus on the well-studied theory of ``nice" or smooth functions. 
+
+\begin{fdefinition}[Blow up] 
+Let $M$ be a mwc and $S \subset M$ be a $p$-submanifold. The blow up, $[M, S]$ of $M$ along $S$ is locally given by the following construction. In coordinate (of $M$), the pair $(M, S) \cong (\R^n, \R^k \times \{0\})$. Thus, the blow up is locally modelled by the blow up of the model spaces 
+\begin{align*}
+[\R^n, \R^k \times \{0\}^{n -k}] = \R^k \times [\R^{n - k}, 0]
+\end{align*}
+where $ [\R^{j}, 0] = [0, \infty)_r \times S^{j - 1}$
+\end{fdefinition}
+
+
+
+\end{document}

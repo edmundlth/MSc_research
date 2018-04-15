@@ -1,11 +1,11 @@
-\ProvidesPackage{mystyle}
+\ProvidesPackage{thesis_notes}[2017/08/15 Custom Package]
+
 
 \usepackage[a4paper, margin=1in]{geometry}
-\usepackage{amsmath, amssymb}
-\usepackage{array}
-\usepackage{mdframed}
-\usepackage{tikz} 
-\usepackage{tikz-cd} 
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{mdframed, array}
+\usepackage{tikz, tikz-cd}
+
 
 % Hyperref styles 
 \usepackage{hyperref}
@@ -17,6 +17,33 @@
     urlcolor=blue
 }
 
+%\usepackage[capitalize]{cleveref} %clever cross-referencing 
+% (NOTE: cleveref must the be loaded last among packages that does referencing, e.g. hyperref)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Style Choices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength\parindent{0pt}
+
+
+\usepackage[explicit]{titlesec}
+%\titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{#1\ \thesection}
+%\titlelabel{\thetitle} % "original" format beside \thetitle
+%\renewcommand\thesection{\arabic{section}}
+%\renewcommand{\theproposition}{\arabic{section}.\arabic{prop}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\norm[1][\cdot]{\left\lVert#1\right\rVert}
+\newcommand\Lim[1][n]{\lim_{#1 \to \infty}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\inprod}[1][\cdot , \cdot]{\left\langle #1 \right\rangle}
+\newcommand{\brac}[1]{\left(#1\right)}
+\newcommand{\wh}{\, |\, }
+\newcommand{\abs}[1]{\left|\, #1\,\right|}
+\newcommand{\p}{\partial} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Graphics and captions
@@ -44,14 +71,21 @@
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
 \newtheorem*{note}{Note}
-\newtheorem*{case}{Case}
+\newtheorem{case}{Case}
 
-
-%%% Framed theorem environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Framed theorem environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{ftheorem}{\begin{mdframed}\begin{theorem}}
   {\end{theorem}\end{mdframed}}
 \newenvironment{flemma}{\begin{mdframed}\begin{lemma}}
   {\end{lemma}\end{mdframed}}
+\newenvironment{fprop}{\begin{mdframed}\begin{proposition}}
+  {\end{proposition}\end{mdframed}}
+\newenvironment{fdefinition}{\begin{mdframed}\begin{definition}}
+  {\end{definition}\end{mdframed}}
+
+
 
 
 
@@ -71,8 +105,11 @@
 \def\C{{\ensuremath {\mathbb C}}}
 \def\N{{\ensuremath {\mathbb N}}}
 \def\Z{{\ensuremath {\mathbb Z}}}
+\def\T{{\ensuremath {\mathbb T}}}
 \def\B{{\ensuremath {\cal B}}}
 \def\A{{\ensuremath {\cal A}}}
+\def\F{{\ensuremath {\cal F}}}
+
 
 
 
