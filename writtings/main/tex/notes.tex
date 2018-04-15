@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{../thesis_style}
+
+\title{}
+\date{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Microlocal Analysis}
+\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+\begin{align*}
+T: C^\infty(M) \to \D'(N) \\
+\end{align*}
+be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+\begin{align*}
+B: C^\infty(M) &\times C^\infty(N) \to \C \\
+(u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+\end{align*}
+Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+\begin{align*}
+B(u, v) = \inprod[u \otimes v, k]. 
+\end{align*}
+We call such $k$ the kernel of $T$. 
+\end{ftheorem}
+
+
+
+\subsection{Symbols}
+
+\subsection{Pseudodifferential Operators ($\Psi$DO's)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sobolev Spaces \cite[Chapter 4]{taylor_pde}}
+\begin{fdefinition}[Sobolev Spaces] Let $p \in \R$ and $k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev spaces on $\R^n$ as the Banach space
+\begin{align*}
+W^{p, k}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
+\end{align*}
+with the norm
+\begin{align*}
+\norm[u]_{W^{p, k}} = \norm[u]_{L^p} + \norm[D^k u]_{L^p}. 
+\end{align*}
+For $p = 2$, we have denote $H^k := W^{2, k}$ and note that result from Fourier analysis gives
+\begin{align*}
+H^k = \set{u \in L^2(\R^n) \wh \abrac{\xi}^k \hat{u} \in L^2(\R^n)}
+\end{align*}
+allowing us to extend the definition to each real order $s \in \R$, 
+\begin{align*}
+H^s = \set{u \in S'(\R^n) \wh \abrac{\xi}^s \hat{u} \in L^2(\R^n)}
+\end{align*}
+where $S'(\R^n)$ is the space of tempered distribution on $\R^n$. This forms a Hilbert space with inner product given by
+\begin{align*}
+\inprod[u, v]_{H^s} = \inprod[ \Lambda^su, \Lambda^sv]_{L^2}
+\end{align*}
+with $\Lambda^s: S'(\R^n) \to S'(\R^n)$ being the operator $\Lambda^su = \F^{-1}(\abrac{\xi}^s \hat{u})$. 
+\end{fdefinition}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Linear Elliptic equations \cite[Chapter 5]{taylor_pde}}
+\begin{ftheorem}[Elliptic estimate] Let $\overline{\Omega}$ be a compact Riemanian manifold and $\Omega$ be its interior. Let $L = -\Delta + X$, where $\Delta$ is the Laplacian and $X$ and first order differential operator with smooth coefficient in $\overline{\Omega}$. Then, we have the estimate
+\begin{align*}
+\norm[u]_{H^{k +1}}^2 \leq C \brac{\norm[Lu]_{H^{k -1}}^2 + \norm[u]_{H^k}^2}
+\end{align*}
+for all $u \in H^{k + 1}(\Omega) \cap H^1_0(\Omega)$ and for some $C > 0$. 
+\end{ftheorem}
+
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{../main.bib}
+\end{document}
+
