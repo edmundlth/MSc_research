@@ -17,18 +17,46 @@ is $0$ precisely on the light cone $L = \set{|\tau| = |\xi|}$. The operator is t
 \begin{align}\label{eq: perturbation operator}
 Q = \chi(t)\p_t^2
 \end{align}
-where $\chi: \T^n \to \R_{\geq 0}$ is a smooth cut-off function 
+where $\chi: \T^n \to \R_{\geq 0}$ is a smooth cut-off function supported away from $(-\delta + 1/2, \delta + 1/2)$ for some $\delta \in (0, 1/2)$. Our goal will to prove the following theorem, 
+\begin{ftheorem}
+Let $s \in \R$ be given and define 
+\begin{align*}
+\chi^s = \set{u \in H^s(\T^n) \wh (\Box - i Q)u \in H^{s - 1}(\T^n)}. 
+\end{align*}
+Then, the operator, 
+\begin{align*}
+(\Box - iQ): \chi^s \to H^{s - 1}(\T^n)
+\end{align*}
+is a Fredholm operator. 
+\end{ftheorem}
 
+
+\begin{flemma}[Riez's inequality]
+Let $X$ be a normed linear space. Given a non-dense subspace (or closed proper subspace) $Y \subset X$ and any $r \in (0, 1)$, then there exist $x \in X$ with $\norm[x] = 1$ such that 
+\begin{align*}
+\inf_{y \in Y} \norm[x - y] \geq r. 
+\end{align*}
+\end{flemma}
+
+\begin{mdframed}
+\begin{cor}
+The closed unit ball in a Banach Space $X$ is compact iff $X$ is finite dimensional. 
+\end{cor}
+\end{mdframed}
 
 
 \begin{ftheorem}
-Let $X, Y$ be Hilbert spaces and $T: X \to Y \in \L(X, Y)$ be a continuous (i.e. bounded) linear operator. Suppose $T$ satisfies 
+Let $X, Y$ be Hilbert spaces and $T: X \to Y \in \L(X, Y)$ be a continuous (therefore bounded) linear operator. Suppose $T$ satisfies 
 \begin{align*}
 \forall u \in X, \quad \norm[u]_{X} &\leq C \brac{\norm[Tu]_Y + \norm[u]_Z} \\
-\forall v \in Y, \quad \norm[v]_{Y} &\leq C' \brac{\norm[T^*u]_X + \norm[u]_{Z^*}}
+\forall v \in Y, \quad \norm[v]_{Y} &\leq C' \brac{\norm[T^*v]_X + \norm[v]_{Z^*}}
 \end{align*}
 where $Z \Subset X$ and $Z^* \Subset Y$ are compact subsets, then $T$ is Fredholm, i.e. $T(X)$ is closed in $Y$ and both $\ker T, \coker T$ are finite dimensional. 
 \end{ftheorem}
+\begin{proof}[proof sketch] \hfill \\
+
+\end{proof}
+
 
 \end{document}
 

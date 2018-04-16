@@ -70,6 +70,42 @@ for all $u \in H^{k + 1}(\Omega) \cap H^1_0(\Omega)$ and for some $C > 0$.
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Miscellaneous}
+A substitute, in Banach space, for result on orthogonal projection in Hilbert space. 
+\begin{flemma}[Riez's inequality]
+Let $X$ be a normed linear space. Given a non-dense subspace (or closed proper subspace) $Y \subset X$ and any $r \in (0, 1)$, then there exist $x \in X$ with $\norm[x] = 1$ such that 
+\begin{align*}
+\inf_{y \in Y} \norm[x - y] \geq r. 
+\end{align*}
+\end{flemma}
+
+
+\begin{proof}[proof 1] \hfill \\
+Let $x_0 \in \overline{Y}^c$ and $R = \inf_{y \in Y}\norm[y - x_0] > 0$. Given any $\epsilon > 0$ we can pick (by definition of $\inf$) a $y_0 \in Y$ such that 
+\begin{align*}
+\norm[y_0 - x_0] < R + \epsilon. 
+\end{align*}
+Now, define $x \in X$ to be
+\begin{align*}
+x = \frac{y_0 - x_0}{\norm{y_0 - x_0}}. 
+\end{align*}
+Observe that $\norm[x] = 1$ and 
+\begin{align*}
+\inf_{y \in Y} \norm[x - y] = \inf_{y \in Y} \norm[]
+\end{align*}
+\end{proof}
+
+\begin{proof}[proof 2]\footnote{taken from {https://terrytao.wordpress.com/2011/04/10/a-proof-of-the-fredholm-alternative/}} \hfill \\
+Using Hahn-Banach theorem, we can choose a non-trivial linear functional $\varphi: X \to \C$ that vanishes on $\overline{Y}$. Then, by definition of operator norm, for any unit vector $x \in X$, 
+\begin{align*}
+\norm[\varphi(x)] \geq (1- \epsilon) \norm[\varphi]_{X^*}
+\end{align*}
+and thus, 
+\end{proof}
+
+
+
 
 \bibliographystyle{apalike}
 \bibliography{../main.bib}
