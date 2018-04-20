@@ -230,7 +230,15 @@ which shows that $\set{v_{n_j}}_j$ is a Cauchy and therefore has a limit $v \in 
 \begin{align*}
 \norm[w_{n_j} - w_{n_{j + k}}]_V \leq C \brac{\norm[Tw_{n_j} - Tw_{n_{j + k}}]_W + \norm[Kw_{n_j} - Kw_{n_{j + k}}]_Y} \to  \brac{\norm[0 - 0]_W + \norm[y_0 - y_0]_Y} = 0 
 \end{align*}
-as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet $d(w, L) \geq 1/2$ which is a contraction. 
+as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet 
+\begin{align*}
+d(w_n, L) 
+&= \int_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
+&= \norm[v_n] \int_{x \in L} \norm[v_n - x] \\
+&= \norm[v_n] d(v_n, L) \\
+&\geq 1
+\end{align*}
+which is a contraction. 
 \end{case}
 
 
