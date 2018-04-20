@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{../thesis_style}
+
+\title{}
+\date{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Microlocal Analysis}
+\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+\begin{align*}
+T: C^\infty(M) \to \D'(N) \\
+\end{align*}
+be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+\begin{align*}
+B: C^\infty(M) &\times C^\infty(N) \to \C \\
+(u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+\end{align*}
+Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+\begin{align*}
+B(u, v) = \inprod[u \otimes v, k]. 
+\end{align*}
+We call such $k$ the kernel of $T$. 
+\end{ftheorem}
+
+
+
+\subsection{Symbols}
+
+\subsection{Pseudodifferential Operators ($\Psi$DO's)}
+
+
+
+
+\bibliographystyle{apalike}
+\bibliography{../main.bib}
+\end{document}
+

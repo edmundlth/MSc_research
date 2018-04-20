@@ -5,6 +5,7 @@
 \usepackage{amsmath, amssymb, mathtools}
 \usepackage{mdframed, array}
 \usepackage{tikz, tikz-cd}
+\usepackage{bbm}
 
 
 % Hyperref styles 
@@ -62,8 +63,11 @@
 \def\F{{\ensuremath {\cal F}}}
 \def\D{{\cal{D}}}
 \def\L{{\cal{L}}}
+\def\K{{\cal{K}}}
 
-\def\coker{\mathrm{coker}}
+\def\ker{{\mathrm{ker}}}
+\def\coker{{\mathrm{coker}}}
+\def\im{{\mathrm{Im}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Graphics and captions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,7 +89,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{exmp}{Example}[section]
+\newtheorem{example}{Example}[section]
 
 \theoremstyle{remark}
 \newtheorem*{rem}{Remark}
@@ -103,6 +107,7 @@
   {\end{proposition}\end{mdframed}}
 \newenvironment{fdefinition}{\begin{mdframed}\begin{definition}}
   {\end{definition}\end{mdframed}}
+  
 
 
 
