@@ -1,36 +1,304 @@
 \documentclass{article}
 \usepackage{../thesis_style}
 
-\title{}
+\title{Microlocal Analaysis}
 \date{}
 
 \begin{document}
 
+
+%Note: 
+%  - Symbols
+%  - Pseudos
+%  - Properties, theorems lemmas for Pseudos
+%  - Sobolev spaces
+%  - Singular supports, WF, Ellipticity
+%  - Pseudo's on manifolds
+%  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Microlocal Analysis}
-\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+
+We shall follow the presentation given in  \cite{melrose intro to microlocal}. 
+
+\section{Motivation for Pseudodifferential operators} 
+\begin{itemize}
+    \item Solving PDEs via Fourier transform. For example, in Euclidean space, $\R^n$, constant coefficient linear PDE
+    \begin{align*}
+    P(D) u = \sum_{\abs{\alpha} \leq n} c_\alpha D^{\alpha} u = f, \quad c_\alpha \in \R
+    \end{align*}
+    where $P \in \R[x]$, can solved by applying Fourier transform which gives a solution of the form
+    \begin{align*}
+    u(x) = \frac{1}{(2\pi)^n} \int e^{i(x - y)\cdot \xi} f(y) \frac{1}{P(\xi)} \d[y] \d[\xi]
+    \end{align*}
+    due to the observation that
+    \begin{align*}
+    \F P(D) u = P(\xi) \F u. 
+    \end{align*}
+    Moreover, for linear differential operators with smooth coefficients
+    \begin{align*}
+    P(x, D):  u \mapsto \sum_{\abs{\alpha} \leq n } a_\alpha D^\alpha u, \quad a_\alpha \in C^\infty(\R^n)
+    \end{align*}
+    we have
+    \begin{align*}
+    P(x, D) u = \frac{1}{(2\pi)^n} \int P(x, \xi) e^{i(x -y) \xi} u(y)\d[y] \d[\xi].
+    \end{align*}
+    We would like to generalise the above so that $P(x, \xi)$ are smooth functions satisfying certain uniform bounds, called \emph{symbols}, instead of just polynomials in $\xi$. This gives us a class of operators, called pseudodifferential operators, that acts as 
+    \begin{align*}
+    A_a u (x) =  \frac{1}{(2\pi)^n} \int a(x, \xi) e^{i(x -y) \xi} u(y)\d[y] \d[\xi]
+    \end{align*}
+    for each symbol $a$.
+    
+    \item  There isn't enough differential operators with smooth coefficient in the sense that elliptic differential operators are not, in general, invertible in this class. For example, the operator
+    \begin{align*}
+    u \mapsto (\Delta + 1) u 
+    \end{align*}
+    has inverse that acts as (using construction via Fourier transform shown above)
+    \begin{align*}
+    (\Delta+ 1)^{-1} f = \frac{1}{(2\pi)^n} \int \frac{1}{1 + \abs{\xi}^2} e^{i(x -y) \xi} f(y)\d[y] \d[\xi]
+    \end{align*}
+    which is a pseudodifferential operator with symbol $a(x, \xi) = (1 + \abs{\xi}^2)^{-1}$. 
+    
+    \item Motivation from quantum mechanics. The notion of ``quantisation" in quantum mechanics can be formalised as the map that sends a symbol $a$ (a smooth function that represent determistic observable in classical mechanics) to its corresponding pseudodifferential operator (i.e. the corresponding quantum observable)
+    \begin{align*}
+    A_a : \psi \mapsto \frac{1}{(2\pi)^n} \int \frac{1}{1 + \abs{\xi}^2} e^{i(x -y) \xi} \psi(y)\d[y] \d[\xi]
+    \end{align*}
+    that acts on the wavefunction $\psi$. 
+    
+    \item Used in the formulation and proof of Atiyah-Singer Index theorem. 
+\end{itemize}
+
+We shall define, on Euclidean space, the space of symbols, $S^m(\R^{2n}_{x, y}; \R^n_{\xi})$ and the corresponding space of pseudodifferential operators, $\Psi^m(\R^n)$ which acts on distributions via the Schwartz kernel given by the oscilliatory integral 
 \begin{align*}
-T: C^\infty(M) \to \D'(N) \\
+I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi]. 
 \end{align*}
-be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+We note that we have introduced an extra variable $y$ which will help in explicating the properties of pseudodifferential operators. However, the extra variable does not change the essence of the theory. 
+
+
+\section{Symbols}
+We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounter in the literature. The main motivation is again based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
 \begin{align*}
-B: C^\infty(M) &\times C^\infty(N) \to \C \\
-(u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+P(x, \xi) = \sum{\abs{\alpha} \leq m} a_\alpha(x) \xi^\alpha. 
 \end{align*}
-Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+It has the property that 
 \begin{align*}
-B(u, v) = \inprod[u \otimes v, k]. 
+\abs{D^\alpha_x D^\beta_\xi P(x, \xi)} \leq C_{\alpha, \beta} \sym[\xi]^{m - \abs{\beta}} 
 \end{align*}
-We call such $k$ the kernel of $T$. 
+i.e. $P(x, \xi)$ is smooth and decreases in order as $\xi \to \infty$ with successive $\xi$-derivative. 
+
+
+\begin{fdefinition}
+    The space $S^m_\infty(\R^p; \R^n)$ of order $m$ is the space of smooth functions $a \in C^\infty(\R^p \times \R^n)$ such that for all multi-index $\alpha \in \N^p, \beta \in \N^n$
+    \begin{align*}
+    \abs{D^\alpha_x D^\beta_\xi a (x, \xi)} \leq C_{\alpha, \beta} \sym[\xi]^{m - \abs{\beta}} 
+    \end{align*}
+    uniformly on $\R^p \times \R^n$. We can also defined the space of symbol, $S^m_\infty(\Omega; \R^n)$ on a set with non-empty interior $\Omega \subset \R^p$, $\Omega \subset \overline{\mathrm{Int}(\Omega)}$ such that the bound above is satisfied uniformly in $(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n$. The subscript $\infty$ refers the uniform boundedness condition. Together with the family of seminorm (indexed by $N \in \N$) 
+    \begin{align*}
+    \norm[a]_{N, m} = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \max_{\abs{\alpha} + \abs{\beta} \leq N} \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}} 
+    \end{align*}
+    gives a Frechet topology to $S^m_\infty(\Omega; \R^n)$. \\
+    
+    Note: In defining pseudodifferential operators, we shall focus on the case where $p = 2n$.
+\end{fdefinition}
+
+\begin{fdefinition}
+A \textbf{symbol} of type $S^{m, l_1, l_2}_{\delta, \delta'}$ where $m, l_1, l_2 \in \R$ and $\delta, \delta' \in [0, 1/2)$ is an element of $C^\infty(\R^n_x; \R^n_y; \R^n_\xi)$ satisfying 
+\begin{align*}
+\frac{\abs{D^\alpha_xD^\beta_yD^\gamma_\xi a(x, y, \xi)}}{\sym[\xi]^{m - \abs{\gamma}} \sym[x]^{l_1 - \abs{\alpha}} \sym[y]^{l_2 - \abs{\beta}} \sym[\xi]^{\delta \abs{(\alpha, \beta, \gamma)}} \sym[x, y]^{\delta' \abs{(\alpha, \beta, \gamma)}}} \leq C_{\alpha, \beta, \gamma}
+\end{align*}
+uniformly in $\R^{3n}$. Taking the supremum over $\R^{3n}$, we get a family of seminorms, indexed by $N \in \N$ defined by 
+\begin{align*}
+\norm[a]_{S^{m, l_1, l_2}_{\delta, \delta'}, N} := \sum_{\abs{(\alpha, \beta, \gamma)} \leq N} \inf C_{\alpha, \beta, \gamma}
+\end{align*}
+which gives $S^{m, l_1, l_2}_{\delta, \delta'}$ a Frechet topology. 
+\end{fdefinition}
+
+\begin{fdefinition}
+    A (Kohn-Nirenberg) \textbf{symbol} of order $m \in \R$ on $T^*\R^n \cong \R^{2n}_{x, \xi}$ is a smooth function $a = a(x, \xi)$ satisfying
+    \begin{align*}
+    \forall \alpha, \beta \in \N^n, \exists C \in \R_{\geq 0} \st \abs{D_x^\alpha D_\xi^\beta a(x, \xi)} \leq C\inprod[\xi]^{m - \abs{\beta}}
+    \end{align*}
+    uniformly in $x$. The \textbf{space of symbol of order} $m$ on $T^*\R^n$
+\end{fdefinition}
+
+\begin{fdefinition}
+Let $n \in \N$ be given. An \textbf{order function} $g \in C^\infty(\R^n; \R_{\geq 0})$ is a \textit{non-negative} function satisfying 
+\begin{align*}
+\forall \alpha \in N^n \exists C \in \R_{\geq 0} \st \p^\alpha g \leq C g
+\end{align*}
+uniformly on $\R^n$, i.e. $\p^\alpha g = O(g)$ uniformly on $\R^n$. \\
+
+Given an order function $g$, a \textbf{symbol} of order $g$ is a smooth function $a = a(x, \xi) \in C^\infty(T^*\R^n)$ satisfying 
+\begin{align*}
+\forall \alpha, \beta \in \N^n \st \abs{D^\alpha_x D^\beta_\xi a(x, \xi)} \leq C g(\xi)
+\end{align*}
+uniformly in $x$.
+\end{fdefinition}
+
+\subsection{Properties of Symbols}
+
+\begin{fprop}
+    Let $p, n \in \N$ be given and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. If $m, m' \in \R$ such that $m \leq m'$, then $S^m_\infty(\Omega; \R^n) \subset S^{m'}_\infty(\R^)$. Furthermore, the inclusion map 
+    \begin{align*}
+    \iota: S^m_\infty(\Omega; \R^n) \to S^{m'}_\infty(\Omega; \R^n)
+    \end{align*}
+    is continuous. 
+\end{fprop}
+\begin{proof}
+    Let the real numbers $m \leq m'$ be given. We note that for any $\xi \in \R^n$
+    \[
+     \sym[\xi]^m \leq 1 \cdot \sym[\xi]^{m'}
+     \]
+    and thus if $a \in S^{m}_\infty(\Omega; \R^n)$, we have that $\forall \alpha \in \N^p, \forall \beta \in \N^n$
+    \[
+    \abs{D^\alpha_x D^\beta_\xi a(x, \xi)} \leq C \sym[\xi]^{m - \abs{\beta}} \leq C \sym[\xi]^{m' - \abs{\beta}} 
+    \]
+    which show that $a \in S^{m'}_\infty(\Omega; \R^n)$ as well. \\
+    
+    To show that $\iota$ is a continuous inclusion, it suffices to show that 
+    \[
+    \norm[\iota(a)]_{N, m'} \leq C \norm[a]_{N, m}
+    \]
+    for any $a \in S^{m}_\infty(\Omega; \R^n)$ and $N \in \N$. Indeed, his bound holds since 
+    \[
+    \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m' - \abs{\beta}}}  \leq \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}}. 
+    \]
+\end{proof}
+
+This inclusion property allow us to consider $S^{m}_\infty(\Omega; \R^n)$ as the filtration of the space 
+\[
+S^\infty_\infty(\Omega; \R^n) = \bigcup_{m \in \R} S^{m}_\infty(\Omega; \R^n)
+\]
+and we shall denote the \emph{residual} space of the filtration as 
+\[
+S^{-\infty}_\infty(\Omega; \R^n) = \bigcap_{m \in \R} S^{m}_\infty(\Omega; \R^n). 
+\]
+
+We have a rather technical result of the density of the residual space in $S^{m}_\infty(\Omega; \R^n)$. 
+\begin{flemma}
+    Given any $m \in \R$ and $a \in S^{m}_\infty(\Omega; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\Omega; \R^n)$ such that bounded in $S^{m}_\infty(\Omega; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{> 0}$. In other words, for any $m \in \R$ and $\epsilon > 0$, $S^{-\infty}_\infty(\Omega; \R^n)$ is dense in $S^{m}_\infty(\Omega; \R^n)$ with the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$.
+\end{flemma}
+
+
+\begin{fprop}
+    Let $p, n \in \N$ be given. Let $\Omega \subset \R^p$ be such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Then, for any $m, m' \in \R$, we have 
+    \[
+    S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) = S^{m + m'}_\infty(\Omega; \R^n)
+    \]
+\end{fprop}
+\begin{proof}
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $b \in S^{m'}_\infty(\Omega; \R^n)$ be given. By (general) Leibinz formula, we have that for all multi-index $\alpha, \beta$, 
+    \begin{align*}
+    \sup_{\xi \in \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} 
+    &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{\xi \in \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+    &\leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \frac{\sym[\xi]^{m - \abs{\gamma}} \sym[\xi]^{m' - \abs{\beta - \gamma}}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+    &= \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \sym[\xi]^{\abs{\beta} - (\abs{\beta - \gamma} + \abs{\gamma})} \\
+    & \leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \\
+    &< \infty
+    \end{align*}
+    where we have use the property of multi-index that $\abs{\beta} = \abs{\beta - \mu} + \abs{\mu}$.  We have thus shown that $S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) \subset S^{m + m'}_\infty(\Omega; \R^n)$\\
+    \\
+    For the reverse inclusion, let $c \in S^{m + m'}_\infty(\Omega; \R^n)$ be given. Define 
+    \begin{align*}
+    a : (x, \xi) &\mapsto \sym[\xi]^m\\
+    b: (x, \xi) &\mapsto \frac{c(x, \xi)}{a(x, \xi))}
+    \end{align*}
+    and observe that 
+    \begin{itemize}
+        \item $a \in S^{m}_\infty(\Omega; \R^n)$. It is clear that $a$ is smooth in both $x$ and $\xi$. It is independent of $x$ and thus any $x$ derivative gives 0. We need only to check that for all $\beta \in \N^n$, 
+        \[
+        \abs{D^\beta_\xi \sym[\xi]^m} \leq C \sym[\xi]^{m - \abs{\beta}}
+        \]
+        which can be proven by induction on $n$ and $\beta$. We shall only prove the base case where $n = 1$ and $\beta = 1$. We have 
+        \begin{align*}
+        \abs{D_\xi \sym[\xi]^m} = \abs{\p_\xi (1 + \xi^2)^{m/2}} = \abs{m\xi \sym[\xi]^{m - 2}} = \abs{m \frac{\xi}{\sym[\xi]}} \sym[\xi]^{m - 1} \leq \abs{m} \sym[\xi]^{m - 1}
+        \end{align*}
+        where we have used the fact that $\abs{\xi} \leq \sym[\xi]$ for all $\xi$. 
+        \item $b \in S^{m'}_\infty(\Omega; \R^n)$. We note first that $\sym[\xi]^m \neq 0$ for all $\xi \in \R^n$ and thus $b$ is well-defined. Since division by $\sym[\xi]^m$ does not affect any of the $x$ derivative, we only need to show that for any $\beta \in \N^n$, we have
+        \[
+        \abs{D^\beta_\xi b(x, \xi)} \leq C \sym[\xi]^{m + m' - \abs{\beta}}
+        \]
+        for some constant $C > 0$ uniformly in $\xi$. Indeed, observe that by the Leibinz formula
+        \begin{align*}
+        \abs{D^\beta_\xi b(x, \xi)} 
+        & \leq \sum_{\mu \leq \beta} \binom{\beta}{\mu} \abs{D^\mu_\xi c(x, \xi)} \abs{D^{\beta - \mu} \sym[\xi]^{-m}} \\
+        & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{m + m' - \abs{\mu}} \sym[\xi]^{-m - \abs{\beta - \mu}} \\
+        & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{ m' - (\abs{\mu} +  \abs{\beta - \mu})} \\
+        & = C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{ m' -\abs{\beta}} \\
+        &= C 2^{\beta} \sym[\xi]^{ m' -\abs{\beta}} 
+        \end{align*}
+        where we have use the definition of $c$ and applied the result proven for $a$ with $m \mapsto -m$. Thus, $b \in S^{m'}_\infty(\Omega; \R^n)$. 
+    \end{itemize}
+It is clear that $a \cdot b = c$ and we have therefore shown that $S^{m + m'}_\infty(\Omega; \R^n) \subset S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n)$. 
+
+
+    
+\end{proof}
+
+A sumarising theorem: 
+\begin{ftheorem}
+    Given $p, n \in \N$ and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Let 
+    \[
+    S^\infty_\infty(\Omega; \R^n) = \bigcup_{m \in \R} S^m_\infty(\Omega; \R^n). 
+    \]
+    Then $S^\infty_\infty(\Omega; \R^n)$ is a graded algebra over $\R$ with continuous  inclusion  $S^{m}_\infty(\Omega; \R^n) \to S^{m'}_\infty(\Omega; \R^n)$ for all $m \leq m'$. 
 \end{ftheorem}
 
 
 
-\subsection{Symbols}
 
-\subsection{Pseudodifferential Operators ($\Psi$DO's)}
+\subsection{Ellipticity of symbols}
+\begin{fdefinition}
+    Given $p, n \in \N$, $m \in \R$ and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$, an order $m$ symbol $a \in S^m_\infty(\Omega; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
+    \[
+        \inf_{\abs{\xi} \geq 1/\epsilon} \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m. 
+    \]
+\end{fdefinition}
+The importance of elliptic symbol is that they are invertible modulo $S^{-\infty}_\infty(\Omega; \R^n)$. 
+
+\begin{flemma}
+    Given $p, n \in \N$, $m \in \R$ and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Let $a \in S^m_\infty(\Omega; \R^n)$ be an elliptic symbol of order $m$. Then there exist a symbol $b \in S^{-m}_\infty(\Omega; \R^n)$ such that 
+    \[
+    a \cdot b - 1 \in S^{-\infty}_\infty(\Omega; \R^n). 
+    \]
+\end{flemma}
 
 
+
+\section{Pseudodifferential Operators ($\Psi$DO's)}
+
+
+
+\section{Appendix}
+\subsection{Stationary phase lemma} 
+In the study of pseudodifferential operators, we often encounter integral of highly oscillatory functions of the form
+    \begin{align*}
+    I(h) = \int_\R a(x) e^{i \varphi(x) /h} dx
+    \end{align*}
+where $a \in C^\infty_c(\R)$, $\varphi \in C^\infty(\R)$ and we are interested in the asymptotic behaviour as $h \to 0$. We note that if $\varphi$ is linear (or constant), i.e. $\varphi(x) = \alpha x+ \beta$, $\alpha, \beta \in \R$, then, 
+\begin{align*}
+   \abs{I(h)} = \abs{\int_\R a(x) e^{i (\alpha x + \beta) /h} dx} = \abs{e^{i \beta/h}} \abs{\int_\R a(x) e^{i \alpha x /h} dx} =  \abs{\int_\R a(x) e^{i \alpha x /h} dx} \to 0
+\end{align*}
+as $h \to 0$ by Riemann-Lebesgue lemma. That is to say, as the length scale of the oscillation tends to zero, the values of the integrand achieve perfect cancellation. In general, if $\varphi'(x) \neq 0$, we expect $e^{i\varphi(x)/h}$ to oscillate at length scale of order $h$ and thus as $h \to 0$, 
+
+
+
+
+\section{Miscenllaneous} 
+\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+    \begin{align*}
+    T: C^\infty(M) \to \D'(N) \\
+    \end{align*}
+    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+    \begin{align*}
+    B: C^\infty(M) &\times C^\infty(N) \to \C \\
+    (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+    \end{align*}
+    
+    Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+    \begin{align*}
+    B(u, v) = \inprod[u \otimes v, k]. 
+    \end{align*}
+    We call such $k$ the kernel of $T$. 
+\end{ftheorem}
 
 
 \bibliographystyle{apalike}

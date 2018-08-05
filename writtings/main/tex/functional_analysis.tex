@@ -233,12 +233,13 @@ which shows that $\set{v_{n_j}}_j$ is a Cauchy and therefore has a limit $v \in 
 as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet 
 \begin{align*}
 d(w_n, L) 
-&= \int_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
-&= \norm[v_n] \int_{x \in L} \norm[v_n - x] \\
-&= \norm[v_n] d(v_n, L) \\
+&= \inf_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
+&= \norm[v_n] \inf_{x \in L} \norm[v_n - x] \\
+&= \norm[v_n] \inf_{x \in L} \norm[u_n - x] \\
+&= \norm[v_n] d(u_n, L) \\
 &\geq 1
 \end{align*}
-which is a contraction. 
+implying that, in the limit as $n \to \infty$, $d(w, L) \geq 1$ which is a contraction. 
 \end{case}
 
 
@@ -340,7 +341,6 @@ It is clear that $\set{x_n \wh n \in \N}$ is a sequence of element in $\overline
 \end{case}
 \end{proof}
 \end{mdframed}
-
 
 
 

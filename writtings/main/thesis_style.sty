@@ -1,4 +1,4 @@
-\ProvidesPackage{thesis_notes}[2017/08/15 Custom Package]
+%\ProvidesPackage{thesis_style}[2017/08/15 Custom Package]
 
 
 \usepackage[a4paper, margin=1in]{geometry}
@@ -42,10 +42,15 @@
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\inprod}[1][\cdot , \cdot]{\left\langle #1 \right\rangle}
 \newcommand{\brac}[1]{\left(#1\right)}
-\newcommand{\wh}{\, |\, }
+\newcommand{\wh}{\, | \, }
 \newcommand{\abs}[1]{\left|\, #1\,\right|}
 \newcommand{\p}{\partial} 
 \newcommand{\abrac}[1]{\left\langle #1 \right\rangle}
+\newcommand{\st}{\, \, : \,}
+\newcommand\sym[1][\xi]{\left\langle #1 \right\rangle}
+
+\renewcommand\d[1][x]{\mathrm{d}#1 \,}
+
 
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
