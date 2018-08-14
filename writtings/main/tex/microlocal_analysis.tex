@@ -176,6 +176,57 @@ We have a rather technical result of the density of the residual space in $S^{m}
 \begin{flemma}
     Given any $m \in \R$ and $a \in S^{m}_\infty(\Omega; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\Omega; \R^n)$ such that bounded in $S^{m}_\infty(\Omega; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{> 0}$. In other words, for any $m \in \R$ and $\epsilon > 0$, $S^{-\infty}_\infty(\Omega; \R^n)$ is dense in $S^{m}_\infty(\Omega; \R^n)$ with the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$.
 \end{flemma}
+\begin{proof}
+    The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we can't have density of $S^{-\infty}_\infty(\Omega; \R^n)$ in $S^m_\infty(\Omega; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of smooth bounded functions, in particular, $1 \in S^0_\infty(\Omega; \R^n)$ is not in the closure of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+    \\
+    Now, let $a \in S^{m}_\infty(\Omega; \R^n)$ and $\epsilon \in \R_{>0}$ be given. Take anysmooth cut off functions supported in the unit ball, i.e. take $\phi \in C^\infty_c(\R^n)$ such that $0 \leq \phi \leq 1$ and $\phi(\xi) = 1 $ if $\abs{\xi} < 1$ and $\phi(\xi) = 0$ if $\abs{\xi)} > 2$. We define for each $k \in \N$
+    \[
+    a_k(x, \xi) = \phi\brac{\frac{\xi}{k}} a (x, \xi)
+    \]
+    and we check the following 
+    \begin{enumerate}
+        \item $a_k \in S^{-\infty}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
+        \item $a_k$ are bounded in $S^{m}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
+        \item $a_k \to a$ as $k \to \infty$ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. 
+    \end{enumerate}
+     Given arbitrary $N, k \in \N$, observe that 
+     \[
+     \abs{a_k} \leq C \sym[\xi]^{-N} 
+     \]
+     since $a_k$ is compactly supported in $\xi$ (as $\phi$ is compactly supported) and by Leibinz formula and symbol estimates on $a \in S^{m}_\infty(\Omega; \R^n)$
+     \[
+     \abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)} 
+     \leq \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu \phi}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } 
+     \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu \phi}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}. 
+     \] 
+     Since $\phi$ and all its derivatives are compactly supported, each term above is bounded in $\xi$ and thus $a_k$ is bounded in $S^{m}_\infty(\Omega; \R^n)$ and that 
+     \[
+     \abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)} \leq C' \sym[\xi]^{-N}
+     \]
+     which allow us to conclude that $a_k \in S^{-\infty}_\infty(\Omega; \R^n)$.\\
+     \\
+     It remains to show that $\Lim[k] a_k = a $ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. In the first symbol norm, we observe that, using the symbol estimate for $a$ 
+     \begin{align*}
+     \norm[a_k - a]_{0, m + \epsilon} 
+     & = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon}} \\
+     & = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{(1- \phi(\xi/k))} \abs{a(x, \xi)}}{\sym[\xi]^{m + \epsilon}} \\
+     & \leq \norm[a]_{0, m} \sup_{\xi \in \R^n} \frac{\abs{(1- \phi(\xi/k))}}{\sym[\xi]^{\epsilon}} \\
+     & \leq \norm[a]_{0, m} \sym[k]^{- \epsilon}\\
+     & \to 0
+     \end{align*}
+     as $k \to \infty$, since $\abs{( 1- \phi(\xi/ k))}$ is 0 in the region $\abs{\xi} \leq k$ and bounded by $1$ otherwise.  We remark upon the necessity of the extra decay given by $\sym[\xi]^{-\epsilon}$ factor. For other symbol norm we shall again use Leibinz formula to obtain 
+     \begin{align*}
+     \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} 
+     & \leq \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{1}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \phi)}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } \\
+     & \leq  \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{C}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \phi)}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}  \\
+     & = C \sup_{\xi \in \R^n} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \phi)}\brac{\frac{\xi}{k}} \sym[\xi]^{- \epsilon - \abs{\mu}}  \\
+     & \leq C' k^{- \epsilon} \\
+     & \to 0
+     \end{align*}
+     as $k \to \infty$ by the same argument as before. Thus, we have proven that $a_k \to a$ as $k \to \infty$ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. 
+    
+\end{proof}
+
 
 
 \begin{fprop}
@@ -187,8 +238,8 @@ We have a rather technical result of the density of the residual space in $S^{m}
 \begin{proof}
     Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $b \in S^{m'}_\infty(\Omega; \R^n)$ be given. By (general) Leibinz formula, we have that for all multi-index $\alpha, \beta$, 
     \begin{align*}
-    \sup_{\xi \in \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} 
-    &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{\xi \in \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+    \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} 
+    &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
     &\leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \frac{\sym[\xi]^{m - \abs{\gamma}} \sym[\xi]^{m' - \abs{\beta - \gamma}}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
     &= \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \sym[\xi]^{\abs{\beta} - (\abs{\beta - \gamma} + \abs{\gamma})} \\
     & \leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \\
@@ -260,12 +311,353 @@ The importance of elliptic symbol is that they are invertible modulo $S^{-\infty
     a \cdot b - 1 \in S^{-\infty}_\infty(\Omega; \R^n). 
     \]
 \end{flemma}
-
+\begin{proof}
+    We shall follow the general strategy of inverting the symbol outside of a compact set. Let $\phi \in C^\infty_c(\R^n)$ be a smooth cut off function, i.e $0 \leq \phi \leq 1$ and $ \phi(\xi) = 1$ for $\abs{\xi} < 1$ and $\phi(\xi) = 0 $ for $\abs{\xi} > 2$. \\
+    
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ be an elliptic symbol, that is, for any fixed $\epsilon \in \R_{> 0}$, we have 
+    \[
+    \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m
+    \]
+    for any $\abs{\xi} \geq 1/\epsilon$. Thus, we can define 
+    \begin{align*}
+    b(x, \xi) = 
+    \begin{cases}
+    \frac{1 - \phi( \epsilon \xi /2)}{a(x, \xi)} & \abs{\xi} \geq 1/ \epsilon \\
+    0 & \abs{\xi} < 1 / \epsilon. 
+    \end{cases}
+    \end{align*}
+    We check: 
+    \begin{description}
+        \item[$b$ is well-defined and smooth. ] \hfill \\
+        We note that $\abs{a(x, \xi)} > 0$ whenever $\abs{\xi} \geq 1/\epsilon$ and therefore $b$ is well defined in that region. For smoothness, we note first that $b$ is smooth in the regions $\abs{\xi} > 1/ \epsilon$ and $\abs{\xi} < 1/\epsilon$. Set $\delta = 1/(2 \epsilon)$. In the region where $1/\epsilon - \delta < \abs{\xi} < 1/\epsilon + \delta$, we have $\abs{\epsilon \xi/ 2} < 1/\epsilon$ and therefore $b(x, \xi) \equiv 0$ in this region and is thus smooth. Since the we have covered $\Omega \times \R^n$ by the three chart domain above, $b$ is smooth by the (smooth) gluing lemma. 
+        
+        \item[$b$ is a symbol of order $-m$.  ] \hfill \\
+        We can prove by induction that in the region $\abs{\xi} \geq 1/ \epsilon$
+        \begin{align*}
+        D^\alpha_x D^\beta_\xi b = a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}
+        \end{align*}
+        for all multi-index $\alpha, \beta$, where $G_{\alpha \beta}$ is a symbol of order $(\abs{\alpha} + \abs{\beta})m  - \abs{\beta}$. Therefore, using the ellipticity estimate for $a$, we get 
+        \begin{align*}
+        \norm[b]_{k, -m} 
+        & = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi b(x, \xi)}}{\sym[\xi]^{-m-k}} \\
+        &= \sup_{\abs{\xi} \geq 1/\epsilon} \abs{a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}} \sym[\xi]^{m + k} \\
+        &\leq \frac{\norm[G_{\alpha \beta}]_{0, (\abs{\alpha} + \abs{\beta})m - \abs{\beta}}}{\epsilon} \sup_{\abs{\xi} \geq 1/\epsilon^{1 + \abs{\alpha} + \abs{\beta}}} \sym[\xi]^{-m(1 + \abs{\alpha} + \abs{\beta})} \sym[\xi]^{m + k}\\
+        & < \infty
+        \end{align*}
+        as required. 
+        
+        \item[$b$ is an inverse of $a$ modulo $ S^{-\infty}_\infty(\Omega; \R^n)$. ] \hfill \\
+        The main observation is that the set where $b$ fails to be the multiplicative inverse of $a$ is a compact set (in $\xi$) and thus $a \cdot b - 1$ is in fact a compactly supported smooth function of $\xi$ which is a subset of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+        \\
+        Explicitly, for any $N \in \N$
+        \begin{align*}
+        \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi (a\cdot b - 1)} }{\sym[\xi]^{-N}}
+        &\leq \sup_{\abs{\xi} \leq 1/ \epsilon} \sym[\xi]^N \abs{D^\alpha_x D^\beta_\xi (\phi(\xi \epsilon / 2))} < \infty.  
+        \end{align*}
+        
+    \end{description}
+\end{proof}
 
 
 \section{Pseudodifferential Operators ($\Psi$DO's)}
+As mentioned in section \ref{}, we wanted to generalise the action of differential operators 
+\begin{align*}
+P(x, D) u = \frac{1}{(2\pi)^n} \int P(x, \xi) e^{i (x - y)\xi} u(y) \d[y] \d[\xi]
+\end{align*}
+where $P$ is an $m^{th}$ order polynomial in $\xi$ with $C^\infty$ coefficient, to the actions of symbols $a \in S^{m}_\infty(\R^n; \R^n)$
+\begin{align*}
+A_a u = \frac{1}{(2\pi)^n} \int a(x, \xi) e^{i (x - y)\xi} u(y) \d[y] \d[\xi]
+\end{align*}
+or $a \in S^{m}_\infty(\R^{2n}_{(x, y)}; \R^n)$ with action 
+\begin{align*}
+A_a u = \frac{1}{(2\pi)^n} \int a(x, y, \xi) e^{i (x - y)\xi} u(y) \d[y] \d[\xi]. 
+\end{align*}
+One of the result we will prove is that action of $a(x, y, \xi)$ as in the later case can always be reduced to the action of some other $a(x, \xi)$ as in the former case. \\
 
 
+Here we shall introduce a slightly more general symbol space, $\sym[x-y]^w S^{m}_\infty(\Omega; \R^n)$, to allow for polynomial growth perpendicular to the diagonal. 
+\begin{fdefinition}
+    Given $m, w \in \R$, a $w$-\textbf{weighted symbol space of order} $m$, $\sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ is given by 
+    \begin{align*}
+    a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) \iff a(x, y, \xi) = \sym[x - y]^w \tilde{a}(x, y, \xi), \, \tilde{a} \in S^{m}_\infty(\Omega; \R^n)
+    \end{align*}
+    or equivalently, $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ if and only if for all multi-index $\alpha, \beta, \gamma$, 
+    \begin{align*}
+    \abs{D^\alpha_x D^\beta_yD^\gamma_\xi a(x, y, \xi)} \leq C \sym[x - y]^w \sym[\xi]^{m - \abs{\gamma}}. 
+    \end{align*}
+\end{fdefinition}
+
+We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
+\[
+I(a) =  \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]. 
+\]
+\begin{fprop}
+    Let $n \in \N$ and $m, w \in \R$ with $m < -n$, then the map
+    \begin{align*}
+    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) &\to (1 + \abs{x}^2 + \abs{y}^2) C^0_\infty(\R^{2n}) \\
+    a &\mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]
+    \end{align*}
+    extends by continuity to 
+    \begin{align*}
+    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) \to S'(\R^{2n})
+    \end{align*}
+    in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{>0}$. 
+\end{fprop}
+\begin{proof}
+    
+\end{proof}
+
+
+\section{Microlocalisation}
+Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
+\begin{fdefinition}
+    The \textbf{support of a tempered distribution} $u \in S'(\R^n)$ is given by the set
+    \[
+    \supp(u) = \set{x \in \R^n \wh \exists \phi \in S(\R^n), \phi(x) \neq 0, \phi u = 0}^c. 
+    \]
+\end{fdefinition}
+
+And the singular support of a distribution is the set of points where the distribution fails to behave like an element of $S(\R^n)$. 
+\begin{fdefinition}
+    The \textbf{singular support of a tempered distribution} $ u \in S'(\R^n)$ is given by the set 
+    \[
+    \mathrm{sing supp}(u) = \set{x \in \R^n \wh \exists \phi \in S(R^n), \phi(x) \neq 0, \phi(u) \in S(\R^n)}^c
+    \]
+\end{fdefinition}
+Note that if the singular support of a tempered distribution is empty, it is then an element of $C^\infty(\R^n)$ 
+The support of an operator is given by the support of its Schwartz kernel. 
+\begin{fdefinition}
+    The \textbf{support of a continuous linear operator} $A: S(R^n) \to S'(\R^n)$ is given by 
+    \[
+    \supp(A) = \supp(K_A) \subset \R^n \times \R^n
+    \]
+    where $K_A \in S'(\R^n \times \R^n)$ is the Schwartz kernel of $A$. 
+\end{fdefinition}
+
+We note from the above that supports or singular supports are complement of open sets, therefore they are closed. 
+We have the following result relating the support of a smooth function after the action of a continuous linear operator. 
+\begin{fprop}[Calculus of support]
+    Let $A: S(\R^n) \to S(\R^n)$ be a continuous linear operator and $\phi \in C^\infty_c(\R^n)$, then
+    \[
+    \supp(A \phi) \subset \supp(A) \circ \supp(\phi) := \set{x \in \R^n \wh \exists y \in \supp(\phi), (x, y) \in \supp(A) }. 
+    \]
+\end{fprop}
+\begin{proof}
+    We shall show the contrapositive statement:
+    \[
+    x \not \in \supp(A) \circ \supp(\phi) \implies x \not \in \supp(A \phi). 
+    \]
+    Suppose $x \not \in \supp(A) \circ \supp(\phi)$. Observe that 
+    \[
+    \supp(A) \circ \supp(\phi) = \pi_x(\pi_y^{-1}(\supp(\phi)) \cap \supp(A))
+    \]
+    where $\pi_{x, y} : \R^2 \to \R$ are the projection map to the respective coordinates. Since $\supp(A)$ is closed and $\supp(\phi)$ is compact, we have that $\supp(A) \circ \supp(\phi)$ is closed and thus $x$ belongs to an open set. We can therefore choose a smooth cutt-off function $\chi \in C^\infty_c(\R^n)$ supported at $x$ ($\chi(x) \neq 0$) but away from $\supp(A) \circ \supp(\phi)$. Thus, 
+    \[
+    \supp(A) \cap (\supp(\chi) \times \supp(\phi)) = \emptyset
+    \]
+    and hence $\chi(x) K_A(x, y) \phi(y) = 0 \implies \chi A \phi = 0$, as required. 
+\end{proof}
+
+
+
+\subsection{Pseudolocality} 
+We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any $\Phi$DO is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is teh pseudolocality result that says that action $\Psi$DO's do not increase singular support of distributions. 
+
+\begin{fprop}
+    Let $A \in \Psi^m_\infty(\R^n)$ for some $m \in \R$, then
+    \[
+    \mathrm{sing supp}(A) \subset \set{(x, y) \in \R^{2n} \wh x = y}. 
+    \]
+\end{fprop}
+\begin{proof}
+    We shall prove this theorem for elements of $\Psi^{-\infty}_\infty(\R^n)$ and then extend by continuity to all orders. 
+    Let $A \in \Psi^{-\infty}_\infty(\R^n)$ with symbol $a \in S^{-\infty}_\infty(\R^{2n}; \R^n)$. Its singular support is given by the singular support of the kernel. Since all derivatives of $a$ are $O(\sym[\xi]^{-\infty})$, the oscillatory integral below representing the kernel is absolutely convergent  and, using integration by parts, we get
+    \begin{align*}
+    I(a) 
+    & = \frac{1}{(2\pi)^n} \int e^{i(x - y) \xi} a(x, y, \xi) \d[\xi] \\
+    & = \frac{1}{(2\pi)^n}  \int \frac{1}{(x - y)^\alpha} (-D^\alpha_\xi) \brac{e^{i(x - y) \xi} }a(x, y, \xi) \d[\xi] \\
+    & = \frac{1}{(x - y)^\alpha} \frac{1}{(2\pi)^n} \int e^{i(x - y) \xi} (-D^\alpha_\xi) a(x, y, \xi) \d[\xi] \\
+    & = \frac{1}{(x - y)^\alpha} I((-D^\alpha_\xi)a)
+    \end{align*}
+    which is true for all multi-index $\alpha$ of any order. Since all $x, y$-derivatives of $a$ are uniformly bounded by $\sym[\xi]^{-N}$ for any $N \in \N$, we can differentiate under the integral sign to get the equation
+    \begin{align*}
+    D^\beta_x D^\gamma_y (x - y)^\alpha I(a) 
+    & = \frac{1}{(2\pi)^n} \int D^\beta_x D^\gamma_y e^{i(x - y) \xi} (-D^\alpha_\xi) a(x, y, \xi) \d[\xi] \\
+    & = \frac{1}{(2\pi)^n} \int (-1)^{\abs{\beta}}\xi^{\beta + \gamma}e^{i(x - y) \xi} (-D^\alpha_\xi) a(x, y, \xi) \d[\xi] \\
+    \end{align*}
+    where the last integral gives a smooth function, thus showing that $(x - y)^\alpha I(a)$ is smooth for all $\alpha$, and hence $I(a)$ is smooth away from $x = y$. \\
+    \\
+    Now, for a general $A \in \Psi^m_\infty(\R^n)$, $m \in \R$, we shall use the  density of $S^{-\infty}_\infty(\R^{2n}; \R^n) \subset S^{m}_\infty(\R^{2n}; \R^n)$ and that $I$ extends by continuity to a map $I : S^{m}_\infty(\R^{2n}; \R^n) \to S'(\R^{2n})$ in the topology $S^{m + \epsilon}_\infty(\R^{2n}; \R^n)$ for any $\epsilon > 0$  \ref{}. 
+    
+    
+\end{proof}
+
+
+\begin{fprop}
+    Let $A \in \Psi^m_\infty(\R^n)$ for some $m \in \R$ and $u \in C^{-\infty}(\R^n)$, then 
+    \begin{align*}
+    \mathrm{sing supp}(A u) \subset \mathrm{sing supp }(u). 
+    \end{align*}
+    We call operators that satisfies the above property \textit{pseudolocal}
+\end{fprop}
+\begin{proof}
+     Again we shall prove the contrapositive statement that 
+    \[
+    x \not \in \mathrm{sing supp}(u) \implies x \not \in \mathrm{sing supp}(Au)
+    \]
+    Let $u \in S'(\R^n)$ be compactly supported and $x_0 \not \in \mathrm{sing supp}(u)$.  We can choose $\chi \in S(\R^n)$, (normalised) so that $\chi \equiv 1$ in a neighbourhood of $x_0$ and that $\chi u \in S(\R^n)$. Observe that 
+    \begin{align*}
+    Au = A(\chi u + (1 - \chi)u) = A(\chi u) + A(1 - \chi)u. 
+    \end{align*}
+    Since $\chi xu \in S(\R^n) \implies A\chi u \in S(\R^n)$ \cite{rbm lemma 2.3}, we have that 
+    \begin{align*}
+    \mathrm{singsupp}(Au) = \mathrm{singsupp}(A(1 - \chi)u). 
+    \end{align*}
+    Furthermore, we know that $x_0 \not \in \supp((1 - \chi)u)$. 
+    Now, we shall further cut-off near $x_0$ by choosing a $\phi \in S(\R^n)$ compactly supported  away from $\supp(1 - \chi)$ and $\phi \equiv 1$ near $x_0$, i.e. 
+    \[
+    \supp(1 - \chi) \cap \supp \phi = \emptyset. 
+    \]
+    We now have an operator $\phi A(1 - \chi) $ with kernel
+    \[
+    \phi(x) K_A(x, y) ( 1 - \phi(y))
+    \]
+    that vanishes (in particular smooth) on the diagonal. Since we have shown that the singular support of a pseudodifferential operator have to be contained in the diagonal, we conclude that $\phi A(1 - \chi)$ is a smoothing operator, and thus $\phi A (1 - \chi) u \in C^\infty(\R^n)$ as required. .  
+\end{proof}
+
+
+\subsection{Elliptic, Characteristic, Wavefront sets}
+We will now define \textit{ellipticity at a point} in phase space which allow up to define various microlocal contructions that focus on localised behaviour $\Psi$DO's and distributions. 
+
+\begin{fdefinition}
+    A pseudodifferential operator, $A \in \Psi^m_\infty(\R^n), m \in \R$ is \textbf{elliptic at a point} $(x_0, \xi_0) \in \R^n \times \R^n \setminus \set{0}$ if there exist $\epsilon > 0$ such that its left-reduced symbol satisfies the lower bound
+    \[
+    \abs{\sigma_L(A)(x, \xi)} \geq \epsilon \sym[\xi]^m
+    \]
+    in the region
+    \[
+    \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}
+    \]
+    where $\widehat{\xi} = \xi / \abs{\xi}$ for any non-zero $\xi \in \R^n$. We denote the set of all elliptic points of $A$ as 
+    \[
+    \Ell^m(A) = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh A \text{  is elliptic of order $m$ at } (x, \xi)}
+    \]
+    and its complement in $\R^n \times \R^n \setminus \set{0}$ as 
+    \begin{align*}
+    \Char^m(A) 
+    &= \Ell^m(A)^c \setminus \set{(x, 0)\wh x \in \R^n} \\
+    &= \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh A \text{  is \textbf{not} elliptic of order $m$ at } (x, \xi)}
+    \end{align*}
+\end{fdefinition}
+
+\begin{flemma}
+    Let $A \in \Psi^m_\infty(\R^n), m \in \R$ then 
+    \begin{enumerate}
+        \item $(x_0, \xi_0) \in \Ell^m(A) \iff \xi_0 \neq 0 $ and $\sigma_m(A)(x_0, \xi_0) = 0$.
+        \item $\Ell^m(A) $ is open in $\R^n \times \R^n$. 
+        \item $\Ell^m(A)$ is conic in $\R^n \times \R^n \setminus \set{0}$, in the sense that 
+        \[(x_0, \xi_0) \in \Ell^m(A) \implies (x_0, t \xi_0) \in \Ell^m(A), \forall t \in \R_{>0}.\] 
+        \item $\Char^m(A)$ is closed conic. 
+        \item if $B \in \Psi^{m'}(\R^n)$, then 
+        \[\Char^{m + m'}(A \circ B) = \Char^m(A) \cup \Char^{m'}(B).\]
+    \end{enumerate}
+\end{flemma}
+
+
+\begin{fdefinition}
+    The \textbf{wavefront set} of a distribution $u \in C^{-\infty}_c(\R^n)$ is given by 
+    \begin{align*}
+    \WF(u) = \bigcap \set{\Ell^0(A) \wh A \in \Psi^0_\infty(\R^n), Au \in C^\infty(\R^n)}. 
+    \end{align*}
+    For tempered distribution $u \in S'(\R^n)$, its wavefront set is given by 
+    \begin{align*}
+    \WF(u) = \bigcup_{\chi \in C^\infty_c(\R^n)} \WF(\chi u). 
+    \end{align*}
+\end{fdefinition}
+
+
+\begin{fprop}
+    If $u \in C^{-\infty}_c(\R^n)$, then 
+    \begin{align*}
+    \pi(\WF(u)) = \mathrm{singsupp}(u)
+    \end{align*}
+\end{fprop}
+
+
+\begin{fdefinition}
+    Let $a \in S^{m}_\infty(\R^{p}; \R^n)$ for some $m \in \R$, $p, n \in \N$ be a symbol. We say $a$ is of order $-\infty$ at a point $(x_0, \xi_0) \in \R^p \times \R^n \setminus \set{0}$ (write $a = O(\sym[\xi]^{-\infty})$) if there exist $\epsilon \in \R_{> 0}$ such that for all $M \in \R$, there is a constant $C_M > 0$ such that 
+    \[
+    \abs{a(x, \xi)} \leq C_M \sym[\xi]^{-M}
+    \]
+    in the neigbourhood of $(x_0, \xi_0)$ given by
+    \[
+    \overline{U}_{(x_0, \xi_0)} = \set{(x, \xi) \in \R^p \times \R^n \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon}. 
+    \]
+    We define the cone support of the symbol $a$ to be all the points in phase space that where it fails to be $O(\sym[\xi]^{-\infty})$. 
+    \[
+    \mathrm{conesupp}(a) = \set{(x, \xi) \in \R^p \times \R^n \setminus \set{0} \wh a = O(\sym[\xi]^{-\infty}) \text{ at } (x, \xi)}^c. 
+    \]
+\end{fdefinition}
+
+\begin{flemma}
+    Let $a \in S^{\infty}_\infty(\R^{p}; \R^n)$, then 
+    \begin{enumerate}
+        \item $\mathrm{conesupp}(a)$ is a closed conic set in $\R^p \times \R^n$. 
+        \item If $a = O(\sym[\xi]^{-\infty})$ at $(x_0, \xi_0) \in \R^p \times \R^n \setminus \set{0}$, then so is $D^\alpha_x D^\beta_\xi a(x, \xi)$ for any multi-index $\alpha, \beta$
+    \end{enumerate}
+\end{flemma}
+
+With the lemma above, we can in fact define the cone support of a symbol to be the smallest closed conic subset of the phase space (with $\xi \neq 0$) such that, in the complement, $a$ and all its derivatives are of order $-\infty$.\\
+ 
+
+
+\begin{fdefinition}
+    Let $A \in \Psi^m_\infty(\R^n)$,  $m \in \R$ be pseudodifferential operator. We define the \textbf{essential support}, $\WF'(A)$, of $A$ to be the cone support of its left symbol, i.e. 
+    \begin{align*}
+    \WF'(A) = \mathrm{conesupp}(\sigma_L(A)) \subset \R^n \times \R^n \setminus \set{0}
+    \end{align*}
+\end{fdefinition}
+
+Using symbol calculus we can prove the following result. 
+\begin{flemma}
+    Let $A \in \Psi^m_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ be pseudifferential operators. Then 
+    \begin{enumerate}
+        \item $\WF'(A) = \mathrm{conesupp}(\sigma_R(A))$. 
+        \item $\WF'(A\circ B) \subset \WF'(A) \cap \WF'(B)$. 
+        \item $\WF'(A + B) = \WF'(A) \cup \WF'(B)$. 
+    \end{enumerate}
+\end{flemma}
+
+With the concept of essentail support we can define the notion of \emph{microlocal elliptic parametrix} which can be thought of as local inverse at an elliptic point of $\Psi$DO's. 
+\begin{fprop}
+    Let $A \in \Psi^m_\infty(\R^n)$ and $z \not \in \Char^m(A)$. Then there exist a (two-sided) microlocal parametrix $B \in \Psi^{-m}(\R^n)$ such that 
+    \begin{align*}
+    z \not \in \WF'(1 - AB) \text{   and   } z \not \in \WF'(1 - BA). 
+    \end{align*}
+    
+\end{fprop}
+
+
+\begin{fprop}
+    Pseudodifferential operators are microlocal in the following sense: 
+    Let $A \in \Psi^m_\infty(\R^n)$ and $u \in C^{-\infty}_c(\R^n)$, then 
+    \begin{align}
+    \WF(Au) \subset \WF(u). 
+    \end{align}
+    In fact, we have 
+    \begin{align*}
+    \WF(Au) \subset \WF'(A) \cap \WF(u). 
+    \end{align*}
+\end{fprop}
+
+A partial converse to the above is given by the following proposition. \\
+
+\begin{fprop}
+    Let $A \in \Psi^m_\infty(\R^n)$ and $u \in C^{- \infty}_c(\R^n)$, then 
+    \begin{align*}
+    \WF(u) \subset \WF(Au) \cup \Char^m(A).
+    \end{align*}
+\end{fprop}
 
 \section{Appendix}
 \subsection{Stationary phase lemma} 
@@ -282,7 +674,7 @@ as $h \to 0$ by Riemann-Lebesgue lemma. That is to say, as the length scale of t
 
 
 
-\section{Miscenllaneous} 
+
 \begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
     \begin{align*}
     T: C^\infty(M) \to \D'(N) \\
