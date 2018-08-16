@@ -527,7 +527,7 @@ We shall show two results on the singular support of pseudodifferential operator
 
 
 \subsection{Elliptic, Characteristic, Wavefront sets}
-We will now define \textit{ellipticity at a point} in phase space which allow up to define various microlocal contructions that focus on localised behaviour $\Psi$DO's and distributions. 
+We will now define \textit{ellipticity at a point} in phase space which allow up to define various microlocal contructions that focus on  localised (conically in phase space) behaviour $\Psi$DO's and distributions. 
 
 \begin{fdefinition}
     A pseudodifferential operator, $A \in \Psi^m_\infty(\R^n), m \in \R$ is \textbf{elliptic at a point} $(x_0, \xi_0) \in \R^n \times \R^n \setminus \set{0}$ if there exist $\epsilon > 0$ such that its left-reduced symbol satisfies the lower bound
@@ -536,7 +536,7 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
     \]
     in the region
     \[
-    \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}
+    \overline{U}_\epsilon = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}
     \]
     where $\widehat{\xi} = \xi / \abs{\xi}$ for any non-zero $\xi \in \R^n$. We denote the set of all elliptic points of $A$ as 
     \[
@@ -551,9 +551,12 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
 \end{fdefinition}
 
 \begin{flemma}
-    Let $A \in \Psi^m_\infty(\R^n), m \in \R$ then 
+    Let $A \in \Psi^m_\infty(\R^n), m \in \R$. 
     \begin{enumerate}
-        \item $(x_0, \xi_0) \in \Ell^m(A) \iff \xi_0 \neq 0 $ and $\sigma_m(A)(x_0, \xi_0) = 0$.
+        \item If $\sigma_m(A)(x, \xi)$ is homogeneous of degree $m$ in $\xi$, then 
+        \[
+        \Ell^m(A) = \set{(x_0, \xi_0) \wh  \xi_0 \neq 0, \sigma_m(A)(x_0, \xi_0) \neq 0}. 
+        \]
         \item $\Ell^m(A) $ is open in $\R^n \times \R^n$. 
         \item $\Ell^m(A)$ is conic in $\R^n \times \R^n \setminus \set{0}$, in the sense that 
         \[(x_0, \xi_0) \in \Ell^m(A) \implies (x_0, t \xi_0) \in \Ell^m(A), \forall t \in \R_{>0}.\] 
@@ -562,26 +565,163 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
         \[\Char^{m + m'}(A \circ B) = \Char^m(A) \cup \Char^{m'}(B).\]
     \end{enumerate}
 \end{flemma}
+\begin{proof}
+    Let $A \in \Psi^m_\infty(\R^n)$, $m \in \R$ be given. 
+    \begin{enumerate}
+        \item Suppose the principal symbol $\sigma_m(A)(x, \xi)$ is homogeneous of order $m$ in $\xi$. We need to show that 
+        \[
+        (x_0, \xi_0) \in \Ell^m(A) \iff \xi_0 \neq 0, \, \sigma_m(A)(x_0, \xi_0) \neq 0. 
+        \]
+        If $\xi_0 = 0$, $(x_0, \xi_0) \not \in \Ell^m_\infty$ by definition of ellipticity. If $\sigma_m(x_0, \xi_0) = 0$, by homogeneity, we have 
+        \[
+        \sigma_m(x_0, t \xi_0) = t^m \sigma_m(x_0, \xi_0) = t^m \cdot 0 = 0
+        \]
+        for all $t \in \R_{> 0}$. By definition of principal symbol, we can write the left symbol of $A$ as 
+        \[
+        \sigma_L(A) = \sigma_m(A) + a
+        \]
+        where $a \in S^{m -1}_\infty(\R^n; \R^n)$. Now, observe that for any $\epsilon > 0$, the set 
+         \[
+        \overline{U}_\epsilon = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}
+        \]
+        contains the(open) half-line starting at $\widehat{\xi_0} / \epsilon$, i.e. the set $\set{(x_0, t \xi_0/(\abs{\xi_0}\epsilon)\wh t > 0}$. However, by the symbol estimate of $a$, 
+        \begin{align*}
+        \abs{\sigma_L(A)\brac{x_0, \frac{t \xi_0}{\abs{\xi_0} \epsilon}}}
+        & \leq \brac{\frac{t}{\epsilon \abs{\xi_0}}}^m \abs{\sigma_m(x_0, \xi_0)} + \abs{a\brac{x_0, \frac{t \xi_0}{\abs{\xi_0} \epsilon}}} \\
+        & = 0 + \abs{a\brac{x_0, \frac{t \xi_0}{\abs{\xi_0} \epsilon}}} \\
+        & \leq C \sym[\frac{t \xi_0}{\abs{\xi_0} \epsilon}]^{m - 1} \\
+        & = C\sym[t/\epsilon]^{m - 1}
+        \end{align*}
+        and therefore 
+        \begin{align*}
+        \inf_{(x, \xi) \in \overline{U}_\epsilon} \frac{\abs{\sigma_L(A)(x, \xi)}}{\sym[\xi]^m} 
+        & \leq \inf_{t > 0}  \frac{\abs{\sigma_L(A)\brac{x_0, \frac{t \xi_0}{\abs{\xi_0} \epsilon}}} }{\sym[t /\epsilon]^m} \\
+        & \leq \inf_{t > 0}  \frac{C\sym[t/ \epsilon]^{m - 1} }{\sym[t /\epsilon]^m} \\
+        & = C\inf_{t > 0} \sym[t/\epsilon]^{-1}\\
+        & = 0
+        \end{align*}
+        which means that $(x_0, \xi_0) \not \in \Ell^m(A)$. \\
+        \\
+        Conversely, if $\sigma_m(A)(x_0, \xi_0) \neq 0$, by continuity and homogeneity,  $\sigma_m(A)$, is non-zero in a (closed) conic neighbourhood, i.e. there exist $\epsilon > 0$ such that $\sigma_m(A) \neq 0$ in 
+        \begin{align*}
+        \overline{U}_\epsilon = \set{(x, \xi) \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}}\leq \epsilon, \abs{\xi} \geq 1/ \epsilon}. 
+        \end{align*}
+        Again, writing the left symbol as a sum of the principal symbol an a lower order term, we observe that in $\overline{U}_\epsilon$, 
+        \begin{align*}
+        \frac{\abs{\sigma_L(A)(x, \xi)} }{\sym[\xi]^m}
+        & \geq \frac{\abs{\abs{\sigma_m(A)(x, \xi)} - \abs{a(x, \xi)}}}{\sym[\xi]^m} \\
+        & = \abs{\frac{\abs{\xi}^m}{\sym[\xi]^m} \abs{\sigma_m(A)(x, \widehat{\xi})} - \frac{\abs{a(x, \xi)}}{\sym[\xi]^m}} \\
+        \end{align*}
+        By the symbol estimate of $a$, the second term is tending to $0$ which the first term is bounded below by $C = \inf_{(x, \xi) \in \overline{U}_\epsilon} \abs{\sigma_m(A)(x, \xi)} > 0$. Therefore, choosing a smaller $\epsilon$ if necessary, we have $\abs{a(x, \xi)} / \sym[\xi]^m < C$ and thus 
+        \begin{align*}
+        \inf_{(x, \xi) \in \overline{U}_\epsilon} \frac{\abs{\sigma_L(A)(x, \xi)} }{\sym[\xi]^m}
+        \geq C' 
+        \geq \epsilon. 
+        \end{align*}
+        and therefore $(x_0, \xi_0) \in \Ell^m(A)$. 
+        
+        \item We note first that if the principal symbol is homogeneous of degree $m$, the previous result applies and continuity of the principal symbol guarantee that the elliptic set is open (if $\sigma_m(A)$ is non-zero at a point, it is non-zero in an open neighbourhood of the point). \\
+        \\
+        For the general case, suppose $(x_0, \xi_0) \in \Ell^m(A)$. We therefore have for some $\epsilon > 0$, 
+        
+         \[
+        \abs{\sigma_L(A)(x, \xi)} \geq \epsilon \sym[\xi]^m
+        \]
+        in the region
+        \[
+        \overline{U}_\epsilon(x_0, \xi_0) = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}. 
+        \]
+        
+        It suffice to show that there is an open neighbourhood of $(x_0, \xi_0)$ where $A$ remains elliptic. We can take desired open neighbourhood to be 
+        \begin{align*}
+        V = \set{(x', \xi') \wh \xi' \neq 0, \, \abs{x' - x_0} < \epsilon/ 2, \, \abs{\widehat{\xi'} - \widehat{\xi_0}} < \epsilon / 2}. 
+        \end{align*}
+        Then, we can check that for every $(x', \xi') \in V$, $A$ satisfies the elliptic estimate in $\overline{U}_{\epsilon / 2}(x', \xi')$. Indeed, if $(x, \xi) \in \overline{U}_{\epsilon / 2}(x', \xi')$, then 
+        \begin{align*}
+        &\abs{x - x_0} \leq \abs{x - x'} + \abs{x' - x_0} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \\
+        &\abs{\widehat{\xi} - \widehat{\xi_0}} \leq \abs{\widehat{\xi} - \widehat{\xi'}} + \abs{\widehat{\xi'} - \widehat{\xi_0}} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon \\
+        &\abs{\xi} \geq 2/\epsilon \geq 1/\epsilon
+        \end{align*}
+        which shows that $\overline{U}_{\epsilon / 2}(x', \xi') \subset \overline{U}_{\epsilon}(x_0, \xi_0)$. Therefore, 
+        \begin{align*}
+        \inf_{(x, \xi) \in \overline{U}_{\epsilon / 2}(x', \xi')} \frac{\abs{\sigma_L(A)(x, \xi)}}{\sym[\xi]^m}
+        \geq  \inf_{(x, \xi) \in \overline{U}_{\epsilon}(x_0, \xi_0)} \frac{\abs{\sigma_L(A)(x, \xi)}}{\sym[\xi]^m} 
+         \geq \epsilon 
+         \geq \epsilon / 2
+        \end{align*}
+        as required. 
+        
+        
+        
+        \item Again, this result is immediate if the principal symbol is homogeneous in  $\xi$. In general, this result come from the observation that only $\widehat{\xi} = \xi / \abs{\xi}$ appears in $\overline{U}_\epsilon$ in the definition of $\Ell^m(A)$, i.e. only the \emph{direction} in the dual variable is important. \\
+        \\
+        Explicitly, let $(x_0, \xi_0) \in \Ell^m(A)$ and $t \in \R_{> 0}$. Clearly $t \xi_0 \neq 0$. And note that 
+        \begin{align*}
+        \overline{U}_\epsilon(x_0, \xi_0) = \overline{U}_\epsilon(x_0, t\xi_0) 
+        \end{align*}
+        since $\widehat{\xi} = \widehat{t \xi}$. 
+        
+        \item $\Char^m(A) = \Ell^m(A)^c$ where $\Ell^m(A)$ is open and conic. Since complement of conic set is conic, and complement of open is closed, we conclude that $\Char^m(A)$ is closed conic. 
+        
+        
+        \item If both principal symbols are homoegenous of degree $m, m'$ respectively, we can applied the result above and by symbol calculus, we have
+        \begin{align*}
+        \Ell^{m + m'}(A \circ B) 
+        & = \set{(x, \xi) \wh \xi \neq 0, \sigma_{m + m'}(A \circ B) = \sigma_m(A) \sigma_{m'}(B) \neq 0}\\
+        & = \set{(x, \xi) \wh \xi \neq 0, \sigma_m(A)  \neq 0} \cap  \set{(x, \xi) \wh \xi \neq 0, \sigma_{m'}(B)  \neq 0} \\
+        & = \Ell^m(A) \cap \Ell^{m'}(B). 
+        \end{align*}
+        Taking complement give the desired result. \\
+        \\
+        In general, 
+    \end{enumerate}
+
+\end{proof}
+
 
 
 \begin{fdefinition}
-    The \textbf{wavefront set} of a distribution $u \in C^{-\infty}_c(\R^n)$ is given by 
+    The \textbf{wavefront set} of a compactly supported tempered distribution 
+    \[
+    u \in C^{-\infty}_c(\R^n) = \set{u \in S'(\R^n) \wh \supp(u) \Subset \R^n} 
+    \]
+    is given by 
     \begin{align*}
     \WF(u) = \bigcap \set{\Ell^0(A) \wh A \in \Psi^0_\infty(\R^n), Au \in C^\infty(\R^n)}. 
     \end{align*}
-    For tempered distribution $u \in S'(\R^n)$, its wavefront set is given by 
+    For general tempered distribution $u \in S'(\R^n)$, its wavefront set is given by 
     \begin{align*}
     \WF(u) = \bigcup_{\chi \in C^\infty_c(\R^n)} \WF(\chi u). 
     \end{align*}
-\end{fdefinition}
+\end{fdefinition} 
 
 
 \begin{fprop}
-    If $u \in C^{-\infty}_c(\R^n)$, then 
+    For compactly supported tempered distribution, $u \in C^{-\infty}_c(\R^n)$, 
     \begin{align*}
-    \pi(\WF(u)) = \mathrm{singsupp}(u)
+    \pi(\WF(u)) = \mathrm{singsupp}(u). 
     \end{align*}
+    where $\pi(x, y) = x$ is the projection map. 
 \end{fprop}
+\begin{proof}
+    To show $\pi(\WF(u)) \subset \mathrm{singsupp}(u)$, we observe that, by definition of singular support, 
+    \begin{align*}
+    x_0 \not \in \mathrm{singsupp}(u) \implies \exists \phi \in S(\R^n), \, \phi(x_0) \neq 0, \, \phi u \in S(R^n). 
+    \end{align*}
+    But since multiplication by $\phi$ gives an operator in $\Psi^0_\infty(\R^n)$ which is elliptic at $(x_0, \xi)$ for any $\xi \neq 0$ ($\phi$ is its own principal symbol which happens to be homogeneous and non-zero for any $(x_0, \xi), \xi \neq 0$). Therefore, $x_0 \not \in \pi(\WF(u))$. \\
+    \\
+    Conversely, if $x_0 \not\in \pi(\WF(u))$, then for all $\xi \neq 0$, there exist $A_\xi \in \Psi^0_\infty(\R^n)$ such that $A_\xi$ is elliptic at $(x_0, \xi)$ and $A_\xi u \in C^\infty(\R^n)$. Since elliptic set $\Ell^0(A_\xi)$ is open and conic, we know that there exist $\epsilon = \epsilon(\xi)$ such that $A_\xi$ is elliptic in the open conic set
+    \begin{align*}
+    V_\xi = \set{(x', \xi')\in \R^n \times (\R^n \setminus \set{0}) \wh \abs{x' - x_0} < \epsilon, \abs{\widehat{\xi'} - \widehat{\xi}} < \epsilon }. 
+    \end{align*}
+    Compactness of the sphere (note that $\xi' \mapsto \widehat{\xi'}$ is an embedding of $\R^n \setminus \set{0}$ into $S^n$) allow us to cover $\set{x_0} \times (\R^n \setminus \set{0})$ with finite number of $V_{\xi_j}, j = 1, \dots, N$ with corresponding operators $A_{\xi_j}$. \\
+    Now, consider the operator
+    \begin{align*}
+    A = \sum_{j = 1}^N A^*_{\xi_j}A_{\xi_j}. 
+    \end{align*}
+    
+    
+\end{proof}
 
 
 \begin{fdefinition}
