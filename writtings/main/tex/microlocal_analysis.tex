@@ -719,7 +719,23 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
     \begin{align*}
     A = \sum_{j = 1}^N A^*_{\xi_j}A_{\xi_j}. 
     \end{align*}
-    
+    By the pseudolocality of pseudodifferential operators, we know that $A_{\xi_j} u \in C^\infty(\R^n) \implies A^*_{\xi_j} A_{\xi_j} u \in \C^\infty(\R^n)$. Therefore, $Au \in C^\infty(\R^n)$ and $A$ is elliptic at $(x_0, \xi), \forall \xi \neq 0$ with non-negative symbol. We can pick a smooth cut-off $\chi$, $\chi \equiv 1$ when resticted to an $\epsilon/2$-ball around $x_0$ forming an operator
+    \begin{align*}
+    A + (1 - \chi) \in \Psi^0_\infty(\R^n)
+    \end{align*}
+    that is globally elliptic. We can construct a (global) elliptic parametrix $E$ so that 
+    \begin{align*}
+    1 - (E \circ A + E (1 - \chi)) \in \Psi^{-\infty}_\infty(\R^n). 
+    \end{align*}
+    Finally, we can choose any smooth cut-off $\phi$ with support subordinate to that of $\chi$, i.e. $\supp(\phi) \subset \supp(\chi)$ and note that 
+    \begin{align*}
+    \phi \circ E \circ (1 - \chi) \in \Psi^{-\infty}_\infty(\R^n)
+    \end{align*}
+    making it a smoothing operator \cite{}. Thus, we conclude 
+    \begin{align*}
+    \phi u = \phi E \circ A u + \phi \circ E \circ (1 - \chi) u \in C^\infty(\R^n)
+    \end{align*}
+    as required. 
     
 \end{proof}
 
