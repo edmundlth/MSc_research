@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage{../thesis_style}
+\usepackage{standalone} 
+\usepackage{import} % use \import{directory}{filename} to include standalone texfiles
+
+\title{Microlocal Analysis Seminar : Symbols and $\Psi$DOs} 
+%\author{} 
+%\date{\today}
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+%\listoffigures
+%\listoftables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reminder: definitions and notations}
+\subsection{Symbols} 
+We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounter in the literature. The main motivation is again based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
+\begin{align*}
+P(x, \xi) = \sum_{\abs{\alpha} \leq m} a_\alpha(x) \xi^\alpha. 
+\end{align*}
+
+
+\begin{fdefinition}
+    The \textbf{space of symbol of order} $m$, denoted $S^m_\infty(\R^p; \R^n)$, is the space of smooth functions $a \in C^\infty(\R^p \times \R^n)$ such that for all multi-index $\alpha \in \N^p, \beta \in \N^n$
+    \begin{align*}
+    \abs{D^\alpha_x D^\beta_\xi a (x, \xi)} \leq C_{\alpha, \beta} \sym[\xi]^{m - \abs{\beta}} 
+    \end{align*}
+    uniformly on $\R^p \times \R^n$. We can also defined the space of symbol, $S^m_\infty(\Omega; \R^n)$ on a set with non-empty interior $\Omega \subset \R^p$, $\Omega \subset \overline{\mathrm{Int}(\Omega)}$ such that the bound above is satisfied uniformly in $(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n$. The subscript $\infty$ refers the uniform boundedness condition in $x$. Together with the family of seminorms (indexed by $N \in \N$) 
+    \begin{align} \label{eq : symbol seminorms} 
+    \norm[a]_{N, m} = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \max_{\abs{\alpha} + \abs{\beta} \leq N} \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}} 
+    \end{align}
+    gives a Frechet topology to $S^m_\infty(\Omega; \R^n)$. \\
+    
+    Furthermore, we define the total symbol space as
+    \[
+    S^\infty_\infty(\Omega; \R^n) = \bigcup_{m \in \R} S^{m}_\infty(\Omega; \R^n)
+    \]
+    and the residual \emph{residual} space of the filtration as 
+    \[
+    S^{-\infty}_\infty(\Omega; \R^n) = \bigcap_{m \in \R} S^{m}_\infty(\Omega; \R^n). 
+    \]
+    
+    Note: In defining pseudodifferential operators, we shall focus on the case where $p = 2n$, i.e. $a(x, y, \xi) \in S^{m}_\infty(\R^{2n}_{x,y}; \R^n)$. 
+\end{fdefinition}
+
+
+\subsection{Quantisation}
+Pseudodifferential operators are defined using symbols. The main gadget is the following oscillatory integral: 
+\begin{align}
+S^{m}_\infty(\R^{2n}; \R^n) \ni a \mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi]
+\end{align}
+with action on Schwartz functions $u \in S(\R^n)$ given by 
+\begin{align} \label{eq: oscillatory integral}
+I(a)(u) =  \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) u(y) \d[y] \d[\xi]. 
+\end{align}
+The integral \ref{eq: oscillatory integral} above might be divergent unless $m < -n$, but it can be interpreted as a tempered distribution, i.e. a linear function on $S(\R^n)$, with action
+\begin{align}
+ S(\R^n) \ni v \mapsto I(a)(u)(v) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) u(y) v(x) \d[y] \d[\xi] \d[x] \in \C.  
+\end{align}
+The process of turning the symbol $a$ into an operator $S(\R^n) \to S'(\R^n)$ is known as the quantisation procedure. The goal of this talk is the following: 
+
+\begin{mdframed}
+    \textbf{\large Goal : } \\
+    To establish that the procedure above is well-defined, so that for each $a \in S^{m}_\infty(\R^{2n}; \R^n)$
+    \begin{align*}
+    I(a) : S(\R^n) & \to S'(\R^n) & & \\
+    u &\mapsto I(a)(u) &: S(\R^n) & \to \C \\
+     & &v & \mapsto I(a)(u v) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) u(y) v(x) \d[y] \d[\xi] \d[x]
+    \end{align*}
+    is a continuous linear map between Frechet spaces. 
+\end{mdframed}
+
+\begin{rem}
+    Given $a \in S^{m}_\infty(\R^{2n}; \R^n)$, we sometimes write $A = Op(a) = I(a)$ for the operator $S(\R^n) \to S'(\R^n)$ defined by quantising the symbol $a$. Also, once the procedure above is proven to be well-defined, we will, with abuse of notation, identify the integral
+    \begin{align*}
+    I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi] \in S'(\R^n\times \R^n)
+    \end{align*}
+    to be the \textit{Schwartz Kernel} of the operator $I(a): S(\R^n) \to S'(\R^n)$. 
+\end{rem}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Properties of Symbols}
+In this section, we shall establish the following summarising theorem: 
+
+\begin{ftheorem}[Summary]
+    Given $m \in \R$, $p, n \in \N$, then
+    \begin{enumerate}
+        \item $S^{m}_\infty(\R^{p}; \R^n)$ is a Frechet space, hence completely metrisable. 
+        \item $S^{\infty}_\infty(\R^{p}; \R^n)$ is a graded commutative *-algebra over $\C$ with continuous  inclusion  $$\iota : S^{m}_\infty(\R^p; \R^n) \to S^{m'}_\infty(\R^p; \R^n)$$ for all $m \leq m'$. 
+        \item $S^{-\infty}_\infty(\R^{p}; \R^n)$ is dense in $S^{m}_\infty(\R^{p}; \R^n)$ in the topology of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$ for any $\epsilon \in \R_{> 0}$. 
+    \end{enumerate}
+
+\end{ftheorem}
+
+\begin{mdframed}
+    \textbf{Exercise : } Show that symbol spaces are Frechet spaces. That is, show that the family of seminorms in \ref{eq : symbol seminorms} separates points and that if a sequence is Cauchy in each seminorm, then there exist a unique symbol where the sequence converges in each seminorm. 
+\end{mdframed}
+\hfill \\ [3em ]
+
+Now, we prove continuous inclusion of lower order into higher order symbol space. 
+
+\begin{fprop}
+    Let $p, n \in \N$ be given and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. If $m, m' \in \R$ such that $m \leq m'$, then $S^m_\infty(\Omega; \R^n) \subset S^{m'}_\infty(\R^)$. Furthermore, the inclusion map 
+    \begin{align*}
+    \iota: S^m_\infty(\Omega; \R^n) \to S^{m'}_\infty(\Omega; \R^n)
+    \end{align*}
+    is continuous. 
+\end{fprop}
+\begin{proof}
+    Let the real numbers $m \leq m'$ be given. We note that for any $\xi \in \R^n$
+    \[
+    \sym[\xi]^m \leq 1 \cdot \sym[\xi]^{m'}
+    \]
+    and thus if $a \in S^{m}_\infty(\Omega; \R^n)$, we have that $\forall \alpha \in \N^p, \forall \beta \in \N^n$
+    \[
+    \abs{D^\alpha_x D^\beta_\xi a(x, \xi)} \leq C \sym[\xi]^{m - \abs{\beta}} \leq C \sym[\xi]^{m' - \abs{\beta}} 
+    \]
+    which show that $a \in S^{m'}_\infty(\Omega; \R^n)$ as well. \\
+    
+    To show that $\iota$ is a continuous inclusion, it suffices to show that 
+    \[
+    \norm[\iota(a)]_{N, m'} \leq C \norm[a]_{N, m}
+    \]
+    for any $a \in S^{m}_\infty(\Omega; \R^n)$ and $N \in \N$. Indeed, this bound holds since 
+    \[
+    \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m' - \abs{\beta}}}  \leq \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}}. 
+    \]
+\end{proof}
+\hfill \\ [3em]
+
+
+
+
+\begin{fprop}
+    Let $p, n \in \N$ be given. Let $\Omega \subset \R^p$ be such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Then, for any $m, m' \in \R$, we have 
+    \[
+    S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) = S^{m + m'}_\infty(\Omega; \R^n)
+    \]
+\end{fprop}
+\begin{proof}
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $b \in S^{m'}_\infty(\Omega; \R^n)$ be given. By (general) Leibinz formula, we have that for all multi-index $\alpha, \beta$, 
+    \begin{align*}
+    \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} 
+    &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+    &\leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \frac{\sym[\xi]^{m - \abs{\gamma}} \sym[\xi]^{m' - \abs{\beta - \gamma}}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+    &= \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \sym[\xi]^{\abs{\beta} - (\abs{\beta - \gamma} + \abs{\gamma})} \\
+    & \leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \\
+    &< \infty
+    \end{align*}
+    where we have use the property of multi-index that $\abs{\beta} = \abs{\beta - \mu} + \abs{\mu}$.  We have thus shown that $S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) \subset S^{m + m'}_\infty(\Omega; \R^n)$\\
+    \\
+    For the reverse inclusion, let $c \in S^{m + m'}_\infty(\Omega; \R^n)$ be given. Define 
+    \begin{align*}
+    a : (x, \xi) &\mapsto \sym[\xi]^m\\
+    b: (x, \xi) &\mapsto \frac{c(x, \xi)}{a(x, \xi))}
+    \end{align*}
+    and observe that 
+    \begin{itemize}
+        \item $a \in S^{m}_\infty(\Omega; \R^n)$. It is clear that $a$ is smooth in both $x$ and $\xi$. It is independent of $x$ and thus any $x$ derivative gives 0. We need only to check that for all $\beta \in \N^n$, 
+        \[
+        \abs{D^\beta_\xi \sym[\xi]^m} \leq C \sym[\xi]^{m - \abs{\beta}}
+        \]
+        which can be proven by induction on $n$ and $\beta$. We shall only prove the base case where $n = 1$ and $\beta = 1$. We have 
+        \begin{align*}
+        \abs{D_\xi \sym[\xi]^m} = \abs{\p_\xi (1 + \xi^2)^{m/2}} = \abs{m\xi \sym[\xi]^{m - 2}} = \abs{m \frac{\xi}{\sym[\xi]}} \sym[\xi]^{m - 1} \leq \abs{m} \sym[\xi]^{m - 1}
+        \end{align*}
+        where we have used the fact that $\abs{\xi} \leq \sym[\xi]$ for all $\xi$. 
+        \item $b \in S^{m'}_\infty(\Omega; \R^n)$. We note first that $\sym[\xi]^m \neq 0$ for all $\xi \in \R^n$ and thus $b$ is well-defined. Since division by $\sym[\xi]^m$ does not affect any of the $x$ derivative, we only need to show that for any $\beta \in \N^n$, we have
+        \[
+        \abs{D^\beta_\xi b(x, \xi)} \leq C \sym[\xi]^{m + m' - \abs{\beta}}
+        \]
+        for some constant $C > 0$ uniformly in $\xi$. Indeed, observe that by the Leibinz formula
+        \begin{align*}
+        \abs{D^\beta_\xi b(x, \xi)} 
+        & \leq \sum_{\mu \leq \beta} \binom{\beta}{\mu} \abs{D^\mu_\xi c(x, \xi)} \abs{D^{\beta - \mu} \sym[\xi]^{-m}} \\
+        & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{m + m' - \abs{\mu}} \sym[\xi]^{-m - \abs{\beta - \mu}} \\
+        & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{ m' - (\abs{\mu} +  \abs{\beta - \mu})} \\
+        & = C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{ m' -\abs{\beta}} \\
+        &= C 2^{\beta} \sym[\xi]^{ m' -\abs{\beta}} 
+        \end{align*}
+        where we have use the definition of $c$ and applied the result proven for $a$ with $m \mapsto -m$. Thus, $b \in S^{m'}_\infty(\Omega; \R^n)$. 
+    \end{itemize}
+    It is clear that $a \cdot b = c$ and we have therefore shown that $S^{m + m'}_\infty(\Omega; \R^n) \subset S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n)$. 
+    
+    
+    
+\end{proof}
+
+We have a rather technical density result : the residual space is dense in $S^{m}_\infty(\R^p; \R^n)$, but only with the topology of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$. The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we \textbf{cannot} have density of $S^{-\infty}_\infty(\R^p; \R^n)$ in $S^m_\infty(\R^p; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of smooth bounded functions, in particular, $1 \in S^0_\infty(\Omega; \R^n)$ is not in the closure of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+
+\begin{flemma}
+    Given any $m \in \R$, $n, p \in \N$ and $a \in S^{m}_\infty(\R^p; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\R^p; \R^n)$ that is bounded in $S^{m}_\infty(\R^p; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$ for any $\epsilon \in \R_{> 0}$. 
+    %In other words, for any $m \in \R$ and $\epsilon > 0$, $S^{-\infty}_\infty(\R^p; \R^n)$ is dense in $S^{m}_\infty(\R^p; \R^n)$ with the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$.
+\end{flemma}
+\begin{proof}
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $\epsilon \in \R_{>0}$ be given. Let $\chi \in C^\infty_c(\R^n)$ be a non-negative smooth cut-off function, i.e. $\chi \geq 0$  and satisfies
+    \begin{align*}
+    \chi(\xi) = 
+    \begin{cases}
+    1 & ,\abs{\xi} < 1 \\
+    0 & ,\abs{\xi} > 2. 
+    \end{cases}
+    \end{align*}
+    
+    Then, for each $k \in \N$, we define
+    \[
+    a_k(x, \xi) = \chi\brac{\frac{\xi}{k}} a (x, \xi). 
+    \]
+    %    
+    %    \begin{enumerate}
+    %        \item $a_k \in S^{-\infty}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
+    %        \item $a_k$ are bounded in $S^{m}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
+    %        \item $a_k \to a$ as $k \to \infty$ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. 
+    %    \end{enumerate}
+    Now, given arbitrary $N, k \in \N$, observe that 
+    \[
+    \abs{a_k} \leq C \sym[\xi]^{-N} 
+    \]
+    since $a_k$ is compactly supported in $\xi$ (as $\chi$ is compactly supported). Furthermore, by Leibinz formula and the symbol estimates on $a \in S^{m}_\infty(\R^p; \R^n)$, we have
+    \begin{align*}
+    \abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)} 
+    & \leq \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu_\xi \chi}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } \\
+    & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu_\xi \chi}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}. 
+    \end{align*}
+    Since $\chi$ and all its derivatives are compactly supported, each term above is bounded in $\xi$ and thus $a_k$ is bounded in $S^{m}_\infty(\R^p; \R^n)$ and that 
+    \[
+    \abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)} \leq C' \sym[\xi]^{-N}
+    \]
+    which allow us to conclude that $a_k \in S^{-\infty}_\infty(\R^p; \R^n)$.\\
+    \\
+    It remains to show that $\Lim[k] a_k = a $ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. In the first symbol norm, we observe that, using the symbol estimate for $a$ 
+    \begin{align*}
+    \norm[a_k - a]_{0, m + \epsilon} 
+    & = \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon}} \\
+    & = \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{(1- \chi(\xi/k))} \abs{a(x, \xi)}}{\sym[\xi]^{m + \epsilon}} \\
+    & \leq \norm[a]_{0, m} \sup_{\xi \in \R^n} \frac{\abs{(1- \chi(\xi/k))}}{\sym[\xi]^{\epsilon}} \\
+    & \leq \norm[a]_{0, m} \sym[k]^{- \epsilon}\\
+    & \to 0
+    \end{align*}
+    as $k \to \infty$, since $\abs{( 1- \chi(\xi/ k))}$ is 0 in the region $\abs{\xi} \leq k$ and bounded by $1$ otherwise.  We remark upon the necessity of the extra decay given by $\sym[\xi]^{-\epsilon}$ factor. For other symbol norms we shall again use Leibinz formula: 
+    \begin{align*}
+    \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} 
+    & \leq \sup_{(x, \xi) \in \R^p \times \R^n} \frac{1}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } \\
+    & \leq  \sup_{(x, \xi) \in \R^p \times \R^n} \frac{C}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}  \\
+    & = C \sup_{\xi \in \R^n} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \sym[\xi]^{- \epsilon - \abs{\mu}}  \\
+    & \leq C' k^{- \epsilon} \\
+    & \to 0
+    \end{align*}
+    as $k \to \infty$ by the same argument as before. Thus, we have proven that $a_k \to a$ as $k \to \infty$ in $S^{m + \epsilon}_\infty(\R^p; \R^n)$. 
+    
+\end{proof}
+
+\hfill \\ [3em]
+
+We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
+\[
+I(a) =  \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]. 
+\]
+\begin{fprop}
+    Let $n \in \N$ and $m, w \in \R$ with $m < -n$, then the map
+    \begin{align*}
+    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) &\to (1 + \abs{x}^2 + \abs{y}^2) C^0_\infty(\R^{2n}) \\
+    a &\mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]
+    \end{align*}
+    extends by continuity to 
+    \begin{align*}
+    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) \to S'(\R^{2n})
+    \end{align*}
+    in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{>0}$. 
+\end{fprop}
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+\section{Appendix}
+\subsection{Functional Analysis background}
+
+
+%\nocite{}
+%\pagebreak 
+%\bibliographystyle{acm}
+%\bibliography{\jobname}
+
+\end{document}

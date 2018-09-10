@@ -76,7 +76,7 @@ We note that we have introduced an extra variable $y$ which will help in explica
 \section{Symbols}
 We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounter in the literature. The main motivation is again based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
 \begin{align*}
-P(x, \xi) = \sum{\abs{\alpha} \leq m} a_\alpha(x) \xi^\alpha. 
+P(x, \xi) = \sum_{\abs{\alpha} \leq m} a_\alpha(x) \xi^\alpha. 
 \end{align*}
 It has the property that 
 \begin{align*}
@@ -157,7 +157,7 @@ uniformly in $x$.
     \[
     \norm[\iota(a)]_{N, m'} \leq C \norm[a]_{N, m}
     \]
-    for any $a \in S^{m}_\infty(\Omega; \R^n)$ and $N \in \N$. Indeed, his bound holds since 
+    for any $a \in S^{m}_\infty(\Omega; \R^n)$ and $N \in \N$. Indeed, this bound holds since 
     \[
     \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m' - \abs{\beta}}}  \leq \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}}. 
     \]
@@ -687,7 +687,7 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
     \]
     is given by 
     \begin{align*}
-    \WF(u) = \bigcap \set{\Ell^0(A) \wh A \in \Psi^0_\infty(\R^n), Au \in C^\infty(\R^n)}. 
+    \WF(u) = \bigcap \set{\Char^0(A) \wh A \in \Psi^0_\infty(\R^n), Au \in C^\infty(\R^n)}. 
     \end{align*}
     For general tempered distribution $u \in S'(\R^n)$, its wavefront set is given by 
     \begin{align*}
@@ -736,6 +736,9 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
     \phi u = \phi E \circ A u + \phi \circ E \circ (1 - \chi) u \in C^\infty(\R^n)
     \end{align*}
     as required. 
+    
+    
+   
     
 \end{proof}
 
@@ -792,7 +795,55 @@ With the concept of essentail support we can define the notion of \emph{microloc
     \end{align*}
     
 \end{fprop}
-
+\begin{proof}
+    Let $A \in \Psi^m_\infty(\R^n)$ is elliptic at $(x_0, \xi_0) \in \Ell^m(A)$. For each $\epsilon \in \R_{> 0}$ we define
+    \begin{align*}
+    \gamma_\epsilon(x, \xi) = \chi\brac{\frac{x - x_0}{\epsilon}} (1 - \chi(\epsilon \xi)) \chi\brac{\frac{\widehat{\xi} - \widehat{\xi_0}}{\epsilon}}
+    \end{align*}
+    where $\chi \in C^\infty(\R^n)$ is a smooth cut-off function that is identically $1/2$-ball but supported only in the unit ball. Notice that $\gamma_\epsilon \in S^{0}_\infty(\R^{2n}; \R^n)$ with support given by 
+    \[
+    \supp(\gamma_\epsilon) \subset \set{(x, \xi) \wh \abs{x - x_0} \leq \epsilon,\, \abs{\xi} \geq\frac{1}{2 \epsilon},\, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon }. 
+    \]
+    Restricted to the conic set
+    \[
+    \overline{U}_{\epsilon} = \set{(x, \xi) \wh \abs{x - x_0} \leq \frac{\epsilon}{2}, \, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \frac{\epsilon}{2}, \, \abs{\xi} \geq \frac{1}{\epsilon}} \subset \supp(\gamma_\epsilon)
+    \]
+    it is identically $1$ and therefore $\gamma_\epsilon$ is elliptic at $(x_0, \xi_0)$. Let $L_\epsilon = \mathrm{Op}_L(\gamma_\epsilon)$ be the corresponding pseudodifferential operator. Observe that, by construction 
+    \[
+    (x_0, \xi_0) \not\in \WF'(1 - L_\epsilon)
+    \]
+    since $1 - \gamma_\epsilon$ is supported away from an $\epsilon$-neighbourhood of $x = x_0$ and the wavefront set of $L_\epsilon$ is contained in an $\epsilon$-neighbourhood of $(x_0, \xi_0)$, i.e. 
+    \[
+    \WF'(L_\epsilon) \subset N_\epsilon(x_0, \xi_0) := \set{(x, \xi) \wh \abs{x - x_0} \leq \epsilon, \, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon }
+    \]
+    since $\gamma_\epsilon$ is bounded below in some conic neighbourhood of every point in $N_\epsilon(x_0, \xi_0)$. \\
+    \\
+    Now, let $G_s = \mathrm{Op}_L(\sym[\xi]^s)$ for each $s \in \R$. Note that $G_s$ is globally elliptic with positive principal symbol. Consider the following operator, 
+    \begin{align*}
+    J = (1 - L_\epsilon) \circ G_{2m} + A^* A \in \Psi^{2m}_\infty(\R^n)
+    \end{align*}
+    with principal symbol 
+    \[
+    \sigma_{2m}(J) = (1 - \gamma_\epsilon)\sym[\xi]^{2m} + \abs{\sigma_m(A)}^2. 
+    \]
+    Since $\Ell^m(A)$ is open conic, we can choose $\epsilon$ is small enough so that $\Ell^{m}(A) \subset \supp(\gamma_\epsilon)$. Then, by positivity of all terms involved, we have
+    \begin{align*}
+    \frac{\abs{\sigma_{2m}(J)} }{\sym[\xi]^{2m}}
+    &= (1 - \gamma_\epsilon) + \frac{\abs{\sigma_m(A)}^2}{\sym[\xi]^{2m}}
+    \end{align*}
+    where the first term is bounded below by $1$ outside of $\supp(\gamma_\epsilon)$ while in $\supp(\gamma_\epsilon)$ the second term is bounded below by $\epsilon$ since $A$ is elliptic (of order $m$) at every point in $\supp(\gamma_\epsilon)$. Therefore $J$ is globally elliptic and thus have a global elliptic parametrix $H \in \Psi^{-2m}_\infty(\R^n)$. We shall claim that 
+    \[
+    B = H \circ A^* \in \Psi^m_\infty(\R^n)
+    \]
+    is a (right) microlocal elliptic parametrix to $A$. Indeed, 
+    \begin{align*}
+    B \circ A - 1 
+    &= H A^*A - 1 \\
+    &= H\brac{J - (1 - L_\epsilon)G_{2m}} - 1\\
+    &= (HJ - 1) - H(1 - L_\epsilon)G_{2m}. 
+    \end{align*}
+    Since $H$ is a global parametrix to $J$, the first term above is a smoothing operator (i.e. an element of $\Psi^{-\infty}_\infty(\R^n)$ and therefore have empty wavefront set. Furthermore, by \cite{wavefront of compositiion} the wavefront set of the second term is a subste of $\WF'(1 - L_\epsilon)$ which does not contain $(x_0, \xi_0)$ by construction. 
+\end{proof}
 
 \begin{fprop}
     Pseudodifferential operators are microlocal in the following sense: 
@@ -805,6 +856,9 @@ With the concept of essentail support we can define the notion of \emph{microloc
     \WF(Au) \subset \WF'(A) \cap \WF(u). 
     \end{align*}
 \end{fprop}
+\begin{proof}
+    
+\end{proof}
 
 A partial converse to the above is given by the following proposition. \\
 
