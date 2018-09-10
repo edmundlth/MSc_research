@@ -3,10 +3,9 @@
 \usepackage{standalone} 
 \usepackage{import} % use \import{directory}{filename} to include standalone texfiles
 
-\title{Microlocal Analysis Seminar : Symbols and $\Psi$DOs} 
-%\author{} 
+\title{Microlocal Analysis Seminar } 
+\author{Edmund Lau} 
 %\date{\today}
-
 
 
 \begin{document}
@@ -16,6 +15,7 @@
 %\listoftables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
 \section{Reminder: definitions and notations}
 \subsection{Symbols} 
 We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounter in the literature. The main motivation is again based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
@@ -104,10 +104,9 @@ In this section, we shall establish the following summarising theorem:
 \begin{mdframed}
     \textbf{Exercise : } Show that symbol spaces are Frechet spaces. That is, show that the family of seminorms in \ref{eq : symbol seminorms} separates points and that if a sequence is Cauchy in each seminorm, then there exist a unique symbol where the sequence converges in each seminorm. 
 \end{mdframed}
-\hfill \\ [3em ]
 
-Now, we prove continuous inclusion of lower order into higher order symbol space. 
-
+\subsection{$S^{\infty}_\infty(\R^{p}; \R^n)$ is a graded commutative *-algebra with continuous inclusion} 
+We first prove continuous inclusion of lower order into higher order symbol space. 
 \begin{fprop}
     Let $p, n \in \N$ be given and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. If $m, m' \in \R$ such that $m \leq m'$, then $S^m_\infty(\Omega; \R^n) \subset S^{m'}_\infty(\R^)$. Furthermore, the inclusion map 
     \begin{align*}
@@ -136,8 +135,6 @@ Now, we prove continuous inclusion of lower order into higher order symbol space
     \]
 \end{proof}
 \hfill \\ [3em]
-
-
 
 
 \begin{fprop}
@@ -190,12 +187,15 @@ Now, we prove continuous inclusion of lower order into higher order symbol space
         where we have use the definition of $c$ and applied the result proven for $a$ with $m \mapsto -m$. Thus, $b \in S^{m'}_\infty(\Omega; \R^n)$. 
     \end{itemize}
     It is clear that $a \cdot b = c$ and we have therefore shown that $S^{m + m'}_\infty(\Omega; \R^n) \subset S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n)$. 
-    
-    
-    
 \end{proof}
 
-We have a rather technical density result : the residual space is dense in $S^{m}_\infty(\R^p; \R^n)$, but only with the topology of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$. The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we \textbf{cannot} have density of $S^{-\infty}_\infty(\R^p; \R^n)$ in $S^m_\infty(\R^p; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of smooth bounded functions, in particular, $1 \in S^0_\infty(\Omega; \R^n)$ is not in the closure of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+The results above, together with the easily proven fact $ a^*(x, \xi) := \overline{a(x, \xi)} \in S^{m}_\infty(\R^{2n}; \R^n) \iff a \in S^{m}_\infty(\R^{2n}; \R^n)$, gives the desired algebraic structure for $S^{\infty}_\infty(\R^{2n}; \R^n)$
+
+
+
+\subsection{Density of residual space, $S^{-\infty}_\infty(\R^{p}; \R^n)$ }
+
+Next, we have a rather technical density result : the residual space, $S^{-\infty}_\infty(\R^{p}; \R^n)$, is dense in $S^{m}_\infty(\R^p; \R^n)$, but only with the topology of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$. The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we \textbf{cannot} have density of $S^{-\infty}_\infty(\R^p; \R^n)$ in $S^m_\infty(\R^p; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of smooth bounded functions, in particular, $1 \in S^0_\infty(\Omega; \R^n)$ is not in the closure of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
 
 \begin{flemma}
     Given any $m \in \R$, $n, p \in \N$ and $a \in S^{m}_\infty(\R^p; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\R^p; \R^n)$ that is bounded in $S^{m}_\infty(\R^p; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$ for any $\epsilon \in \R_{> 0}$. 
@@ -259,38 +259,167 @@ We have a rather technical density result : the residual space is dense in $S^{m
     
 \end{proof}
 
-\hfill \\ [3em]
 
-We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
-\[
-I(a) =  \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]. 
-\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Quantisation}
+We first note that, if $m < -n$ (write $m = -n - \epsilon$ for some $\epsilon > 0$), the oscillatory integral \ref{eq: oscillatory integral}, is absolutely convergent and defines a continuous linear operator 
+\begin{align*}
+I: S^{-n -\epsilon}_\infty(\R^{2n}; \R^n) &\to S'(\R^{2n}) \\
+ a & \mapsto I(a) : S(\R^{2n}) \ni \varphi \mapsto I(a)(\varphi) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \varphi(x, y) \d[\xi] \d[x] \d[y]. 
+\end{align*} 
+The map above is clearly linear. Continuity comes from the bound given by the following computation: $\forall M \in \N$, $\forall a \in S^{-n -\epsilon}_\infty(\R^{2n}; \R^n)$, $\forall \varphi \in S(\R^n)$ 
+\begin{align*}
+\abs{I(a)(\varphi)}
+& \leq \frac{1}{(2\pi)^n} \int \abs{a(x, y, \xi) \varphi(x, y)} \d[\xi] \d[x] \d[y]\\
+& \leq \frac{\norm[a]_{0, -n -\epsilon}}{(2\pi)^n} \int \sym[\xi]^{-n -\epsilon} \sym[(x, y)]^{-M} \sym[(x, y)]^{M} \abs{\varphi(x, y)} \d[\xi] \d[x] \d[y]\\
+& \leq \frac{\norm[a]_{0, -n -\epsilon} \norm[\varphi]_M}{(2\pi)^n} \int \sym[\xi]^{-n -\epsilon} \sym[(x, y)]^{-M}  \d[\xi] \d[x] \d[y]\\
+\end{align*}
+for any $M \in \N$, where 
+\begin{align} \label{eq: Schwartz seminorm} 
+\norm[\varphi]_M :=  \sum_{\abs{\alpha} \leq M}  \sup_{(x, y) \in \R^{2n}} \sym[(x, y)]^M \abs{D^{\alpha}_{x, y} \varphi(x, y)}
+\end{align}
+is the Schwartz  seminorm on $S(\R^{2n})$. If we choose $M \geq 2n +1$, the $x, y$ integrals are convergent and since $m = -n -\epsilon < -n$, the $\xi$ integral converges as well, hence we have 
+\begin{align*}
+\abs{I(a)(\varphi)} \leq C \norm[a]_{0, m} \norm[\varphi]_M
+\end{align*}
+which implies continuity. \\
+
+The proposition below extend this result to general $m \in \R$. 
 \begin{fprop}
-    Let $n \in \N$ and $m, w \in \R$ with $m < -n$, then the map
+    The continuous linear map 
     \begin{align*}
-    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) &\to (1 + \abs{x}^2 + \abs{y}^2) C^0_\infty(\R^{2n}) \\
-    a &\mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]
+    I : S^{-\infty}_\infty(\R^{2n}; \R^n) \to S'(\R^{2n}) \\
     \end{align*}
-    extends by continuity to 
+    extends uniquely to a linear map 
     \begin{align*}
-    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) \to S'(\R^{2n})
+    I: S^{m}_\infty(\R^{2n}; \R^n) \to S'(\R^{2n})
     \end{align*}
-    in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{>0}$. 
+    which is continuous as linear map from $S^{m'}_\infty(\R^{2n}; \R^n)$ to $S'(\R^{2n})$ for arbitrary $m \in \R$ and $m ' > m$. 
 \end{fprop}
 \begin{proof}
+    Let $m, m' \in \R$, $n \in \N$ with $m < m' $ be given. For any $a \in S^{m}_\infty(\R^{2n}; \R^n)$, the density of $S^{-\infty}_\infty(\R^{2n}; \R^n)$ in  $S^{m}_\infty(\R^{2n}; \R^n)$ with the topology of $S^{m'}_\infty(\R^{2n}; \R^n)$ means that there exist a sequence $a_k \in S^{-\infty}_\infty(\R^{2n}; \R^n)$ so that $a_k \to a \in S^{m'}_\infty(\R^{2n}; \R^n)$. Together with the completeness of $S'(\R^{2n})$ (being a continuous linear map into $\C$ which is complete), we have unique continuous linear extension of $I : S^{-\infty}_\infty(\R^{2n}; \R^n) \to S'(\R^{2n})$ to $S^{m}_\infty(\R^{2n}; \R^n)$ given by
+    \begin{align*}
+    I(a) := \lim_{k \to \infty}I(a_k)
+    \end{align*}
+    which is continuous in the $S^{m'}_\infty(\R^{2n}; \R^n)$ topology. Therefore, it is enough to show that for any $a \in S^{-\infty}_\infty(\R^{2n}; \R^n) $ and $\varphi \in S(\R^{2n})$, there exist $N, M \in \N$, such that 
+    \begin{align*}
+    \abs{I(a)(\varphi)} \leq C \norm[a]_{N, m'} \norm[\varphi]_M. 
+    \end{align*}
     
+    Let $a, \varphi$ as above be given. Note that 
+    \begin{align*}
+    e^{i(x - y)\xi} = \sym[\xi]^{-2q} \brac{1 + \xi \cdot D_x}^q e^{i (x - y) \xi } = \sym[\xi]^{-2q} \brac{1 - \xi \cdot D_y}^q e^{i (x - y) \xi }. 
+    \end{align*}
+    Thus, using integration by parts, for any $q \in \N$, 
+    \begin{align*}
+    I(a)(\varphi) 
+    & = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \varphi(x, y) \d[\xi] \d[x] \d[y]\\
+    & = \frac{1}{(2\pi)^n} \int \sym[\xi]^{-4q} \brac{1 - \xi \cdot D_y}^q \brac{1 + \xi \cdot D_x}^q e^{i (x - y) \xi } a(x, y, \xi) \varphi(x, y) \d[\xi] \d[x] \d[y]\\
+    &= \frac{1}{(2\pi)^n} \int \sym[\xi]^{-4q} e^{i (x - y) \xi }  \brac{1 - \xi \cdot D_y}^q \brac{1 + \xi \cdot D_x}^q [a(x, y, \xi) \varphi(x, y)] \d[\xi] \d[x] \d[y]\\
+    &=  \frac{1}{(2\pi)^n} \int \sym[\xi]^{-4q} e^{i (x - y) \xi } \brac{ \sum_{\abs{\gamma} \leq 2q} a_\gamma(x, y, \xi) D^\gamma_{x, y} \varphi(x, y)} \d[\xi] \d[x] \d[y]\\
+    \end{align*}
+    where 
+    \begin{align*}
+    a_\gamma(x, y, \xi) = \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \xi^{\mu + \nu} D^\mu_x D^\nu_y a(x, y, \xi) 
+    \end{align*}
+    for some combinatorial constants $C_{\mu\nu}$. 
+    Now, using the symbol estimate for $a \in S^{-\infty}_\infty(\R^{2n}; \R^n)$, and that $\abs{\mu} + \abs{\nu} \leq 2q$
+    \begin{align*}
+    \abs{a_\gamma(x, y, \xi)} 
+    & \leq \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \abs{\xi}^{\mu + \nu} \abs{D^\mu_x D^\nu_y a(x, y, \xi)} \\
+    & = \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \abs{\xi}^{\mu + \nu} \sym[\xi]^{m' } \frac{\abs{D^\mu_x D^\nu_y a(x, y, \xi)}}{\sym[\xi]^{m'}} \\
+    & \leq \norm[a]_{2q, m'} \sym[\xi]^{m'} \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \abs{\xi}^{\mu + \nu} \\
+    &\leq \norm[a]_{2q, m'} \sym[\xi]^{m'} \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \sym[\xi]^{\mu + \nu} \\    &\leq \norm[a]_{2q, m'} \sym[\xi]^{m'} \sym[\xi]^{2q}  \sum_{\abs{\mu}, \abs{\nu} \leq q} C_{\mu\nu} \\
+    & \leq C_q \norm[a]_{2q, m'} \sym[\xi]^{m' + 2q}
+    \end{align*}
+    and  since $\abs{\gamma} \leq 2q$, 
+    \begin{align*}
+    \abs{D^{\gamma}_{x, y} \varphi(x, y)}
+    & = \sym[(x, y)]^{-2q - 2n - 1} \sym[(x, y)]^{2q + 2n + 1} \abs{D^{\gamma}_{x, y} \varphi(x,y)}\\
+    & \leq \sym[(x, y)]^{-2q - 2n - 1} \sum_{\abs{\alpha} \leq 2q + 2n + 1} \sup_{(x, y) \in \R^{2n}} \sym[(x, y)]^{2q + 2n + 1} \abs{D^{\alpha}_{x, y} \varphi(x,y)}\\
+    & \leq \sym[(x, y)]^{-2q - 2n - 1} \norm[\varphi]_{2q + 2n + 1}. 
+    \end{align*}
+    Bring together both bounds, we have 
+    \begin{align*}
+    \abs{I(a)(\varphi)} 
+    & \leq \frac{1}{(2\pi)^n} \int \sym[\xi]^{-4q} \brac{ \sum_{\abs{\gamma} \leq 2q} \abs{a_\gamma(x, y, \xi) D^\gamma_{x, y} \varphi(x, y)}} \d[\xi] \d[x] \d[y]\\
+    & \leq C' \norm[a]_{2q, m'}\norm[\varphi]_{2q + 2n + 1}  \int \sym[\xi]^{-4q}   \sym[\xi]^{m' + 2q} \sym[(x, y)]^{-2q - 2n - 1}  \d[\xi] \d[x] \d[y]\\
+    & = C' \norm[a]_{2q, m'}\norm[\varphi]_{2q + 2n + 1}  \int    \sym[\xi]^{m' - 2q} \sym[(x, y)]^{-2q - 2n - 1}  \d[\xi] \d[x] \d[y]\\
+    \end{align*}
+    Thus, as long as $m' - 2q < -n$, i.e. $q > \max\brac{\frac{m' + n}{2}, 0}$, the integral above converges. Finally, set $N = 2q$, $M = 2q + 2n + 1$, we have 
+    \begin{align*}
+    \abs{I(a)(\varphi)} \leq C \norm[a]_{N, m'}\norm[\varphi]_{M} 
+    \end{align*}
+    as required. 
 \end{proof}
 
+\hfill \\ [3em]
 
 
 
-\section{Appendix}
-\subsection{Functional Analysis background}
+
+%We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
+%\[
+%I(a) =  \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]. 
+%\]
+%\begin{fprop}
+%    Let $n \in \N$ and $m, w \in \R$ with $m < -n$, then the map
+%    \begin{align*}
+%    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) &\to (1 + \abs{x}^2 + \abs{y}^2) C^0_\infty(\R^{2n}) \\
+%    a &\mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]
+%    \end{align*}
+%    extends by continuity to 
+%    \begin{align*}
+%    I: \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) \to S'(\R^{2n})
+%    \end{align*}
+%    in the topology of $S^{m + \epsilon}_\infty(\Omega; \R^n)$ for any $\epsilon \in \R_{>0}$. 
+%\end{fprop}
+%\begin{proof}
+%    
+%\end{proof}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagebreak
+\section{Appendix: Functional Analysis}
+
+\begin{ftheorem}[Continuous Linear extension]
+    Let $T \in \L(V, W)$ be a continuous linear map between normed vector spaces $V$ and $W$ with $W$ completely metrisable. Then, there exist unique extension $\widetilde{T} \in \L(\widetilde{V}, W)$ of $T$, i.e. $\widetilde{T}|_V = T$ where $\widetilde{V}$ is the completion of $V$. 
+\end{ftheorem}
+
+\begin{ftheorem}
+    Let normed vector spaces $V$, $W$ be given. If $W$ is complete, then  $\L(V, W)$ is complete. 
+\end{ftheorem}
+
+\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] 
+    Let $M, N$ be compact manifold and 
+    \begin{align*}
+    T: C^\infty(M) \to \D'(N) \\
+    \end{align*}
+    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+    \begin{align*}
+    B: C^\infty(M) &\times C^\infty(N) \to \C \\
+    (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+    \end{align*}
+    
+    Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+    \begin{align*}
+    B(u, v) = \inprod[u \otimes v, k]. 
+    \end{align*}
+    We call such $k$ the kernel of $T$. 
+\end{ftheorem}
+
+\begin{fdefinition}[Frechet space]
+    
+    
+\end{fdefinition}
 %\nocite{}
 %\pagebreak 
 %\bibliographystyle{acm}
-%\bibliography{\jobname}
+\bibliography{\jobname}
 
 \end{document}
