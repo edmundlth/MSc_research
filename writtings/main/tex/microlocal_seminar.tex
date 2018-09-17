@@ -18,14 +18,14 @@
 \pagebreak
 \section{Reminder: definitions and notations}
 \subsection{Symbols} 
-We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounter in the literature. The main motivation is again based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
+We shall here list the definition of the space of symbols of order $m \in \N$  in Euclidean space $\R^n$ that one encounters in the literature. The main motivation is based on the property of linear differential operators of order $m \in \N$ with smooth coefficient that, after Fourier transform gives the polynomial of $\xi$ with smooth coefficient 
 \begin{align*}
 P(x, \xi) = \sum_{\abs{\alpha} \leq m} a_\alpha(x) \xi^\alpha. 
 \end{align*}
 
 
 \begin{fdefinition}
-    The \textbf{space of symbol of order} $m$, denoted $S^m_\infty(\R^p; \R^n)$, is the space of smooth functions $a \in C^\infty(\R^p \times \R^n)$ such that for all multi-index $\alpha \in \N^p, \beta \in \N^n$
+    The \textbf{space of symbols of order} $m$, denoted $S^m_\infty(\R^p; \R^n)$, is the space of smooth functions $a \in C^\infty(\R^p \times \R^n)$ such that for all multi-index $\alpha \in \N^p, \beta \in \N^n$
     \begin{align*}
     \abs{D^\alpha_x D^\beta_\xi a (x, \xi)} \leq C_{\alpha, \beta} \sym[\xi]^{m - \abs{\beta}} 
     \end{align*}
@@ -264,6 +264,7 @@ Next, we have a rather technical density result : the residual space, $S^{-\inft
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagebreak
 \section{Quantisation}
+\subsection{Continuity of $I(a) : S(\R^n) \to S'(\R^n)$}
 We first note that, if $m < -n$ (write $m = -n - \epsilon$ for some $\epsilon > 0$), the oscillatory integral \ref{eq: oscillatory integral}, is absolutely convergent and defines a continuous linear operator 
 \begin{align*}
 I: S^{-n -\epsilon}_\infty(\R^{2n}; \R^n) &\to S'(\R^{2n}) \\
@@ -356,9 +357,112 @@ The proposition below extend this result to general $m \in \R$.
 \end{proof}
 
 \hfill \\ [3em]
+By the Schwartz Kernel theorem, each $a \in S^{m}_\infty(\R^{2n}; \R^n)$ defines a continuous linear operator 
+\begin{align*}
+I(a) : S(\R^n) \to S'(\R^n).
+\end{align*}
+We can now define the space of $m$-order pseudo-differential operators as the space 
+\begin{align*}
+\Psi^{m}_\infty(\R^n) := \set{A = I(a) \wh a \in S^{m}_\infty(\R^{2n}; \R^n)}
+\end{align*}
+with the total space $\Psi^{\infty}_\infty(\R^n) := \cup_{m \in \R} \Psi^m_\infty(\R^n)$ and the residual space $\Psi^{-\infty}_\infty(\R^n) := \cap_m \Psi^m_\infty(\R^n)$ defined similarly. 
+\subsection{Composition theorem}
 
+In this section we shall prove that, just like symbol spaces, $\Psi^\infty_\infty(\R^n)$ forms a graded *-algebra. The difference being, this time, the algebra is \emph{non-commutative}. That is, we shall show that following theorem holds. 
+\begin{ftheorem}[Summary] 
+    Given $n \in \N$, $\Psi^\infty_\infty(\R^n)$ is a graded *-algebra over $\C$ with continuous inclusion 
+    \begin{align*}
+    \iota : \Psi^m_\infty(\R^n) \to \Psi^{m'}_\infty(\R^n)
+    \end{align*}
+    for any $m \leq m'$. 
+\end{ftheorem}
 
+We shall prove this theorem by first accumulate several technical lemmas, of which the most important is the reduction lemma that allow us remove the dependence of either $x$ or $y$ in the symbol $a(x, y, \xi) \in S^{m}_\infty(\R^{2n}; \R^n)$. 
 
+\subsubsection{Asymptotic Summation}
+Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-j}_\infty(\R^{p}; \R^n)$, $j \in \N$, we know that  $a_j(x, \xi)$ has ever higher rate of decay for large $\abs{\xi}$ with increasing $j$. However, the series $\sum_{j \in \N} a_j(x, \xi)$ need not converge. However, we have the following notion of asymptotic convergence. 
+\begin{fdefinition}[Asymptotic summation] 
+    A sequence of symbols with decreasing order, $a_j \in S^{m-j}_\infty(\R^{p}; \R^n)$, $j \in \N$ is \textbf{asymptotically summable} if there exist $a \in S^{m}_\infty(\R^{p}; \R^n)$ such that for all $N \in \N$, 
+    \begin{align*}
+    a - \sum_{j = 0}^{N -1} a_j \in S^{m-N}_\infty(\R^{p}; \R^n). 
+    \end{align*}
+    We write
+    \begin{align*}
+    a \sim \sum_{j \in \N} a_j. 
+    \end{align*}
+\end{fdefinition}
+ 
+\begin{flemma}
+    Every sequence of symbols with decreasing order is asymptotically summable.  Furthermore, the sum is unique up to an additive term in $S^{-\infty}_\infty(\R^{p}; \R^n)$. 
+\end{flemma}
+\begin{proof}[Sketch]
+    Let $a_j \in S^{m-j}_\infty(\R^{p}; \R^n)$, $j \in \N$ be given. For uniqueness, suppose $a, a' \in S^{m}_\infty(\R^{p}; \R^n)$ are both asymptotic sums of the sequence. We need to show that $a - a' \in S^{-\infty}_\infty(\R^{p}; \R^n)$. Indeed, for any $N \in \N$, 
+    \begin{align*}
+    a - a' = \brac{a - \sum_{j = 0}^{N -1} a_j } - \brac{a' - \sum_{j = 0}^{N -1} a_j } \in S^{m -N}_\infty(\R^{p}; \R^n)
+    \end{align*}
+    since both terms on the right are elements of $S^{m -N}_\infty(\R^{p}; \R^n)$. Thus, 
+    $$a - a' \in \cap_{n \in \N} S^{m -N}_\infty(\R^{p}; \R^n) = S^{-\infty}_\infty(\R^{p}; \R^n).$$ 
+    \\
+    For existence, we construct $a S^{m}_\infty(\R^{p}; \R^n)$ by Borel's method \cite{}. Let $\chi \in C^{\infty}_c(\R^p)$ be a bump function and define
+    \begin{align*}
+    a = \sum_{j \in \N} \brac{1 - \chi}(\epsilon_j \xi) a_j(x, \xi)
+    \end{align*}
+    where $\R_{> 0} \ni \epsilon_j \to 0 $ is a strictly monotonic decreasing sequence that converges to $0$. We note that the sequence is a finite sum for any input $(x, \xi)$ and hence define a smooth function. It remains to show that, for some choice of $\epsilon_j$ with sufficiently rapid decay, 
+    \begin{align*}
+    \sum_{j \geq N} \brac{1 - \chi}(\epsilon_j \xi) a_j(x, \xi) 
+    \end{align*}
+    converges in $S^{m -N}_\infty(\R^{p}; \R^n)$ for any $N \in \N$. 
+    \\
+    
+    Note: This is again an exercise in using symbol seminorms and Leibniz formula.  
+\end{proof}
+
+\subsubsection{Reduction}
+We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}_\infty(\R^{2n}; \R^n) \to S'(\R^{2n})$ restricted to $S^{m}_\infty(\R^{n}; \R^n) \subset S^{m}_\infty(\R^{2n}; \R^n)$. 
+\begin{fdefinition}
+    Let 
+    \begin{align*}
+    \pi_L : \R^{3n}_{x, y, \xi} \to \R^{2n}_{x, \xi}
+    \end{align*}
+    be the projection map $(x, y, \xi) \mapsto (x, \xi)$. We define the \textbf{left quantisation map} as 
+    \begin{align*}
+    q_L := I \circ \pi_L^* : S^{m}_\infty(\R^{n}; \R^n) \to \Psi^{m}_\infty(\R^{n}) 
+    \end{align*}
+    with elements $a_L \in S^{m}_\infty(\R^{n}; \R^n)$ known as the \textbf{left reduced symbols}.
+    
+\end{fdefinition}
+
+\begin{flemma}[Reduction] 
+    For any $a(x, y, \xi) \in S^{m}_\infty(\R^{2n}_{x, y}; \R^n_\xi)$ there exist unique $a_L(x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)$ such that $I(a) = q_L(a_L) = I(a_L \circ \pi_L)$. Furthermore, with $\iota : \R^{2n} \ni (x, \xi) \mapsto (x, x, \xi) \in \R^{3n}$ being the diagonal inclusion map, we have 
+    \begin{align}
+    a_L(x, \xi) \sim \sum_{\alpha} \frac{i^{\abs{\alpha}}}{\alpha !} \iota^* D^\alpha_y D^\alpha_\xi a(x, y, \xi). 
+    \end{align}
+\end{flemma}
+\begin{proof}[Sketch] 
+    Note that 
+    \begin{align*}
+    D_\xi^\alpha e^{i(x- y) \xi} = (x - y)^\alpha e^{i(x - y) \xi} \implies I((x -y)^\alpha a) = I((-1)^{\abs{\alpha}D_\xi^\alpha a})
+    \end{align*}
+    where we have extended the identity that is true using integration by parts in $S^{-\infty}_\infty(\R^{2n}; \R^n)$ to general $S^{m}_\infty(\R^{2n}; \R^n)$ using the density result of symbol space. Now, if we Taylor expand $a$ around the diagonal $x =y$, we get 
+    \begin{align*}
+    a(x, y, \xi) = \sum_{\abs{\alpha} \leq N -1} \frac{(-i)^{\abs{\alpha}}}{\alpha !} (x - y)^\alpha D^\alpha_ya (x, x, \xi) + r_N(x, y, \xi)
+    \end{align*}
+    where 
+    \begin{align*}
+    r_N(x, y, \xi) = \sum_{\abs{\alpha} = N} \frac{(-i)^{\abs{\alpha}}}{\alpha !} (x - y)^\alpha \int_0^1 (1 - t)^{N -1} D^\alpha_ya(x, (1 -t)x + ty, \xi) \d[t]
+    \end{align*}
+    for any $N \in \N$.  Applying the identity above give us 
+    \begin{align*}
+    &I(a) = \sum_{j = 0}^{N -1} A_j + R_N \\
+    &A_j = I\brac{\sum_{\abs{\alpha} = j} \frac{i^{\abs{\alpha}}}{\alpha !} D^\alpha_y D^\alpha_\xi a (x, x, \xi)} \in \Psi^{m - j}_\infty(\R^n)\\
+    &R_N \in \Psi^{m -N}_\infty(\R^n)
+    \end{align*}
+    Asymptotic summation lemma give us 
+    \begin{align*}
+    b(x, \xi) \sim \sum_{\alpha} \frac{i^{\abs{\alpha}}}{\alpha !} D^\alpha_y D^\alpha_\xi a (x, x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)
+    \end{align*}
+    so that $I(a) - I(b) \in \Psi^{-\infty}_\infty(\R^n)$. It remains to show that $A \in \Psi^{-\infty}_\infty(\R^n) \iff A = I(c), c \in S^{-\infty}_\infty(\R^{n}; \R^n)$
+\end{proof}
 
 %We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
 %\[
