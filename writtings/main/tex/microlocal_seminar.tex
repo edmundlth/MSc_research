@@ -461,9 +461,46 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
     \begin{align*}
     b(x, \xi) \sim \sum_{\alpha} \frac{i^{\abs{\alpha}}}{\alpha !} D^\alpha_y D^\alpha_\xi a (x, x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)
     \end{align*}
-    so that $I(a) - I(b) \in \Psi^{-\infty}_\infty(\R^n)$. It remains to show that $A \in \Psi^{-\infty}_\infty(\R^n) \iff A = I(c), c \in S^{-\infty}_\infty(\R^{n}; \R^n)$
+    so that $I(a) - I(b) \in \Psi^{-\infty}_\infty(\R^n)$. It remains to show that $A \in \Psi^{-\infty}_\infty(\R^n) \iff A = I(c), c \in S^{-\infty}_\infty(\R^{n}; \R^n)$. 
 \end{proof}
 
+
+\subsubsection{Composition theorem}
+\begin{ftheorem}[Composition]
+    Let $A \in \Psi^{m}_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ for some $m, m' \in \R$. Then, 
+    \begin{enumerate}
+        \item $A^* \in \Psi^{m}_\infty(\R^n)$.
+        \item $A \circ B \in \Psi^{m + m'}_\infty(\R^n)$. 
+    \end{enumerate}
+\end{ftheorem}
+\begin{proof}[Sketch]
+    Let $A \in \Psi^{m}_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ for some $m, m' \in \R$ be given. 
+    Since $A : S(\R^n) \to S(\R^n)$ (\ref{}), we have the adjoint operator $A^* : S'(\R^n) \to S'(\R^n)$ defined by 
+    \begin{align*}
+    A^*u(\varphi) = u(\overline{A\varphi}), \quad u \in S'(\R^n), \varphi \in S(\R^n). 
+    \end{align*}
+    We check that $A^*u$ is indeed an element of $S'(\R^n)$ since it is the composition of the maps $u \in S'(\R^n)$ and $S(\R^n) \ni \varphi \mapsto \overline{A\varphi}$ which are both continuous.  Let $a \in S^{m}_\infty(\R^{2n}; \R^n)$ be such that $A = I(a)$. Observe that, 
+    \begin{align*}
+    \inprod[Au, \varphi]_{L^2} 
+    & = \int Au(x) \overline{\varphi(x)}\d[x]  \\
+    & = \int u(y) \overline{\int e^{i(x - y) \xi} \overline{a(x, y, \xi)} \varphi(x) \d[x] \d[\xi]} \d[y] \\
+    & = \int u(y) \overline{I(b) \varphi(y)}\d[y]\\
+    & = \inprod[u, A^*\varphi]_{L^2}
+    \end{align*}
+    where $b(x, y, \xi) = \overline{a(y, x, \xi)} \in S^{m}_\infty(\R^{2n}; \R^n)$. Thus, $A^* \in \Psi^{m}_\infty(\R^n)$. \\
+    \\
+    For composition, applying the reduction lemma twice to get $a_L \in S^{m}_\infty(\R^{n}; \R^n)$ and $b_L \in S^{m'}_\infty(\R^{n}; \R^n)$ so that 
+    \begin{align*}
+    &A \varphi(x) = \frac{1}{(2\pi)^n} \int e^{i(x -y) \xi} a(x, \xi) \varphi(y) \d[y] \d[\xi] \\
+    &B^* \varphi(x) = \frac{1}{(2\pi)^n} \int e^{i(x -y) \xi} \overline{b(x, \xi) }\varphi(y) \d[y] \d[\xi]
+    \end{align*}
+    which shows that 
+    \begin{align*}
+    AB\varphi(x) = \frac{1}{(2\pi)^n} \int e^{i(x -y) \xi} a(x, \xi) b(y, \xi) \varphi(y) \d[y] \d[\xi]
+    \end{align*}
+    and thus $AB = I(a(x, \xi) b(y, \xi))$. Since $a(x, \xi)b(y, \xi) \in S^{m + m'}_\infty(\R^{2n}; \R^n)$, we have the result $AB \in \Psi^{m + m'}_\infty(\R^n)$ as required. 
+    
+\end{proof}
 %We shall show that the elements $a \in \sym[x - y]^w S^{m}_\infty(\R^{2n}_{x,y}, \R^n) $ acts on $S(\R^n)$ via the Schwartz kernel 
 %\[
 %I(a) =  \frac{1}{(2\pi)^n} \int e^{i(x - y)\xi} a(x, y, \xi) \d[\xi]. 
