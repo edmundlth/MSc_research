@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{../thesis_style}
 
 \title{Functional Analysis}
@@ -110,15 +110,15 @@ Given any topological vector spaces $V$ and $W$, we can define the space of cont
 \end{flemma}
 The above lemma shows that the class of continuous operator is the same as the class of bounded linear operators. We shall henceforth use those terms interchangeably. There are other more restrictive class of operator that one might chance to study. 
 
-\begin{fdefinition}[Compact operator] \label{def: compact operator}Let $V$, $W$ be normed linear spaces. A \textbf{compact operator} $T: V \to W$ is a continuous linear operator that maps all bounded sets to precompact sets. \\
-
-There are several equivalent formulation that characterise compact operator. 
-\begin{enumerate}
-\item The image of the unit ball in $V$ is precompact in $W$. 
-\item The image of any bounded sequence, $\set{x_n}_n$ in $V$, contain a convergent subsequence $\set{Tx_{n_j}}_j$ in $W$.
-\item The exist a neighbourhood of 0 in $V$ that gets map to a subset of a compact neighbourhood of 0 in $W$. 
-\item If $W$ is Banach, then image of any bounded set in $V$ is totally bounded in $W$. 
-\end{enumerate}
+\begin{fdefinition}[Compact operator] \label{def: compact operator}
+    Let $V$, $W$ be normed linear spaces. A \textbf{compact operator} $T: V \to W$ is a continuous linear operator that maps all bounded sets to precompact sets. \\
+    There are several equivalent formulation that characterise compact operator. 
+    \begin{enumerate}
+        \item The image of the unit ball in $V$ is precompact in $W$. 
+        \item The image of any bounded sequence, $\set{x_n}_n$ in $V$, contain a convergent subsequence $\set{Tx_{n_j}}_j$ in $W$.
+        \item The exist a neighbourhood of 0 in $V$ that gets map to a subset of a compact neighbourhood of 0 in $W$. 
+        \item If $W$ is Banach, then image of any bounded set in $V$ is totally bounded in $W$. 
+    \end{enumerate}
 \end{fdefinition}
 
 
@@ -203,79 +203,55 @@ In this section we shall restrict our attention to just maps between Banach spac
 
 
 \begin{flemma} Let $V$, $W$ be Banach spaces. 
-\begin{enumerate}
-\item $\K(V, W)$ is a closed linear subspace in $\L(V, W)$ in the (operator-)norm topology, i.e. $\K$ is closed and closed under linear combination. 
-\item If $T \in \L(V, W)$ and $T(V)$ is finite dimensional, then $T$ is compact. 
-\item If $T \in \K(V, W)$ then $T' \in \K(W', V')$. 
-\end{enumerate}
+    \begin{enumerate}
+        \item $\K(V, W)$ is a closed linear subspace in $\L(V, W)$ in the (operator-)norm topology, i.e. $\K$ is closed and closed under linear combination. 
+        \item If $T \in \L(V, W)$ and $T(V)$ is finite dimensional, then $T$ is compact. 
+        \item If $T \in \K(V, W)$ then $T' \in \K(W', V')$. 
+    \end{enumerate}
 \end{flemma}
 
-\begin{ftheorem} Let $V$, $W$, $Y$ be Banach spaces, $T \in \L(V, W)$ and $K \in \K(V, Y)$. If for all $u \in V$, the estimate, 
-\begin{align*}
-\norm[u]_V \leq C \brac{\norm[Tu]_W + \norm[Ku]_Y}
-\end{align*}
-for some $C > 0$, then $T(V)$ is closed. 
-
-\begin{proof}
-Let $\set{Tu_n \in T(V) \wh n \in \N, u_n \in V}$ be a convergent sequence in $T(V)$ with limit $w \in W$. We need to show that there exist $v \in V$ such that $T v = w$. Let $L = \ker T$. 
-
-\begin{case}[ {$\forall n \in \N, \, d(u_n, L) \leq a < \infty$}] By definition of distance of a point to a set, for each $n$ there exist $x_n \in L$ such that $\norm[u_n - x_n] \leq 2a$. We can therefore define, for each $n$, $v_n = u_n - x_n$. Note that $\norm[v_n] \leq 2a$ and $\Lim Tv_n = \Lim T u_n + Tx_n = \Lim Tu_n + 0 = w$. Since the sequence $v_n$ is bounded and $K$ is compact, there exist a subsequence $\set{v_{n_j}}_{j \in \N}$ such that $Kv_{n_j} \to y_0 \in Y$. Then, applying the estimate on $v_{n_j} - v_{n_{j + k}}$, we get, as $j \to \infty$
-\begin{align*}
-\norm[v_{n_j} - v_{n_{j + k}}]_V \leq C \brac{\norm[Tv_{n_j} - Tv_{n_{j + k}}]_W + \norm[Kv_{n_j} - Kv_{n_{j + k}}]_Y} \to  \brac{\norm[w - w]_W + \norm[y_0 - y_0]_Y} = 0 
-\end{align*}
-which shows that $\set{v_{n_j}}_j$ is a Cauchy and therefore has a limit $v \in V$. Using continuity we get $w = \Lim Tv_{n} = \Lim[j] Tu_{n_j} = T \Lim[j] u_{n_j} = Tv$ as required. 
-\end{case} \hfill \\
-
-\begin{case}[ {$d(u_n, L) \to \infty $ as $n \to \infty$}] We can assume without loss of generality that $d(u_n, L) \geq 1, \forall n$. For each $n$, there exist $x_n \in L$ such that $1 \leq d(u_n, L) \leq \norm[v_n] \leq d(u_n, L) + 1$ where $v_n := u_n - x_n$. Define $w_n = v_n / \norm[v_n]$. Since $w_n$ is a bounded sequence (bounded by 1), there is a subsequence $Kw_{n_j}$ that converges, with limit $y_0 \in Y$. Furthermore, $T(w_n) = T(u_n - x_n) / \norm[u_n - x_n] \to 0$ as $n \to \infty$ since $\norm[u_n - x_n] \geq d(u_n, L) \to \infty$. Therefore, the estimate applied on $w_{n_j} - w_{n_{j + k}}$ gives
-\begin{align*}
-\norm[w_{n_j} - w_{n_{j + k}}]_V \leq C \brac{\norm[Tw_{n_j} - Tw_{n_{j + k}}]_W + \norm[Kw_{n_j} - Kw_{n_{j + k}}]_Y} \to  \brac{\norm[0 - 0]_W + \norm[y_0 - y_0]_Y} = 0 
-\end{align*}
-as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet 
-\begin{align*}
-d(w_n, L) 
-&= \inf_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
-&= \norm[v_n] \inf_{x \in L} \norm[v_n - x] \\
-&= \norm[v_n] \inf_{x \in L} \norm[u_n - x] \\
-&= \norm[v_n] d(u_n, L) \\
-&\geq 1
-\end{align*}
-implying that, in the limit as $n \to \infty$, $d(w, L) \geq 1$ which is a contraction. 
-\end{case}
-
-
-
-
-\end{proof}
+\begin{ftheorem} 
+    Let $V$, $W$, $Y$ be Banach spaces, $T \in \L(V, W)$ and $K \in \K(V, Y)$. If for all $u \in V$, the estimate 
+    \begin{align*}
+    \norm[u]_V \leq C \brac{\norm[Tu]_W + \norm[Ku]_Y}
+    \end{align*}
+    holds for some positive real constant $C \in \R_{> 0}$, then the image, $T(V)$ is closed. 
 \end{ftheorem}
+\begin{proof}
+    Let $\set{Tu_n \in T(V) \wh n \in \N, u_n \in V}$ be a convergent sequence in $T(V)$ with limit $w \in W$. We need to show that there exist $v \in V$ such that $T v = w$. Let $L = \ker T$. There are two cases 
+    
+    \begin{case}[ {$\forall n \in \N, \, d(u_n, L) \leq a < \infty$}] \hfill \\
+        By definition of distance of a point to a set, for each $n$ there exist $x_n \in L$ such that $\norm[u_n - x_n] \leq 2a$. We can therefore define, for each $n$, $v_n = u_n - x_n$. Note that $\norm[v_n] \leq 2a$ and $\Lim Tv_n = \Lim T u_n + Tx_n = \Lim Tu_n + 0 = w$. Since the sequence $v_n$ is bounded and $K$ is compact, there exist a subsequence $\set{v_{n_j}}_{j \in \N}$ such that $Kv_{n_j} \to y_0 \in Y$. Then, applying the estimate on $v_{n_j} - v_{n_{j + k}}$, we get, as $j \to \infty$
+        \begin{align*}
+        \norm[v_{n_j} - v_{n_{j + k}}]_V 
+        & \leq C \brac{\norm[Tv_{n_j} - Tv_{n_{j + k}}]_W + \norm[Kv_{n_j} - Kv_{n_{j + k}}]_Y} \\
+        & \to  \brac{\norm[w - w]_W + \norm[y_0 - y_0]_Y} \\
+        & = 0 
+        \end{align*}
+        which shows that $\set{v_{n_j}}_j$ is a Cauchy and therefore has a limit $v \in V$. Using continuity we get $w = \Lim Tv_{n} = \Lim[j] Tu_{n_j} = T \Lim[j] u_{n_j} = Tv$ as required. 
+    \end{case} \hfill \\
+    
+    \begin{case}[ {$d(u_n, L) \to \infty $ as $n \to \infty$}] \hfill \\
+        We can assume without loss of generality that $d(u_n, L) \geq 1, \forall n$. For each $n$, there exist $x_n \in L$ such that $1 \leq d(u_n, L) \leq \norm[v_n] \leq d(u_n, L) + 1$ where $v_n := u_n - x_n$. Define $w_n = v_n / \norm[v_n]$. Since $w_n$ is a bounded sequence (bounded by 1), there is a subsequence $Kw_{n_j}$ that converges, with limit $y_0 \in Y$. Furthermore, $T(w_n) = T(u_n - x_n) / \norm[u_n - x_n] \to 0$ as $n \to \infty$ since $\norm[u_n - x_n] \geq d(u_n, L) \to \infty$. Therefore, the estimate applied on $w_{n_j} - w_{n_{j + k}}$ gives
+        \begin{align*}
+        \norm[w_{n_j} - w_{n_{j + k}}]_V
+        & \leq C \brac{\norm[Tw_{n_j} - Tw_{n_{j + k}}]_W + \norm[Kw_{n_j} - Kw_{n_{j + k}}]_Y} \\
+        & \to  \brac{\norm[0 - 0]_W + \norm[y_0 - y_0]_Y} \\
+        & = 0 
+        \end{align*}
+        as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet 
+        \begin{align*}
+        d(w_n, L) 
+        &= \inf_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
+        &= \norm[v_n] \inf_{x \in L} \norm[v_n - x] \\
+        &= \norm[v_n] \inf_{x \in L} \norm[u_n - x] \\
+        &= \norm[v_n] d(u_n, L) \\
+        &\geq 1
+        \end{align*}
+        implying that, in the limit as $n \to \infty$, $d(w, L) \geq 1$ which is a contraction. 
+    \end{case}
+\end{proof}
 
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sobolev Spaces \cite[Chapter 4]{taylor_pde}}
-\begin{fdefinition}[Sobolev Spaces] Let $p \in \R$ and $k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev spaces on $\R^n$ as the Banach space
-\begin{align*}
-W^{p, k}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
-\end{align*}
-with the norm
-\begin{align*}
-\norm[u]_{W^{p, k}} = \norm[u]_{L^p} + \norm[D^k u]_{L^p}. 
-\end{align*}
-For $p = 2$, we have denote $H^k := W^{2, k}$ and note that result from Fourier analysis gives
-\begin{align*}
-H^k = \set{u \in L^2(\R^n) \wh \abrac{\xi}^k \hat{u} \in L^2(\R^n)}
-\end{align*}
-allowing us to extend the definition to each real order $s \in \R$, 
-\begin{align*}
-H^s = \set{u \in S'(\R^n) \wh \abrac{\xi}^s \hat{u} \in L^2(\R^n)}
-\end{align*}
-where $S'(\R^n)$ is the space of tempered distribution on $\R^n$. This forms a Hilbert space with inner product given by
-\begin{align*}
-\inprod[u, v]_{H^s} = \inprod[ \Lambda^su, \Lambda^sv]_{L^2}
-\end{align*}
-with $\Lambda^s: S'(\R^n) \to S'(\R^n)$ being the operator $\Lambda^su = \F^{-1}(\abrac{\xi}^s \hat{u})$. 
-\end{fdefinition}
 
 
 
@@ -295,54 +271,6 @@ for all $u \in H^{k + 1}(\Omega) \cap H^1_0(\Omega)$ and for some $C > 0$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Miscellaneous}
-\begin{flemma}[Riez's inequality]
-Let $X$ be a normed linear space. Given a non-dense subspace (or closed proper subspace) $Y \subset X$ and any $r \in (0, 1)$, then there exist $x \in X$ with $\norm[x] = 1$ such that 
-\begin{align*}
-\inf_{y \in Y} \norm[x - y] \geq r. 
-\end{align*}
-
-
-\begin{proof}\hfill \\
-Let $x_0 \in \overline{Y}^c$ and $R = \inf_{y \in Y}\norm[y - x_0] > 0$. Given any $\epsilon > 0$ we can pick (by definition of $\inf$) a $y_0 \in Y$ such that 
-\begin{align*}
-\norm[y_0 - x_0] < R + \epsilon. 
-\end{align*}
-Take $\epsilon < R \frac{1 - r}{r}$ and define $x \in X$ to be
-\begin{align*}
-x = \frac{y_0 - x_0}{\norm[y_0 - x_0]}. 
-\end{align*}
-Observe that $\norm[x] = 1$ and 
-\begin{align*}
-\inf_{y \in Y} \norm[x - y] 
-&= \frac{1}{\norm[x_0 - y_0]} \inf_{y \in Y} \norm[y_0 - x_0 - y \norm[x_0 - y_0] ] \\
-&= \frac{1}{\norm[x_0 - y_0]} \inf_{y \in Y} \norm[x_0 - y] \tag*{since $\alpha y - y_0 \in Y$ for any scalar $\alpha$} \\
-&\geq \frac{R}{R + \epsilon} \\
-&\geq \frac{R}{R + R \frac{1 - r}{r}} \\
-&= r
-\end{align*}
-as required. 
-\end{proof}
-\end{flemma}
-
-Riez's lemma gives us a clear distinction between finite and infinite dimensional Banach spaces. 
-\begin{mdframed}
-\begin{cor}
-The closed unit ball in a Banach Space $X$ is compact iff $X$ is finite dimensional. 
-\end{cor}
-\begin{proof}
-Let $X$ be a Banach space and $\overline{B}$ be closed unit ball. 
-\begin{case}[ $\Longleftarrow$ ] If $X$ is finite dimensional, it is isometrically isomorphic to $\R^n$ for some $n \in \N$, where, by Heine-Borel theorem, the closed unit ball is compact. 
-\end{case}
-
-
-\begin{case}[$\implies$] We will prove the contrapositive. Suppose, $X$ is infinite dimensional. Let $x_0 \in \p \overline{B}$ be an element in the unit sphere. For each $n \in \N$, we will use Riez Lemma to obtain a unit vector $x_n$ such that 
-$$\inf_{y \in \mathrm{span}\set{x_0, \dots, x_{n - 1}}} \norm[x_n - y] \geq \frac{1}{2}. $$
-It is clear that $\set{x_n \wh n \in \N}$ is a sequence of element in $\overline{B}$ that has no convergent subsequence. Therefore $\overline{B}$ is not compact. 
-\end{case}
-\end{proof}
-\end{mdframed}
-
-
 
 \bibliographystyle{apalike}
 \bibliography{../main.bib}

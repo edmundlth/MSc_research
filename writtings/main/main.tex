@@ -1,39 +1,56 @@
-\documentclass{article}
+\documentclass[12pt, twoside]{report}
+\usepackage[utf8]{inputenc}
 \usepackage{thesis_style}
 \usepackage{standalone}
 \usepackage{import}
 
 
-\title{Notes}
+\title{
+    {Microlocal Analysis} \\
+    {\large University of Melbourne}\\
+}
+\date{\today}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-%\maketitle
-%\tableofcontents
+\maketitle
+
 %\listoffigures
 
+
+%%% Front Matters 
+
+\chapter*{Abstract}
+
+%\chapter*{Dedication}
+%\chapter*{Declaration}
+
+\chapter*{Acknowledgements}
+
+\tableofcontents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+\import{./tex/}{chp0}
 
 
-% Developing .... 
-%\import{./tex/}{polyhomogeneous_riemann_map}
-\begin{align*}
-g: C^\infty(\R) & \to \R \\
-f &\mapsto \int_\R f(x) dx 
-\end{align*}
+\chapter{Functional analytic background}
+\import{./tex/}{chp1}
 
+\chapter{Symbols and Pseudodifferential Operators}
+\import{./tex/}{chp2}
 
-\begin{align*}
-something
-\end{align*}
+\chapter{Ellipticity and Microlocalisation}
+\import{./tex/}{chp3}
 
-$\frac{2}{3}$\(3\)
+\chapter{Fredholm problem of wave operator on torus}
+\import{./tex/}{chp4}
 
-\begin{description}
-    \item[something] else
-\end{description}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\chapter{Appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{acm}
