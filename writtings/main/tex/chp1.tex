@@ -1,0 +1,237 @@
+\documentclass[12pt]{article}
+\usepackage{../thesis_style}
+
+\title{Chapter 1: Functional analysis background}
+\date{}
+
+\begin{document}
+\maketitle
+
+In addition to fixing notations, this chapter serves to introduces concepts and theorems that are integral to the theory of microlocal analysis and it's application to Fredholm problems for pseudodifferential operators. 
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\section{Fourier transform and tempered distribution}
+
+\begin{fdefinition}[Schwartz space]
+    The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any multi-index $\alpha, \beta \in \N^n$, 
+    \begin{align}
+    \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)} < \infty. 
+    \end{align}
+    We can define a countable family of seminorm on $\sch(\R^n)$ by 
+    \begin{align}
+    \norm[\varphi]_k := \max_{\abs{\alpha} + \abs{\beta} \leq k} \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)}
+    \end{align}
+    for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ into a Frechet space with metric 
+    \begin{align*}
+    d(\varphi, \psi) = \sum_{k \in \N} 2^{-k} \frac{\norm[\varphi - \psi]_k}{1 + \norm[\varphi - \psi]_k} 
+    \end{align*}
+    for any $\varphi, \psi \in \\sch(\R^n)$, which defines a complete metric topology on $\sch(\R^n)$. 
+\end{fdefinition}
+\begin{rem}
+    \begin{enumerate}
+        \item     We note that the space $\sch(\R^n)$ is non-empty since it contains all the compactly supported smooth functions $\chi : \R^n \to \C$. In fact, 
+        \begin{align*}
+        C^\infty_c(\R^n) = \set{u \in C^\infty(\R^n) \wh \exists C \in \R_{> 0}, \, \abs{x} > R \implies u(x) = 0} \subset \sch(\R^n)
+        \end{align*}
+        is a dense inclusion. 
+        
+        \item $\sch(\R^n)$ with pointwise multiplication and addition is a commutative algebra over $\C$ without identity since $1 \not\in \sch(\R^n)$. It is also closed under several useful elementary operations including coordinate multiplication and partial differentiation
+        \begin{align*}
+        x_j : \sch(\R^n) \to \sch(\R^n) \\
+        D_{x_j} : \sch(\R^n) \to \sch(\R^n). 
+        \end{align*}
+        
+    \end{enumerate}
+\end{rem}
+
+\begin{fdefinition}[Tempered distribution]
+    
+\end{fdefinition}
+    
+\begin{flemma}
+    The injection $\iota : \sch(\R^n) \to \sch'(\R^n)$ given by (\ref{}) has dense image in the weak topology. 
+\end{flemma}    
+
+
+\begin{flemma}[Extension by duality]
+    
+\end{flemma}
+
+\begin{ftheorem}[Schwartz represenatation theorem]
+    
+\end{ftheorem}
+
+\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+    \begin{align*}
+        T: C^\infty(M) \to \D'(N) \\
+    \end{align*}
+    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+    \begin{align*}
+        B: C^\infty(M) &\times C^\infty(N) \to \C \\
+        (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+    \end{align*}
+    
+    Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+    \begin{align*}
+        B(u, v) = \inprod[u \otimes v, k]. 
+    \end{align*}
+    We call such $k$ the kernel of $T$. 
+\end{ftheorem}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Sobolev Spaces \cite[Chapter 4]{taylor_pde}}
+\begin{fdefinition}[Sobolev Spaces] Let $p \in \R$ and $n, k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev space on $\R^n$ as the Banach space
+    \begin{align*}
+    W^{p, k}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
+    \end{align*}
+    with the norm
+    \begin{align*}
+    \norm[u]_{W^{p, k}} = \norm[u]_{L^p} + \norm[D^k u]_{L^p}. 
+    \end{align*}
+    For $p = 2$, we have denote $H^k := W^{2, k}$ and note that result from Fourier analysis gives
+    \begin{align*}
+    H^k(\R^n) = \set{u \in L^2(\R^n) \wh \abrac{\xi}^k \hat{u} \in L^2(\R^n)}
+    \end{align*}
+    allowing us to extend the definition to each real order $s \in \R$, 
+    \begin{align*}
+    H^\sch(\R^n) = \set{u \in \sch'(\R^n) \wh \abrac{\xi}^s \hat{u} \in L^2(\R^n)} = \Lambda^{-s} L^2(\R^n) 
+    \end{align*}
+    where $\sch'(\R^n)$ is the space of tempered distribution on $\R^n$ and $\Lambda^s: \sch'(\R^n) \to \sch'(\R^n)$ being the operator $\Lambda^su = \F^{-1}(\abrac{\xi}^s \hat{u})$. This forms a Hilbert space with inner product given by
+    \begin{align*}
+    \inprod[u, v]_{H^s} = \inprod[ \Lambda^su, \Lambda^sv]_{L^2}. 
+    \end{align*}
+\end{fdefinition}
+\begin{rem}
+    It is straightforward to show that the derivative operator $D_{x_j}$ is a continuous linear operator $D_{x_j}: H^\sch(\R^n) \to H^{s - 1}(\R^n)$ and thus by induction, for any multi-index $\alpha \in \N^n$, $D^{\alpha} : H^\sch(\R^n) \to H^{s - \abs{\alpha}}(\R^n)$. 
+\end{rem}
+
+\begin{fprop}[Sobolev Embedding theorem]
+    Let $s \in \R$, $n \in \N$ be given. If $s > n /2$, then every $u \in H^\sch(\R^n)$ is bounded and continuous.     
+\end{fprop}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+\section{Compact and Fredholm operators}
+    
+In this section we shall restrict our attention to just maps between Banach spaces (unless specified otherwise). As per definition (\ref{def: compact operator}), a compact operator between Banach spaces is one where the image of all bounded sets are precompact. We shall denote the set of all compact (continuous) operators between $V$ and $W$ as $\K(V, W) \subset \L(V, W)$. Some elementary result pertaining to compact operator are given below. 
+
+
+\begin{flemma} Let $V$, $W$ be Banach spaces. 
+    \begin{enumerate}
+        \item $\K(V, W)$ is a closed linear subspace in $\L(V, W)$ in the (operator-)norm topology, i.e. $\K$ is closed and closed under linear combination. 
+        \item If $T \in \L(V, W)$ and $T(V)$ is finite dimensional, then $T$ is compact. 
+        \item If $T \in \K(V, W)$ then $T' \in \K(W', V')$. 
+    \end{enumerate}
+\end{flemma}
+
+\begin{ftheorem} 
+    Let $V$, $W$, $Y$ be Banach spaces, $T \in \L(V, W)$ and $K \in \K(V, Y)$. If for all $u \in V$, the estimate 
+    \begin{align*}
+    \norm[u]_V \leq C \brac{\norm[Tu]_W + \norm[Ku]_Y}
+    \end{align*}
+    holds for some positive real constant $C \in \R_{> 0}$, then the image, $T(V)$ is closed. 
+\end{ftheorem}
+\begin{proof}
+    Let $\set{Tu_n \in T(V) \wh n \in \N, u_n \in V}$ be a convergent sequence in $T(V)$ with limit $w \in W$. We need to show that there exist $v \in V$ such that $T v = w$. Let $L = \ker T$. There are two cases 
+    
+    \begin{case}[ {$\forall n \in \N, \, d(u_n, L) \leq a < \infty$}] \hfill \\
+        By definition of distance of a point to a set, for each $n$ there exist $x_n \in L$ such that $\norm[u_n - x_n] \leq 2a$. We can therefore define, for each $n$, $v_n = u_n - x_n$. Note that $\norm[v_n] \leq 2a$ and $\Lim Tv_n = \Lim T u_n + Tx_n = \Lim Tu_n + 0 = w$. Since the sequence $v_n$ is bounded and $K$ is compact, there exist a subsequence $\set{v_{n_j}}_{j \in \N}$ such that $Kv_{n_j} \to y_0 \in Y$. Then, applying the estimate on $v_{n_j} - v_{n_{j + k}}$, we get, as $j \to \infty$
+        \begin{align*}
+        \norm[v_{n_j} - v_{n_{j + k}}]_V 
+        & \leq C \brac{\norm[Tv_{n_j} - Tv_{n_{j + k}}]_W + \norm[Kv_{n_j} - Kv_{n_{j + k}}]_Y} \\
+        & \to  \brac{\norm[w - w]_W + \norm[y_0 - y_0]_Y} \\
+        & = 0 
+        \end{align*}
+        which shows that $\set{v_{n_j}}_j$ is a Cauchy and therefore has a limit $v \in V$. Using continuity we get $w = \Lim Tv_{n} = \Lim[j] Tu_{n_j} = T \Lim[j] u_{n_j} = Tv$ as required. 
+    \end{case} \hfill \\
+    
+    \begin{case}[ {$d(u_n, L) \to \infty $ as $n \to \infty$}] \hfill \\
+        We can assume without loss of generality that $d(u_n, L) \geq 1, \forall n$. For each $n$, there exist $x_n \in L$ such that $1 \leq d(u_n, L) \leq \norm[v_n] \leq d(u_n, L) + 1$ where $v_n := u_n - x_n$. Define $w_n = v_n / \norm[v_n]$. Since $w_n$ is a bounded sequence (bounded by 1), there is a subsequence $Kw_{n_j}$ that converges, with limit $y_0 \in Y$. Furthermore, $T(w_n) = T(u_n - x_n) / \norm[u_n - x_n] \to 0$ as $n \to \infty$ since $\norm[u_n - x_n] \geq d(u_n, L) \to \infty$. Therefore, the estimate applied on $w_{n_j} - w_{n_{j + k}}$ gives
+        \begin{align*}
+        \norm[w_{n_j} - w_{n_{j + k}}]_V
+        & \leq C \brac{\norm[Tw_{n_j} - Tw_{n_{j + k}}]_W + \norm[Kw_{n_j} - Kw_{n_{j + k}}]_Y} \\
+        & \to  \brac{\norm[0 - 0]_W + \norm[y_0 - y_0]_Y} \\
+        & = 0 
+        \end{align*}
+        as $j \to \infty$, showing that $\set{w_{n_j}}_j$ is a Cauchy sequence and therefore have a limit $w \in V$. But, $Tw = \Lim[j] Tw_{n_j} = 0 \implies w \in L$, yet 
+        \begin{align*}
+        d(w_n, L) 
+        &= \inf_{x \in L} \norm[\frac{v_n}{\norm[v_n]} - x] \\
+        &= \norm[v_n] \inf_{x \in L} \norm[v_n - x] \\
+        &= \norm[v_n] \inf_{x \in L} \norm[u_n - x] \\
+        &= \norm[v_n] d(u_n, L) \\
+        &\geq 1
+        \end{align*}
+        implying that, in the limit as $n \to \infty$, $d(w, L) \geq 1$ which is a contraction. 
+    \end{case}
+\end{proof}
+
+\begin{ftheorem}
+    Let $X, Y$ be Hilbert spaces and $T: X \to Y \in \L(X, Y)$ be a continuous (therefore bounded) linear operator. Suppose $T$ satisfies 
+    \begin{align*}
+        \forall u \in X, \quad \norm[u]_{X} &\leq C \brac{\norm[Tu]_Y + \norm[u]_Z} \\
+        \forall v \in Y, \quad \norm[v]_{Y} &\leq C' \brac{\norm[T^*v]_X + \norm[v]_{Z^*}}
+    \end{align*}
+    where $Z \Subset X$ and $Z^* \Subset Y$ are compact subsets, then $T$ is Fredholm, i.e. $T(X)$ is closed in $Y$ and both $\ker T, \coker T$ are finite dimensional. 
+\end{ftheorem}
+\begin{proof}[proof sketch] \hfill \\ 
+    
+    
+\end{proof}
+
+
+
+\begin{flemma}[Riez's inequality]
+    Let $X$ be a normed linear space. Given a non-dense subspace (or closed proper subspace) $Y \subset X$ and any $r \in (0, 1)$, then there exist $x \in X$ with $\norm[x] = 1$ such that 
+    \begin{align*}
+    \inf_{y \in Y} \norm[x - y] \geq r. 
+    \end{align*}
+\end{flemma}
+\begin{proof}\hfill \\
+    Let $x_0 \in \overline{Y}^c$ and $R = \inf_{y \in Y}\norm[y - x_0] > 0$. Given any $\epsilon > 0$ we can pick (by definition of $\inf$) a $y_0 \in Y$ such that 
+    \begin{align*}
+    \norm[y_0 - x_0] < R + \epsilon. 
+    \end{align*}
+    Take $\epsilon < R \frac{1 - r}{r}$ and define $x \in X$ to be
+    \begin{align*}
+    x = \frac{y_0 - x_0}{\norm[y_0 - x_0]}. 
+    \end{align*}
+    Observe that $\norm[x] = 1$ and 
+    \begin{align*}
+    \inf_{y \in Y} \norm[x - y] 
+    &= \frac{1}{\norm[x_0 - y_0]} \inf_{y \in Y} \norm[y_0 - x_0 - y \norm[x_0 - y_0] ] \\
+    &= \frac{1}{\norm[x_0 - y_0]} \inf_{y \in Y} \norm[x_0 - y] \tag*{since $\alpha y - y_0 \in Y$ for any scalar $\alpha$} \\
+    &\geq \frac{R}{R + \epsilon} \\
+    &\geq \frac{R}{R + R \frac{1 - r}{r}} \\
+    &= r
+    \end{align*}
+    as required. 
+\end{proof}
+
+
+
+Riez's lemma gives us a clear distinction between finite and infinite dimensional Banach spaces. 
+\begin{cor}
+    The closed unit ball in a Banach Space $X$ is compact iff $X$ is finite dimensional. 
+\end{cor}
+\begin{proof}
+    Let $X$ be a Banach space and $\overline{B}$ be closed unit ball. 
+    \begin{case}[ $\Longleftarrow$ ] If $X$ is finite dimensional, it is isometrically isomorphic to $\R^n$ for some $n \in \N$, where, by Heine-Borel theorem, the closed unit ball is compact. 
+    \end{case}
+    
+    
+    \begin{case}[$\implies$] We will prove the contrapositive. Suppose, $X$ is infinite dimensional. Let $x_0 \in \p \overline{B}$ be an element in the unit sphere. For each $n \in \N$, we will use Riez Lemma to obtain a unit vector $x_n$ such that 
+        $$\inf_{y \in \mathrm{span}\set{x_0, \dots, x_{n - 1}}} \norm[x_n - y] \geq \frac{1}{2}. $$
+        It is clear that $\set{x_n \wh n \in \N}$ is a sequence of element in $\overline{B}$ that has no convergent subsequence. Therefore $\overline{B}$ is not compact. 
+    \end{case}
+\end{proof}
+
+
+
+
+\end{document}

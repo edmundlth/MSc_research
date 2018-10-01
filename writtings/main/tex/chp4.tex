@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage{../thesis_style}
+
+\title{Chapter 3: Fredholm problem of wave operator on torus}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Propagation of singularity phenomenon} 
+
+
+
+Let $\T = [0,1] / 0 \sim 1$ denote the torus and $\T^n$ the $n$-dimensional torus. We shall study the d'Alembertian, i.e. the totally periodic wave operator, on $\T^n = \T_t \times \T_x^{n - 1}$ 
+\begin{align}\label{eq: d'Alembertian}
+    \Box := \p_t^2 - \sum_{j = 1}^{n -1} \p_{x_j}^2. 
+\end{align}
+We first note that the symbol of the operator, 
+\begin{align*}
+    \sigma(\Box) = \tau^2 - (\xi_1^2 + \xi_2^2 + \dots + \xi_{n -1}^2) =: \tau^2 - |\xi|^2
+\end{align*}
+is $0$ precisely on the light cone $L = \set{|\tau| = |\xi|}$. The operator is therefore not elliptic everywhere in $\T^n$.  We shall proceed by using the ``complex absorption" method, i.e. we will perturb the operator by some operator $-iQ$ so that $\Box - iQ$ is elliptic on a ``large" enough subset of $\T^n$. Specifically, we can take 
+\begin{align}\label{eq: perturbation operator}
+    Q = \chi(t)\p_t^2
+\end{align}
+where $\chi: \T^n \to \R_{\geq 0}$ is a smooth cut-off function supported away from $(-\delta + 1/2, \delta + 1/2)$ for some $\delta \in (0, 1/2)$. Our goal will to prove the following theorem, 
+\begin{ftheorem}
+    Let $s \in \R$ be given and define 
+    \begin{align*}
+        \chi^s = \set{u \in H^s(\T^n) \wh (\Box - i Q)u \in H^{s - 1}(\T^n)}. 
+    \end{align*}
+    Then, the operator, 
+    \begin{align*}
+        (\Box - iQ): \chi^s \to H^{s - 1}(\T^n)
+    \end{align*}
+    is a Fredholm operator. 
+\end{ftheorem}
+\begin{proof}
+    
+\end{proof}
+
+\begin{ftheorem}[Propagation of singularity] 
+    Suppose we have 
+    \begin{enumerate}
+        \item $P \in \Psi^k_{cl}(\R^n)$ a properly supported operator,
+        \item $\sigma_{k}(P) = p - iq$ for real polyhomogeneous symbols $p, q \in S^{k}_{ph}(\R^{2n}; \R^{n})$, 
+        \item $A, B, B' \in \Psi^{0}_{cl}(\R^n)$ compactly supported and $q \geq 0 $ on $\WF(B')$, 
+        \item for all $(x, \xi) \in \WF(A)$, there exists $\sigma \geq 0$ such that for all $t \in [-\sigma, 0]$
+        \begin{align*}
+            \exp(-t\sym[\xi]^{1-k}H_p)(x, \xi) \in \ell(B)
+        \end{align*}
+    \end{enumerate}
+    then for all $s, N \in \R$ and $u \in C^\infty(\R^n)$, there exist $C > 0$ such that 
+    \begin{align*}
+        \norm[Au]_{H^s} \leq C\brac{\norm[Bu]_{H^s} + \norm[B'Pu]_{H^{s - k + 1}} + \norm[u]_{H^{-N}}}. 
+    \end{align*}
+\end{ftheorem}
+
+
+\end{document}

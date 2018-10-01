@@ -6,6 +6,7 @@
 \usepackage{mdframed, array}
 \usepackage{tikz, tikz-cd}
 \usepackage{bbm}
+\usepackage{color}
 
 \usepackage{fancyhdr}
 \pagestyle{headings}
@@ -56,7 +57,10 @@
 \newcommand{\Ell}{\mathit{Ell}}
 \newcommand{\Char}{\Sigma}
 \newcommand{\WF}{\mathrm{WF}}
+\newcommand{\sch}{\mathcal{S}}
 
+
+\newcommand{\todo}[1]{\textcolor{red}{\LARGE #1}}
 
 \renewcommand\d[1][x]{\, \mathrm{d}#1}
 \renewcommand{\leq}{\leqslant}
@@ -95,33 +99,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsthm}
 \theoremstyle{plain}% default
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem*{cor}{Corollary}
 \newtheorem*{claim}{Claim}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\newtheorem{example}{Example}[chapter]
 
 \theoremstyle{remark}
-\newtheorem*{rem}{Remark}
-\newtheorem*{note}{Note}
+\newtheorem{rem}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
 \newtheorem{case}{Case}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Framed theorem environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{ftheorem}{\begin{mdframed}\begin{theorem}}
-  {\end{theorem}\end{mdframed}}
-\newenvironment{flemma}{\begin{mdframed}\begin{lemma}}
-  {\end{lemma}\end{mdframed}}
-\newenvironment{fprop}{\begin{mdframed}\begin{proposition}}
-  {\end{proposition}\end{mdframed}}
-\newenvironment{fdefinition}{\begin{mdframed}\begin{definition}}
-  {\end{definition}\end{mdframed}}
+\newenvironment{ftheorem}{\begin{mdframed}\begin{theorem}}{\end{theorem}\end{mdframed}}
+\newenvironment{flemma}{\begin{mdframed}\begin{lemma}}{\end{lemma}\end{mdframed}}
+\newenvironment{fprop}{\begin{mdframed}\begin{proposition}}{\end{proposition}\end{mdframed}}
+\newenvironment{fdefinition}{\begin{mdframed}\begin{definition}}{\end{definition}\end{mdframed}}
   
 
 
