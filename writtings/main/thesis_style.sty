@@ -7,6 +7,7 @@
 \usepackage{tikz, tikz-cd}
 \usepackage{bbm}
 \usepackage{color}
+\usetikzlibrary{calc}
 
 \usepackage{fancyhdr}
 \pagestyle{headings}
@@ -46,7 +47,7 @@
 \newcommand{\set}[1]{\left\{#1\right\}}
 \newcommand{\inprod}[1][\cdot , \cdot]{\left\langle #1 \right\rangle}
 \newcommand{\brac}[1]{\left(#1\right)}
-\newcommand{\wh}{\, | \, }
+\newcommand{\wh}{\, : \, }
 \newcommand{\abs}[1]{\left|\, #1\,\right|}
 \newcommand{\p}{\partial} 
 \newcommand{\abrac}[1]{\left\langle #1 \right\rangle}
@@ -66,8 +67,7 @@
 \renewcommand{\leq}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 
-
-
+\renewcommand{\S}{\mathbb S}
 
 % Definition for mathematics
 \def\R{{\ensuremath {\mathbb R}}}
