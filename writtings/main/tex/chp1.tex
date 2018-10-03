@@ -114,6 +114,49 @@ In addition to fixing notations, this chapter serves to introduces concepts and 
 \end{fprop}
 
 
+
+
+\begin{flemma} \ref{taylorpde}
+    Let $T: X \to Y$ be a bounded linear map between Banach spaces $X, Y$ and let $T' : Y' \to X'$ be the dual linear map. Then
+    \begin{enumerate}
+        \item $\ker T' = T(X)^\perp$. 
+        \item If $T$ has closed range, then $T'(Y')  =\ker T'$.  
+    \end{enumerate}
+\end{flemma}
+\begin{proof}
+    The dual map is defined by $\inprod[Tx, y] = \inprod[x, Ty]$, where $\inprod $ is the pairing between a Banach space and its dual, $\inprod[x, y] = y(x)$, $x \in X, y \in Y'$. Thus, if $w \in T(X)^\perp$, $w = T(y)$
+    \begin{align*}
+    \forall y' \in Y, \inprod[y', w] = \inprod[y', Ty] = \inprod
+    \end{align*}
+    
+\end{proof}
+
+
+\todo{having already assumed that $\Box - iQ$ has closed range}
+\begin{flemma}
+    For any $s \in \R$, the maps 
+    \begin{align*}
+    &\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M) \\
+    &\Box + iQ^* : H^{s - 1}(M)^* = H^{1 -s}(M) \to \brac{\mathcal{X}^{s}}^*
+    \end{align*}
+    satisfies 
+    \begin{align*}
+    \coker (\Box - iQ) \subset \ker (\Box + iQ^*). 
+    \end{align*}
+\end{flemma}
+\begin{proof}
+    First note that the element of the cokernel
+    \begin{align*}
+    \coker (\Box - iQ) = H^{s -1}(M) / (\Box - iQ)(\mathcal{X}^s)
+    \end{align*}
+    are precisely the elements $u \in H^{s - 1}(M)$ orthogonal to the image of $\Box - iQ$, i.e. $\inprod[u, v]_{\mathcal{X}^s} = 0$, $\forall v \in (\Box - iQ)(\mathcal{X}^s)$. It remains to show that $(\Box + iQ^*)(u) = 0$ for any $u \in  $
+    
+    \begin{align*}
+    \inprod[v, (\Box + iQ^*) u] = \inprod[(\Box - iQ)v, u] = 0. 
+    \end{align*}
+    
+\end{proof}
+
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 \section{Compact and Fredholm operators}
