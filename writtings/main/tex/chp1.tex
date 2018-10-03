@@ -7,28 +7,61 @@
 \begin{document}
 \maketitle
 
-In addition to fixing notations, this chapter serves to introduces concepts and theorems that are integral to the theory of microlocal analysis and it's application to Fredholm problems for pseudodifferential operators. 
+This chapter serves to introduces concepts and theorems that are integral to the theory of microlocal analysis and its application to Fredholm problems for pseudodifferential operators. 
+
+\paragraph{Some notations} \hfill \\
+We will employ the following notations heavily throught the rest of the paper. Let $\N = \set{0, 1, \dots}$ denote the set of natural numbers. Given $n \in \N$, we can define \textit{multi-index} $\alpha = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \N^n$. Given any multi-indices $\alpha, \beta \in \N^n$, we define for any $n$-tuples $x, y \in \R^n$ 
+\begin{align*}
+x^\beta &:= x_1^{\beta_1} x_2^{\beta_2}\dots x_n^{\beta_n} = \prod_{j = 1}^n x_j^{\beta_j}\\
+ (x + y)^\alpha &:= \prod_{j = 1}^n (x_j + y_j)^{\beta_j} \\
+D^\alpha_x &:= D_{x_1}^{\alpha_1} D_{x_2}^{\alpha_2} \dots D_{x_n}^{\alpha_n}\\
+\end{align*}
+where $D_{x_j} := - i \p_{x_j}$with $i \in \C$ being the imaginary unit and $\p_{x_j} $ the $x_j$-partial derivative operator. Furthermore, we define
+\begin{align*}
+&\abs{\alpha} := \alpha_1 + \alpha_2 + \dots + \alpha_n\\
+& \alpha! := \alpha_1! \alpha_2! \dots \alpha_n! \\
+& \binom{\alpha}{\beta} := \binom{\alpha_1}{\beta_1} \binom{\alpha_2}{ \beta_2} \dots \binom{\alpha_n}{\beta_n} = \frac{\alpha!}{(\beta - \alpha)! \beta!} \\
+&\alpha \leq \beta \iff \alpha_i \leq \beta_i, \quad \forall i \in \set{1, \dots, n}. 
+\end{align*}
+
+We shall now state the Leibinz formula, not only to illustrate the multi-index notation, but it will also be a theorem that we repeatedly use. 
+\begin{ftheorem}[Leibinz formula]
+    Let $f, g \in C^\infty(\R^n)$, then 
+    \begin{align*}
+    D^\alpha_x (fg) = (-i)^{\abs{\alpha}} \p_x^\alpha(fg) = (-i)^{\abs{\alpha}} \sum_{\beta \leq \alpha} \binom{\alpha}{\beta}  \brac{\p_x^\beta f} \brac{\p_x^{\alpha - \beta}g}. 
+    \end{align*}
+\end{ftheorem}
+
+In discussing the order of growth of smooth functions, $f = f(x)$ on $\R^n$ as $\norm[x] \to \infty$, it is often convenient to compare $f$ to another smooth function. Hence, instead of the function $x \mapsto \norm[x]$, we consider the bracket function 
+\begin{align*}
+\sym[\cdot] : \R^n &\to \R_{\geq 1} \\
+x &\mapsto \sym[x] := \brac{ 1 + x_1^2 + x_2^2 + \dots + x_n^2}^{1/2} = \brac{1 + \norm[x]^2}^{1/2}. 
+\end{align*}
+The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptotically equivalent to $\norm[x]$ for large $x$. 
 
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
-\section{Fourier transform and tempered distribution}
+
+\section{Schwartz functions and tempered distributions}
 
 \begin{fdefinition}[Schwartz space]
-    The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any multi-index $\alpha, \beta \in \N^n$, 
+    The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any $\alpha, \beta \in \N^n$, 
     \begin{align}
     \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)} < \infty. 
     \end{align}
+
+    
     We can define a countable family of seminorm on $\sch(\R^n)$ by 
     \begin{align}
     \norm[\varphi]_k := \max_{\abs{\alpha} + \abs{\beta} \leq k} \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)}
     \end{align}
-    for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ into a Frechet space with metric 
+    for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ a Frechet space with metric 
     \begin{align*}
     d(\varphi, \psi) = \sum_{k \in \N} 2^{-k} \frac{\norm[\varphi - \psi]_k}{1 + \norm[\varphi - \psi]_k} 
     \end{align*}
-    for any $\varphi, \psi \in \\sch(\R^n)$, which defines a complete metric topology on $\sch(\R^n)$. 
+    for any $\varphi, \psi \in \sch(\R^n)$, which defines a complete metric topology on $\sch(\R^n)$. 
 \end{fdefinition}
-\begin{rem}
+\begin{rem} \hfill \\
     \begin{enumerate}
         \item     We note that the space $\sch(\R^n)$ is non-empty since it contains all the compactly supported smooth functions $\chi : \R^n \to \C$. In fact, 
         \begin{align*}
@@ -46,116 +79,213 @@ In addition to fixing notations, this chapter serves to introduces concepts and 
 \end{rem}
 
 \begin{fdefinition}[Tempered distribution]
-    
+    The space of tempered distribution is the dual space of Schwartz space. More precisely, the space of tempered distribution $\sch'(\R^n)$ on $\R^n$ is defined by 
+    \begin{align*}
+    \sch'(\R^n) = \brac{\sch(\R^n)}' = \L(\sch(\R^n),\C)
+    \end{align*}
+    where $\L(V, W)$ denotes the continuous linear maps between any topological vector spaces $V \to W$. Explicitly in terms of seminorms on $\sch(\R^n)$, the elements $u \in \sch'(\R^n)$ are linear functionals $u : \sch(\R^n) \to \C$ satisfying: for any $\varphi \in \sch(\R^n)$, there exist $k \in \N$, $C \in \R_{> 0}$ such that 
+    \begin{align*}
+    \abs{u(\varphi)} \leq C \norm[\varphi]_k. 
+    \end{align*}
+    We usually equip $\sch'(\R^n)$ with the weak-* topology, i.e. the weakest topology for which all linear maps of the form $\inprod[\varphi, \cdot] : \sch'(\R^n) \to \C$ for any $\varphi \in \sch(\R^n)$ are continuous. Here,  $\inprod : \sch(\R^n) \times \sch'(\R^n) \to \C$ Frechet space pairing
+    \begin{align*}
+    \inprod[\varphi, u] := u(\varphi). 
+    \end{align*}
+    A neighbourhood basis aroudn $0 \in \sch'(\R^n)$ for the topology is given by the collection of sets of the form
+    \begin{align*}
+    \set{u \in \sch'(\R^n) \wh \abs{u(\varphi_j)} < \epsilon_j, \varphi_j \in \sch(\R^n), j = 1, \dots, N}
+    \end{align*}
+    for any $N \in \N$. 
 \end{fdefinition}
-    
+
+The following two standard results are important in the development of pseudodifferential calculus. The first of which allows us to extend results concerning continuous linear maps on $\sch(\R^n)$ to $\sch'(\R^n)$. 
 \begin{flemma}
-    The injection $\iota : \sch(\R^n) \to \sch'(\R^n)$ given by (\ref{}) has dense image in the weak topology. 
+    Let $\iota : \sch(\R^n) \to \sch'(\R^n)$ be the injection map defined by the integral pairing 
+    \begin{align*}
+    \iota(\varphi)(\psi) = \int \varphi(x) \psi(x) \d[x] \in \C
+    \end{align*}
+    for any $\varphi, \psi \in \sch(\R^n)$. Then, the image of $\iota$ is dense in $\sch'(\R^n)$ with the weak-* topology. 
 \end{flemma}    
 
-
-\begin{flemma}[Extension by duality]
-    
-\end{flemma}
-
-\begin{ftheorem}[Schwartz represenatation theorem]
-    
+The second result is the celebrated Schwartz kernel theorem. To motivate this theorem, observe that any element $k \in \sch'(\R^{n + m})$ defines a continuous linear \textit{operator} of the form 
+\begin{align*}
+A_k : \sch(\R^m) &\to \sch'(\R^n)\\
+\varphi(x) &\to A_k \varphi : \psi(y) \in \sch(\R^n) \mapsto A_k \varphi (\psi) = k(\varphi(x) \psi(y)). 
+\end{align*}
+The Schwartz kernel theorem states that the converse is also true. 
+\begin{ftheorem}[Schwartz kernel theorem]
+    Let $m, n \in \N$ be given. Then, $A : \sch(\R^m) \to \sch'(\R^n)$ is a continous linear operator if and only if there exist unique $k \in \sch'(\R^{n + m})$ such that 
+    \begin{align*}
+    A\varphi(\psi) = k(\varphi \cdot \psi)
+    \end{align*}
+    for any $\varphi \in \sch(\R^m)$ and $\psi \in \sch(\R^n)$. 
 \end{ftheorem}
 
-\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+We call the unique tempered distribution $k \in \sch'(\R^{n + m})$ representing the operator $A: \sch(\R^m) \to \sch'(\R^m)$ the Schwartz kernel of $A$. 
+
+
+%\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
+%    \begin{align*}
+%        T: C^\infty(M) \to \D'(N) \\
+%    \end{align*}
+%    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+%    \begin{align*}
+%        B: C^\infty(M) &\times C^\infty(N) \to \C \\
+%        (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
+%    \end{align*}
+%    
+%    Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
+%    \begin{align*}
+%        B(u, v) = \inprod[u \otimes v, k]. 
+%    \end{align*}
+%    We call such $k$ the kernel of $T$. 
+%\end{ftheorem}
+
+
+\section{Fourier transform} 
+Fourier transform plays a crucial role in the theory of pseudodifferential operator.
+\begin{fdefinition}
+    The Fourier transform $\F f$ of a function $f \in L^1(\R^n)$ is defined by the integral
     \begin{align*}
-        T: C^\infty(M) \to \D'(N) \\
+    \widehat{f}(\xi) := \F f(\xi) = \frac{1}{(2\pi)^{n/2}} \int e^{- i x \cdot \xi} f(x)\d[x] \in L^\infty(\R^n). 
     \end{align*}
-    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
-    \begin{align*}
-        B: C^\infty(M) &\times C^\infty(N) \to \C \\
-        (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
-    \end{align*}
+\end{fdefinition}
     
-    Then, there exist a distribution $k \in \D'(M \times N)$ such that for all $(u, v) \in C^\infty(M) \times C^\infty(N)$
-    \begin{align*}
-        B(u, v) = \inprod[u \otimes v, k]. 
-    \end{align*}
-    We call such $k$ the kernel of $T$. 
-\end{ftheorem}
+We can verify that, on Schwartz space, the same integral operation defines a continuous linear map 
+\begin{align*}
+\F : \sch(\R^n) \to \sch(\R^n)
+\end{align*}
+Its $L^2$-adjoint is given by 
+\begin{align*}
+\F^* f(\xi) = \frac{1}{(2\pi)^{n/2}} \int e^{i x \cdot \xi} f(x)\d[x], \quad f \in \sch(\R^n). 
+\end{align*}
+The Fourier inversion theorem states that $\F^* $ is the continuous inverse, i.e. $\F^* = \F^{-1} : \sch(\R^n) \to \sch(\R^n)$. Explicitly, this means that for any $f \in \sch(\R^n)$ 
+\begin{align*}
+f(x) = \F^* \F f (x) = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} f(y) \d[y] \d[\xi]. 
+\end{align*}
+With the inversion formula and the definition of $L^2$-dual, we can easily conclude that 
+\begin{align*}
+\inprod[f, g]_{L^2} = \inprod[f, \F^* \F g]_{L^2} = \inprod[\F f, \F g]_{L^2}
+\end{align*}
+allowing us to uniquely extend $\F$, $\F^*$ from $\sch(\R^n)$ to a unitary map 
+\begin{align*}
+\F : L^2(\R^n) \to L^2(\R^n)
+\end{align*}
+with inverse $\F^*$. This is also known as the Plancherel theorem. 
 
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Sobolev Spaces \cite[Chapter 4]{taylor_pde}}
+\section{Sobolev Spaces }
+\cite[Chapter 4]{taylor_pde}
+
 \begin{fdefinition}[Sobolev Spaces] Let $p \in \R$ and $n, k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev space on $\R^n$ as the Banach space
     \begin{align*}
-    W^{p, k}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
+    W^{k, p}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
     \end{align*}
     with the norm
     \begin{align*}
-    \norm[u]_{W^{p, k}} = \norm[u]_{L^p} + \norm[D^k u]_{L^p}. 
+    \norm[u]_{W^{p, k}} = \norm[u]_{L^p} + \sum_{j = 1}^k \norm[D^j u]_{L^p}. 
     \end{align*}
-    For $p = 2$, we have denote $H^k := W^{2, k}$ and note that result from Fourier analysis gives
+    For $p = 2$, we have denote $H^k := W^{k ,2}$ and note that result from Fourier analysis gives
     \begin{align*}
     H^k(\R^n) = \set{u \in L^2(\R^n) \wh \abrac{\xi}^k \hat{u} \in L^2(\R^n)}
     \end{align*}
     allowing us to extend the definition to each real order $s \in \R$, 
     \begin{align*}
-    H^\sch(\R^n) = \set{u \in \sch'(\R^n) \wh \abrac{\xi}^s \hat{u} \in L^2(\R^n)} = \Lambda^{-s} L^2(\R^n) 
+    H^s(\R^n) = \set{u \in \sch'(\R^n) \wh \abrac{\xi}^s \hat{u} \in L^2(\R^n)} = \Lambda^{-s} L^2(\R^n) 
     \end{align*}
-    where $\sch'(\R^n)$ is the space of tempered distribution on $\R^n$ and $\Lambda^s: \sch'(\R^n) \to \sch'(\R^n)$ being the operator $\Lambda^su = \F^{-1}(\abrac{\xi}^s \hat{u})$. This forms a Hilbert space with inner product given by
+    where $\sch'(\R^n)$ is the space of tempered distribution on $\R^n$ and 
+    $$\Lambda^s: \sch'(\R^n) \to \sch'(\R^n)$$
+     being the operator defined by $\Lambda^su = \F^{-1}(\abrac{\xi}^s \hat{u})$. This forms a Hilbert space with inner product given by
     \begin{align*}
     \inprod[u, v]_{H^s} = \inprod[ \Lambda^su, \Lambda^sv]_{L^2}. 
     \end{align*}
 \end{fdefinition}
 \begin{rem}
-    It is straightforward to show that the derivative operator $D_{x_j}$ is a continuous linear operator $D_{x_j}: H^\sch(\R^n) \to H^{s - 1}(\R^n)$ and thus by induction, for any multi-index $\alpha \in \N^n$, $D^{\alpha} : H^\sch(\R^n) \to H^{s - \abs{\alpha}}(\R^n)$. 
+    It is straightforward to show that the derivative operator $D_{x_j}$ is a continuous linear operator $D_{x_j}: H^s(\R^n) \to H^{s - 1}(\R^n)$ and thus by induction, for any multi-index $\alpha \in \N^n$, $D^{\alpha} : H^s(\R^n) \to H^{s - \abs{\alpha}}(\R^n)$. 
 \end{rem}
 
-\begin{fprop}[Sobolev Embedding theorem]
-    Let $s \in \R$, $n \in \N$ be given. If $s > n /2$, then every $u \in H^\sch(\R^n)$ is bounded and continuous.     
-\end{fprop}
+%\begin{fprop}[Sobolev Embedding theorem]
+%    Let $s \in \R$, $n \in \N$ be given. If $s > n /2$, then every $u \in H^s(\R^n)$ is bounded and continuous.     
+%\end{fprop}
+%
 
 
-
+\begin{flemma}
+    Let $X$ be a Banach space and $M \leq X$ a closed linear subspace. Define the perpendicular subspace $M^\perp \subset X'$ to be the set of linear functionals on $X$ that annihilate $M$, i.e. 
+    \begin{align*}
+    M^\perp := \set{\omega \in X' \wh \omega(M) = 0}. 
+    \end{align*}
+    Then, we have topological isomorphisms
+    \begin{align*}
+    M \cong X' / M^\perp \\
+    M^\perp \cong X / M. 
+    \end{align*}
+\end{flemma}
 
 \begin{flemma} \ref{taylorpde}
     Let $T: X \to Y$ be a bounded linear map between Banach spaces $X, Y$ and let $T' : Y' \to X'$ be the dual linear map. Then
     \begin{enumerate}
-        \item $\ker T' = T(X)^\perp$. 
+        \item $\ker T' = T(X)^\perp = \set{\omega \in Y' \wh \omega(Tx) = 0, \forall x \in X}$. 
         \item If $T$ has closed range, then $T'(Y')  =\ker T'$.  
     \end{enumerate}
 \end{flemma}
 \begin{proof}
-    The dual map is defined by $\inprod[Tx, y] = \inprod[x, Ty]$, where $\inprod $ is the pairing between a Banach space and its dual, $\inprod[x, y] = y(x)$, $x \in X, y \in Y'$. Thus, if $w \in T(X)^\perp$, $w = T(y)$
+    Let $\inprod[x, \omega] = \omega(x)$ denote the pairing between a Banach space with its dual. The dual map $T'$ of $T$ is characterised by $\inprod[Tx, \omega] = \inprod[x, T'\omega]$ for any $x \in X$, $\omega \in Y'$. Observe that 
     \begin{align*}
-    \forall y' \in Y, \inprod[y', w] = \inprod[y', Ty] = \inprod
+    \omega \in T(X)^\perp 
+    & \iff \forall x \in X, \, \inprod[Tx, \omega] = 0 \\
+    & \iff \forall x \in X, \, \inprod[x, T' \omega] = 0 \\
+    & \iff \omega \in \ker T'
     \end{align*}
+    which proves the first statement. \\
+    
+    For the second statement, if $T(X)$ is a closed linear subspace of $Y$, then
+    \begin{align*}
+    \widetilde{T} : Y / \ker T \to T(X)\\
+    [y] \mapsto T(y)
+    \end{align*}
+    defines a topological isomorphism, which in turns give rise to the topological isomorphism 
+    \begin{align*}
+    \widetilde{T}' : T(X)' \to (X / \ker T)'.
+    \end{align*}
+    We also know that $(X/ker T)' \cong (\ker T)^\perp$ are naturally isomorphic as Banach spaces. There is also a natural projection $p : Y' \to T(X)'$. We can then express $T': Y' \to X'$ as the composition
+    \begin{equation*}
+    \begin{tikzcd}
+    Y' \ar[r, "p"] & T(X)' \ar[r, "\widetilde{T}"] & (X / \ker T)' \ar[r, "\sim"]& (\ker T)^\perp \\
+    \end{tikzcd}
+    \end{equation*}
+    which gives the desired $T'(Y') = (\ker T)^\perp$. 
     
 \end{proof}
 
-
-\todo{having already assumed that $\Box - iQ$ has closed range}
-\begin{flemma}
-    For any $s \in \R$, the maps 
-    \begin{align*}
-    &\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M) \\
-    &\Box + iQ^* : H^{s - 1}(M)^* = H^{1 -s}(M) \to \brac{\mathcal{X}^{s}}^*
-    \end{align*}
-    satisfies 
-    \begin{align*}
-    \coker (\Box - iQ) \subset \ker (\Box + iQ^*). 
-    \end{align*}
-\end{flemma}
-\begin{proof}
-    First note that the element of the cokernel
-    \begin{align*}
-    \coker (\Box - iQ) = H^{s -1}(M) / (\Box - iQ)(\mathcal{X}^s)
-    \end{align*}
-    are precisely the elements $u \in H^{s - 1}(M)$ orthogonal to the image of $\Box - iQ$, i.e. $\inprod[u, v]_{\mathcal{X}^s} = 0$, $\forall v \in (\Box - iQ)(\mathcal{X}^s)$. It remains to show that $(\Box + iQ^*)(u) = 0$ for any $u \in  $
-    
-    \begin{align*}
-    \inprod[v, (\Box + iQ^*) u] = \inprod[(\Box - iQ)v, u] = 0. 
-    \end{align*}
-    
-\end{proof}
+\todo{corollary in Hilbert space}
+%\todo{having already assumed that $\Box - iQ$ has closed range}
+%\begin{flemma}
+%    For any $s \in \R$, the maps 
+%    \begin{align*}
+%    &\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M) \\
+%    &\Box + iQ^* : H^{s - 1}(M)^* = H^{1 -s}(M) \to \brac{\mathcal{X}^{s}}^*
+%    \end{align*}
+%    satisfies 
+%    \begin{align*}
+%    \coker (\Box - iQ) \subset \ker (\Box + iQ^*). 
+%    \end{align*}
+%\end{flemma}
+%\begin{proof}
+%    First note that the element of the cokernel
+%    \begin{align*}
+%    \coker (\Box - iQ) = H^{s -1}(M) / (\Box - iQ)(\mathcal{X}^s)
+%    \end{align*}
+%    are precisely the elements $u \in H^{s - 1}(M)$ orthogonal to the image of $\Box - iQ$, i.e. $\inprod[u, v]_{\mathcal{X}^s} = 0$, $\forall v \in (\Box - iQ)(\mathcal{X}^s)$. It remains to show that $(\Box + iQ^*)(u) = 0$ for any $u \in  $
+%    
+%    \begin{align*}
+%    \inprod[v, (\Box + iQ^*) u] = \inprod[(\Box - iQ)v, u] = 0. 
+%    \end{align*}
+%    
+%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%

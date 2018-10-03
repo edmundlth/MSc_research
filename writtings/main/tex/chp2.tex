@@ -8,6 +8,9 @@
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\todo{In this chapter we recall the basic definitions and some well known properties about pseudodifferential operators.  We include proofs where appropriate but leave some to the reader.  Our main sources for this material are [Vasy, Melrose, Dyatlov-Zworski]} 
+
 In this chapter, we will introduce pseudodifferential operators (or $\Psi$DOs) that generalises differential operators in Euclidean spaces, $\R^n$. We have shown before (\ref{}) that $\F : \sch(\R^n) \to \sch(\R^n)$ is a continuous linear isomorphism. As such, the action on $\sch(\R^n)$ of a $m^{th}$ order differential operator with rapidly decaying smooth coefficient $c_\alpha \in \sch(\R^n)$ 
 \begin{align}
 P(x, D) = \sum_{\abs{\alpha} \leq m } c_\alpha(x) D^\alpha_x : \sch(\R^n) \to \sch(\R^n) \label{eq: general diff op} 
@@ -28,10 +31,12 @@ The goal of this chapter is to build a `calculus' of pseudodifferential operator
 \begin{itemize}
     \item rigourously define the space of symbols $S^{m}_{\infty}(\R^{p}; \R^{n})$. 
     \item show that the quantisation procedure outlined above is well-defined. 
-    \item prove prove several topological and algebraic properties of $S^{m}_{\infty}(\R^{2n}; \R^{n})$. 
-    \item \todo{Something about principal symbol and symbol calculus.}
+    \item define elliptic sets of symbols and prove invertibility of elliptic symbols in the filtered algebra of all symbols. 
+%    \item prove prove several topological and algebraic properties of $S^{m}_{\infty}(\R^{2n}; \R^{n})$. 
+%    \item \todo{Something about principal symbol and symbol calculus.}
 \end{itemize} 
 
+Here, we will introduce pseudodifferential operators only on Euclidean spaces. However, the results we obtain will invariant under any change of variables. This allow us to define symbols and corresponding pseudodifferential operators on the cotangent bundle $T^*M$ on any smooth manifold $M$ (see for example \ref{}). 
 
 %Furthermore, for constant coefficient elliptic differential operator, i.e. $c_\alpha \in \C$ and $P(x, \xi) = P(\xi)$, the parametrix $G(x, D)$ -- an approximate inverse  to $P(D)$ -- is given simply by 
 %\begin{align*}
@@ -39,7 +44,7 @@ The goal of this chapter is to build a `calculus' of pseudodifferential operator
 %\end{align*}
 
 \section{Symbols}
-We will first define symbols $a = a(x, \xi)$ as smooth functions in $\R^p_x \times \R^n_\xi$ for some $p, n \in \N$. We will then take $p = 2n$ when defining pseudo differential operators. The most important characteristic of symbols is their behaviour at infinity. In analogy to differential operator (\ref{eq: general diff op}), we require $a(x, \xi)$ to be bounded in $x$ and have polynomial decay of ever increasing order with successive $\xi$-derivative.  
+The most important characteristic of symbols is their behaviour at infinity. In analogy to differential operator (\ref{eq: general diff op}), we require $a(x, \xi)$ to be bounded in $x$ and have polynomial decay of increasing order with successive $\xi$-derivative.  
 
 \todo{Historical note about hormander symbol class. Vasy's definition. Melrose generalisation etc... }
 
@@ -50,19 +55,34 @@ We will first define symbols $a = a(x, \xi)$ as smooth functions in $\R^p_x \tim
     \end{align*}
     uniformly on $\R^p \times \R^n$. Together with the family of seminorm (indexed by $N \in \N$) 
     \begin{align*}
-        \norm[a]_{N, m} = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \max_{\abs{\alpha} + \abs{\beta} \leq N} \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}} 
+        \norm[a]_{N, m} = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \max_{\abs{\alpha} + \abs{\beta} \leq N} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)}}{\sym[\xi]^{m - \abs{\beta}}} 
     \end{align*}
     gives a Frechet topology to $S^m_\infty(\Omega; \R^n)$. \\
 \end{fdefinition}
 \begin{rem} \hfill 
     \begin{itemize}
+        \item Above, we defined symbols $a = a(x, \xi)$ as smooth functions in $\R^p_x \times \R^n_\xi$ for some $p, n \in \N$. When we define pseudodifferential operators, we will then take $p = 2n$, so that $a = a(x, y, \xi) \in S^{m}_\infty(\R^{2n}; \R^n)$. The variables $x, y, \xi \in \R^n$  are collectively known as the phase space variables. The variables $x, y$ are sometime known as the ``space variables" and $\xi$ is often known as the ``dual", ``Fourier" or ``fibre" variable.
+        
         \item  We can also defined the space of symbol, $S^m_\infty(\Omega; \R^n)$ on a set with non-empty interior $\Omega \subset \R^p$ with $\Omega \subset \overline{\mathrm{Int}(\Omega)}$, so that the supremum in the seminorm above is taken over $(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n$. 
-        \item The subscript $\infty$ refers the uniform boundedness condition.
+        
+        \item The subscript $\infty$ in $S^m_\infty$ refers the uniform boundedness condition in the space variable.
+        
+        \item There are various generalisation of the symbol spaces which result in similar pseudodifferential calculus. For instance, we could allow polynomial growth in the space variable, and extra-decay in the dual variable, resulting in the space $S^{m, l_1, l_2}_{\infty, \delta}(\R^{2n}_{x, y}; \R^n_{\xi})$, with element $a \in C^\infty(\R^{3n})$ satisfying
+        \begin{align*}
+        \abs{D^\alpha_xD^\beta_y D^\gamma_\xi a} \leq C \sym[x]^{l_1} \sym[y]^{l_2} \sym[\xi]^{m - \abs{\gamma} + \delta \abs{(\alpha, \beta, \gamma)}}. 
+        \end{align*}
+        
+        \item \todo{polyhomogeneous subspace}
     \end{itemize}
 \end{rem}
 
 \begin{example}
     \todo{EXAMPLES!!}
+    \begin{enumerate}
+        \item \todo{microlocal cut-off}
+        \item \todo{$P(x, \xi)$}
+        \item polyhomogeneous ones
+    \end{enumerate}
 \end{example}
 
 
@@ -70,8 +90,9 @@ We will first define symbols $a = a(x, \xi)$ as smooth functions in $\R^p_x \tim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properties of Symbols}
-In this section, we shall establish the following summarising theorem: 
 
+\subsection{Symbols form graded commutative *-algebra} 
+We shall establish the following summarising theorem. 
 \begin{ftheorem}[Summary]
     Given $m \in \R$, $p, n \in \N$, then
     \begin{enumerate}
@@ -87,9 +108,9 @@ In this section, we shall establish the following summarising theorem:
 
 We first prove continuous inclusion of lower order into higher order symbol space. 
 \begin{fprop}
-    Let $p, n \in \N$ be given and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. If $m, m' \in \R$ such that $m \leq m'$, then $S^m_\infty(\Omega; \R^n) \subset S^{m'}_\infty(\R^)$. Furthermore, the inclusion map 
+    Let $p, n \in \N$ be given. If $m, m' \in \R$ such that $m \leq m'$, then $S^m_\infty(\R^p; \R^n) \subset S^{m'}_\infty(\R^p; \R^n)$. Furthermore, the inclusion map 
     \begin{align*}
-        \iota: S^m_\infty(\Omega; \R^n) \to S^{m'}_\infty(\Omega; \R^n)
+        \iota: S^m_\infty(\R^p; \R^n) \hookrightarrow S^{m'}_\infty(\R^p; \R^n)
     \end{align*}
     is continuous. 
 \end{fprop}
@@ -98,7 +119,7 @@ We first prove continuous inclusion of lower order into higher order symbol spac
     \[
     \sym[\xi]^m \leq 1 \cdot \sym[\xi]^{m'}
     \]
-    and thus if $a \in S^{m}_\infty(\Omega; \R^n)$, we have that $\forall \alpha \in \N^p, \forall \beta \in \N^n$
+    and thus if $a \in S^{m}_\infty(\R^p; \R^n)$, we have that $\forall \alpha \in \N^p, \forall \beta \in \N^n$
     \[
     \abs{D^\alpha_x D^\beta_\xi a(x, \xi)} \leq C \sym[\xi]^{m - \abs{\beta}} \leq C \sym[\xi]^{m' - \abs{\beta}} 
     \]
@@ -110,38 +131,41 @@ We first prove continuous inclusion of lower order into higher order symbol spac
     \]
     for any $a \in S^{m}_\infty(\Omega; \R^n)$ and $N \in \N$. Indeed, this bound holds since 
     \[
-    \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m' - \abs{\beta}}}  \leq \frac{D^\alpha_x D^\beta_\xi a(x, \xi)}{\sym[\xi]^{m - \abs{\beta}}}. 
+    \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)}}{\sym[\xi]^{m' - \abs{\beta}}}  
+    \leq \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)}}{\sym[\xi]^{m - \abs{\beta}}}. 
     \]
+    for any $x, \xi \in \R^p \times \R^n$. 
+    
 \end{proof}
-\hfill \\ [3em]
 
+Next, we prove the filtration property of the symbol spaces. 
 
 \begin{fprop}
-    Let $p, n \in \N$ be given. Let $\Omega \subset \R^p$ be such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Then, for any $m, m' \in \R$, we have 
+    Let $p, n \in \N$ be given.  Then, for any $m, m' \in \R$, 
     \[
     S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) = S^{m + m'}_\infty(\Omega; \R^n)
     \]
 \end{fprop}
 \begin{proof}
-    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $b \in S^{m'}_\infty(\Omega; \R^n)$ be given. By (general) Leibinz formula, we have that for all multi-index $\alpha, \beta$, 
+    Let $a \in S^{m}_\infty(\R^p; \R^n)$ and $b \in S^{m'}_\infty(\R^p; \R^n)$ be given. By Leibinz formula \ref{}, we have that for all multi-index $\alpha \in \N^p$, $\beta \in \N^n$, 
     \begin{align*}
-        \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} 
-        &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+        & \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a(x, \xi)b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
+        &\leq  \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{D^\mu_x D^\gamma_\xi a(x, \xi)} \abs{D^{\alpha - \mu}_x D^{\beta - \gamma}_\xi b(x, \xi)}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
         &\leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \frac{\sym[\xi]^{m - \abs{\gamma}} \sym[\xi]^{m' - \abs{\beta - \gamma}}}{\sym[\xi]^{(m + m') - \abs{\beta}}} \\
         &= \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \sup_{\xi \in \R^n} \sym[\xi]^{\abs{\beta} - (\abs{\beta - \gamma} + \abs{\gamma})} \\
         & \leq \sum_{\mu \leq \alpha, \gamma \leq \beta} \binom{\alpha}{\mu} \binom{\beta}{\gamma} C \\
         &< \infty
     \end{align*}
-    where we have use the property of multi-index that $\abs{\beta} = \abs{\beta - \mu} + \abs{\mu}$.  We have thus shown that $S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n) \subset S^{m + m'}_\infty(\Omega; \R^n)$\\
+    where we have use the property of multi-index that $\abs{\beta} = \abs{\beta - \mu} + \abs{\mu}$.  We have thus shown that $S^{m}_\infty(\R^p; \R^n) \cdot S^{m'}_\infty(\R^p; \R^n) \subset S^{m + m'}_\infty(\R^p; \R^n)$\\
     \\
-    For the reverse inclusion, let $c \in S^{m + m'}_\infty(\Omega; \R^n)$ be given. Define 
+    For the reverse inclusion, let $c \in S^{m + m'}_\infty(\R^p; \R^n)$ be given. Define 
     \begin{align*}
-        a : (x, \xi) &\mapsto \sym[\xi]^m\\
-        b: (x, \xi) &\mapsto \frac{c(x, \xi)}{a(x, \xi))}
+        &a(x, \xi) = \sym[\xi]^m\\
+        &b(x, \xi) = \frac{c(x, \xi)}{a(x, \xi)}
     \end{align*}
     and observe that 
     \begin{itemize}
-        \item $a \in S^{m}_\infty(\Omega; \R^n)$. It is clear that $a$ is smooth in both $x$ and $\xi$. It is independent of $x$ and thus any $x$ derivative gives 0. We need only to check that for all $\beta \in \N^n$, 
+        \item $a \in S^{m}_\infty(\R^p; \R^n)$:  It is clear that $a$ is smooth in both $x$ and $\xi$. It is independent of $x$ and thus any $x$ derivative gives 0. We need only to check that for all $\beta \in \N^n$, 
         \[
         \abs{D^\beta_\xi \sym[\xi]^m} \leq C \sym[\xi]^{m - \abs{\beta}}
         \]
@@ -150,7 +174,7 @@ We first prove continuous inclusion of lower order into higher order symbol spac
             \abs{D_\xi \sym[\xi]^m} = \abs{\p_\xi (1 + \xi^2)^{m/2}} = \abs{m\xi \sym[\xi]^{m - 2}} = \abs{m \frac{\xi}{\sym[\xi]}} \sym[\xi]^{m - 1} \leq \abs{m} \sym[\xi]^{m - 1}
         \end{align*}
         where we have used the fact that $\abs{\xi} \leq \sym[\xi]$ for all $\xi$. 
-        \item $b \in S^{m'}_\infty(\Omega; \R^n)$. We note first that $\sym[\xi]^m \neq 0$ for all $\xi \in \R^n$ and thus $b$ is well-defined. Since division by $\sym[\xi]^m$ does not affect any of the $x$ derivative, we only need to show that for any $\beta \in \N^n$, we have
+        \item $b \in S^{m'}_\infty(\R^p; \R^n)$:  We note first that $\sym[\xi]^m \neq 0$ for all $\xi \in \R^n$ and thus $b$ is well-defined. Since division by $\sym[\xi]^m$ does not affect any of the $x$ derivative, we only need to show that for any $\beta \in \N^n$, we have
         \[
         \abs{D^\beta_\xi b(x, \xi)} \leq C \sym[\xi]^{m + m' - \abs{\beta}}
         \]
@@ -163,21 +187,29 @@ We first prove continuous inclusion of lower order into higher order symbol spac
             & = C \sum_{\mu \leq \beta} \binom{\beta}{\mu} \sym[\xi]^{ m' -\abs{\beta}} \\
             &= C 2^{\beta} \sym[\xi]^{ m' -\abs{\beta}} 
         \end{align*}
-        where we have use the definition of $c$ and applied the result proven for $a$ with $m \mapsto -m$. Thus, $b \in S^{m'}_\infty(\Omega; \R^n)$. 
+        where we have use the definition of $c$ and applied the result proven for $a$ with $m \mapsto -m$. Thus, $b \in S^{m'}_\infty(\R^p; \R^n)$. 
     \end{itemize}
-    It is clear that $a \cdot b = c$ and we have therefore shown that $S^{m + m'}_\infty(\Omega; \R^n) \subset S^{m}_\infty(\Omega; \R^n) \cdot S^{m'}_\infty(\Omega; \R^n)$. 
+    It is clear that $a \cdot b = c$ and we have therefore shown that $S^{m + m'}_\infty(\R^p; \R^n) \subset S^{m}_\infty(\R^p; \R^n) \cdot S^{m'}_\infty(\R^p; \R^n)$. 
 \end{proof}
 
-The results above, together with the easily proven fact $ a^*(x, \xi) := \overline{a(x, \xi)} \in S^{m}_\infty(\R^{2n}; \R^n) \iff a \in S^{m}_\infty(\R^{2n}; \R^n)$, gives the desired algebraic structure for $S^{\infty}_\infty(\R^{2n}; \R^n)$
+It is clear that 
+$$ a^*(x, \xi) := \overline{a(x, \xi)} \in S^{m}_\infty(\R^{2n}; \R^n) \iff a \in S^{m}_\infty(\R^{2n}; \R^n). $$ Together with the result above, we obtain the desired algebraic structure for $S^{\infty}_\infty(\R^{2n}; \R^n)$ as claimed in \ref{}. \\
 
-Next, we have a rather technical density result : the residual space, $S^{-\infty}_\infty(\R^{p}; \R^n)$, is dense in $S^{m}_\infty(\R^p; \R^n)$, but only with the topology of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$. The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we \textbf{cannot} have density of $S^{-\infty}_\infty(\R^p; \R^n)$ in $S^m_\infty(\R^p; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of smooth bounded functions, in particular, $1 \in S^0_\infty(\Omega; \R^n)$ is not in the closure of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+
+
+\subsection{Density of residual symbol space} 
+Next, we have a rather technical density result. It states that the residual space $S^{-\infty}_\infty(\R^{p}; \R^n)$ is dense in $S^{m}_\infty(\R^p; \R^n)$, but only as a subspace of $S^{m + \epsilon}_\infty(\R^{p}; \R^n)$. The main strategy in this proof is to approximate any symbol with the very same symbol but cut off by a compactly supported function. As such, the main reason we \textbf{cannot} have density of $S^{-\infty}_\infty(\R^p; \R^n)$ in $S^m_\infty(\R^p; \R^n)$ is the same reason to the fact that Schwartz functions are not dense in the space of bounded smooth functions. For example, the first Schwartz seminorm
+\begin{align*}
+\sup_{x \in \R^n} \abs{f(x) - 1} \geq 1
+\end{align*}
+between of any rapidly decaying function $f$ and the constant function $1 \in S^{0}_\infty(\R^{p}; \R^n)$ is always bounded below by $1$.
 
 \begin{flemma}
     Given any $m \in \R$, $n, p \in \N$ and $a \in S^{m}_\infty(\R^p; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\R^p; \R^n)$ that is bounded in $S^{m}_\infty(\R^p; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$ for any $\epsilon \in \R_{> 0}$. 
     %In other words, for any $m \in \R$ and $\epsilon > 0$, $S^{-\infty}_\infty(\R^p; \R^n)$ is dense in $S^{m}_\infty(\R^p; \R^n)$ with the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$.
 \end{flemma}
 \begin{proof}
-    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $\epsilon \in \R_{>0}$ be given. Let $\chi \in C^\infty_c(\R^n)$ be a non-negative smooth cut-off function, i.e. $\chi \geq 0$  and satisfies
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ and $\epsilon \in \R_{>0}$ be given. Let $\chi \in C^\infty_c(\R^n)$ be a non-negative smooth cut-off function, i.e. $0 \leq \chi \leq 1$  and satisfies
     \begin{align*}
         \chi(\xi) = 
         \begin{cases}
@@ -190,12 +222,6 @@ Next, we have a rather technical density result : the residual space, $S^{-\inft
     \[
     a_k(x, \xi) = \chi\brac{\frac{\xi}{k}} a (x, \xi). 
     \]
-    %    
-    %    \begin{enumerate}
-    %        \item $a_k \in S^{-\infty}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
-    %        \item $a_k$ are bounded in $S^{m}_\infty(\Omega; \R^n)$ for all $k \in \N$; 
-    %        \item $a_k \to a$ as $k \to \infty$ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. 
-    %    \end{enumerate}
     Now, given arbitrary $N, k \in \N$, observe that 
     \[
     \abs{a_k} \leq C \sym[\xi]^{-N} 
@@ -206,11 +232,11 @@ Next, we have a rather technical density result : the residual space, $S^{-\inft
         & \leq \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu_\xi \chi}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } \\
         & \leq C \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu_\xi \chi}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}. 
     \end{align*}
-    Since $\chi$ and all its derivatives are compactly supported, each term above is bounded in $\xi$ and thus $a_k$ is bounded in $S^{m}_\infty(\R^p; \R^n)$ and that 
+    Since $\chi$ and all its derivatives are compactly supported, each term in the sum above is zero outside of a compact region. Hence, given any $N \in \N$, for a big enough $C > 0$, 
     \[
     \abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)} \leq C' \sym[\xi]^{-N}
     \]
-    which allow us to conclude that $a_k \in S^{-\infty}_\infty(\R^p; \R^n)$.\\
+    which allow us to conclude that $a_k \in S^{-\infty}_\infty(\R^p; \R^n)$ and is a bounded sequence in $S^{m}_\infty(\R^{p}; \R^n)$.\\
     \\
     It remains to show that $\Lim[k] a_k = a $ in $S^{m + \epsilon}_\infty(\Omega; \R^n)$. In the first symbol norm, we observe that, using the symbol estimate for $a$ 
     \begin{align*}
@@ -223,7 +249,7 @@ Next, we have a rather technical density result : the residual space, $S^{-\inft
     \end{align*}
     as $k \to \infty$, since $\abs{( 1- \chi(\xi/ k))}$ is 0 in the region $\abs{\xi} \leq k$ and bounded by $1$ otherwise.  We remark upon the necessity of the extra decay given by $\sym[\xi]^{-\epsilon}$ factor. For other symbol norms we shall again use Leibinz formula: 
     \begin{align*}
-        \sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} 
+        &\sup_{(x, \xi) \in \R^p \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi a_k(x, \xi)}}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \\
         & \leq \sup_{(x, \xi) \in \R^p \times \R^n} \frac{1}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \abs{D^\alpha_x D^{\beta - \mu}_\xi a(x, \xi) } \\
         & \leq  \sup_{(x, \xi) \in \R^p \times \R^n} \frac{C}{\sym[\xi]^{m + \epsilon - \abs{\beta}}} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \sym[\xi]^{m - \abs{\beta - \mu}}  \\
         & = C \sup_{\xi \in \R^n} \sum_{\mu \leq \beta} \binom{\beta}{\mu}k^{-\abs{\mu}} \brac{D^\mu (1 - \chi)}\brac{\frac{\xi}{k}} \sym[\xi]^{- \epsilon - \abs{\mu}}  \\
@@ -235,19 +261,21 @@ Next, we have a rather technical density result : the residual space, $S^{-\inft
 \end{proof}
 
 
+\subsection{Elliptic symbols} 
+\todo{motivation for elliptic symbols} 
 
 \begin{fdefinition}
-    Given $p, n \in \N$, $m \in \R$ and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$, an order $m$ symbol $a \in S^m_\infty(\Omega; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
+    Given $p, n \in \N$ and $m \in \R$, an order $m$ symbol $a \in S^m_\infty(\R^p; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
     \[
     \inf_{\abs{\xi} \geq 1/\epsilon} \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m. 
     \]
 \end{fdefinition}
-The importance of elliptic symbol is that they are invertible modulo $S^{-\infty}_\infty(\Omega; \R^n)$. 
+The importance of elliptic symbol is that they are invertible modulo $S^{-\infty}_\infty(\R^p; \R^n)$. 
 
 \begin{flemma}
-    Given $p, n \in \N$, $m \in \R$ and $\Omega \subset \R^p$ such that $\Omega \subset \overline{\mathrm{Int}(\Omega)}$. Let $a \in S^m_\infty(\Omega; \R^n)$ be an elliptic symbol of order $m$. Then there exist a symbol $b \in S^{-m}_\infty(\Omega; \R^n)$ such that 
+    Let $p, n \in \N$, $m \in \R$ be given and let $a \in S^m_\infty(\R^p; \R^n)$ be an elliptic symbol of order $m$. Then there exist a symbol $b \in S^{-m}_\infty(\R^p; \R^n)$ such that 
     \[
-    a \cdot b - 1 \in S^{-\infty}_\infty(\Omega; \R^n). 
+    a \cdot b - 1 \in S^{-\infty}_\infty(\R^p; \R^n). 
     \]
 \end{flemma}
 \begin{proof}
@@ -301,7 +329,8 @@ The importance of elliptic symbol is that they are invertible modulo $S^{-\infty
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Quantisation}
+\section{Pseudodifferential operators}
+
 As noted in (\ref{}), pseudodifferential operators are obtained via symbols via the quantisation procedure
 \begin{align}
     S^{m}_\infty(\R^{2n}; \R^n) \ni a \mapsto I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi]
@@ -570,7 +599,8 @@ The corresponding Hilbert space adjoint, $T^*$ of an operator $T$ is then define
 
 \subsection{Composition theorem}
 
-In this section we shall prove that, just like symbol spaces, $\Psi^\infty_\infty(\R^n)$ forms a graded *-algebra. The difference being, this time, the algebra is \emph{non-commutative} and has a unit $1 \in \Psi^{0}_{\infty}(\R^n)$. That is, we shall show that following theorem holds. 
+In this section we shall prove that, just like symbol spaces, $\Psi^\infty_\infty(\R^n)$ forms a graded *-algebra. The difference being, this time, the algebra is \emph{non-commutative}. 
+
 \begin{ftheorem}[Summary] 
     Given $n \in \N$, $\Psi^\infty_\infty(\R^n)$ is a graded *-algebra over $\C$ with continuous inclusion 
     \begin{align*}
@@ -579,7 +609,11 @@ In this section we shall prove that, just like symbol spaces, $\Psi^\infty_\inft
     for any $m \leq m'$. 
 \end{ftheorem}
 
-We shall prove this theorem by first accumulate several technical lemmas. Among them, the most important and useful is the reduction lemma that allow us remove the dependence of either $x$ or $y$ in the symbol $a(x, y, \xi) \in S^{m}_\infty(\R^{2n}; \R^n)$. 
+We shall prove this theorem by first accumulate several technical lemmas. Among them, the most important and useful result is the reduction lemma \ref{}, which arise from the observation that for any symbol $a = a(x, y, \xi) \in S^{m}_\infty(\R^{2n}; \R^n)$, there exist a unique symbol $a_L = a_L(x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)$ without $y$ dependence, that quantise to the same operator, i.e.  $I(a) = I(a_L)$. In fact, for any $t \in [0, 1]$, there is a unique $a_t = a_t((1 - t)x + ty, \xi)$ that quantise to the same operator. This shows that  $I : S^{m}_\infty(\R^{2n}; \R^n) \to \Psi^{m}_{\infty}(\R^n)$ is highly non-injective. The reduction lemma allow us to construct an injective quantisation procedure
+\begin{align*}
+q_L : S^{m}_\infty(\R^{n}; \R^n) \to \Psi^{m}_{\infty}(\R^n). 
+\end{align*}
+
 
 \subsection{Asymptotic Summation}
 Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-j}_\infty(\R^{p}; \R^n)$, $j \in \N$, we know that  $a_j(x, \xi)$ has ever higher rate of decay for large $\abs{\xi}$ with increasing $j$. However, the series $\sum_{j \in \N} a_j(x, \xi)$ need not converge. However, we have the following notion of asymptotic convergence. 
@@ -713,7 +747,17 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
 
 
 
-\section{Quantisation and symbol} 
+\section{Principal symbol}
+The existence and uniqueness of the left or right reduced symbol $a_L, a_R$ of any pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ shows that the left and right quantisation maps
+\begin{align*}
+q_L, q_R : S^{m}_\infty(\R^{n}; \R^n) \to \Psi^{m}_{\infty}(\R^n) 
+\end{align*}
+are in fact topological isomorphisms. Therefore, we can define their inverse
+\begin{align*}
+\sigma_L, \sigma_R : \Psi^{m}_{\infty}(\R^n) \to S^{m}_\infty(\R^{n}; \R^n)
+\end{align*}
+which are called the left, resp. right \textit{full symbol map}. 
+
 \begin{flemma} 
     \begin{align*}
     0 \to \Psi^{m - 1}_{\infty}(\R^n) \to \Psi^{m}_{\infty}(\R^n) \to S^{m}_{\infty}(\R^{2n}; \R^{n}) / S^{m - 1}_{\infty}(\R^{2n}; \R^{n}) \to 0 
