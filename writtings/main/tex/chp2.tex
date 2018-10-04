@@ -11,7 +11,7 @@
 
 \todo{In this chapter we recall the basic definitions and some well known properties about pseudodifferential operators.  We include proofs where appropriate but leave some to the reader.  Our main sources for this material are [Vasy, Melrose, Dyatlov-Zworski]} 
 
-In this chapter, we will introduce pseudodifferential operators (or $\Psi$DOs) that generalises differential operators in Euclidean spaces, $\R^n$. We have shown before (\ref{}) that $\F : \sch(\R^n) \to \sch(\R^n)$ is a continuous linear isomorphism. As such, the action on $\sch(\R^n)$ of a $m^{th}$ order differential operator with rapidly decaying smooth coefficient $c_\alpha \in \sch(\R^n)$ 
+In this chapter, we will introduce pseudodifferential operators (or $\Psi$DOs) that generalises differential operators in Euclidean spaces, $\R^n$. We have shown before (\ref{}) that $\F : \sch(\R^n) \to \sch(\R^n)$ is a continuous linear isomorphism. Using integration by parts, we see that the action on $\sch(\R^n)$ of a $m^{th}$ order differential operator with rapidly decaying smooth coefficient $c_\alpha \in \sch(\R^n)$ 
 \begin{align}
 P(x, D) = \sum_{\abs{\alpha} \leq m } c_\alpha(x) D^\alpha_x : \sch(\R^n) \to \sch(\R^n) \label{eq: general diff op} 
 \end{align}
@@ -31,7 +31,7 @@ The goal of this chapter is to build a `calculus' of pseudodifferential operator
 \begin{itemize}
     \item rigourously define the space of symbols $S^{m}_{\infty}(\R^{p}; \R^{n})$. 
     \item show that the quantisation procedure outlined above is well-defined. 
-    \item define elliptic sets of symbols and prove invertibility of elliptic symbols in the filtered algebra of all symbols. 
+%    \item define elliptic sets of symbols and prove invertibility of elliptic symbols in the filtered algebra of all symbols. 
 %    \item prove prove several topological and algebraic properties of $S^{m}_{\infty}(\R^{2n}; \R^{n})$. 
 %    \item \todo{Something about principal symbol and symbol calculus.}
 \end{itemize} 
@@ -568,7 +568,7 @@ Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-
 \begin{flemma}
     Every sequence of symbols with decreasing order is asymptotically summable.  Furthermore, the sum is unique up to an additive term in $S^{-\infty}_\infty(\R^{p}; \R^n)$. 
 \end{flemma}
-\begin{proof}[Sketch]
+\begin{proof}[Proof sketch]
     Let $a_j \in S^{m-j}_\infty(\R^{p}; \R^n)$, $j \in \N$ be given. For uniqueness, suppose $a, a' \in S^{m}_\infty(\R^{p}; \R^n)$ are both asymptotic sums of the sequence. We need to show that $a - a' \in S^{-\infty}_\infty(\R^{p}; \R^n)$. Indeed, for any $N \in \N$, 
     \begin{align*}
         a - a' = \brac{a - \sum_{j = 0}^{N -1} a_j } - \brac{a' - \sum_{j = 0}^{N -1} a_j } \in S^{m -N}_\infty(\R^{p}; \R^n)
@@ -576,7 +576,7 @@ Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-
     since both terms on the right are elements of $S^{m -N}_\infty(\R^{p}; \R^n)$. Thus, 
     $$a - a' \in \cap_{n \in \N} S^{m -N}_\infty(\R^{p}; \R^n) = S^{-\infty}_\infty(\R^{p}; \R^n).$$ 
     \\
-    For existence, we construct $a S^{m}_\infty(\R^{p}; \R^n)$ by Borel's method \cite{}. Let $\chi \in C^{\infty}_c(\R^p)$ be a bump function and define
+    For existence, we construct $a \in S^{m}_\infty(\R^{p}; \R^n)$ by Borel's method \cite{}. Let $\chi \in C^{\infty}_c(\R^p)$ be a bump function, that is $0 \leq \chi \leq 1$ and $\chi|_{\norm[x] \leq 1} \equiv 1$ and $\chi|_{\norm[x] >2} \equiv 0$. We then define
     \begin{align*}
         a = \sum_{j \in \N} \brac{1 - \chi}(\epsilon_j \xi) a_j(x, \xi)
     \end{align*}
@@ -586,15 +586,15 @@ Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-
     \end{align*}
     converges in $S^{m -N}_\infty(\R^{p}; \R^n)$ for any $N \in \N$. 
     \\
+    The result will then follow by applying Leibinz formula on the expression above and notice that with the choice of 
+    \begin{align*}
+    \epsilon_j = 2^{-j}
+    \end{align*}
+    the sum converges in all the  symbol seminorm converges to $a$. 
     
-    Note: This is again an exercise in using symbol seminorms and Leibniz formula.  
 \end{proof}
 
 
-\todo{about smoothing operators}
-\begin{fprop}
-    Elements of the residual operator space are exactly smoothing operators. Explicitly, a pseudodifferential operator $A : \sch(\R^n) \to \sch'(\R^n)$ is an element of $\Psi^{-\infty}_{\infty}(\R^n)$ if and only if there exist $c \in S^{-\infty}_{\infty}(\R^{n}; \R^{n})$ such that $A = I(c)$. 
-\end{fprop}
 
 
 \subsection{Reduction}
@@ -608,10 +608,12 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
     \begin{align*}
         q_L := I \circ \pi_L^* : S^{m}_\infty(\R^{n}; \R^n) \to \Psi^{m}_\infty(\R^{n}) 
     \end{align*}
-    with elements $a_L \in S^{m}_\infty(\R^{n}; \R^n)$ known as the \textbf{left reduced symbols}.
-    
+    with elements $a_L \in S^{m}_\infty(\R^{n}; \R^n)$ known as the \textbf{left reduced symbols}.\\
+   
 \end{fdefinition}
-
+\begin{rem}
+        Replacing the projection map with projection onto the second variable instead will give us \textit{right reduced symbols}. The results below apply to both left and right reduced symbols. Indeed, there is a family of quantisation corresponding to the projections $(x, y, \xi) \mapsto ((1 - t)x + ty, \xi)$ for each $t \in [0, 1]$. Left and right quantisation are special cases corresponding to $t = 0, 1$ respectively. 
+\end{rem}
 \begin{flemma}[Reduction] 
     For any $a(x, y, \xi) \in S^{m}_\infty(\R^{2n}_{x, y}; \R^n_\xi)$ there exist unique $a_L(x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)$ such that $I(a) = q_L(a_L) = I(a_L \circ \pi_L)$. Furthermore, with $\iota : \R^{2n} \ni (x, \xi) \mapsto (x, x, \xi) \in \R^{3n}$ being the diagonal inclusion map, we have 
     \begin{align}
@@ -641,10 +643,38 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
     \begin{align*}
         b(x, \xi) \sim \sum_{\alpha} \frac{i^{\abs{\alpha}}}{\alpha !} D^\alpha_y D^\alpha_\xi a (x, x, \xi) \in S^{m}_\infty(\R^{n}; \R^n)
     \end{align*}
-    so that $I(a) - I(b) \in \Psi^{-\infty}_\infty(\R^n)$. It remains to show that $A \in \Psi^{-\infty}_\infty(\R^n) \iff A = I(c), c \in S^{-\infty}_\infty(\R^{n}; \R^n)$. 
+    so that $I(a) - I(b) \in \Psi^{-\infty}_\infty(\R^n)$. We have thus reduce the problem to showing that the elements in $\Psi^{-\infty}_{\infty}(\R^n)$ has left reduced symbol. This we will do prove in the next proposition. 
+    
+%     It remains to show that $A \in \Psi^{-\infty}_\infty(\R^n) \iff A = I(c), c \in S^{-\infty}_\infty(\R^{n}; \R^n)$. 
 \end{proof}
 
+\todo{about smoothing operators}
+\begin{fprop}
+    A pseudodifferential operator $A : \sch(\R^n) \to \sch'(\R^n)$ is an element of $\Psi^{-\infty}_{\infty}(\R^n)$ if and only if its Schwartz kernel, $K$, is smooth and satisfies the estimate
+    \begin{align*}
+    \abs{D^\beta D^\alpha K(x, y)} \leq C_{N, \alpha, \beta} \sym[x - y]^{-N}
+    \end{align*}
+    for any $N \in \N$, $\alpha, \beta \in \N^n$. 
+\end{fprop}
+\begin{proof}[proof sketch.] 
+    \todo{prooofff!!!}
+    Suppose $A \in \Psi^{-\infty}_{\infty}(\R^n)$, then for some $a \in S^{-\infty}_\infty(\R^{2n}; \R^n)$, $I(a) = A$, with the Schwartz kernel $I(a) = I(a)(x, y)$ represented by an absolutely convergent integral. The Schwartz kernel can be shown to be smooth and satisfies the precribed esitmates using integration by parts, 
+    \begin{align*}
+    (x - y)^\alpha D^\beta_x D^\gamma_y I(a) = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} (-D_\xi)^\alpha (D_x + i\xi)^\beta (D_y - i\xi)^\gamma  a(x, y, \xi) \d[\xi]
+    \end{align*}
+    which again defines an absolutely and uniformly convergent integral. \\
+    \\
+    Conversely, given a smooth Schwartz kernel $K(x, y)$, we define $g(x, z) = K(x, x - z)$. That $K$ satisfies the prescribed estimate means that $g$ is a Schwartz function in $z$ and thus have a Fourier transform in $z$. We then define a left reduced symbol
+    \begin{align*}
+    b(x, \xi) := \frac{1}{(2\pi)^{n/2}} \int e^{- i z \cdot \xi} g(x, z) dz 
+    \end{align*}
+    which is a symbol in $S^{-\infty}_\infty(\R^{n}; \R^n)$. Taking inverse Fourier transform shows that
+    \begin{align*}
+    I(b)(x, y) = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} b(x, \xi) \d[y] \d[\xi] = g(x, x - y) = K(x, y)
+    \end{align*}
+    which means $I(b) = A$ as required. 
 
+\end{proof}
 
 \begin{ftheorem}[Composition]
     Let $A \in \Psi^{m}_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ for some $m, m' \in \R$. Then, 
@@ -653,7 +683,7 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
         \item $A \circ B \in \Psi^{m + m'}_\infty(\R^n)$. 
     \end{enumerate}
 \end{ftheorem}
-\begin{proof}[Sketch]
+\begin{proof}[proof sketch]
     Let $A \in \Psi^{m}_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ for some $m, m' \in \R$ be given. 
     Since $A : \sch(\R^n) \to \sch(\R^n)$ (\ref{}), we have the adjoint operator $A^* : \sch'(\R^n) \to \sch'(\R^n)$ defined by 
     \begin{align*}
@@ -685,7 +715,7 @@ We will now show that $\Psi^{m}_\infty(\R^n)$ is exactly the range of $I : S^{m}
 
 
 \section{Principal symbol}
-The existence and uniqueness of the left or right reduced symbol $a_L, a_R$ of any pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ shows that the left and right quantisation maps
+The existence and uniqueness of the left or right reduced symbol $a_L, a_R$ of any pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ shows that the left and right quantisation
 \begin{align*}
 q_L, q_R : S^{m}_\infty(\R^{n}; \R^n) \to \Psi^{m}_{\infty}(\R^n) 
 \end{align*}
@@ -693,25 +723,87 @@ are in fact topological isomorphisms. Therefore, we can define their inverse
 \begin{align*}
 \sigma_L, \sigma_R : \Psi^{m}_{\infty}(\R^n) \to S^{m}_\infty(\R^{n}; \R^n)
 \end{align*}
-which are called the left, resp. right \textit{full symbol map}. 
-
+which are called the left, resp. right \textit{full symbol map}. As a corollary of the reduction lemma, we can show that for any $a \in S^{m}_\infty(\R^{n}; \R^n)$
+\begin{align}
+\sigma_L(q_R(a))(x, \xi) \sim \sum_{\alpha} \frac{i^{\abs{\alpha}}}{\alpha !} D^\alpha_x D^{\alpha}_\xi a(x, \xi). \label{eq: asymptotic expansion of left symbol}
+\end{align}
+Notice that, except for the first term (which is $a(x, y)$ itself, each term in the sum above are at least one order lower. More precisely
+\begin{align*}
+D^\alpha_x D^\alpha_\xi a(x, \xi) \in S^{m - \abs{\alpha}}_\infty(\R^{n}; \R^n). 
+\end{align*}
+In other words, we have
+\begin{align*}
+\sigma_L(A) - \sigma_R(A) \in S^{m -1}_\infty(\R^{n}; \R^n)
+\end{align*}
+for any $A \in \Psi^{m}_{\infty}(\R^n)$. This suggest that we can in fact isolate the leading order behaviour. 
+\begin{fdefinition}[Principal symbol] 
+    The principal symbol map of order $m \in \R$ is the map 
+    \begin{align*}
+    \sigma_m : \Psi^{m}_{\infty}(\R^n) \to S^{m - [1]}_\infty(\R^{n}; \R^n) 
+    \end{align*}
+    defined by 
+    \begin{align*}
+    \sigma_m(A) = [\sigma_L(A)] = [\sigma_R(A)]
+    \end{align*}
+    where $[a]$ is the equivalence class of $a$ in the quotient symbol space
+    \begin{align*}
+    S^{m - [1]}_\infty(\R^{n}; \R^n)  :=  S^{m }_\infty(\R^{n}; \R^n) / S^{m -1}_\infty(\R^{n}; \R^n) 
+    \end{align*}
+\end{fdefinition}
+With the principal symbol map, it is clear that we can form the following short exact sequence. 
 \begin{flemma} 
     \begin{align*}
-    0 \to \Psi^{m - 1}_{\infty}(\R^n) \to \Psi^{m}_{\infty}(\R^n) \to S^{m}_{\infty}(\R^{2n}; \R^{n}) / S^{m - 1}_{\infty}(\R^{2n}; \R^{n}) \to 0 
+    0 \to \Psi^{m - 1}_{\infty}(\R^n) \hookrightarrow  \Psi^{m}_{\infty}(\R^n) \to S^{m}_{\infty}(\R^{2n}; \R^{n}) / S^{m - 1}_{\infty}(\R^{2n}; \R^{n}) \to 0 
     \end{align*}
 \end{flemma}
 
+
+Further exploitation of the asymptotic expansion \ref{eq: asymptotic expansion of left symbol} allow us to prove the following central result concerning principal symbols of pseudodifferential operators. The first result translate roughly to the statement that pseudodifferential operators commutes to leading order. 
+
 \begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$ and $B \in \Psi^{m'}_{\infty}(\R^n)$, then 
     \begin{align*}
-    \Psi^{m}_{\infty}(\R^n) \cdot \Psi^{m'}_{\infty}(\R^n) \subset \Psi^{m + m'}_{\infty}(\R^n)
+    \sigma_{m + m'}(A \circ B) = \sigma_m(A) \sigma_{m'}(B). 
+    \end{align*}
+\end{fprop}
+\begin{proof}[proof sketch.] Using the proof of the composition theorem, we know that $A \circ B = I(a(x, \xi)b(y, \xi))$ has full symbol, 
+    \begin{align*}
+    a(x, \xi) b(y, \xi) \in S^{m + m'}_\infty(\R^{2n}; \R^n)
+    \end{align*}
+    with $a, b \in S^{m}_\infty(\R^{n}; \R^n)$ such that $I(a) = A$, $I(b) = B$. The algebraic property of the quotient space $S^{m}_\infty(\R^{n}; \R^n) / S^{m-1}_\infty(\R^{n}; \R^n)$ then give the desired result
+    \begin{align*}
+    \sigma_{m + m'}(I(a(x,\xi)b(y, \xi))) = [a b] = [a] [b] =  \sigma_m(A) \sigma_{m'}(B). 
+    \end{align*}
+\end{proof}
+
+The second result goes one order further in the asymptotic expansion \ref{eq: asymptotic expansion of left symbol}, where we encounter the sympletic structure on $T^*\R^n$. Recall that the Poisson bracket on $T^*\R^n \cong \R^n_x \times \R^n_\xi $ is given by 
+\begin{align*}
+\{a, b\} := \sum_{j = 1}^n \p_{\xi_j}a \p_{x_j}b - \p_{x_j} a \p_{\xi_j}b = H_{a}b 
+\end{align*}
+where $H_a$ is the Hamilton vector field associated with $a$. We then have the following result. 
+\begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$ and $B \in \Psi^{m'}_{\infty}(\R^n)$, then $[A, B] := AB - BA \in \Psi^{m + m' - 1}_{\infty}(\R^n)$ and 
+    \begin{align*}
+    \sigma_{m + m' -1}([A, B]) = -i \{ \sigma_{m}(A), \sigma_{m'}(B) \}. 
     \end{align*}
 \end{fprop}
 
+
+
 \section{$L^2$ and Sobolev boundedness} 
+We shall also note here that, using Hormander's square root construction, we can prove the following boundedness result of pseudodifferential operators acting on $L^2$ and on Sobolev spaces. (for proof see )
+
 \begin{fprop}
-    $A : L^2(\R^n) \to L^2(\R^n)$ is a bounded linear operator if $A \in \Psi^{0}_{\infty}(\R^n)$. 
+    Let $A \in \Psi^{0}_{\infty}(\R^n)$. Then $A : L^2(\R^n) \to L^2(\R^n)$ is a bounded linear operator. Let $a \in \sigma_0(A)$ be a representative of the principal symbol, then for any $u \in L^2(\R^n)$, 
+    \begin{align*}
+    \norm[A u ]_{L^2} \leq C \norm[u]_{L^2} + \abs{\inprod[Eu, u]_{L^2}}
+    \end{align*}
+    for some $C > 0$ and $E \in \Psi^{-\infty}_{\infty}(\R^n)$. 
 \end{fprop}
 
+\begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$, then for any $s \in \R$, $A : H^{s}(\R^n) \to H^{s - m}(\R^n)$ is a bounded linear map. 
+\end{fprop}
 
 \begin{flemma}[Square root construction]
     

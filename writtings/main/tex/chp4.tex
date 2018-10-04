@@ -6,11 +6,12 @@
 
 \begin{document}
 \maketitle
-In previous chapter, we have shown that any (globally) elliptic pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ give raise to a Fredholm operator between the Sobolev spaces
-\begin{align*}
-A : H^s \to H^{s - m}. 
-\end{align*}
-Presently, we shall turn our focus to to a simple non-elliptic problem. Specifically, we will consider the Fredholm problem of the wave operator on the torus. We shall first give the definitions of the manifolds and Hilbert spaces that will feature in this problem. \\
+%In previous chapter, we have shown that any (globally) elliptic pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ give raise to a Fredholm operator between the Sobolev spaces
+%\begin{align*}
+%A : H^s \to H^{s - m}. 
+%\end{align*}
+
+Having develop a substantial theory for elliptic pseudodifferential operators, we shall presently turn our attention to a simple non-elliptic problem. Specifically, we will consider the Fredholm problem of the wave operator on the torus. We shall first give the definitions of the manifolds and Hilbert spaces that will feature in this problem. \\
 
 \begin{fdefinition} 
 Let $\S^1 = [0,1] / (0 \sim 1)$ denote the circle and for any $k \in \N$ let
@@ -70,11 +71,16 @@ Furthermore, the method we shall employ relies only on the \emph{principal symbo
 \begin{align*}
 f : z \mapsto (\Box - iQ + zA)
 \end{align*}
-where $f(z) : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredhom any $z \in \C$. Recall that the Fredholm index defined by
+where $f(z) : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredhom for any $z \in \C$. Recall that the Fredholm index is defined by
 \begin{align*}
 \mathrm{Ind}(T) := \dim \ker T - \dim \coker T, \quad T \text{ Fredholm }
 \end{align*}
-is a continuous as a map from the space of Fredholm maps between Hilbert spaces to $\Z$ \ref{}. 
+and it can be proven that $\mathrm{Ind}$ is a continuous as a map from the space of Fredholm maps between Hilbert spaces to $\Z$ \ref{}. Therefore, the composition $\mathrm{Ind} \circ f : \C \to \Z$ is continuous and thus maps connected sets to conneted sets. Since the only connected sets in $\Z$ are the singletons, we conclude that the family
+\begin{align*}
+\set{\Box - iQ + zA}_{z \in \C} 
+\end{align*}
+is in fact a family of Fredholm operators with constant index for any choice of $A \in \Psi^{1}_{\infty}(\R^n)$.
+
 \todo{something about constant index} 
 
 
@@ -82,7 +88,6 @@ is a continuous as a map from the space of Fredholm maps between Hilbert spaces 
 
 \section{Propagation of singularities} 
 
-\subsection{A motivation example} 
 To motivate this result, we will first look at the example of the wave operator in $2D$ Euclidean space, i.e. the operator
 \begin{align*}
 \p_t^2 - \p_x^2. 
@@ -112,10 +117,20 @@ where $g, h$ are continuous functions defining the right and left moving waves r
 Thus, we can conjecture that for any solution $u$ to the homogeneous equation \ref{eq: homogeneous wave in 1d}, either $u(t, x)$ is differentiable at $(t_0, x_0)$, or the same singular behaviour (i.e. non-differentiability) will be present on all of the light cone 
 $$\set{(t_0 + s, x_0 +s) \wh s \in \R} \cup \set{(t_0 - s, x_0 + s) \wh s \in \R}.$$
 
- We shall see that this phenomenon generalise to arbitrary manifolds, with ``light cone" replaced by the bicharacteristic flow of the principal symbol of the operator under investigation. 
+ We shall see that this phenomenon generalise to arbitrary manifolds, with ``light cone" replaced by the null-bicharacteristics of the principal symbol of the operator under investigation. More precisely, we have the following result due to Hormander \ref{hormander}: 
+ \begin{ftheorem}
+Let $P \in \Psi^{m}_{cl}(\R^n)$ be a classical pseudifferential operator whose principal symbol $\sigma_m(P)$ has real homogeneous representative $p$. Then, $\WF(u) \setminus \WF(Pu) $ is a union of maximally extended null-bicharacteristics of $p$, i.e. it is the union of the sets of the form
+\begin{align*}
+\set{\exp(t H_p(x_0, \xi_0)) \wh t \in (t_0, t_1)\subset \R, \quad p(x_0, \xi_0) = 0}
+\end{align*}
+where $H_p$ is the Hamilton vector field of $p$. 
+\end{ftheorem}
+
+The argument involved to establish the propagation theorem can be adapted so that we can accomodate operators with not necessarily real homogeneous principal. The theorem can also be stated in quantitative terms as below: 
 
 \todo{example on euclidean wave operator in one space dimension}
 \todo{insert discussion + proof sketch of prop of sing theorem}
+
 
 \begin{ftheorem}[Propagation of singularities] 
     Suppose we have 
@@ -136,10 +151,10 @@ $$\set{(t_0 + s, x_0 +s) \wh s \in \R} \cup \set{(t_0 - s, x_0 + s) \wh s \in \R
 
 
 
-\section{Fredholm problem of totally periodic wave operator} 
+\section[Main result]{Fredholm problem of totally periodic wave operator} 
 We will now define the required operator $Q$ and the subspace $\mathcal{X}^s \subset H^{s}(M)$ that make $\Box - iQ: \mathcal{X}^s \to H^{s -1}$ Fredholm.  As mentioned we will proceed via the ``complex absorption" method \ref{}. We define
 \begin{align*}
-Q := \chi(t)^2 \p_t^2
+Q := \chi(t) \p_t^2
 \end{align*}
 where $\chi : \S^1 \to [0, 1]$ is a smooth cut-off satisfying
 \begin{align*}
@@ -192,7 +207,9 @@ where $\delta, \delta' \in (0, 1/8)$ (ensuring that $\delta+ \delta' < 1/4$).
     \draw (-2.5, 8) -- (-2.5, 8 - 2);
     \draw[rounded corners=8pt] (-2.5, 8 - 2) -- (-2.5, 8 - 2.24) -- (-1, 8 - 2.25) -- (-0.5, 8 - 2.5);
     \end{tikzpicture}
+    \captionof{figure}{\small The square above represents the fundamental domain of the $n + 1$-torus with the periodic time dimension , $t \in [0, 1] / \sim $ runing vertically and the space dimensions $x \in ([0, 1]/\sim )^n$ collapsed into one-dimensional running horizotally.  The graph on the left is the graph of the smooth cut-off function that is supported in $U_1$, the blue region. The complement of the blue region, $U_1^c$ is the projection (from the cotangent bundle $T^*M$) of the characteristic set of $\Box - iQ$ onto the manifold $M$. The red region $U_2$ is an open neighbourhood of $U_1^c$. }
 \end{center}
+
 We note that $\Box - iQ$ is again a second order differential operator, but its principal symbol changes to 
 \begin{align}
 \sigma_2(\Box - iQ)(t, x, \tau, \xi) = \abs{\xi}^2 - \tau^2 + i \chi(t) \tau^2 \label{eq: p - iq} 
@@ -284,11 +301,20 @@ With the definitions, in place, we are ready to prove:
     \begin{align*}
     \norm[u]_{\mathcal{X}^s} = \norm[u]_{H^s} + \norm[(\Box - iQ)u]_{H^{s - 1}} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}}
     \end{align*}
-    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$. Thus, by \ref{}, $\Box - iQ$ has finite dimensional kernel and closed range. Furthermore, by \ref{} and the observation that $(\Box - iQ)^* = \Box^* + iQ^* = \Box + iQ^*$, we have
+    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$ \cite{} . Thus, by \ref{}, $\Box - iQ$ has finite dimensional kernel and closed range. \\
+    
+    Furthermore, by the isomorphism between Hilbert space and its continuous dual, the dual map of $\Box - iQ$
+    \begin{center}
+        \begin{tikzcd}
+            (\Box - iQ)' : (H^{s - 1}(M))' \ar[r] \ar[d, "\cong", shift left=1cm] & (\mathcal{X}^s)' \ar[d, "\cong"]   \\
+            (\Box - iQ)^* :  H^{1-s}(M) \ar[r]& (\mathcal{X}^s)^*
+        \end{tikzcd}
+    \end{center}
+    is given by a map $(\Box - iQ)^* = \Box + iQ^* $ that maps from $H^{1 - s}(M)$. Applying the second estimate to $1 - s$, we know that $\Box +iQ^*$ has finite dimensinal kernel. Using \ref{}, we have 
     \begin{align*}
     \coker (\Box - iQ) \cong \ker(\Box + iQ^*). 
     \end{align*}
-    But again by \ref{} and the second estimate, we conclude that $\ker (\Box + iQ^*)$, and hence $\coker (\Box - iQ)$, is finite dimensional. Jointly, these allow us to conclude that $\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredholm. \\
+    allowing us to conclude that $\coker(\Box - iQ)$ is finite dimensional as well. Jointly, these allow us to conclude that $\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredholm. \\
     
 %    Note that $(\Box - iQ)^* = \Box + i Q^*$. Also, since $M$ is a compact manifold, \ref{} shows that $H^{s} \hookrightarrow H^{N}$ is a compact inclusion for $N < s$. \todo{proof that this transfer to $\mathcal{X}^s$ as well}. Then, by \ref{}, these esitmates allow us to conclude that $(\Box - iQ) : \mathcal{X}^s \to H^{s - 1}$ is indeed a Fredhold operator.     \\
 %    \\
@@ -352,6 +378,8 @@ With the definitions, in place, we are ready to prove:
         \draw [thick, dotted] (0.8, 5.8) -- (2, 7); 
         \draw [fill=black] (2, 7) circle [radius = 0.1];
         \end{tikzpicture}
+        \captionof{figure}{\small 
+            The hamiltonian flow associated with the principal symbol $p := \sigma_2(\Box)$ of the wave operator is given by the map $ \exp(\sigma H_p) (t, x, \tau, \xi) = (t + \sigma \tau, x + \sigma \xi, \tau, \xi) $ where $\sigma \in \R$ is the flow parameter. As depicted above, every point in the characteristic set of $\Box - iQ$, namely points in $U_1^c$ (white region) pointing in the $45^o$ direction, i.e. the dual variables satisfies $\abs{\xi} = \abs{\tau}$, are points that flows from and will flow into the absorption region (dark region). }
      \end{center}
  
      As such, by \ref{}, we obtain the estimate : $\exists C > 0$
@@ -366,7 +394,11 @@ With the definitions, in place, we are ready to prove:
      \end{align*}
      since $\norm[v]_{H^{s - 2}} \leq \norm[v]_{H^{s - 1}}$ for any $v \in H^{s - 2}$. \\
      \\
-     Using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$ instead, we get a similar estimate for $\Box + i Q^*$, namely,  : $\exists C > 0$
+     For the second estimate, observe that 
+     \begin{align*}
+     Q^* = (\chi(t)^2 \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
+     \end{align*}
+     which has the same principal symbol $\chi(t) \tau^2$ as that of $Q$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  : $\exists C > 0$
      \begin{align*}
      \norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
      \end{align*}
