@@ -42,19 +42,7 @@ So, clearly the operator is not elliptic everywhere. However, using the results 
 \end{align*}
 where $\mathcal{X}^s$ is a non-trivial subspace of $H^s(M)$. This will be the goal of this chapter. 
 
-\paragraph{Significance} \hfill \\
-This result will allow us conclude the regularity of the solutions to differential equation of the form 
-\begin{align*}
-(\Box - iQ) u = f, \quad u, f \in H^{-\infty}(M)
-\end{align*}
-in terms of the regularity of $f$. Furthermore, the method we shall employ relies only on the \emph{principal symbol} of $\Box$ which is second order. This allows us to extend the result to any first order pertubation, i.e. any choice of $A \in \Psi^{1}_{\infty}(\R^n)$ give rise to an analytic operator valued map 
-\begin{align*}
-f : z \mapsto (\Box - iQ + zA)
-\end{align*}
-where $f(z) : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredhom and compact for any $z \in \C$. Consequently, by the analytic Fredholm theorem \ref{} \todo{mention in functional analysis section} we have that either $1 - f(z)$ is not invertible for any $z \in \C$ or $(1 - f(z))^{-1}$ is a meromorphic function whose poles give rise to non-trivial solution 
-\begin{align*}
-f(z) u = (\Box - iQ + zA) u = u. 
-\end{align*}
+
 
 \paragraph{Strategy of the proof} \hfill \\
 The crucial step in the proof is to show that the following \textit{Fredholm estimates} holds: $\forall s, N \in \R$, $\forall u \in \mathcal{X}^s$, there exist positive real number $C > 0$, such that
@@ -63,6 +51,31 @@ The crucial step in the proof is to show that the following \textit{Fredholm est
 &\norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
 \end{align*}
 First, we note that in the elliptic set $\Ell^2(\Box)$, microlocal elliptic regularity estimate \ref{} provide us with sharper estimates. However, to obtain the estimates above near elements in the characteristic set $\Char^2(\Box)$, we will need to ``propagate" results from elliptic regions along the Hamiltonian flow of $p = \sigma_2(\Box)$. This is where we will employ propagation of singularity theorem described in the next section. Indeed, this method will prompt us to construct $Q$ to introduce a larger region in $T^*M$ where $\Box - iQ$ is elliptic, so that every point in the characteristic set of $\Box - iQ$ is a point along the Hamiltonian flow that begins in $\Ell^2(\Box - iQ)$. 
+
+
+
+\paragraph{Significance} \hfill \\
+One characterisation of Fredholm operators is that they are operators that are invertible up to a compact operator. Moreover, our result will allow us conclude the regularity of the solutions to differential equation of the form 
+\begin{align*}
+(\Box - iQ) u = f, \quad u, f \in H^{-\infty}(M)
+\end{align*}
+in terms of the regularity of $f$. One immediate consequence of the estimates given above is that if $f$ is smooth, we know that $\norm[(\Box - iQ)u ]_{H^{s-1}}$ (i.e. right hand side of estimate) is bounded for all $s \in \R$ and therefore $\norm[u]_{H^s}$ (left hand side) is bounded for all $s \in \R$. In short, we have the result 
+\begin{align*}
+f \in C^\infty(M) \iff u \in C^\infty(M). 
+\end{align*}
+In particular, solutions to the homogeneous equation $(\Box - iQ)u = 0$ is guarantee to be smooth. \\
+
+
+Furthermore, the method we shall employ relies only on the \emph{principal symbol} of $\Box$ which is second order. This allows us to extend the result to any first order pertubation, i.e. any choice of $A \in \Psi^{1}_{\infty}(\R^n)$ give rise to a continuous (in fact, analytic) operator valued map 
+\begin{align*}
+f : z \mapsto (\Box - iQ + zA)
+\end{align*}
+where $f(z) : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredhom any $z \in \C$. Recall that the Fredholm index defined by
+\begin{align*}
+\mathrm{Ind}(T) := \dim \ker T - \dim \coker T, \quad T \text{ Fredholm }
+\end{align*}
+is a continuous as a map from the space of Fredholm maps between Hilbert spaces to $\Z$ \ref{}. 
+\todo{something about constant index} 
 
 
 
@@ -121,8 +134,6 @@ $$\set{(t_0 + s, x_0 +s) \wh s \in \R} \cup \set{(t_0 - s, x_0 + s) \wh s \in \R
     \end{align*}
 \end{ftheorem}
 
-
-\section{Sympletic structure on Torus} 
 
 
 \section{Fredholm problem of totally periodic wave operator} 

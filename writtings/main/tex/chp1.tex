@@ -24,7 +24,7 @@ where $D_{x_j} := - i \p_{x_j}$with $i \in \C$ being the imaginary unit and $\p_
 &\alpha \leq \beta \iff \alpha_i \leq \beta_i, \quad \forall i \in \set{1, \dots, n}. 
 \end{align*}
 
-We shall now state the Leibinz formula, not only to illustrate the multi-index notation, but it will also be a theorem that we repeatedly use. 
+We shall now state the Leibinz formula, not only to illustrate the multi-index notation, but it will also be a theorem that we shall use repeatedly. 
 \begin{ftheorem}[Leibinz formula]
     Let $f, g \in C^\infty(\R^n)$, then 
     \begin{align*}
@@ -39,21 +39,23 @@ x &\mapsto \sym[x] := \brac{ 1 + x_1^2 + x_2^2 + \dots + x_n^2}^{1/2} = \brac{1 
 \end{align*}
 The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptotically equivalent to $\norm[x]$ for large $x$. 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 
 \section{Schwartz functions and tempered distributions}
 
 \begin{fdefinition}[Schwartz space]
-    The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any $\alpha, \beta \in \N^n$, 
+    The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any $\alpha \in \N^n$, 
     \begin{align}
-    \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)} < \infty. 
+    \sup_{x \in \R^n} \abs{\sym[x]^k D^\alpha_x \varphi(x)} < \infty. 
     \end{align}
 
     
     We can define a countable family of seminorm on $\sch(\R^n)$ by 
     \begin{align}
-    \norm[\varphi]_k := \max_{\abs{\alpha} + \abs{\beta} \leq k} \sup_{x \in \R^n} \abs{x^\beta D^\alpha_x \varphi(x)}
+    \norm[\varphi]_k := \max_{\abs{\alpha} \leq k} \sup_{x \in \R^n} \abs{\sym[x]^k D^\alpha_x \varphi(x)}
     \end{align}
     for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ a Frechet space with metric 
     \begin{align*}
@@ -65,7 +67,7 @@ The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptot
     \begin{enumerate}
         \item     We note that the space $\sch(\R^n)$ is non-empty since it contains all the compactly supported smooth functions $\chi : \R^n \to \C$. In fact, 
         \begin{align*}
-        C^\infty_c(\R^n) = \set{u \in C^\infty(\R^n) \wh \exists C \in \R_{> 0}, \, \abs{x} > R \implies u(x) = 0} \subset \sch(\R^n)
+        C^\infty_c(\R^n) = \set{u \in C^\infty(\R^n) \wh \exists C \in \R_{> 0}, \, \abs{x} > C \implies u(x) = 0} \subset \sch(\R^n)
         \end{align*}
         is a dense inclusion. 
         
@@ -308,6 +310,7 @@ In this section we shall restrict our attention to just maps between Banach spac
     \norm[u]_V \leq C \brac{\norm[Tu]_W + \norm[Ku]_Y}
     \end{align*}
     holds for some positive real constant $C \in \R_{> 0}$, then the image, $T(V)$ is closed. 
+    \todo{Add in closed kernel part of the statement!} 
 \end{ftheorem}
 \begin{proof}
     Let $\set{Tu_n \in T(V) \wh n \in \N, u_n \in V}$ be a convergent sequence in $T(V)$ with limit $w \in W$. We need to show that there exist $v \in V$ such that $T v = w$. Let $L = \ker T$. There are two cases 

@@ -261,70 +261,6 @@ between of any rapidly decaying function $f$ and the constant function $1 \in S^
 \end{proof}
 
 
-\subsection{Elliptic symbols} 
-\todo{motivation for elliptic symbols} 
-
-\begin{fdefinition}
-    Given $p, n \in \N$ and $m \in \R$, an order $m$ symbol $a \in S^m_\infty(\R^p; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
-    \[
-    \inf_{\abs{\xi} \geq 1/\epsilon} \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m. 
-    \]
-\end{fdefinition}
-The importance of elliptic symbol is that they are invertible modulo $S^{-\infty}_\infty(\R^p; \R^n)$. 
-
-\begin{flemma}
-    Let $p, n \in \N$, $m \in \R$ be given and let $a \in S^m_\infty(\R^p; \R^n)$ be an elliptic symbol of order $m$. Then there exist a symbol $b \in S^{-m}_\infty(\R^p; \R^n)$ such that 
-    \[
-    a \cdot b - 1 \in S^{-\infty}_\infty(\R^p; \R^n). 
-    \]
-\end{flemma}
-\begin{proof}
-    We shall follow the general strategy of inverting the symbol outside of a compact set. Let $\phi \in C^\infty_c(\R^n)$ be a smooth cut off function, i.e $0 \leq \phi \leq 1$ and $ \phi(\xi) = 1$ for $\abs{\xi} < 1$ and $\phi(\xi) = 0 $ for $\abs{\xi} > 2$. \\
-    
-    Let $a \in S^{m}_\infty(\Omega; \R^n)$ be an elliptic symbol, that is, for any fixed $\epsilon \in \R_{> 0}$, we have 
-    \[
-    \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m
-    \]
-    for any $\abs{\xi} \geq 1/\epsilon$. Thus, we can define 
-    \begin{align*}
-        b(x, \xi) = 
-        \begin{cases}
-            \frac{1 - \phi( \epsilon \xi /2)}{a(x, \xi)} & \abs{\xi} \geq 1/ \epsilon \\
-            0 & \abs{\xi} < 1 / \epsilon. 
-        \end{cases}
-    \end{align*}
-    We check: 
-    \begin{description}
-        \item[$b$ is well-defined and smooth. ] \hfill \\
-        We note that $\abs{a(x, \xi)} > 0$ whenever $\abs{\xi} \geq 1/\epsilon$ and therefore $b$ is well defined in that region. For smoothness, we note first that $b$ is smooth in the regions $\abs{\xi} > 1/ \epsilon$ and $\abs{\xi} < 1/\epsilon$. Set $\delta = 1/(2 \epsilon)$. In the region where $1/\epsilon - \delta < \abs{\xi} < 1/\epsilon + \delta$, we have $\abs{\epsilon \xi/ 2} < 1/\epsilon$ and therefore $b(x, \xi) \equiv 0$ in this region and is thus smooth. Since the we have covered $\Omega \times \R^n$ by the three chart domain above, $b$ is smooth by the (smooth) gluing lemma. 
-        
-        \item[$b$ is a symbol of order $-m$.  ] \hfill \\
-        We can prove by induction that in the region $\abs{\xi} \geq 1/ \epsilon$
-        \begin{align*}
-            D^\alpha_x D^\beta_\xi b = a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}
-        \end{align*}
-        for all multi-index $\alpha, \beta$, where $G_{\alpha \beta}$ is a symbol of order $(\abs{\alpha} + \abs{\beta})m  - \abs{\beta}$. Therefore, using the ellipticity estimate for $a$, we get 
-        \begin{align*}
-            \norm[b]_{k, -m} 
-            & = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi b(x, \xi)}}{\sym[\xi]^{-m-k}} \\
-            &= \sup_{\abs{\xi} \geq 1/\epsilon} \abs{a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}} \sym[\xi]^{m + k} \\
-            &\leq \frac{\norm[G_{\alpha \beta}]_{0, (\abs{\alpha} + \abs{\beta})m - \abs{\beta}}}{\epsilon} \sup_{\abs{\xi} \geq 1/\epsilon^{1 + \abs{\alpha} + \abs{\beta}}} \sym[\xi]^{-m(1 + \abs{\alpha} + \abs{\beta})} \sym[\xi]^{m + k}\\
-            & < \infty
-        \end{align*}
-        as required. 
-        
-        \item[$b$ is an inverse of $a$ modulo $ S^{-\infty}_\infty(\Omega; \R^n)$. ] \hfill \\
-        The main observation is that the set where $b$ fails to be the multiplicative inverse of $a$ is a compact set (in $\xi$) and thus $a \cdot b - 1$ is in fact a compactly supported smooth function of $\xi$ which is a subset of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
-        \\
-        Explicitly, for any $N \in \N$
-        \begin{align*}
-            \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi (a\cdot b - 1)} }{\sym[\xi]^{-N}}
-            &\leq \sup_{\abs{\xi} \leq 1/ \epsilon} \sym[\xi]^N \abs{D^\alpha_x D^\beta_\xi (\phi(\xi \epsilon / 2))} < \infty.  
-        \end{align*}
-        
-    \end{description}
-\end{proof}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -348,17 +284,17 @@ Hence, our immediate concern is to ensure that this quantisation procedure is we
     I(a) : \sch(\R^n) & \to \sch'(\R^n) \\
     u &\mapsto I(a)(u) 
 \end{align*}
-is a continuous linear map between Frechet spaces. 
+is a continuous linear map between Frechet spaces. By theorem \ref{} , this is equivalent to showing that its Schwartz kernel exist. 
 
-\todo{Reconsider the appropriateness of this remark and the abuse of writing $I(a) = Op(a)$}
-\begin{rem}
-    Given $a \in S^{m}_\infty(\R^{2n}; \R^n)$, we sometimes write $A = Op(a) = I(a)$ for the operator $\sch(\R^n) \to \sch'(\R^n)$ defined by quantising the symbol $a$. Also, once the procedure above is proven to be well-defined, we will, with abuse of notation, identify the integral
-    \begin{align*}
-        I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi] \in \sch'(\R^n\times \R^n)
-    \end{align*}
-    to be the \textit{Schwartz Kernel} of the operator $I(a): \sch(\R^n) \to \sch'(\R^n)$. 
-\end{rem}
-\todo{Insert discussion about the usage of Schwartz kernal theorem here. }
+%\todo{Reconsider the appropriateness of this remark and the abuse of writing $I(a) = Op(a)$}
+%\begin{rem}
+%    Given $a \in S^{m}_\infty(\R^{2n}; \R^n)$, we sometimes write $A = Op(a) = I(a)$ for the operator $\sch(\R^n) \to \sch'(\R^n)$ defined by quantising the symbol $a$. Also, once the procedure above is proven to be well-defined, we will, with abuse of notation, identify the integral
+%    \begin{align*}
+%        I(a) = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \d[\xi] \in \sch'(\R^n\times \R^n)
+%    \end{align*}
+%    to be the \textit{Schwartz Kernel} of the operator $I(a): \sch(\R^n) \to \sch'(\R^n)$. 
+%\end{rem}
+%\todo{Insert discussion about the usage of Schwartz kernal theorem here. }
 
 We will first establish the case for $m < -n$ (write $m = -n - \epsilon$ for some $\epsilon > 0$). As mentioned, the oscillatory integral \ref{eq: oscillatory integral}, is absolutely convergent and continuity comes from the bound given by the following computation: $\forall M \in \N$, $\forall a \in S^{-n -\epsilon}_\infty(\R^{2n}; \R^n)$, $\forall \varphi \in \sch(\R^n)$ 
 \begin{align*}
@@ -370,13 +306,13 @@ We will first establish the case for $m < -n$ (write $m = -n - \epsilon$ for som
 for any $M \in \N$, where 
 \todo{Remember to make consistent choice for schwartz norm}
 \begin{align} \label{eq: Schwartz seminorm} 
-    \norm[\varphi]_M :=  \sum_{\abs{\alpha} \leq M}  \sup_{(x, y) \in \R^{2n}} \sym[(x, y)]^M \abs{D^{\alpha}_{x, y} \varphi(x, y)}
+    \norm[\varphi]_M :=  \max_{\abs{\alpha} \leq M}  \sup_{(x, y) \in \R^{2n}} \sym[(x, y)]^M \abs{D^{\alpha}_{x, y} \varphi(x, y)}
 \end{align}
-is the Schwartz  seminorm on $\sch(\R^{2n})$. If we choose $M \geq 2n +1$, the $x, y$ integrals are convergent and since $m = -n -\epsilon < -n$, the $\xi$ integral converges as well, hence we have 
+is the Schwartz  seminorm on $\sch(\R^{2n})$ (see \ref{}). If we choose $M \geq 2n +1$, the $x, y$ integrals are convergent and since $m = -n -\epsilon < -n$, the $\xi$ integral converges as well, hence we have 
 \begin{align*}
     \abs{I(a)(\varphi)} \leq C \norm[a]_{0, m} \norm[\varphi]_M
 \end{align*}
-and hence $\norm[I(a)]_{\sch'} \leq C \abs{a}_{0, m}$ which is the continuity statement for linear maps $S^{m}_{\infty}(\R^{2n}; \R^{n}) \to \sch'(\R^n)$. 
+and hence $\norm[I(a)]_{\sch'} \leq C \abs{a}_{0, m}$ which is the continuity statement for linear maps $S^{m}_{\infty}(\R^{2n}; \R^{n}) \to \sch'(\R^{2n})$. \\
 
 The proposition below extend this result to general $m \in \R$. 
 \begin{fprop}
@@ -439,13 +375,14 @@ The proposition below extend this result to general $m \in \R$.
         \abs{I(a)(\varphi)} \leq C \norm[a]_{2N, m'}\norm[\varphi]_{M} 
     \end{align*}
     which makes $I(a)$ a continuous linear functional on $\sch(\R^n)$. 
+    
 \end{proof}
 
 By the Schwartz Kernel theorem (\cite{}), each $a \in S^{m}_\infty(\R^{2n}; \R^n)$ defines a continuous linear operator 
 \begin{align*}
 I(a) : \sch(\R^n) \to \sch'(\R^n)
 \end{align*}
-which is teh desired result. 
+which is the desired result. 
 
 
 We can now define the space of $m$-order pseudodifferential operators to be the image of $S^{m}_{\infty}(\R^{2n}; \R^{n})$ under $I$. 

@@ -7,9 +7,17 @@
 \begin{document}
 \maketitle
 
+Having defined and developed the calculus of pseudodifferential operators, we now turn to matter concerning solving (\textit{pseudo})differential equations. Typically, we have equation of the form
+\begin{align}
+Au = f, \quad A \in \Psi^{m}_{\infty}(\R^n), \, u \in \sch'(\R^n), f \in H^s(\R^n). \label{eq: example diff eq}
+\end{align}
+The goal is to study how regularity and singularity of $Au$ (which is given as $f$), affects that of the solution, $u$ if it exist. 
 
-\section{Microlocalisation}
-Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
+\section{Pseudodifferential operators are pseudolocal}
+We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any pseudodifferential operator  is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is the pseudolocality result that says that action pseudodifferential operator do not increase singular support of distributions. In terms of \ref{eq: example diff eq}, we can say that the solution $u$ is singular at all the points where $f$ is singular. 
+
+\subsection{Support and singular support} 
+First, we need the definition of support and singular supports of operators and distributions. Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
 \begin{fdefinition}
     The \textbf{support of a tempered distribution} $u \in \sch'(\R^n)$ is given by the set
     \[
@@ -35,33 +43,33 @@ The support of an operator is given by the support of its Schwartz kernel.
 \end{fdefinition}
 
 We note from the above that supports or singular supports are complement of open sets, therefore they are closed. 
-We have the following result relating the support of a smooth function after the action of a continuous linear operator. 
-\begin{fprop}[Calculus of support]
-    Let $A: \sch(\R^n) \to \sch(\R^n)$ be a continuous linear operator and $\phi \in C^\infty_c(\R^n)$, then
-    \[
-    \supp(A \phi) \subset \supp(A) \circ \supp(\phi) := \set{x \in \R^n \wh \exists y \in \supp(\phi), (x, y) \in \supp(A) }. 
-    \]
-\end{fprop}
-\begin{proof}
-    We shall show the contrapositive statement:
-    \[
-    x \not \in \supp(A) \circ \supp(\phi) \implies x \not \in \supp(A \phi). 
-    \]
-    Suppose $x \not \in \supp(A) \circ \supp(\phi)$. Observe that 
-    \[
-    \supp(A) \circ \supp(\phi) = \pi_x(\pi_y^{-1}(\supp(\phi)) \cap \supp(A))
-    \]
-    where $\pi_{x, y} : \R^2 \to \R$ are the projection map to the respective coordinates. Since $\supp(A)$ is closed and $\supp(\phi)$ is compact, we have that $\supp(A) \circ \supp(\phi)$ is closed and thus $x$ belongs to an open set. We can therefore choose a smooth cutt-off function $\chi \in C^\infty_c(\R^n)$ supported at $x$ ($\chi(x) \neq 0$) but away from $\supp(A) \circ \supp(\phi)$. Thus, 
-    \[
-    \supp(A) \cap (\supp(\chi) \times \supp(\phi)) = \emptyset
-    \]
-    and hence $\chi(x) K_A(x, y) \phi(y) = 0 \implies \chi A \phi = 0$, as required. 
-\end{proof}
+%We have the following result relating the support of a smooth function after the action of a continuous linear operator. 
+%\begin{fprop}[Calculus of support]
+%    Let $A: \sch(\R^n) \to \sch(\R^n)$ be a continuous linear operator and $\phi \in C^\infty_c(\R^n)$, then
+%    \[
+%    \supp(A \phi) \subset \supp(A) \circ \supp(\phi) := \set{x \in \R^n \wh \exists y \in \supp(\phi), (x, y) \in \supp(A) }. 
+%    \]
+%\end{fprop}
+%\begin{proof}
+%    We shall show the contrapositive statement:
+%    \[
+%    x \not \in \supp(A) \circ \supp(\phi) \implies x \not \in \supp(A \phi). 
+%    \]
+%    Suppose $x \not \in \supp(A) \circ \supp(\phi)$. Observe that 
+%    \[
+%    \supp(A) \circ \supp(\phi) = \pi_x(\pi_y^{-1}(\supp(\phi)) \cap \supp(A))
+%    \]
+%    where $\pi_{x, y} : \R^2 \to \R$ are the projection map to the respective coordinates. Since $\supp(A)$ is closed and $\supp(\phi)$ is compact, we have that $\supp(A) \circ \supp(\phi)$ is closed and thus $x$ belongs to an open set. We can therefore choose a smooth cutt-off function $\chi \in C^\infty_c(\R^n)$ supported at $x$ ($\chi(x) \neq 0$) but away from $\supp(A) \circ \supp(\phi)$. Thus, 
+%    \[
+%    \supp(A) \cap (\supp(\chi) \times \supp(\phi)) = \emptyset
+%    \]
+%    and hence $\chi(x) K_A(x, y) \phi(y) = 0 \implies \chi A \phi = 0$, as required. 
+%\end{proof}
+%
+%
+%
 
-
-
-\subsection{Pseudolocality} 
-We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any $\Phi$DO is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is teh pseudolocality result that says that action $\Psi$DO's do not increase singular support of distributions. 
+Now, we are ready to show that pseudodifferential operators are smooth away from the diagonal. 
 
 \begin{fprop}
     Let $A \in \Psi^m_\infty(\R^n)$ for some $m \in \R$, then
@@ -70,7 +78,8 @@ We shall show two results on the singular support of pseudodifferential operator
     \]
 \end{fprop}
 \begin{proof}
-    We shall prove this theorem for elements of $\Psi^{-\infty}_\infty(\R^n)$ and then extend by continuity to all orders. 
+    Using lemma \ref{}, it suffices to prove this theorem for elements of $\Psi^{-\infty}_\infty(\R^n)$ and then extend by continuity to all orders. \\
+    
     Let $A \in \Psi^{-\infty}_\infty(\R^n)$ with symbol $a \in S^{-\infty}_\infty(\R^{2n}; \R^n)$. Its singular support is given by the singular support of the kernel. Since all derivatives of $a$ are $O(\sym[\xi]^{-\infty})$, the oscillatory integral below representing the kernel is absolutely convergent  and, using integration by parts, we get
     \begin{align*}
         I(a) 
@@ -87,21 +96,21 @@ We shall show two results on the singular support of pseudodifferential operator
     \end{align*}
     where the last integral gives a smooth function, thus showing that $(x - y)^\alpha I(a)$ is smooth for all $\alpha$, and hence $I(a)$ is smooth away from $x = y$. \\
     \\
-    Now, for a general $A \in \Psi^m_\infty(\R^n)$, $m \in \R$, we shall use the  density of $S^{-\infty}_\infty(\R^{2n}; \R^n) \subset S^{m}_\infty(\R^{2n}; \R^n)$ and that $I$ extends by continuity to a map $I : S^{m}_\infty(\R^{2n}; \R^n) \to \sch'(\R^{2n})$ in the topology $S^{m + \epsilon}_\infty(\R^{2n}; \R^n)$ for any $\epsilon > 0$  \ref{}. 
-    
-    
+%    Now, for a general $A \in \Psi^m_\infty(\R^n)$, $m \in \R$, we shall use the  density of $S^{-\infty}_\infty(\R^{2n}; \R^n) \subset S^{m}_\infty(\R^{2n}; \R^n)$ and that $I$ extends by continuity to a map $I : S^{m}_\infty(\R^{2n}; \R^n) \to \sch'(\R^{2n})$ in the topology $S^{m + \epsilon}_\infty(\R^{2n}; \R^n)$ for any $\epsilon > 0$  \ref{}. 
+%    
+%    
 \end{proof}
 
 
 \begin{fprop}
-    Let $A \in \Psi^m_\infty(\R^n)$ for some $m \in \R$ and $u \in C^{-\infty}(\R^n)$, then 
+    Let $A \in \Psi^m_\infty(\R^n)$ for some $m \in \R$ and $u \in \sch'(\R^n)$ be compactly supported tempered distribution, then 
     \begin{align*}
         \mathrm{sing supp}(A u) \subset \mathrm{sing supp }(u). 
     \end{align*}
-    We call operators that satisfies the above property \textit{pseudolocal}
+    We call operators that satisfies the above property \textit{pseudolocal} operators.
 \end{fprop}
 \begin{proof}
-    Again we shall prove the contrapositive statement that 
+    Again we shall prove the contrapositive statement: 
     \[
     x \not \in \mathrm{sing supp}(u) \implies x \not \in \mathrm{sing supp}(Au)
     \]
@@ -109,7 +118,7 @@ We shall show two results on the singular support of pseudodifferential operator
     \begin{align*}
         Au = A(\chi u + (1 - \chi)u) = A(\chi u) + A(1 - \chi)u. 
     \end{align*}
-    Since $\chi xu \in \sch(\R^n) \implies A\chi u \in \sch(\R^n)$ \cite{rbm lemma 2.3}, we have that 
+    Since $\chi u \in \sch(\R^n) \implies A\chi u \in \sch(\R^n)$ \cite{rbm lemma 2.3}, we have that 
     \begin{align*}
         \mathrm{singsupp}(Au) = \mathrm{singsupp}(A(1 - \chi)u). 
     \end{align*}
@@ -122,12 +131,165 @@ We shall show two results on the singular support of pseudodifferential operator
     \[
     \phi(x) K_A(x, y) ( 1 - \phi(y))
     \]
-    that vanishes (in particular smooth) on the diagonal. Since we have shown that the singular support of a pseudodifferential operator have to be contained in the diagonal, we conclude that $\phi A(1 - \chi)$ is a smoothing operator, and thus $\phi A (1 - \chi) u \in C^\infty(\R^n)$ as required. .  
+    that vanishes (in particular smooth) on the diagonal. Since we have shown that the singular support of a pseudodifferential operator have to be contained in the diagonal, we conclude that $\phi A(1 - \chi)$ is a smoothing operator, and thus $\phi A (1 - \chi) u \in C^\infty(\R^n)$ as required. 
+    
 \end{proof}
 
 
-\subsection{Elliptic, Characteristic, Wavefront sets}
-We will now define \textit{ellipticity at a point} in phase space which allow up to define various microlocal contructions that focus on  localised (conically in phase space) behaviour $\Psi$DO's and distributions. 
+\section{Global ellipticity} 
+There is a subset of operators for which we can conclude much more than just pseudolocality, namely the set of operators that are \textit{elliptic}, i.e. element of the algebra that are invertible upto additive elements in $\Psi^{-\infty}_{\infty}(\R^n)$. 
+\begin{fdefinition}
+    A pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ is elliptic if there exist $B \in \Psi^{-m}_{\infty}(\R^n)$ such that 
+    \begin{align*}
+    A \circ B - 1 \in \Psi^{-\infty}_{\infty}(\R^n). 
+    \end{align*}
+    The approximate inverse $B$ is known as the (global) elliptic parametrix of $A$. 
+\end{fdefinition}
+
+A canonical example of elliptic differential operator is the Helmholtz operator 
+\begin{align*}
+1  + \Delta = 1 - \sum_{j = 1}^ n \p_{x_j}^2 \in \Psi^{2}_{\infty}(\R^n)
+\end{align*}
+which has explicitly invertible left reduced symbol $\abs{\xi}^2 + 1$ and principal symbol $\abs{\xi}^2$. Using the calculus of symbols, we know that $(1 + \Delta)^{-1}$ is simply the pseudodifferential operator that acts as 
+\begin{align*}
+(1 + \Delta)^{-1} u(x) = I\brac{\frac{1}{1 + \abs{\xi}^2} } u(x) = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} \frac{1}{1 + \abs{\xi}^2} u(y) \d[y] \d[\xi]
+\end{align*}
+We will find out later that ellipticity is in fact a property of the \textit{principal symbol} only. Thus, the Laplacian $\Delta$ which has the same principal symbol $\abs{\xi}^2$ is also elliptic as expected from traditional theory on differential operators. 
+
+
+\todo{motivation for elliptic symbols} 
+
+\begin{fdefinition}
+    Given $p, n \in \N$ and $m \in \R$, an order $m$ symbol $a \in S^m_\infty(\R^p; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
+    \[
+    \inf_{\abs{\xi} \geq 1/\epsilon} \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m. 
+    \]
+\end{fdefinition}
+
+The importance of elliptic symbol is that they are invertible modulo $S^{-\infty}_\infty(\R^p; \R^n)$ as shown in the next lemma. 
+
+\begin{flemma}
+    Let $p, n \in \N$, $m \in \R$ be given and let $a \in S^m_\infty(\R^p; \R^n)$ be an elliptic symbol of order $m$. Then there exist a symbol $b \in S^{-m}_\infty(\R^p; \R^n)$ such that 
+    \[
+    a \cdot b - 1 \in S^{-\infty}_\infty(\R^p; \R^n). 
+    \]
+\end{flemma}
+\begin{proof}
+    We shall follow the general strategy of inverting the symbol outside of a compact set. Let $\phi \in C^\infty_c(\R^n)$ be a smooth cut off function, i.e $0 \leq \phi \leq 1$ and $ \phi(\xi) = 1$ for $\abs{\xi} < 1$ and $\phi(\xi) = 0 $ for $\abs{\xi} > 2$. \\
+    
+    Let $a \in S^{m}_\infty(\Omega; \R^n)$ be an elliptic symbol, that is, for any fixed $\epsilon \in \R_{> 0}$, we have 
+    \[
+    \abs{a(x, \xi)} \geq \epsilon \sym[\xi]^m
+    \]
+    for any $\abs{\xi} \geq 1/\epsilon$. Thus, we can define 
+    \begin{align*}
+    b(x, \xi) = 
+    \begin{cases}
+    \frac{1 - \phi( \epsilon \xi /2)}{a(x, \xi)} & \abs{\xi} \geq 1/ \epsilon \\
+    0 & \abs{\xi} < 1 / \epsilon. 
+    \end{cases}
+    \end{align*}
+    We check: 
+    \begin{description}
+        \item[$b$ is well-defined and smooth. ] \hfill \\
+        We note that $\abs{a(x, \xi)} > 0$ whenever $\abs{\xi} \geq 1/\epsilon$ and therefore $b$ is well defined in that region. For smoothness, we note first that $b$ is smooth in the regions $\abs{\xi} > 1/ \epsilon$ and $\abs{\xi} < 1/\epsilon$. Set $\delta = 1/(2 \epsilon)$. In the region where $1/\epsilon - \delta < \abs{\xi} < 1/\epsilon + \delta$, we have $\abs{\epsilon \xi/ 2} < 1/\epsilon$ and therefore $b(x, \xi) \equiv 0$ in this region and is thus smooth. Since the we have covered $\Omega \times \R^n$ by the three chart domain above, $b$ is smooth by the (smooth) gluing lemma. 
+        
+        \item[$b$ is a symbol of order $-m$.  ] \hfill \\
+        We can prove by induction that in the region $\abs{\xi} \geq 1/ \epsilon$
+        \begin{align*}
+        D^\alpha_x D^\beta_\xi b = a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}
+        \end{align*}
+        for all multi-index $\alpha, \beta$, where $G_{\alpha \beta}$ is a symbol of order $(\abs{\alpha} + \abs{\beta})m  - \abs{\beta}$. Therefore, using the ellipticity estimate for $a$, we get 
+        \begin{align*}
+        \norm[b]_{k, -m} 
+        & = \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi b(x, \xi)}}{\sym[\xi]^{-m-k}} \\
+        &= \sup_{\abs{\xi} \geq 1/\epsilon} \abs{a^{-1 - \abs{\alpha} - \abs{\beta}} G_{\alpha \beta}} \sym[\xi]^{m + k} \\
+        &\leq \frac{\norm[G_{\alpha \beta}]_{0, (\abs{\alpha} + \abs{\beta})m - \abs{\beta}}}{\epsilon} \sup_{\abs{\xi} \geq 1/\epsilon^{1 + \abs{\alpha} + \abs{\beta}}} \sym[\xi]^{-m(1 + \abs{\alpha} + \abs{\beta})} \sym[\xi]^{m + k}\\
+        & < \infty
+        \end{align*}
+        as required. 
+        
+        \item[$b$ is an inverse of $a$ modulo $ S^{-\infty}_\infty(\Omega; \R^n)$. ] \hfill \\
+        The main observation is that the set where $b$ fails to be the multiplicative inverse of $a$ is a compact set (in $\xi$) and thus $a \cdot b - 1$ is in fact a compactly supported smooth function of $\xi$ which is a subset of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
+        \\
+        Explicitly, for any $N \in \N$
+        \begin{align*}
+        \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi (a\cdot b - 1)} }{\sym[\xi]^{-N}}
+        &\leq \sup_{\abs{\xi} \leq 1/ \epsilon} \sym[\xi]^N \abs{D^\alpha_x D^\beta_\xi (\phi(\xi \epsilon / 2))} < \infty.  
+        \end{align*}
+        
+    \end{description}
+
+\end{proof}
+
+The main theorem regarding globally elliptic pseudodifferential operator is the following. 
+\begin{ftheorem}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$ be a pseudodifferential operator. Then, the following are equivalent
+    \begin{enumerate}
+        \item $A$ is an elliptic pseudodifferential operator.
+        
+        \item $\sigma_L(A) \in S^{m}_\infty(\R^{n}; \R^n)$ is an elliptic symbol.
+                
+        \item $\exists b \in S^{- m}_\infty(\R^{n}; \R^n)$, s.t. $\sigma_L(A) \cdot b -1 \in S^{-\infty }_\infty(\R^{n}; \R^n)$. 
+        
+        \item the principal symbol of $A$ is invertible in the quotient symbol space, i.e. 
+        \begin{align*}
+        \exists [b] \in S^{m - [1]}_\infty(\R^{n}; \R^n), \quad s.t. \quad \sigma_m(A) \cdot [b] = [1] \in S^{0 - [1]}_\infty(\R^{n}; \R^n)
+        \end{align*}
+        where $S^{m-[1]}_\infty(\R^{n}; \R^n)$ denotes the quotient space $S^{m}_\infty(\R^{n}; \R^n) / S^{m -1}_\infty(\R^{n}; \R^n)$. 
+
+    \end{enumerate}
+\end{ftheorem}
+\begin{proof}
+    Note that we already have $(2) \iff (3)$ from the previous lemma. We remark that $(1) \implies (4)$ is simply the application of the assuming property of principal symbol under composition on the elliptic parametrix of $A$. For the rest of the proof, see \todo{reference}\ref{}. 
+    
+\end{proof}
+
+
+An important characteristic of elliptic pseudodifferential operators is that they are completely regularising, meaning solutions to $Au = f$ have to be smooth if we know that $f$ is smooth. 
+
+\begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$  be  elliptic. For any $u \in \sch'(\R^n)$, 
+    $$Au \in \sch(\R^n) \implies u \in \sch(\R^n). $$ 
+\end{fprop}
+\begin{proof}
+    Let $B \in \Psi^{-m}_{\infty}(\R^n)$ be the elliptic parametrix to $A$ so that $E:= BA - 1 \in \Psi^{-\infty }_{\infty}(\R^n)$. We have
+    \begin{align*}
+    u = 1 \cdot u = (BA + E)u = BAu + Eu. 
+    \end{align*}
+    Since $Eu \in \sch(\R^n)$ by \ref{}, and  we have assumed $Au \in \sch(\R^n)$, we conclude that $u \in \sch(\R^n)$. 
+    
+\end{proof}
+
+\begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$ be elliptic and $u \in H^{N}(\R^n)$ for some $N \in \R$. Then, for any $s \in \R$
+    \begin{align*}
+    Au \in H^{s}(\R^n) \implies u \in H^{s + m}(\R^n)
+    \end{align*}
+    and $u$ satisfies the estimates: $\exists C > 0$
+    \begin{align*}
+    \norm[u]_{H^{s + m}} \leq C \brac{\norm[Au]_{H^s} + \norm[u]_{H^N}}. 
+    \end{align*}
+\end{fprop}
+\begin{proof}
+    Again, let $B \in \Psi^{-m}_{\infty}(\R^n)$ be the elliptic parametrix so that $E := BA - 1 \in \Psi^{-\infty}_{\infty}(\R^n)$. We know that $B : H^{s} \to H^{s + m}$ and  $E : H^N \to H^{s + m}$ are bounded linear map. Using $u = BAu + Eu$, we have
+    \begin{align*}
+     \norm[u]_{H^{s + m}} \leq \norm[BAu]_{H^{s + m}} + \norm[u]_{H^{s + m}} \leq C \brac{\norm[Au]_{H^s} + \norm[u]_{H^N}}
+    \end{align*}
+    for some $C > 0$. 
+\end{proof}
+
+
+\section{Microlocalisation}
+The principal symbol $\sigma_m$ captures the leading order behaviour of a pseudodifferential operator when the fibre variable $\xi$ is large. In this chapter, however, we will develop further concepts that describes behaviour of a pseudodifferential operator in different \emph{direction} in the phase space, $T^*\R^n$. Of central importance are 
+\begin{description}
+    \item[Characteristic set] $\Char^m(A) \subset T^*_{x, \xi} \R^n$ of an operator $A \in \Psi^{m}_{\infty}(\R^n)$ describes points in phase space where $A$ is not locally elliptic. This will lead to the notion of microlocal ellipticity. 
+    \item[Operator wavefront set] $\WF'(A) \subset T^*_{x, \xi} \R^n$ describes the directions $\xi$ in the fibre of $x$ where $A$ is not ``trivial". 
+\end{description}
+
+
+\subsection{Elliptic set of pseudodifferential operator}
+Instead of global ellipticity, we will now define a notion of \textit{ellipticity at a point} in phase space which allow up to define various microlocal contructions that focus on  localised (conically in phase space) behaviour. 
 
 \begin{fdefinition}
     A pseudodifferential operator, $A \in \Psi^m_\infty(\R^n), m \in \R$ is \textbf{elliptic at a point} $(x_0, \xi_0) \in \R^n \times \R^n \setminus \set{0}$ if there exist $\epsilon > 0$ such that its left-reduced symbol satisfies the lower bound
@@ -138,7 +300,7 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
     \[
     \overline{U}_\epsilon = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh \abs{x - x_0} \leq \epsilon, \abs{\widehat{\xi} - \widehat{\xi_0}} \leq \epsilon, \abs{\xi} \geq 1/\epsilon}
     \]
-    where $\widehat{\xi} = \xi / \abs{\xi}$ for any non-zero $\xi \in \R^n$. We denote the set of all elliptic points of $A$ as 
+    where $\widehat{\xi} = \xi / \abs{\xi}$ denotes the unit vector in the direction of $\xi$ for any non-zero $\xi \in \R^n$. We denote the set of all elliptic points of $A$ as 
     \[
     \Ell^m(A) = \set{(x, \xi) \in \R^n \times \R^n \setminus \set{0} \wh A \text{  is elliptic of order $m$ at } (x, \xi)}
     \]
@@ -273,10 +435,11 @@ We will now define \textit{ellipticity at a point} in phase space which allow up
         \end{align*}
         Taking complement give the desired result. \\
         \\
-        In general, 
+        \todo{In general, }
     \end{enumerate}
     
 \end{proof}
+
 
 
 
@@ -444,6 +607,36 @@ With the concept of essentail support we can define the notion of \emph{microloc
     \end{align*}
     Since $H$ is a global parametrix to $J$, the first term above is a smoothing operator (i.e. an element of $\Psi^{-\infty}_\infty(\R^n)$ and therefore have empty wavefront set. Furthermore, by \cite{wavefront of compositiion} the wavefront set of the second term is a subste of $\WF'(1 - L_\epsilon)$ which does not contain $(x_0, \xi_0)$ by construction. 
 \end{proof}
+
+
+\begin{fprop}
+    Let $A \in \Psi^{m}_{\infty}(\R^n)$ and $u \in \sch'(\R^n)$. If for some $Q' \in \Psi^{0}_{\infty}(\R^n)$, $Q'Au \in H^{s}(\R^n)$, then for any other $Q \in \Psi^{0}_{\infty}(\R^n)$ such that $\WF'(Q) \subset \Ell^m(A) \cap \Ell^0(Q')$ we have $Qu \in H^{s + m}(\R^n)$ and it satisfies the estimate: $\forall N \in \R$, $\exists C > 0$ 
+    \begin{align*}
+    \norm[Qu]_{H^{s +m}} \leq C \brac{\norm[Q'Au]_{H^s} + \norm[u]_{H^N}}. 
+    \end{align*}
+\end{fprop}
+\begin{proof}
+    At any point $\alpha \in \WF'(Q)$, $Q'A$ is microlocally elliptic, since $\Ell^2(Q'A) = \Ell^2(A) \cap \Ell^0(Q')$. Therefore, we can construct a microlocal elliptic parametrix $B$ for $Q'A$ near $\alpha$ so that if  $E = BQ'A - 1$ denotes the residue, we have 
+    \begin{align*}
+    \WF'(QE) = \WF'(E) \cap \WF'(Q) = \emptyset 
+    \end{align*}
+    This shows that $QE \in \Psi^{-\infty}_{\infty}(\R^n)$. Also, by definition of $E$, 
+    \begin{align*}
+    Qu = Q (BQ'A - E) u = QBQ'A u - QEu 
+    \end{align*}
+    where we know that $QB \in \Psi^{-m}_{\infty}(\R^n)$. Using the Sobolev boundedness of the operators
+    \begin{align*}
+    QB : H^{s + m} \to H^{s}\\
+    E : H^{s + m} \to H^N
+    \end{align*}
+    we get
+    \begin{align*}
+    \norm[Qu]_{H^{s + m}} \leq \norm[QBQ'Au]_{H^{s + m}} + \norm[QEu]_{H^{s + m}} \leq C \brac{\norm[Q'Au]_{H^s} + \norm[u]_{H^N}}
+    \end{align*}
+    for some $C > 0$. 
+    
+\end{proof}
+
 
 \begin{fprop}
     Pseudodifferential operators are microlocal in the following sense: 
