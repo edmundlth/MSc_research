@@ -7,10 +7,12 @@
 \begin{document}
 \maketitle
 
-This chapter serves to introduces concepts and theorems that are integral to the theory of microlocal analysis and its application to Fredholm problems for pseudodifferential operators. 
+This chapter introduces concepts and theorems that are integral to the theory of microlocal analysis and its application to Fredholm problems for pseudodifferential operators. The definitions, theorems and proofs are adapted from \cite{Reed1972-zk, taylor_pde, rbm_differential_analysis}. 
 
 \paragraph{Some notations} \hfill \\
-We will employ the following notations throught the rest of the paper. Let $\N = \set{0, 1, \dots}$ denote the set of natural numbers. Given $n \in \N$, a \textit{multi-index} is a $n$-tuple of natural numbers $\alpha = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \N^n$. For any multi-indices $\alpha, \beta \in \N^n$ and  any $n$-tuples $x, y \in \R^n$, we define
+We will employ the following notations throughout the rest of the paper. \\
+
+Let $\N = \set{0, 1, \dots}$ denote the set of natural numbers. Given $n \in \N$, a \textit{multi-index} is a $n$-tuple of natural numbers $\alpha = (\alpha_1, \alpha_2, \dots, \alpha_n) \in \N^n$. For any multi-indices $\alpha, \beta \in \N^n$ and  any $n$-tuples $x, y \in \R^n$, we define
 \begin{align*}
 x^\beta &:= x_1^{\beta_1} x_2^{\beta_2}\dots x_n^{\beta_n} = \prod_{j = 1}^n x_j^{\beta_j}\\
  (x + y)^\alpha &:= \prod_{j = 1}^n (x_j + y_j)^{\beta_j} \\
@@ -18,14 +20,14 @@ D^\alpha_x &:= D_{x_1}^{\alpha_1} D_{x_2}^{\alpha_2} \dots D_{x_n}^{\alpha_n}\\
 \end{align*}
 where $D_{x_j} := - i \p_{x_j}$with $i \in \C$ being the imaginary unit and $\p_{x_j} $ the $x_j$-partial derivative operator. Furthermore, we define
 \begin{align*}
-&\abs{\alpha} := \alpha_1 + \alpha_2 + \dots + \alpha_n\\
-& \alpha! := \alpha_1! \alpha_2! \dots \alpha_n! \\
-& \binom{\alpha}{\beta} := \binom{\alpha_1}{\beta_1} \binom{\alpha_2}{ \beta_2} \dots \binom{\alpha_n}{\beta_n} = \frac{\alpha!}{(\beta - \alpha)! \beta!} \\
+&\abs{\alpha} := \alpha_1 + \alpha_2 + \dots + \alpha_n\\[1em]
+& \alpha! := \alpha_1! \alpha_2! \dots \alpha_n! \\[1em]
+& \binom{\alpha}{\beta} := \binom{\alpha_1}{\beta_1} \binom{\alpha_2}{ \beta_2} \dots \binom{\alpha_n}{\beta_n} = \frac{\alpha!}{(\beta - \alpha)! \beta!} \\[1em]
 &\alpha \leq \beta \iff \alpha_i \leq \beta_i, \quad \forall i \in \set{1, \dots, n}. 
 \end{align*}
 
 We shall now state the Leibinz formula, not only to illustrate the multi-index notation, but it will also be a theorem that we shall use repeatedly. 
-\begin{ftheorem}[Leibinz formula]
+\begin{ftheorem}[Leibinz formula] \label{theorem: leibinz formula}
     Let $f, g \in C^\infty(\R^n)$, then 
     \begin{align*}
     D^\alpha_x (fg) = (-i)^{\abs{\alpha}} \p_x^\alpha(fg) = (-i)^{\abs{\alpha}} \sum_{\beta \leq \alpha} \binom{\alpha}{\beta}  \brac{\p_x^\beta f} \brac{\p_x^{\alpha - \beta}g}. 
@@ -37,7 +39,7 @@ Next, in discussing the order of growth of smooth functions, $f = f(x)$ on $\R^n
 \sym[\cdot] : \R^n &\to \R_{\geq 1} \\
 x &\mapsto \sym[x] := \brac{ 1 + x_1^2 + x_2^2 + \dots + x_n^2}^{1/2} = \brac{1 + \norm[x]^2}^{1/2}. 
 \end{align*}
-The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptotically equivalent to $\norm[x]$ for large $x$. 
+The main point of this bracket is that,  $\sym[x]$ is a smooth function bounded below by $1$ and is  asymptotically equivalent to $\norm[x]$ for large $x$. 
 
 
 
@@ -48,16 +50,16 @@ The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptot
 
 \begin{fdefinition}[Schwartz space]
     The space of Schwartz (test) functions of rapidly decaying functions on $\R^n$, denoted $\sch(\R^n)$, is the space of smooth functions $\varphi : \R^n \to \C$ such that for any $\alpha \in \N^n$, 
-    \begin{align}
+    \begin{align*}
     \sup_{x \in \R^n} \abs{\sym[x]^k D^\alpha_x \varphi(x)} < \infty. 
-    \end{align}
+    \end{align*}
 
     
     We can define a countable family of seminorm on $\sch(\R^n)$ by 
     \begin{align}
-    \norm[\varphi]_k := \max_{\abs{\alpha} \leq k} \sup_{x \in \R^n} \abs{\sym[x]^k D^\alpha_x \varphi(x)}
+    \norm[\varphi]_k := \max_{\abs{\alpha} \leq k} \sup_{x \in \R^n} \abs{\sym[x]^k D^\alpha_x \varphi(x)} \label{eq : schwartz seminorm} 
     \end{align}
-    for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ a Frechet space with metric 
+    for $k \in \N$, $\varphi \in \sch(\R^n)$. This makes $\sch(\R^n)$ a Fr\`echet space with metric 
     \begin{align*}
     d(\varphi, \psi) = \sum_{k \in \N} 2^{-k} \frac{\norm[\varphi - \psi]_k}{1 + \norm[\varphi - \psi]_k} 
     \end{align*}
@@ -73,10 +75,14 @@ The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptot
         
         \item $\sch(\R^n)$ with pointwise multiplication and addition is a commutative algebra over $\C$ without identity since $1 \not\in \sch(\R^n)$. It is also closed under several useful elementary operations including coordinate multiplication and partial differentiation
         \begin{align*}
-        x_j : \sch(\R^n) \to \sch(\R^n) \\
-        D_{x_j} : \sch(\R^n) \to \sch(\R^n). 
+        &x_j : \sch(\R^n) \to \sch(\R^n) \\
+        &D_{x_j} : \sch(\R^n) \to \sch(\R^n). 
         \end{align*}
         
+        \item We will also recall here that the continuity statement of a linear map $$T: V \to W$$  between two Fr\`echet spaces $V$, $W$ translate to a boundedness statement of the form: for any seminorm $\norm_{W, k}$ of $W$, there exist a finite family of seminorms $\set{\norm_{V, i}}_{i = 1}^N$ and a positive real constant $C > 0$ such that
+        \begin{align}
+        \norm[Tv]_{W, k} \leq C \brac{\norm[v]_{V, 1} + \dots + \norm[v]_{V, N}}. \label{eq: Frechet space continuity}
+        \end{align}
     \end{enumerate}
 \end{rem}
 
@@ -85,11 +91,11 @@ The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptot
     \begin{align*}
     \sch'(\R^n) = \brac{\sch(\R^n)}' = \L(\sch(\R^n),\C)
     \end{align*}
-    where $\L(V, W)$ denotes the continuous linear maps between any topological vector spaces $V \to W$. Explicitly in terms of seminorms on $\sch(\R^n)$, the elements $u \in \sch'(\R^n)$ are linear functionals $u : \sch(\R^n) \to \C$ satisfying: for any $\varphi \in \sch(\R^n)$, there exist $k \in \N$ and $C \in \R_{> 0}$ such that 
+    where $\L(V, W)$ denotes the continuous linear maps between any topological vector spaces $V \to W$. Explicitly, using the boundedness statement (\ref{eq: Frechet space continuity}), the elements $u \in \sch'(\R^n)$ are linear functionals $u : \sch(\R^n) \to \C$ satisfying the condition: for any $\varphi \in \sch(\R^n)$, there exist $k \in \N$ and $C \in \R_{> 0}$ such that 
     \begin{align*}
     \abs{u(\varphi)} \leq C \norm[\varphi]_k. 
     \end{align*}
-    We usually equip $\sch'(\R^n)$ with the weak-* topology, i.e. the weakest topology for which all linear maps of the form $\inprod[\varphi, \cdot] : \sch'(\R^n) \to \C$ for any $\varphi \in \sch(\R^n)$ are continuous. Here,  $\inprod : \sch(\R^n) \times \sch'(\R^n) \to \C$ is the Frechet space pairing defined by
+    We usually equip $\sch'(\R^n)$ with the weak-* topology, i.e. the weakest topology for which all linear maps of the form $\inprod[\varphi, \cdot] : \sch'(\R^n) \to \C$ for any $\varphi \in \sch(\R^n)$ are continuous. Here,  $\inprod : \sch(\R^n) \times \sch'(\R^n) \to \C$ is the Fr\`echet space pairing defined by
     \begin{align*}
     \inprod[\varphi, u] := u(\varphi). 
     \end{align*}
@@ -101,7 +107,7 @@ The main point of this bracket is that,  $\sym[x]$ is a smooth function asymptot
 \end{fdefinition}
 
 The following two standard results are important in the development of pseudodifferential calculus. The first of which allows us to extend results concerning continuous linear maps on $\sch(\R^n)$ to $\sch'(\R^n)$. 
-\begin{flemma}
+\begin{flemma} \label{lemma: density of schwartz in tempered}
     Let $\iota : \sch(\R^n) \to \sch'(\R^n)$ be the injection map defined by the integral pairing 
     \begin{align*}
     \iota(\varphi)(\psi) = \int \varphi(x) \psi(x) \d[x] \in \C
@@ -109,28 +115,28 @@ The following two standard results are important in the development of pseudodif
     for any $\varphi, \psi \in \sch(\R^n)$. Then, the image of $\iota$ is dense in $\sch'(\R^n)$ with the weak-* topology. 
 \end{flemma}    
 
-The second result is the celebrated Schwartz kernel theorem. To motivate this theorem, observe that any element $k \in \sch'(\R^{n + m})$ defines a continuous linear \textit{operator} of the form 
+The second result is the celebrated Schwartz kernel theorem. To motivate this theorem, observe that any element $K \in \sch'(\R^{n + m})$ defines a continuous linear \textit{operator} of the form 
 \begin{align*}
-A_k : \sch(\R^m) &\to \sch'(\R^n)\\
-\varphi(x) &\to A_k \varphi : \psi(y) \in \sch(\R^n) \mapsto A_k \varphi (\psi) := k(\varphi(x) \psi(y)). 
+A_K : \sch(\R^m) &\to \sch'(\R^n)\\
+\varphi(x) &\to A_K \varphi : \psi(y) \in \sch(\R^n) \mapsto A_K \varphi (\psi) := K(\varphi(x) \psi(y)). 
 \end{align*}
 The Schwartz kernel theorem states that the converse is also true. 
-\begin{ftheorem}[Schwartz kernel theorem]
-    Let $m, n \in \N$ be given. Then, $A : \sch(\R^m) \to \sch'(\R^n)$ is a continous linear operator if and only if there exist unique $k \in \sch'(\R^{n + m})$ such that 
+\begin{ftheorem}[Schwartz kernel theorem] \label{theorem: schwartz kernel theorem}
+    Let $m, n \in \N$ be given. Then, $$A : \sch(\R^m) \to \sch'(\R^n)$$ is a continous linear operator if and only if there exist unique $K \in \sch'(\R^{n + m})$ such that 
     \begin{align*}
-    A\varphi(\psi) = k(\varphi \cdot \psi)
+    A\varphi(\psi) = K(\varphi \cdot \psi)
     \end{align*}
     for any $\varphi \in \sch(\R^m)$ and $\psi \in \sch(\R^n)$. 
 \end{ftheorem}
 
-We call the unique tempered distribution $k \in \sch'(\R^{n + m})$ representing the operator $A: \sch(\R^m) \to \sch'(\R^m)$ the Schwartz kernel of $A$. 
+We call the unique tempered distribution $K \in \sch'(\R^{n + m})$ representing the operator $A: \sch(\R^m) \to \sch'(\R^m)$ the Schwartz kernel of $A$. 
 
 
 %\begin{ftheorem}[Schwartz Kernel Theorem {\cite[Chapter 4.6, p.~345]{taylor_pde}}] Let $M, N$ be compact manifold and 
 %    \begin{align*}
 %        T: C^\infty(M) \to \D'(N) \\
 %    \end{align*}
-%    be a continuous linear map ($C^\infty(M)$ being given Frechet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
+%    be a continuous linear map ($C^\infty(M)$ being given Fr\`echet space topology and $D'(N)$ the weak* topology). Define a bilinear map 
 %    \begin{align*}
 %        B: C^\infty(M) &\times C^\infty(N) \to \C \\
 %        (u, v) &\mapsto B(u, v) = \inprod[v, Tu]. 
@@ -161,11 +167,19 @@ Its $L^2$-adjoint is given by
 \begin{align*}
 \F^* f(\xi) = \frac{1}{(2\pi)^{n/2}} \int e^{i x \cdot \xi} f(x)\d[x], \quad f \in \sch(\R^n). 
 \end{align*}
-The Fourier inversion theorem states that $\F^* $ is the continuous inverse, i.e. $\F^* = \F^{-1} : \sch(\R^n) \to \sch(\R^n)$. Explicitly, this means that for any $f \in \sch(\R^n)$ 
+The Fourier inversion theorem states that $\F^* $ is the continuous inverse, i.e. 
+\begin{align}
+\F^* = \F^{-1} : \sch(\R^n) \to \sch(\R^n) \label{eq: fourier inversion} 
+\end{align}
+Explicitly, this means that for any $f \in \sch(\R^n)$, 
 \begin{align*}
 f(x) = \F^* \F f (x) = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} f(y) \d[y] \d[\xi]. 
 \end{align*}
-With the inversion formula and the definition of $L^2$-dual, we can easily see that 
+With the inversion formula and the definition of $L^2$-inner product
+\begin{align*}
+\inprod[f, g]_{L^2} := \int f(x) g(x) dx , \quad f, g \in L^2
+\end{align*}
+we can easily see that 
 \begin{align*}
 \inprod[f, g]_{L^2} = \inprod[f, \F^* \F g]_{L^2} = \inprod[\F f, \F g]_{L^2}, \quad f, g \in \sch(\R^n). 
 \end{align*}
@@ -173,16 +187,16 @@ This allows us to uniquely extend $\F$, $\F^*$ from $\sch(\R^n)$ to a unitary ma
 \begin{align*}
 \F : L^2(\R^n) \to L^2(\R^n)
 \end{align*}
-with unitary  inverse $\F^*$. This is also known as the Plancherel theorem \cite{}. 
+with unitary  inverse $\F^*$. This is also known as the Plancherel theorem \cite{taylor_pde}. 
 
 %%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Sobolev Spaces }
-\cite[Chapter 4]{taylor_pde}
 
-\begin{fdefinition}[Sobolev Spaces] Let $p \in \R$ and $n, k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev space on $\R^n$ as the Banach space
+\begin{fdefinition}[Sobolev Spaces]
+    \cite[Chapter 4]{taylor_pde} Let $p \in \R$ and $n, k \in \N$ be given. We define the $k^{\text{th}}$-order $L^p$-based Sobolev space on $\R^n$ as the Banach space
     \begin{align*}
     W^{k, p}(\R^n) = \set{u \in L^p(\R^n) \wh D^\alpha u \in L^p(\R^n), \, \, \abs{\alpha} \leq k }
     \end{align*}
@@ -209,7 +223,7 @@ with unitary  inverse $\F^*$. This is also known as the Plancherel theorem \cite
     It is straightforward to show that the derivative operator $D_{x_j}$ is a continuous linear operator $D_{x_j}: H^s(\R^n) \to H^{s - 1}(\R^n)$ and thus by induction, for any multi-index $\alpha \in \N^n$, $D^{\alpha} : H^s(\R^n) \to H^{s - \abs{\alpha}}(\R^n)$. 
 \end{rem}
 
-It can be proven that \ref{} the definition above can be extended to any smooth compact manifold $M$. 
+It can be proven that \cite{taylor_pde} the definition above can be extended to any smooth compact manifold $M$. 
 \begin{fdefinition}
     Let $M$ be a smooth compact manifold and 
     \begin{align*}
@@ -284,13 +298,22 @@ In this section we shall restrict our attention to just maps between Banach spac
 %    \end{align*}
 %\end{flemma}
 
-\begin{flemma} \ref{taylorpde}
-    Let $T: X \to Y$ be a bounded linear map between Banach spaces $X, Y$ and let $T' : Y' \to X'$ be the dual linear map. Then
-    \begin{enumerate}
-        \item $\ker T' = T(X)^\perp = \set{\omega \in Y' \wh \omega(Tx) = 0, \forall x \in X}$. 
-        \item If $T$ has closed range, then $T'(Y')  =\ker T'$.  
-    \end{enumerate}
+\begin{flemma} \label{lemma: kernel cokernel isomorphism} 
+    Let $T: X \to Y$ be a bounded linear map between Banach spaces $X, Y$ and let $T' : Y' \to X'$ be the dual linear map. Then $$\ker T' = T(X)^\perp := \set{\omega \in Y' \wh \omega(Tx) = 0, \forall x \in X}.$$ 
 \end{flemma}
+\begin{rem}
+    In $X$, $Y$ are in fact Hilbert spaces, we can use the isomorphism between Hilbert spaces with their duals, so that 
+    \begin{center}
+        \begin{tikzcd}
+            Y' \ar[r, "T'"] \ar[d, "\cong"]& X' \ar[d, "\cong"]\\
+            Y^* \ar[r, "T^*"'] & X^* 
+        \end{tikzcd}
+    \end{center}
+     the result can be translated into  
+    \begin{align*}
+    \ker T^* = \coker T. 
+    \end{align*}
+\end{rem}
 \begin{proof}
     Let $\inprod[x, \omega] = \omega(x)$ denote the pairing between a Banach space with its dual. The dual map $T'$ of $T$ is characterised by $\inprod[Tx, \omega] = \inprod[x, T'\omega]$ for any $x \in X$, $\omega \in Y'$. Observe that 
     \begin{align*}
@@ -301,33 +324,33 @@ In this section we shall restrict our attention to just maps between Banach spac
     \end{align*}
     which proves the first statement. \\
     
-    For the second statement, if $T(X)$ is a closed linear subspace of $Y$, then
-    \begin{align*}
-    \widetilde{T} : Y / \ker T \to T(X)\\
-    [y] \mapsto T(y)
-    \end{align*}
-    defines a topological isomorphism, which in turns give rise to the topological isomorphism 
-    \begin{align*}
-    \widetilde{T}' : T(X)' \to (X / \ker T)'.
-    \end{align*}
-    We also know that $(X/ker T)' \cong (\ker T)^\perp$ are naturally isomorphic as Banach spaces. There is also a natural projection $p : Y' \to T(X)'$. We can then express $T': Y' \to X'$ as the composition
-    \begin{equation*}
-    \begin{tikzcd}
-    Y' \ar[r, "p"] & T(X)' \ar[r, "\widetilde{T}"] & (X / \ker T)' \ar[r, "\sim"]& (\ker T)^\perp \\
-    \end{tikzcd}
-    \end{equation*}
-    which gives the desired $T'(Y') = (\ker T)^\perp$. 
-    \todo{verify proof!!} 
-    
+%    For the second statement, if $T(X)$ is a closed linear subspace of $Y$, then
+%    \begin{align*}
+%    \widetilde{T} : Y / \ker T \to T(X)\\
+%    [y] \mapsto T(y)
+%    \end{align*}
+%    defines a topological isomorphism, which in turns give rise to the topological isomorphism 
+%    \begin{align*}
+%    \widetilde{T}' : T(X)' \to (X / \ker T)'.
+%    \end{align*}
+%    We also know that $(X/ker T)' \cong (\ker T)^\perp$ are naturally isomorphic as Banach spaces. There is also a natural projection $p : Y' \to T(X)'$. We can then express $T': Y' \to X'$ as the composition
+%    \begin{equation*}
+%    \begin{tikzcd}
+%    Y' \ar[r, "p"] & T(X)' \ar[r, "\widetilde{T}"] & (X / \ker T)' \ar[r, "\sim"]& (\ker T)^\perp \\
+%    \end{tikzcd}
+%    \end{equation*}
+%    which gives the desired result $T'(Y') = (\ker T)^\perp$. 
+%    \todo{verify proof!!} 
+%    
 \end{proof}
 
-
-\begin{ftheorem} 
+The next theorem will be instrumental in our later study of the Freholm problem of the wave operator. It is a result that allows us to translate the Fredholm property (closed range, finite dimensional kernel and cokernel) into a statement about estimates on $T$. 
+\begin{ftheorem} \label{theorem: fredholm estimates}
     Let $V$, $W$, $Y$ be Banach spaces, $T \in \L(V, W)$ and $K \in \K(V, Y)$. If for all $u \in V$, the estimate 
     \begin{align*}
     \norm[u]_V \leq C \brac{\norm[Tu]_W + \norm[Ku]_Y}
     \end{align*}
-    holds for some positive real constant $C \in \R_{> 0}$, then the image, $T(V)$ is closed, and has finite dimensional kernel. 
+    holds for some positive real constant $C \in \R_{> 0}$, then the image, $T(V)$ is closed, and $T$ has finite dimensional kernel. 
     \todo{Add in and prove finite dim kernel part of the statement!} 
 \end{ftheorem}
 \begin{proof}
@@ -366,7 +389,7 @@ In this section we shall restrict our attention to just maps between Banach spac
     \end{case}
 
 
-    To show that $T$ has finite dimensional kernel, it suffice to show that the closed unit ball in $\ker T$ is compact. Let $u_n \in \ker T$, $n \in \N$ be any sequence in the closed unit ball of $\ker T$, i.e. $\norm[u_n]_V \leq 1$, for all $n \in \N$. In otherwords,  $\set{u_n}_{n \in \N}$ is a bounded set (bounded by 1). Since $K$ is a compact operator,  the exist a subsequence indexed by $n_j$ for which $Ku_{n_j}$ converges in $Y$. Since convergent sequence is necessarily Cauchy, using the estimate provided we have
+    To show that $T$ has finite dimensional kernel, we shall use lemma (\ref{cor : compact closed unit ball}) proven below. It suffice to show that the closed unit ball in $\ker T$ is compact. Let $u_n \in \ker T$, $n \in \N$ be any sequence in the closed unit ball of $\ker T$, i.e. $\norm[u_n]_V \leq 1$, for all $n \in \N$. In other words,  $\set{u_n}_{n \in \N}$ is a bounded set (bounded by 1). Since $K$ is a compact operator,  the exist a subsequence indexed by $n_j$ for which $Ku_{n_j}$ converges in $Y$. Since convergent sequence is necessarily Cauchy, using the estimate provided we have
     \begin{align*}
     \norm[u_{n_j} - u_{n_{j + k}}]_V
      & \leq C \norm[T u_{n_j} - T u_{n_{j + k}}]_{W} + C \norm[K u_{n_j} - K u_{n_{j + k}}]\\
@@ -374,6 +397,7 @@ In this section we shall restrict our attention to just maps between Banach spac
      & \to 0
     \end{align*}
     as $j \to \infty$ and any $k \in \N$. This shows that $\set{u_{n_j}}_j$ is a Cauchy sequence in the closed unit ball of $\ker T$ which is complete (being a closed subspace of a complete space). Hence, the original sequence $\set{u_n}_n$ has a convergent subsequence in the closed unit ball. We have just shown that every sequence in the closed unit ball of $\ker T$ has a convergent subsequence, i.e. the closed unit ball is compact as required. 
+    
 \end{proof}
 
 %\begin{ftheorem}
@@ -397,7 +421,7 @@ In this section we shall restrict our attention to just maps between Banach spac
     \inf_{y \in Y} \norm[x - y] \geq r. 
     \end{align*}
 \end{flemma}
-\begin{proof}\hfill \\
+\begin{proof}[proof. adapted from \cite{Paul2017-mo}] \hfill \\
     Let $x_0 \in \overline{Y}^c$ and $R = \inf_{y \in Y}\norm[y - x_0] > 0$. Given any $\epsilon > 0$ we can pick (by definition of $\inf$) a $y_0 \in Y$ such that 
     \begin{align*}
     \norm[y_0 - x_0] < R + \epsilon. 
@@ -419,9 +443,9 @@ In this section we shall restrict our attention to just maps between Banach spac
 \end{proof}
 
 
-
 Riez's lemma gives us a clear distinction between finite and infinite dimensional Banach spaces. 
-\begin{fcor}
+
+\begin{fcor} \label{cor : compact closed unit ball} 
     The closed unit ball in a Banach Space $X$ is compact iff $X$ is finite dimensional. 
 \end{fcor}
 \begin{proof}

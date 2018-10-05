@@ -11,7 +11,7 @@
 %A : H^s \to H^{s - m}. 
 %\end{align*}
 
-Having develop a substantial theory for elliptic pseudodifferential operators, we shall presently turn our attention to a simple non-elliptic problem. Specifically, we will consider the Fredholm problem of the wave operator on the torus. We shall first give the definitions of the manifolds and Hilbert spaces that will feature in this problem. \\
+Having develop a substantial theory for elliptic pseudodifferential operators, we shall presently turn our attention to a simple non-elliptic problem. Specifically, we will consider the Fredholm problem of the wave operator on the torus. \\
 
 \begin{fdefinition} 
 Let $\S^1 = [0,1] / (0 \sim 1)$ denote the circle and for any $k \in \N$ let
@@ -24,11 +24,12 @@ denote the $k$-dimensional torus. We shall study the totally periodic wave opera
 \end{align}
 where $(t, x_1, \dots, x_n)$ are the local coordinates on $M$. 
 \end{fdefinition}
-Note first that $\Box$ is a second order differential (and thus pseudodifferential) operator with \textit{homogeneous} principal symbol given by 
+
+Note first that $\Box$ is a second order differential (and thus pseudodifferential) operator with \textit{homogeneous} principal symbol (in fact equal to its left or right reduced symbol) given by 
 \begin{align*}
 \sigma_2(\Box)(t, x, \tau, \xi) = \xi_1^2 + \xi_2^2 + \dots + \xi_{n}^2 - \tau^2 = \abs{\xi}^2 - \tau^2. 
 \end{align*}
-Thus, the characteristic set is given by the zero set of the principal symbol (excluding the zero section), i.e. 
+$\Box$ is thus a classical pseudodifferential operator with  the characteristic set given by the zero set of the principal symbol (excluding the zero section), i.e. 
 \begin{align*}
 \Char^2(\Box) = \set{\sigma_2(\Box) = 0} \setminus \set{(t, x, \tau, \xi) \wh \tau = \xi = 0}
 \end{align*}
@@ -37,11 +38,11 @@ which lies precisely on the `light cone' emanated from every point $(t, x) \in M
 \Char^2(\Box) := \set{(t, x, \tau, \xi) \wh 0 \neq \abs{\xi}  = \abs{\tau}} 
 \end{align*} 
 
-So, clearly the operator is not elliptic everywhere. However, using the results we have accumulated thus far and a further result described below, we shall show that we can perturb the wave operator by a ``complex absorbing potential" \ref{}, $iQ$ so that $\Box - iQ$ is a Fredholm operator as a map 
+So, clearly the operator is not everywhere elliptic. However, using the results we have accumulated thus far and a further result described below, we shall show that we can perturb the wave operator by a ``complex absorbing potential" \cite{Vasy2015-oo,Muga2004-ax}, $iQ$ so that $\Box - iQ$ is a Fredholm operator as a map 
 \begin{align*}
 \Box - iQ : \mathcal{X}^s \to H^{s -1}(M)
 \end{align*}
-where $\mathcal{X}^s$ is a non-trivial subspace of $H^s(M)$. This will be the goal of this chapter. 
+where $\mathcal{X}^s$ is a non-trivial subspace of $H^s(M)$ we will define later. This will be the goal of this chapter. 
 
 
 
@@ -51,7 +52,7 @@ The crucial step in the proof is to show that the following \textit{Fredholm est
 &\norm[u]_{H^s} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}} \\
 &\norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
 \end{align*}
-First, we note that in the elliptic set $\Ell^2(\Box)$, microlocal elliptic regularity estimate \ref{} provide us with sharper estimates. However, to obtain the estimates above near elements in the characteristic set $\Char^2(\Box)$, we will need to ``propagate" results from elliptic regions along the Hamiltonian flow of $p = \sigma_2(\Box)$. This is where we will employ propagation of singularity theorem described in the next section. Indeed, this method will prompt us to construct $Q$ to introduce a larger region in $T^*M$ where $\Box - iQ$ is elliptic, so that every point in the characteristic set of $\Box - iQ$ is a point along the Hamiltonian flow that begins in $\Ell^2(\Box - iQ)$. 
+First, we note that in the elliptic set $\Ell^2(\Box)$, microlocal elliptic regularity estimate ( corollary \ref{cor : microlocal elliptic estimate}) provide us with sharper estimates. However, to obtain the estimates above near elements in the characteristic set $\Char^2(\Box)$, we will need to ``propagate" results from elliptic regions along the Hamilton flow associated with the principal $p = \sigma_2(\Box)$. This is where we will employ propagation of singularity theorem described in the next section. Indeed, this method will prompt us to construct $Q$ to introduce a larger region in $T^*M$ where $\Box - iQ$ is elliptic, so that every point in the characteristic set of $\Box - iQ$ is a point along the Hamiltonian flow that begins in $\Ell^2(\Box - iQ)$. 
 
 
 
@@ -67,7 +68,7 @@ f \in C^\infty(M) \iff u \in C^\infty(M).
 In particular, solutions to the homogeneous equation $(\Box - iQ)u = 0$ is guarantee to be smooth. \\
 
 
-Furthermore, the method we shall employ relies only on the \emph{principal symbol} of $\Box$ which is second order. This allows us to extend the result to any first order pertubation, i.e. any choice of $A \in \Psi^{1}_{\infty}(\R^n)$ give rise to a continuous (in fact, analytic) operator valued map 
+Furthermore, the method we shall employ relies only on the \emph{principal symbol} of $\Box$ which is of second order. This allows us to extend the result to any first order pertubation. For any choice of $A \in \Psi^{1}_{\infty}(\R^n)$ give rise to a continuous (in fact, analytic) operator valued map 
 \begin{align*}
 f : z \mapsto (\Box - iQ + zA)
 \end{align*}
@@ -75,7 +76,7 @@ where $f(z) : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredhom for any $z \in \C$. Rec
 \begin{align*}
 \mathrm{Ind}(T) := \dim \ker T - \dim \coker T, \quad T \text{ Fredholm }
 \end{align*}
-and it can be proven that $\mathrm{Ind}$ is a continuous as a map from the space of Fredholm maps between Hilbert spaces to $\Z$ \ref{}. Therefore, the composition $\mathrm{Ind} \circ f : \C \to \Z$ is continuous and thus maps connected sets to conneted sets. Since the only connected sets in $\Z$ are the singletons, we conclude that the family
+and it can be proven that $\mathrm{Ind}$ is a continuous as a map from the space of Fredholm maps between Hilbert spaces to $\Z$\cite{Breen2016-od}. Therefore, the composition $\mathrm{Ind} \circ f : \C \to \Z$ is continuous and thus maps connected sets to conneted sets. Since the only connected sets in $\Z$ are the singletons, we conclude that the family
 \begin{align*}
 \set{\Box - iQ + zA}_{z \in \C} 
 \end{align*}
@@ -114,25 +115,25 @@ where $g, h$ are continuous functions defining the right and left moving waves r
     \end{tikzpicture}
 \end{center}
 
-Thus, we can conjecture that for any solution $u$ to the homogeneous equation \ref{eq: homogeneous wave in 1d}, either $u(t, x)$ is differentiable at $(t_0, x_0)$, or the same singular behaviour (i.e. non-differentiability) will be present on all of the light cone 
+Thus, we can conjecture that for any solution $u$ to the homogeneous equation (\ref{eq: homogeneous wave in 1d}), either $u(t, x)$ is differentiable at $(t_0, x_0)$, or the same singular behaviour (i.e. non-differentiability) will be present on all of the light cone 
 $$\set{(t_0 + s, x_0 +s) \wh s \in \R} \cup \set{(t_0 - s, x_0 + s) \wh s \in \R}.$$
 
- We shall see that this phenomenon generalise to arbitrary manifolds, with ``light cone" replaced by the null-bicharacteristics of the principal symbol of the operator under investigation. More precisely, we have the following result due to Hormander \ref{hormander}: 
+ We shall see that this phenomenon generalise to arbitrary manifolds, with ``light cone" replaced by the null-bicharacteristics of the principal symbol of the operator under investigation. More precisely, we have the following result due to H\"ormander \cite{Hormander1978-xs,Hormander2007-ws}: 
  \begin{ftheorem}
-Let $P \in \Psi^{m}_{cl}(\R^n)$ be a classical pseudifferential operator whose principal symbol $\sigma_m(P)$ has real homogeneous representative $p$. Then, $\WF(u) \setminus \WF(Pu) $ is a union of maximally extended null-bicharacteristics of $p$, i.e. it is the union of the sets of the form
+Let $P \in \Psi^{m}_{cl}(\R^n)$ be a classical pseudifferential operator whose principal symbol $\sigma_m(P)$ has real homogeneous representative $p$. Then, $$\WF(u) \setminus \WF(Pu) $$ is a union of maximally extended null-bicharacteristics of $p$, i.e. it is the union of the sets of the form
 \begin{align*}
 \set{\exp(t H_p(x_0, \xi_0)) \wh t \in (t_0, t_1)\subset \R, \quad p(x_0, \xi_0) = 0}
 \end{align*}
 where $H_p$ is the Hamilton vector field of $p$. 
 \end{ftheorem}
 
-The argument involved to establish the propagation theorem can be adapted so that we can accomodate operators with not necessarily real homogeneous principal. The theorem can also be stated in quantitative terms as below: 
+The argument involved to establish the propagation theorem can be adapted so that we can accomodate operators with not necessarily real homogeneous principal. The theorem can also be stated in quantitative terms as below \cite{Semyon_Dyatlov2018-uk} : 
 
 \todo{example on euclidean wave operator in one space dimension}
 \todo{insert discussion + proof sketch of prop of sing theorem}
 
 
-\begin{ftheorem}[Propagation of singularities] 
+\begin{ftheorem}[Propagation of singularities] \label{theorem: propagation of singularity estimates}
     Suppose we have 
     \begin{enumerate}
         \item $P \in \Psi^k_{cl}(\R^n)$ a properly supported operator,
@@ -152,7 +153,7 @@ The argument involved to establish the propagation theorem can be adapted so tha
 
 
 \section[Main result]{Fredholm problem of totally periodic wave operator} 
-We will now define the required operator $Q$ and the subspace $\mathcal{X}^s \subset H^{s}(M)$ that make $\Box - iQ: \mathcal{X}^s \to H^{s -1}$ Fredholm.  As mentioned we will proceed via the ``complex absorption" method \ref{}. We define
+We will now define the required operator $Q$ and the subspace $\mathcal{X}^s \subset H^{s}(M)$ that make $\Box - iQ: \mathcal{X}^s \to H^{s -1}$ Fredholm.  As mentioned we will proceed via the ``complex absorption" method \cite{Vasy2015-oo}. We define
 \begin{align*}
 Q := \chi(t) \p_t^2
 \end{align*}
@@ -232,11 +233,11 @@ We see now that the pertubation $Q$ introduced a region, $T^*U_1 \subset T^*M$, 
 The estimate provided by the propagation of singularity theorem suggest that we give the following definition for $\mathcal{X}^s$. 
 
 \begin{fdefinition}
-    Let $M$ be the manifold and $\Box -i Q$ be the operator defined above \ref{}. For each $s \in \R$, we define a subspace of $H^{s}(M)$ given by
+    Let $M$ be the manifold and $\Box -i Q$ be the operator defined above. For each $s \in \R$, we define a subspace of $H^{s}(M)$ given by
     \begin{align*}
     \mathcal{X}^s = \set{u \in H^s(M) \wh (\Box - i Q)u \in H^{s - 1}(M)}. 
     \end{align*}
-    Note that $\mathcal{X}^s$ is a Hilbert space (see lemma \ref{}) with inner product and associated norm given by 
+    By the lemma (\ref{lemma: sub-sobolev space}) proven below $\mathcal{X}^s$ is a Hilbert space with inner product and associated norm given by 
     \begin{align*}
     &\inprod[u, v]_{\mathcal{X}^s} := \inprod[u, v]_{H^{s}} + \inprod[(\Box - iQ)u, (\Box - iQ)v]_{H^{s -1}} \\
     & \norm[u]_{\mathcal{X}^s}^2 = \inprod[u, u]_{\mathcal{X}^s} = \norm[u]_{H^s}^2 + \norm[(\Box - iQ)u]_{H^{s - 1}}^2
@@ -244,7 +245,7 @@ The estimate provided by the propagation of singularity theorem suggest that we 
     for all $u, v \in \mathcal{X}^s$. 
 \end{fdefinition}
 
-\begin{flemma}
+\begin{flemma} \label{lemma: sub-sobolev space} 
     Let $A_j \in \Psi^{m_j}_{\infty}(M)$ and $s_j \in \R$ for $j \in \set{1, \dots, N}$. Define the linear subspace of $H^{s}(M)$ by 
     \begin{align*}
     \mathcal{X} := \set{u \in H^{s} \wh A_ju \in H^{s_j}, j = 1, \dots, N},
@@ -301,7 +302,7 @@ With the definitions, in place, we are ready to prove:
     \begin{align*}
     \norm[u]_{\mathcal{X}^s} = \norm[u]_{H^s} + \norm[(\Box - iQ)u]_{H^{s - 1}} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}}
     \end{align*}
-    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$ \cite{} . Thus, by \ref{}, $\Box - iQ$ has finite dimensional kernel and closed range. \\
+    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$ \cite{taylor_pde} . Thus, by theorem (\ref{theorem: fredholm estimates}), $\Box - iQ$ has finite dimensional kernel and closed range. \\
     
     Furthermore, by the isomorphism between Hilbert space and its continuous dual, the dual map of $\Box - iQ$
     \begin{center}
@@ -310,7 +311,7 @@ With the definitions, in place, we are ready to prove:
             (\Box - iQ)^* :  H^{1-s}(M) \ar[r]& (\mathcal{X}^s)^*
         \end{tikzcd}
     \end{center}
-    is given by a map $(\Box - iQ)^* = \Box + iQ^* $ that maps from $H^{1 - s}(M)$. Applying the second estimate to $1 - s$, we know that $\Box +iQ^*$ has finite dimensinal kernel. Using \ref{}, we have 
+    is given by a map $(\Box - iQ)^* = \Box + iQ^* $ that maps from $H^{1 - s}(M)$. Applying the second estimate to $1 - s$, we know that $\Box +iQ^*$ has finite dimensinal kernel. Using lemma (\ref{lemma: kernel cokernel isomorphism}), we have 
     \begin{align*}
     \coker (\Box - iQ) \cong \ker(\Box + iQ^*). 
     \end{align*}
@@ -326,10 +327,10 @@ With the definitions, in place, we are ready to prove:
     \begin{align*}
     \WF'(\chi_1) = \set{(t, x, \tau, \xi) \wh \chi(2t) \neq 0 } \subset \Ell^2(\Box - iQ)
     \end{align*}
-    and thus microlocal elliptic regularity estimate applies to give \todo{remember to include Vasy's microlocal estimate} \ref{} : $\exists C > 0$ such that
-    \begin{align*}
-    \norm[\chi_1 u]_{H^s} \leq C \brac{\norm[(\Box - iQ)u ]_{H^{s - 2}} + \norm[u]_{H^N}}
-    \end{align*}
+    and thus microlocal elliptic regularity estimate (corollary \ref{cor : microlocal elliptic estimate}) applies to give \todo{remember to include Vasy's microlocal estimate} : $\exists C > 0$ such that
+    \begin{align}
+    \norm[\chi_1 u]_{H^s} \leq C \brac{\norm[(\Box - iQ)u ]_{H^{s - 2}} + \norm[u]_{H^N}} \label{eq: estimate in elliptic set}
+    \end{align}
     
      Outside the absorption region, however, we will rely on propagation of singularity estimate. The crucial geometric observation is that every light ray eminating from a point in $U_1^c$ can be traced, in both forward and backward direction, to a source in $U_1$. In other words, every element of $\Char^2(\Box - iQ)$ outside of the absorption region lies along the Hamiltonian flow of the principal symbol of $\Box$ that begins in the absorption region. In symbols,  
      \begin{align*}
@@ -338,7 +339,7 @@ With the definitions, in place, we are ready to prove:
      \iff & \exists (t', x', \tau', \xi') = (t', x', \tau, \xi) \in \Ell^0(\chi_1), \\
       & \exp(\sigma H_p)(t', x', \tau', \xi') = (t' + \sigma t, x + \sigma \xi, \tau, \xi) = (t, x, \tau, \xi)
      \end{align*}
-     for some $\sigma  \in \R$. We have use the fact that $\Ell^0(\chi_1) = \set{\chi_1 \neq 0 } \subset U_1$. In fact, we can always choose $t' = 0$, since the light ray eminating from the line $t' = 0$ will cover every  
+     for some $\sigma  \in \R$. We have use the fact that $\Ell^0(\chi_1) = \set{\chi_1 \neq 0 } \subset U_1$. In fact, we can always choose $t' = 0$, since the light ray eminating from the line $t' = 0$ will cover every point in the phase space with $\abs{\xi} = \abs{\tau}$. 
      
      
      \begin{center}
@@ -382,11 +383,11 @@ With the definitions, in place, we are ready to prove:
             The hamiltonian flow associated with the principal symbol $p := \sigma_2(\Box)$ of the wave operator is given by the map $ \exp(\sigma H_p) (t, x, \tau, \xi) = (t + \sigma \tau, x + \sigma \xi, \tau, \xi) $ where $\sigma \in \R$ is the flow parameter. As depicted above, every point in the characteristic set of $\Box - iQ$, namely points in $U_1^c$ (white region) pointing in the $45^o$ direction, i.e. the dual variables satisfies $\abs{\xi} = \abs{\tau}$, are points that flows from and will flow into the absorption region (dark region). }
      \end{center}
  
-     As such, by \ref{}, we obtain the estimate : $\exists C > 0$
+     As such, by theorem ( \ref{theorem: propagation of singularity estimates}), we obtain the estimate : $\exists C > 0$
      \begin{align*}
      \norm[u]_{H^s} \leq C \brac{\norm[\chi_1 u]_{H^s} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} }. 
      \end{align*}
-     Substituting \ref{}, we have: $\exists C' > 0$
+     Substituting (\ref{eq: estimate in elliptic set}), we have: $\exists C' > 0$
      \begin{align*}
       \norm[u]_{H^s} 
       & \leq C' \brac{C \norm[(\Box - iQ)u ]_{H^{s - 2}} + C \norm[u]_{H^N} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} } \\
@@ -398,7 +399,7 @@ With the definitions, in place, we are ready to prove:
      \begin{align*}
      Q^* = (\chi(t)^2 \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
      \end{align*}
-     which has the same principal symbol $\chi(t) \tau^2$ as that of $Q$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  : $\exists C > 0$
+     which has the same principal symbol as that of $Q$, namely $\chi(t) \tau^2$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  : $\exists C > 0$
      \begin{align*}
      \norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
      \end{align*}

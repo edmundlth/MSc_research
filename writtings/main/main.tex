@@ -6,15 +6,18 @@
 
 
 \title{    
-    \textsc{\LARGE Microlocal Analysis} \\
-    \textsc{\large with an Application to the Non-elliptic Fredholm Problem of the Wave Operator on $n + 1$-Torus} \\ [5em]
+    \textsc{\LARGE \textbf{Microlocal Analysis}} \\
+    \textsc{\large \textbf{with Applications to the Non-elliptic Fredholm Problem of the Wave Operator on Torus}} \\ [5em]
+    Edmund Lau \\
+    Supervised by Dr Jesse Gell-Redman \\ [5em] 
     \textsc{\Large School of Mathematics and Statistics, \\ The University of Melbourne} \\ [5em]
+    {\large October 2018} \\
     {\large Submitted in partial fulfillment of the requirements of the degree of Master of Science} \\
 }
-\author{Author : Edmund Lau \\
-    Supervisor : Jesse Gell-Redman }
-\date{October 2018}
-
+%\author{Edmund Lau \\
+%    Supervised by Dr Jesse Gell-Redman }
+%\date{October 2018}
+\date{}
 
 
 
@@ -39,11 +42,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
-It is well known in Fourier analysis that the rate of decay of the Fourier transform of a distribution is a measure of smoothness of the distribution. Microlocal analysis, first introduced by Sato \cite{} and Hormander \cite{}, is the study of distributions that takes advantage of this observation by keeping track of not only the singular points in the base manifold, but also the \textit{directions} in the cotangent bundle in which the Fourier transform has insufficient decay. \\
 
-Pseudifferential operators are the central object of study in microlocal analysis. They generalise traditional differential operators with smooth coefficients. A main area of application of pseudodifferential calculus is quantum mechanics. In classical  mechanics,  the quantities of interest, or  observables,  such as position and momentum of particles, are represented by smooth functions in the phase space. Quantum mechanics, on the other hand, represent observable as self-adjoint operators. In the theory of pseudodifferential operator, we will rigorously define a procedure that maps classical observables to their quantum counterpart via a process known as \textit{quantisation}. One immediate observation is that, quantisation maps from a commutative algebra (smooth functions and multiplication) to a non-commutative algebra (that of operators and composition), accounting for quantum phenomena such as the uncertainty principle. \\
+It is well known in Fourier analysis that the rate of decay of the Fourier transform of a distribution is related to the smoothness of the distribution. Microlocal analysis, first introduced by  Sato \cite{Sato1970-on} and H\"ormander\cite{Hormander2007-ws}, is the study of distributions that takes advantage of this observation by keeping track of not only the singular points in the base manifold, but also the \textit{directions} in the cotangent bundle in which the Fourier transform has insufficient decay. \\
 
-The theory of pseudodifferential operators also provides valuable insights into the study of linear partial differential equations. For instance, the theory provides techniques to prove that certain differential operators are \textit{Fredholm} as linear maps between appropriate Sobolev spaces. The property of an operator being Fredholm reduces the question of solvability to checking a finite number of conditions and restricts the non-uniqueness of any solution to a finite dimensional space (see \cite{}). While traditionally only elliptic operators are associated with Fredholm problems, there has been recent fruitful application of results from microlocal analysis, particularly the propagation of singularities estimates \ref{}, to the study of non-elliptic Fredholm problems \cite{}. \\
+Pseudifferential operators are the central objects of study in microlocal analysis. They generalise traditional differential operators with smooth coefficients. A main area of application of pseudodifferential calculus is quantum mechanics\cite{Martinez2002-xg}. In classical  mechanics,  the quantities of interest, or  observables,  such as position and momentum of particles, are given by smooth functions in the phase space. Quantum mechanics, on the other hand, represents observables as self-adjoint operators. In the theory of pseudodifferential operators, we will rigorously define a procedure that maps classical observables to their quantum counterpart via a process known as \textit{quantisation}. One immediate observation is that, quantisation maps from a commutative algebra (smooth functions with multiplication) to a non-commutative algebra (operators with composition), accounting for quantum phenomena such as the uncertainty principle. \\
+
+The theory of pseudodifferential operators also provides valuable insights into the study of linear partial differential equations (PDEs). For instance, the theory provides techniques to prove that certain differential operators are \textit{Fredholm} as linear maps between appropriate Sobolev spaces. The property of an operator being Fredholm reduces the question of solvability to checking a finite number of conditions and restricts the non-uniqueness of any solution to a finite dimensional space (see \cite{Ramm2001-ep}). In the study of PDEs, Fredholm problem of operators are frequently constructed as maps between Hilbert spaces based on order of differentiability (e.g. Sobolev spaces). This provides a link between Fredholm properties and the study of regularity of solutions to PDEs. While traditionally only elliptic operators are associated with Fredholm problems, there has been recent fruitful application of results from microlocal analysis, particularly the propagation of singularities estimates (theorem \ref{theorem: propagation of singularity estimates}, first proven by H\"ormander \cite{Hormander1978-xs}), to the study of non-elliptic Fredholm problems (see for example \cite{Vasy2013-qt,Gell-Redman2016-sg}). \\
 
 
 \paragraph{\Large Outline : }\hfill 
@@ -55,7 +59,6 @@ The theory of pseudodifferential operators also provides valuable insights into 
     \item[Chapter 4: ] We will then turn our attention to pseudodifferential equations, i.e. equations of the form $Au = f$ with $A$ being a pseudodifferential operator, $u$ the unknown and $f$ a given distribution. Of particular importance is when $A$ is an \textit{elliptic} operator which allow us to invert $A$ up to ``trivial" terms. For each operator $A$, we will wish to answer the question : ``How does the presence of singularities in $f$ affect the regularity of the solution $u$?" 
     
     \item[Chapter 5: ] Here we will consider the Fredholm problem of the totally periodic wave operator on the $n + 1$-torus. We will see the application of the propagation of singularities theorem to construct subspaces of the Sobolev spaces on the torus on which the wave operator acts as a Fredholm operator after some pertubation. 
-    
 \end{description}
 
 
@@ -77,7 +80,7 @@ The theory of pseudodifferential operators also provides valuable insights into 
 %\chapter{Appendix}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{acm}
+\bibliographystyle{apalike}
 \bibliography{\jobname.bib}
 
 \end{document}

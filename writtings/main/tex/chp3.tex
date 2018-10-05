@@ -14,15 +14,16 @@ Au = f, \quad A \in \Psi^{m}_{\infty}(\R^n), \, u \in \sch'(\R^n), f \in H^s(\R^
 The goal is to study how regularity and singularity of $Au$ (which is given as $f$), affects that of the solution, $u$ if it exist. 
 
 \section{Pseudodifferential operators are pseudolocal}
-We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any pseudodifferential operator  is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is the pseudolocality result that says that action pseudodifferential operator do not increase singular support of distributions. In terms of \ref{eq: example diff eq}, we can say that the solution $u$ is singular at all the points where $f$ is singular. 
+We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any pseudodifferential operator  is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is the pseudolocality result that says that action pseudodifferential operator do not increase singular support of distributions. In terms of differential equation (\ref{eq: example diff eq}), we can say that the solution $u$ is singular at all the points where $f$ is singular. 
 
 \subsection{Support and singular support} 
 First, we need the definition of support and singular supports of operators and distributions. Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
 \begin{fdefinition}
     The \textbf{support of a tempered distribution} $u \in \sch'(\R^n)$ is given by the set
     \[
-    \supp(u) = \set{x \in \R^n \wh \exists \phi \in \sch(\R^n), \phi(x) \neq 0, \phi u = 0}^c. 
+    \supp(u) = \set{x \in \R^n \wh \exists \chi \in \sch(\R^n), \chi(x) \neq 0, \chi u = 0}^c. 
     \]
+    In words, the support of $u$  are the points $x \in \R^n$ around which  $u$ does not acts as the zero map. 
 \end{fdefinition}
 
 And the singular support of a distribution is the set of points where the distribution fails to behave like an element of $\sch(\R^n)$. 
@@ -31,8 +32,16 @@ And the singular support of a distribution is the set of points where the distri
     \[
     \mathrm{sing supp}(u) = \set{x \in \R^n \wh \exists \phi \in S(R^n), \phi(x) \neq 0, \phi(u) \in \sch(\R^n)}^c
     \]
+    In words, the singular support of $u$ are points $x \in \R^n$ around which $u$ fails to be smooth and rapidly decreasing. 
 \end{fdefinition}
-Note that if the singular support of a tempered distribution is empty, it is then an element of $C^\infty(\R^n)$ 
+\begin{rem} \hfill 
+    \begin{itemize}
+        \item     Note that if the singular support of a tempered distribution is empty, it is then an element of $C^\infty(\R^n)$.     
+        \item We note from the above that supports or singular supports are complement of open sets, therefore they are closed. 
+    \end{itemize}
+
+\end{rem}
+
 The support of an operator is given by the support of its Schwartz kernel. 
 \begin{fdefinition}
     The \textbf{support of a continuous linear operator} $A: S(R^n) \to \sch'(\R^n)$ is given by 
@@ -42,7 +51,7 @@ The support of an operator is given by the support of its Schwartz kernel.
     where $K_A \in \sch'(\R^n \times \R^n)$ is the Schwartz kernel of $A$. 
 \end{fdefinition}
 
-We note from the above that supports or singular supports are complement of open sets, therefore they are closed. 
+
 %We have the following result relating the support of a smooth function after the action of a continuous linear operator. 
 %\begin{fprop}[Calculus of support]
 %    Let $A: \sch(\R^n) \to \sch(\R^n)$ be a continuous linear operator and $\phi \in C^\infty_c(\R^n)$, then
@@ -78,7 +87,7 @@ Now, we are ready to show that pseudodifferential operators are smooth away from
     \]
 \end{fprop}
 \begin{proof}
-    Using lemma \ref{}, it suffices to prove this theorem for elements of $\Psi^{-\infty}_\infty(\R^n)$ and then extend by continuity to all orders. \\
+    Using lemma (\ref{lemma: density of residual symbols}), it suffices to prove this theorem for elements of $\Psi^{-\infty}_\infty(\R^n)$ and then extend by continuity to all orders. \\
     
     Let $A \in \Psi^{-\infty}_\infty(\R^n)$ with symbol $a \in S^{-\infty}_\infty(\R^{2n}; \R^n)$. Its singular support is given by the singular support of the kernel. Since all derivatives of $a$ are $O(\sym[\xi]^{-\infty})$, the oscillatory integral below representing the kernel is absolutely convergent  and, using integration by parts, we get
     \begin{align*}
@@ -118,7 +127,7 @@ Now, we are ready to show that pseudodifferential operators are smooth away from
     \begin{align*}
         Au = A(\chi u + (1 - \chi)u) = A(\chi u) + A(1 - \chi)u. 
     \end{align*}
-    Since $\chi u \in \sch(\R^n) \implies A\chi u \in \sch(\R^n)$ \cite{rbm lemma 2.3}, we have that 
+    Since $\chi u \in \sch(\R^n) \implies A\chi u \in \sch(\R^n)$ (proposition \ref{prop : schwartz to schwartz}), we have that 
     \begin{align*}
         \mathrm{singsupp}(Au) = \mathrm{singsupp}(A(1 - \chi)u). 
     \end{align*}
@@ -137,7 +146,8 @@ Now, we are ready to show that pseudodifferential operators are smooth away from
 
 
 \section{Global ellipticity} 
-There is a subset of operators for which we can conclude much more than just pseudolocality, namely the set of operators that are \textit{elliptic}, i.e. element of the algebra that are invertible upto additive elements in $\Psi^{-\infty}_{\infty}(\R^n)$. 
+There is a subset of operators for which we can conclude much more than just pseudolocality, namely the set of operators that are \textit{elliptic}, i.e. element of the algebra that are invertible up to additive elements in $\Psi^{-\infty}_{\infty}(\R^n)$. 
+
 \begin{fdefinition}
     A pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ is elliptic if there exist $B \in \Psi^{-m}_{\infty}(\R^n)$ such that 
     \begin{align*}
@@ -241,7 +251,7 @@ The main theorem regarding globally elliptic pseudodifferential operator is the 
     \end{enumerate}
 \end{ftheorem}
 \begin{proof}
-    Note that we already have $(2) \iff (3)$ from the previous lemma. We remark that $(1) \implies (4)$ is simply the application of the assuming property of principal symbol under composition on the elliptic parametrix of $A$. For the rest of the proof, see \todo{reference}\ref{}. 
+    Note that we already have $(2) \iff (3)$ from the previous lemma. We remark that $(1) \implies (4)$ is simply the application of the assuming property of principal symbol under composition on the elliptic parametrix of $A$. For full proof, see \cite{Vasy2015-oo} or \cite{rbm_intro_microlocal}. \todo{reference}
     
 \end{proof}
 
@@ -257,7 +267,7 @@ An important characteristic of elliptic pseudodifferential operators is that the
     \begin{align*}
     u = 1 \cdot u = (BA + E)u = BAu + Eu. 
     \end{align*}
-    Since $Eu \in \sch(\R^n)$ by \ref{}, and  we have assumed $Au \in \sch(\R^n)$, we conclude that $u \in \sch(\R^n)$. 
+    Since $Eu \in \sch(\R^n)$ by proposition (\ref{prop : residual operators are smoothing}), and  we have assumed $Au \in \sch(\R^n)$, we conclude that $u \in \sch(\R^n)$. 
     
 \end{proof}
 
@@ -609,12 +619,12 @@ With the concept of essentail support we can define the notion of \emph{microloc
 \end{proof}
 
 
-\begin{fprop}
+\begin{fcor} \label{cor : microlocal elliptic estimate}
     Let $A \in \Psi^{m}_{\infty}(\R^n)$ and $u \in \sch'(\R^n)$. If for some $Q' \in \Psi^{0}_{\infty}(\R^n)$, $Q'Au \in H^{s}(\R^n)$, then for any other $Q \in \Psi^{0}_{\infty}(\R^n)$ such that $\WF'(Q) \subset \Ell^m(A) \cap \Ell^0(Q')$ we have $Qu \in H^{s + m}(\R^n)$ and it satisfies the estimate: $\forall N \in \R$, $\exists C > 0$ 
     \begin{align*}
     \norm[Qu]_{H^{s +m}} \leq C \brac{\norm[Q'Au]_{H^s} + \norm[u]_{H^N}}. 
     \end{align*}
-\end{fprop}
+\end{fcor}
 \begin{proof}
     At any point $\alpha \in \WF'(Q)$, $Q'A$ is microlocally elliptic, since $\Ell^2(Q'A) = \Ell^2(A) \cap \Ell^0(Q')$. Therefore, we can construct a microlocal elliptic parametrix $B$ for $Q'A$ near $\alpha$ so that if  $E = BQ'A - 1$ denotes the residue, we have 
     \begin{align*}
@@ -637,6 +647,8 @@ With the concept of essentail support we can define the notion of \emph{microloc
     
 \end{proof}
 
+\subsection{Pseudodifferential operators and microlocal}
+Just as wavefront set refine the notion of singular support, we have the refinement of the property of pseudolocality of pseudodifferential operator. We refer to \cite{Vasy2015-oo} or \cite{rbm_intro_microlocal} for proof. 
 
 \begin{fprop}
     Pseudodifferential operators are microlocal in the following sense: 
@@ -649,9 +661,7 @@ With the concept of essentail support we can define the notion of \emph{microloc
         \WF(Au) \subset \WF'(A) \cap \WF(u). 
     \end{align*}
 \end{fprop}
-\begin{proof}
-    
-\end{proof}
+
 
 A partial converse to the above is given by the following proposition. \\
 
