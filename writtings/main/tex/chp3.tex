@@ -452,17 +452,20 @@ Instead of global ellipticity, we will now define a notion of \textit{ellipticit
 
 \subsection{Wavefront set for tempered distributions}
 The notion of wavefront set, $\WF$,  is central to microlocal analysis. Roughly, given a distribution $u$, a point $(x, \xi) \in T^*\R^n$ is \textbf{not} in the the wavefront set $\WF(u)$ if there exist a ``microlocal cut-off" $A \in \Psi^{0}_{\infty}(\R^n)$, 
-such that $A u $ is smooth. The role of $A$ is to locally around $x$ in the base space and conically locallise around $\xi$, i.e. we care only of the direction. 
+such that $A u $ is smooth. The role of $A$ is to locallise around $x$ in the base space and conically locallise around $\xi$, i.e. we care only of the direction (hence $\xi = 0$ would not be considered). 
 \begin{center}
     \begin{tikzpicture}
     \draw [fill=black] (0, 0) circle [radius=0.1]; \node at (-0.3, -0.3) {$x$}; 
+    
     \filldraw[fill=gray!20!white]
-    (0,0) -- (3, 2) arc (0:40:3) -- (0,0);
+    (0,0) -- (3, 2) arc (30:60:3.6) -- (0,0);
+    
     \filldraw[fill=white!20!white, dashed]
-    (0,0) -- (1, 0.66666) arc (0:40:1) -- (0,0);
-    \draw [-> ] (0, 0) -- (2, 2); \node at (2.2, 2.2) {$\xi$};
+    (0,0) -- (1, 0.66666) arc (30:60:1.2) -- (0,0);
+    
+    \draw [-> ] (0, 0) -- (1.8, 2); \node at (2.2, 2.2) {$\xi$};
     \end{tikzpicture}
-    \captionof{figure}{Microlocalisation in phase space.}
+    \captionof{figure}{Microlocalisation in phase space. }
 \end{center}
 
 \begin{fdefinition}
@@ -516,7 +519,7 @@ The next proposition shows that wavefront set is a refinement of the singular su
     \begin{align*}
         \phi \circ E \circ (1 - \chi) \in \Psi^{-\infty}_\infty(\R^n)
     \end{align*}
-    making it a smoothing operator \cite{}. Thus, we conclude 
+    making it a smoothing operator (by proposition \ref{prop : residual operators are smoothing}). Thus, we conclude 
     \begin{align*}
         \phi u = \phi E \circ A u + \phi \circ E \circ (1 - \chi) u \in C^\infty(\R^n)
     \end{align*}
@@ -528,6 +531,7 @@ The next proposition shows that wavefront set is a refinement of the singular su
 \end{proof}
 
 \subsection{Wavefront set for pseudodifferential operators}
+The wavefront set for pseudodifferential operators, or the \textit{essential support} are defined in terms of their symbols. Informally, they are points in phase space, i.e. points $x$ is the base space and a direction $\xi$,  where the symbols have insufficient decay in the $\xi$ direction. 
 
 \begin{fdefinition}
     Let $a \in S^{m}_\infty(\R^{p}; \R^n)$ for some $m \in \R$, $p, n \in \N$ be a symbol. We say $a$ is of order $-\infty$ at a point $(x_0, \xi_0) \in \R^p \times \R^n \setminus \set{0}$ (write $a = O(\sym[\xi]^{-\infty})$) if there exist $\epsilon \in \R_{> 0}$ such that for all $M \in \R$, there is a constant $C_M > 0$ such that 
@@ -544,6 +548,7 @@ The next proposition shows that wavefront set is a refinement of the singular su
     \]
 \end{fdefinition}
 
+
 \begin{flemma}
     Let $a \in S^{\infty}_\infty(\R^{p}; \R^n)$, then 
     \begin{enumerate}
@@ -551,6 +556,9 @@ The next proposition shows that wavefront set is a refinement of the singular su
         \item If $a = O(\sym[\xi]^{-\infty})$ at $(x_0, \xi_0) \in \R^p \times \R^n \setminus \set{0}$, then so is $D^\alpha_x D^\beta_\xi a(x, \xi)$ for any multi-index $\alpha, \beta$
     \end{enumerate}
 \end{flemma}
+\begin{proof}
+    See \cite[Chapter 4]{rbm_intro_microlocal}.
+\end{proof}
 
 With the lemma above, we can in fact define the cone support of a symbol to be the smallest closed conic subset of the phase space (with $\xi \neq 0$) such that, in the complement, $a$ and all its derivatives are of order $-\infty$.\\
 
@@ -559,11 +567,11 @@ With the lemma above, we can in fact define the cone support of a symbol to be t
 \begin{fdefinition}
     Let $A \in \Psi^m_\infty(\R^n)$,  $m \in \R$ be pseudodifferential operator. We define the \textbf{essential support}, $\WF'(A)$, of $A$ to be the cone support of its left symbol, i.e. 
     \begin{align*}
-        \WF'(A) = \mathrm{conesupp}(\sigma_L(A)) \subset \R^n \times \R^n \setminus \set{0}
+        \WF'(A) = \mathrm{conesupp}(\sigma_L(A)) \subset \R^n \times \R^n \setminus \set{0}. 
     \end{align*}
 \end{fdefinition}
+\hfill \\
 
-Using symbol calculus we can prove the following result. 
 \begin{flemma}
     Let $A \in \Psi^m_\infty(\R^n)$, $B \in \Psi^{m'}_\infty(\R^n)$ be pseudifferential operators. Then 
     \begin{enumerate}
@@ -572,8 +580,11 @@ Using symbol calculus we can prove the following result.
         \item $\WF'(A + B) = \WF'(A) \cup \WF'(B)$. 
     \end{enumerate}
 \end{flemma}
+\begin{proof}
+    See \cite[Section 3]{Vasy2015-oo}
+\end{proof}
 
-With the concept of essentail support we can define the notion of \emph{microlocal elliptic parametrix} which can be thought of as local inverse at an elliptic point of $\Psi$DO's. 
+With the notion of operator wavefront set  we can define the notion of \emph{microlocal elliptic parametrix} which can be thought of as local inverse at an elliptic point of the pseudodifferential operator. 
 \begin{fprop}
     Let $A \in \Psi^m_\infty(\R^n)$ and $z \not \in \Char^m(A)$. Then there exist a (two-sided) microlocal parametrix $B \in \Psi^{-m}(\R^n)$ such that 
     \begin{align*}

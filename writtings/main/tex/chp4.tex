@@ -151,8 +151,8 @@ The argument involved to establish the propagation theorem can be adapted so tha
 \end{ftheorem}
 
 
-
-\section[Main result]{Fredholm problem of totally periodic wave operator} 
+\pagebreak
+\section{Fredholm problem of wave operator} 
 We will now define the required operator $Q$ and the subspace $\mathcal{X}^s \subset H^{s}(M)$ that make $\Box - iQ: \mathcal{X}^s \to H^{s -1}$ Fredholm.  As mentioned we will proceed via the ``complex absorption" method \cite{Vasy2015-oo}. We define
 \begin{align*}
 Q := \chi(t) \p_t^2
@@ -283,7 +283,7 @@ The estimate provided by the propagation of singularity theorem suggest that we 
 \end{proof}
 
 
-
+\subsection{The theorem}
 With the definitions, in place, we are ready to prove: 
 \begin{ftheorem}
     For each $s \in \R$, the operator
@@ -292,34 +292,17 @@ With the definitions, in place, we are ready to prove:
     \end{align*}
     is Fredholm. 
 \end{ftheorem}
-\begin{proof}
+We will present the proof in the next two sections. 
+
+\subsection{Proving the estimates} 
+
     As mentioned, we need to show that $\forall s, N \in \R$, $\forall u \in \mathcal{X}^s$, there exist positive real number $C > 0$, such that
     \begin{align} \label{eq : fredholm estimate for wave operator} 
     &\norm[u]_{H^s} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}} \\
     &\norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
     \end{align}
-    Since the estimates above will be proven for all $s \in \R$, adding the term involving $H^{s-1}$-norm on both sides and recalling that the dual of Sobolev spaces are given by $(H^{s - 1})^* = H^{1 - s}$the estimates above translate to : $\exists C > 0$, 
-    \begin{align*}
-    \norm[u]_{\mathcal{X}^s} = \norm[u]_{H^s} + \norm[(\Box - iQ)u]_{H^{s - 1}} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}}
-    \end{align*}
-    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$ \cite{taylor_pde} . Thus, by theorem (\ref{theorem: fredholm estimates}), $\Box - iQ$ has finite dimensional kernel and closed range. \\
     
-    Furthermore, by the isomorphism between Hilbert space and its continuous dual, the dual map of $\Box - iQ$
-    \begin{center}
-        \begin{tikzcd}
-            (\Box - iQ)' : (H^{s - 1}(M))' \ar[r] \ar[d, "\cong", shift left=1cm] & (\mathcal{X}^s)' \ar[d, "\cong"]   \\
-            (\Box - iQ)^* :  H^{1-s}(M) \ar[r]& (\mathcal{X}^s)^*
-        \end{tikzcd}
-    \end{center}
-    is given by a map $(\Box - iQ)^* = \Box + iQ^* $ that maps from $H^{1 - s}(M)$. Applying the second estimate to $1 - s$, we know that $\Box +iQ^*$ has finite dimensinal kernel. Using lemma (\ref{lemma: kernel cokernel isomorphism}), we have 
-    \begin{align*}
-    \coker (\Box - iQ) \cong \ker(\Box + iQ^*). 
-    \end{align*}
-    allowing us to conclude that $\coker(\Box - iQ)$ is finite dimensional as well. Jointly, these allow us to conclude that $\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M)$ is Fredholm. \\
-    
-%    Note that $(\Box - iQ)^* = \Box + i Q^*$. Also, since $M$ is a compact manifold, \ref{} shows that $H^{s} \hookrightarrow H^{N}$ is a compact inclusion for $N < s$. \todo{proof that this transfer to $\mathcal{X}^s$ as well}. Then, by \ref{}, these esitmates allow us to conclude that $(\Box - iQ) : \mathcal{X}^s \to H^{s - 1}$ is indeed a Fredhold operator.     \\
-%    \\
-    It remains to prove the aforementioned Fredholm estimates. Let $s, N \in \R$, $u \in \mathcal{X}^s$ be given. First, we will establish a sharper estimate in the absorption region where $\Box - iQ$ is elliptic. Let $\chi_1 \in C^{\infty}_c(T^*M)$ be a smooth compactly supported cut-off with $\supp \chi_1 \subset U_1 \subset \Ell^2( \Box - iQ)$. Explicitly, we can choose
+    Let $s, N \in \R$, $u \in \mathcal{X}^s$ be given. First, we will establish a sharper estimate in the absorption region where $\Box - iQ$ is elliptic. Let $\chi_1 \in C^{\infty}_c(T^*M)$ be a smooth compactly supported cut-off with $\supp \chi_1 \subset U_1 \subset \Ell^2( \Box - iQ)$. Explicitly, we can choose
     \begin{align*}
     \chi_1(t, x, \tau, \xi) = \chi(2 t), \quad \supp(\chi_1) \subset \set{\chi(2t) \neq 0} \subset \set{\chi(t) \neq 0} = U_1
     \end{align*}
@@ -332,45 +315,45 @@ With the definitions, in place, we are ready to prove:
     \norm[\chi_1 u]_{H^s} \leq C \brac{\norm[(\Box - iQ)u ]_{H^{s - 2}} + \norm[u]_{H^N}} \label{eq: estimate in elliptic set}
     \end{align}
     
-     Outside the absorption region, however, we will rely on propagation of singularity estimate. The crucial geometric observation is that every light ray eminating from a point in $U_1^c$ can be traced, in both forward and backward direction, to a source in $U_1$. In other words, every element of $\Char^2(\Box - iQ)$ outside of the absorption region lies along the Hamiltonian flow of the principal symbol of $\Box$ that begins in the absorption region. In symbols,  
-     \begin{align*}
-     &(t, x, \tau, \xi) \in \Char^2(\Box - iQ) \\
-     \iff & \chi(t) = 0 \text{ and } \abs{\tau} = \abs{\xi}\\
-     \iff & \exists (t', x', \tau', \xi') = (t', x', \tau, \xi) \in \Ell^0(\chi_1), \\
-      & \exp(\sigma H_p)(t', x', \tau', \xi') = (t' + \sigma t, x + \sigma \xi, \tau, \xi) = (t, x, \tau, \xi)
-     \end{align*}
-     for some $\sigma  \in \R$. We have use the fact that $\Ell^0(\chi_1) = \set{\chi_1 \neq 0 } \subset U_1$. In fact, we can always choose $t' = 0$, since the light ray eminating from the line $t' = 0$ will cover every point in the phase space with $\abs{\xi} = \abs{\tau}$. 
-     
-     
-     \begin{center}
-         \begin{tikzpicture}
-         \draw [] (0, 0) rectangle (8, 8);
-         \fill [gray, opacity=0.5] (0, 0) rectangle (8, 2);
-         \fill [gray, opacity=0.5] (0, 6) rectangle (8, 8);
-         \draw [dashed] (0, 2) -- (8, 2);
-         \draw [dashed] (0, 6) -- (8, 6);
-         
-         \draw [fill=black] (4, 4) circle [radius = 0.1]; 
-         \draw [->, thick] (4, 4) -- (5, 5);
-         \node at (4.6, 3.5) {$(t, x, \tau, \xi)$}; 
-         
-         
-         \draw [fill=black] (1, 1) circle [radius = 0.1]; 
-         \draw [->, thick, dotted] (1, 1) -- (2.5, 2.5);
-         \draw [thick, dotted] (2.5, 2.5) --  (4, 4); 
-         \node at (1.5, 0.5) {$(t', x', \tau', \xi')$}; 
-         
-         
-         \draw [dotted] (4, 4) -- (5, 4);
-         \draw [thick] (4.5, 4) arc (0:45:0.5); 
-         \node at (5, 4.5) {$45^o$}; 
-         
-         \node at (8.3, -0.1) {$x$};
-         \node at (-0.1, 8.3) {$t$}; 
-         \node at (-0.2, -0.2) {$0$};
-         
-         
-         
+    Outside the absorption region, however, we will rely on propagation of singularity estimate. The crucial geometric observation (see diagram below) is that every light ray eminating from a point in $U_1^c$ can be traced, in both forward and backward direction, to a source in $U_1$. In other words, every element of $\Char^2(\Box - iQ)$ outside of the absorption region lies along the Hamiltonian flow of the principal symbol of $\Box$ that begins in the absorption region. More formally, ,  
+    \begin{align*}
+    &(t, x, \tau, \xi) \in \Char^2(\Box - iQ) \\
+    \iff & \chi(t) = 0 \text{ and } \abs{\tau} = \abs{\xi}\\
+    \iff & \exists (t', x', \tau', \xi') = (t', x', \tau, \xi) \in \Ell^0(\chi_1), \\
+    & \exp(\sigma H_p)(t', x', \tau', \xi') = (t' + \sigma t, x + \sigma \xi, \tau, \xi) = (t, x, \tau, \xi)
+    \end{align*}
+    for some $\sigma  \in \R$. We have use the fact that $\Ell^0(\chi_1) = \set{\chi_1 \neq 0 } \subset U_1$. In fact, we can always choose $t' = 0$, since the light ray eminating from the line $t' = 0$ will cover every point in the phase space with $\abs{\xi} = \abs{\tau}$. \\
+    
+    
+    \begin{center}
+        \begin{tikzpicture}
+        \draw [] (0, 0) rectangle (8, 8);
+        \fill [gray, opacity=0.5] (0, 0) rectangle (8, 2);
+        \fill [gray, opacity=0.5] (0, 6) rectangle (8, 8);
+        \draw [dashed] (0, 2) -- (8, 2);
+        \draw [dashed] (0, 6) -- (8, 6);
+        
+        \draw [fill=black] (4, 4) circle [radius = 0.1]; 
+        \draw [->, thick] (4, 4) -- (5, 5);
+        \node at (4.6, 3.5) {$(t, x, \tau, \xi)$}; 
+        
+        
+        \draw [fill=black] (1, 1) circle [radius = 0.1]; 
+        \draw [->, thick, dotted] (1, 1) -- (2.5, 2.5);
+        \draw [thick, dotted] (2.5, 2.5) --  (4, 4); 
+        \node at (1.5, 0.5) {$(t', x', \tau', \xi')$}; 
+        
+        
+        \draw [dotted] (4, 4) -- (5, 4);
+        \draw [thick] (4.5, 4) arc (0:45:0.5); 
+        \node at (5, 4.5) {$45^o$}; 
+        
+        \node at (8.3, -0.1) {$x$};
+        \node at (-0.1, 8.3) {$t$}; 
+        \node at (-0.2, -0.2) {$0$};
+        
+        
+        
         \draw [fill=black] (6, 3) circle [radius = 0.1]; 
         \draw [->, thick] (6, 3) -- (7, 4);
         \draw [->, thick, dotted] (6, 3) -- (7, 4);
@@ -381,30 +364,56 @@ With the definitions, in place, we are ready to prove:
         \end{tikzpicture}
         \captionof{figure}{\small 
             The hamiltonian flow associated with the principal symbol $p := \sigma_2(\Box)$ of the wave operator is given by the map $ \exp(\sigma H_p) (t, x, \tau, \xi) = (t + \sigma \tau, x + \sigma \xi, \tau, \xi) $ where $\sigma \in \R$ is the flow parameter. As depicted above, every point in the characteristic set of $\Box - iQ$, namely points in $U_1^c$ (white region) pointing in the $45^o$ direction, i.e. the dual variables satisfies $\abs{\xi} = \abs{\tau}$, are points that flows from and will flow into the absorption region (dark region). }
-     \end{center}
- 
-     As such, by theorem ( \ref{theorem: propagation of singularity estimates}), we obtain the estimate : $\exists C > 0$
-     \begin{align*}
-     \norm[u]_{H^s} \leq C \brac{\norm[\chi_1 u]_{H^s} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} }. 
-     \end{align*}
-     Substituting (\ref{eq: estimate in elliptic set}), we have: $\exists C' > 0$
-     \begin{align*}
-      \norm[u]_{H^s} 
-      & \leq C' \brac{C \norm[(\Box - iQ)u ]_{H^{s - 2}} + C \norm[u]_{H^N} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} } \\
-      & \leq C'' \brac{ \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} }
-     \end{align*}
-     since $\norm[v]_{H^{s - 2}} \leq \norm[v]_{H^{s - 1}}$ for any $v \in H^{s - 2}$. \\
-     \\
-     For the second estimate, observe that 
-     \begin{align*}
-     Q^* = (\chi(t) \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
-     \end{align*}
-     which has the same principal symbol as that of $Q$, namely $\chi(t) \tau^2$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  $\exists C > 0$
-     \begin{align*}
-     \norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
-     \end{align*}
-     We have thus obtain both Fredholm estimates for $\Box - iQ$. \end{proof}
+    \end{center}
 
+    
+    As such, by theorem ( \ref{theorem: propagation of singularity estimates}), we obtain the estimate : $\exists C > 0$
+    \begin{align*}
+    \norm[u]_{H^s} \leq C \brac{\norm[\chi_1 u]_{H^s} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} }. 
+    \end{align*}
+    Substituting (\ref{eq: estimate in elliptic set}), we have: $\exists C' > 0$
+    \begin{align*}
+    \norm[u]_{H^s} 
+    & \leq C' \brac{C \norm[(\Box - iQ)u ]_{H^{s - 2}} + C \norm[u]_{H^N} +  \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} } \\
+    & \leq C'' \brac{ \norm[(\Box - iQ) u]_{H^{s - 1}} + \norm[u]_{H^N} }
+    \end{align*}
+    since $\norm[v]_{H^{s - 2}} \leq \norm[v]_{H^{s - 1}}$ for any $v \in H^{s - 2}$. \\
+    \\
+    For the second estimate, observe that 
+    \begin{align*}
+    Q^* = (\chi(t) \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
+    \end{align*}
+    which has the same principal symbol as that of $Q$, namely $\chi(t) \tau^2$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  $\exists C > 0$
+    \begin{align*}
+    \norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
+    \end{align*}
+    We have thus obtain both Fredholm estimates for $\Box - iQ$. 
+
+\subsection{Concluding $\Box - iQ$ is Fredholm}
+    We now have the desired estimates. It remains to show that they do indeed implies the desired Fredholm property. \\
+    
+    Adding the term  $\norm[(\Box - iQ)u]_{H^{s-1}}$ on both sides of the estimate (\ref{eq : fredholm estimate for wave operator}) above translate to : $\exists C' > 0$, 
+    \begin{align*}
+    \norm[u]_{\mathcal{X}^s} = \norm[u]_{H^s} + \norm[(\Box - iQ)u]_{H^{s - 1}} \leq C \brac{ \norm[(\Box - i Q)u]_{H^{s - 1}} + \norm[u]_{H^N}}
+    \end{align*}
+    Also, since the torus $M$ is a compact manifold, $H^{r}(M) \hookrightarrow H^{r'}(M)$ is a compact inclusion for any $r' < r$ \cite{taylor_pde} . Thus, by theorem (\ref{theorem: fredholm estimates}), $\Box - iQ$ has finite dimensional kernel and closed range. \\
+    
+    Furthermore, by the isomorphism between Hilbert space and its continuous dual, the dual map of $\Box - iQ$
+    \begin{center}
+        \begin{tikzcd}
+            (\Box - iQ)' : (H^{s - 1}(M))' \ar[r] \ar[d, "\cong", shift left=1cm] & (\mathcal{X}^s)' \ar[d, "\cong"]   \\
+            (\Box - iQ)^* :  H^{1-s}(M) \ar[r]& (\mathcal{X}^s)^*
+        \end{tikzcd}
+    \end{center}
+    is given by a map $(\Box - iQ)^* = \Box + iQ^* $ that maps from $H^{1 - s}(M)$. We have use the well-known result that the dual of Sobolev spaces are given by $$(H^{s - 1})^* = H^{1 - s}.$$ Applying the second estimate to $1 - s$, we know that $\Box +iQ^*$ has finite dimensinal kernel. Using lemma (\ref{lemma: kernel cokernel isomorphism}), we have 
+    \begin{align*}
+    \coker (\Box - iQ) \cong \ker(\Box + iQ^*). 
+    \end{align*}
+    which allows us to conclude that $\coker(\Box - iQ)$ is finite dimensional as well. Jointly, these allow us to conclude that $\Box - iQ : \mathcal{X}^s \to H^{s - 1}(M)$ has closed range with finite dimensional kernel and cokernel, i.e. it is Fredholm. \\
+    
+%    Note that $(\Box - iQ)^* = \Box + i Q^*$. Also, since $M$ is a compact manifold, \ref{} shows that $H^{s} \hookrightarrow H^{N}$ is a compact inclusion for $N < s$. \todo{proof that this transfer to $\mathcal{X}^s$ as well}. Then, by \ref{}, these esitmates allow us to conclude that $(\Box - iQ) : \mathcal{X}^s \to H^{s - 1}$ is indeed a Fredhold operator.     \\
+%    \\
+    
 
 
 

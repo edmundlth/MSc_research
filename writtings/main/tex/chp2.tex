@@ -35,12 +35,13 @@ The goal of this chapter is to build a `calculus' of pseudodifferential operator
 \begin{itemize}
     \item rigourously define the space of symbols $S^{m}_{\infty}(\R^{p}; \R^{n})$. 
     \item show that the quantisation procedure outlined above is well-defined. 
+    \item prove topological and algebraic properties of symbols and pseudodifferential operators. 
 %    \item define elliptic sets of symbols and prove invertibility of elliptic symbols in the filtered algebra of all symbols. 
 %    \item prove prove several topological and algebraic properties of $S^{m}_{\infty}(\R^{2n}; \R^{n})$. 
 %    \item \todo{Something about principal symbol and symbol calculus.}
 \end{itemize} 
 
-Here, we will introduce pseudodifferential operators only on Euclidean spaces. However, the results we obtain will invariant under any change of variables.  This allow us to define symbols and corresponding pseudodifferential operators on the cotangent bundle $T^*M$ on any smooth compact manifold $M$ (see for example \cite[Chapter 2]{rbm_intro_microlocal}).. 
+Here, we will introduce pseudodifferential operators only on Euclidean spaces. However, the results we obtain will be invariant under any change of variables.  This allow us to define symbols and corresponding pseudodifferential operators on the cotangent bundle $T^*M$ on any smooth compact manifold $M$ (see for example \cite[Chapter 2]{rbm_intro_microlocal}).. 
 
 %Furthermore, for constant coefficient elliptic differential operator, i.e. $c_\alpha \in \C$ and $P(x, \xi) = P(\xi)$, the parametrix $G(x, D)$ -- an approximate inverse  to $P(D)$ -- is given simply by 
 %\begin{align*}
@@ -214,6 +215,7 @@ Next, we have a rather technical density result. It states that the residual spa
 \end{align*}
 between of any rapidly decaying function $f$ and the constant function $1 \in S^{0}_\infty(\R^{p}; \R^n)$ is always bounded below by $1$.
 
+\pagebreak
 \begin{flemma}\label{lemma: density of residual symbols}
     Given any $m \in \R$, $n, p \in \N$ and $a \in S^{m}_\infty(\R^p; \R^n)$, there exist a sequence in $S^{-\infty}_\infty(\R^p; \R^n)$ that is bounded in $S^{m}_\infty(\R^p; \R^n)$ and converges to $a$ in the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$ for any $\epsilon \in \R_{> 0}$. 
     %In other words, for any $m \in \R$ and $\epsilon > 0$, $S^{-\infty}_\infty(\R^p; \R^n)$ is dense in $S^{m}_\infty(\R^p; \R^n)$ with the topology of $S^{m + \epsilon}_\infty(\R^p; \R^n)$.
@@ -343,7 +345,7 @@ The proposition below extend this result to general $m \in \R$.
     which is continuous as linear map from $S^{m'}_\infty(\R^{2n}; \R^n)$ to $\sch'(\R^{2n})$ for arbitrary $m \in \R$ and $m ' > m$. 
 \end{fprop}
 \begin{proof}
-    Let $m, m' \in \R$, $n \in \N$ with $m < m' $ be given. For any $a \in S^{m}_\infty(\R^{2n}; \R^n)$, the density of $S^{-\infty}_\infty(\R^{2n}; \R^n)$ in  $S^{m}_\infty(\R^{2n}; \R^n)$ with the topology of $S^{m'}_\infty(\R^{2n}; \R^n)$ means that there exist a sequence $a_k \in S^{-\infty}_\infty(\R^{2n}; \R^n)$ so that $a_k \to a \in S^{m'}_\infty(\R^{2n}; \R^n)$. Together with the completeness of $\sch'(\R^{2n})$ (being a continuous linear map into $\C$ which is complete), we have unique continuous linear extension of $I : S^{-\infty}_\infty(\R^{2n}; \R^n) \to \sch'(\R^{2n})$ to $S^{m}_\infty(\R^{2n}; \R^n)$ given by
+    Let $m, m' \in \R$, $n \in \N$ with $m < m' $ be given. For any $a \in S^{m}_\infty(\R^{2n}; \R^n)$, the density of $S^{-\infty}_\infty(\R^{2n}; \R^n)$ in  $S^{m}_\infty(\R^{2n}; \R^n)$ with the topology of $S^{m'}_\infty(\R^{2n}; \R^n)$ means that there exist a sequence $a_k \in S^{-\infty}_\infty(\R^{2n}; \R^n)$ so that $a_k \to a \in S^{m'}_\infty(\R^{2n}; \R^n)$. Together with the completeness of $\sch'(\R^{2n})$ (being a continuous linear map into $\C$ which is complete), we have unique continuous linear extension of $$I : S^{-\infty}_\infty(\R^{2n}; \R^n) \to \sch'(\R^{2n})$$ to $S^{m}_\infty(\R^{2n}; \R^n)$ given by
     \begin{align*}
         I(a) := \lim_{k \to \infty}I(a_k)
     \end{align*}
@@ -356,9 +358,9 @@ The proposition below extend this result to general $m \in \R$.
     \begin{align*}
     \brac{1 + \Delta_y}^N e^{i (x - y) \cdot \xi} = \sym[\xi]^{N}e^{i (x - y) \cdot \xi}
     \end{align*}
-    where $\Delta_y = - \sum_{j = 1}^n \p_{y_j}^2$ is the Laplacian on $\R^n$. 
+    where $\Delta_y = - \sum_{j = 1}^n \p_{y_j}^2$ is the Laplacian on $\R^n$. \\
 
-    With this, we can use integratusing integration by parts to introduce extra $\xi$-decay in the integral. Explicitly, for any $N \in \N$, 
+    As such,  we can use integrate by parts to introduce extra $\xi$-decay in the integral. Explicitly, for any $N \in \N$, 
     \begin{align*}
         I(a)(\varphi) 
         & = \frac{1}{(2\pi)^n} \int e^{i(x- y)\xi} a(x, y, \xi) \varphi(x, y) \d[\xi] \d[x] \d[y]\\
@@ -401,6 +403,7 @@ I(a) : \sch(\R^n) \to \sch'(\R^n)
 which is the desired result. Next, we define the space of order  $m \in \R$ pseudodifferential operators to be the image of $S^{m}_{\infty}(\R^{2n}; \R^{n})$ under $I$. 
 
 \begin{fdefinition}
+    Let $m \in \R$ be given. The space of order $m$ pseudodifferential operators is the given by
     \begin{align*}
     \Psi^{m}_\infty(\R^n) := \set{A = I(a) \wh a \in S^{m}_\infty(\R^{2n}; \R^n)}
     \end{align*}
@@ -589,7 +592,7 @@ Suppose we are given a sequence of symbols with decreasing order, $a_j \in S^{m-
     since both terms on the right are elements of $S^{m -N}_\infty(\R^{p}; \R^n)$. Thus, 
     $$a - a' \in \cap_{n \in \N} S^{m -N}_\infty(\R^{p}; \R^n) = S^{-\infty}_\infty(\R^{p}; \R^n).$$ 
     \\
-    For existence, we construct $a \in S^{m}_\infty(\R^{p}; \R^n)$ by Borel's method \cite{}. Let $\chi \in C^{\infty}_c(\R^p)$ be a bump function, that is $0 \leq \chi \leq 1$ and $\chi|_{\norm[x] \leq 1} \equiv 1$ and $\chi|_{\norm[x] >2} \equiv 0$. We then define
+    For existence, we construct $a \in S^{m}_\infty(\R^{p}; \R^n)$ by Borel's method \cite{Hormander2012-sh}. Let $\chi \in C^{\infty}_c(\R^p)$ be a bump function, that is $0 \leq \chi \leq 1$ and $\chi|_{\norm[x] \leq 1} \equiv 1$ and $\chi|_{\norm[x] >2} \equiv 0$. We then define
     \begin{align*}
         a = \sum_{j \in \N} \brac{1 - \chi}(\epsilon_j \xi) a_j(x, \xi)
     \end{align*}
