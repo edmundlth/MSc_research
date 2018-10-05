@@ -73,14 +73,14 @@ The most important characteristic of symbols is their behaviour at infinity. In 
         
         \item There are various generalisation of the symbol spaces which result in similar pseudodifferential calculus. For instance, we could allow polynomial growth in the space variable, and extra-decay in the dual variable, resulting in the space $S^{m, l_1, l_2}_{\infty, \delta}(\R^{2n}_{x, y}; \R^n_{\xi})$, with element $a \in C^\infty(\R^{3n})$ satisfying
         \begin{align*}
-        \abs{D^\alpha_xD^\beta_y D^\gamma_\xi a} \leq C \sym[x]^{l_1} \sym[y]^{l_2} \sym[\xi]^{m - \abs{\gamma} + \delta \abs{(\alpha, \beta, \gamma)}}. 
+        \abs{D^\alpha_xD^\beta_y D^\gamma_\xi a(x, y, \xi)} \leq C \sym[x]^{l_1} \sym[y]^{l_2} \sym[\xi]^{m - \abs{\gamma} + \delta \abs{(\alpha, \beta, \gamma)}}. 
         \end{align*}
         
         \item In later chapters, we will also consider polyhomogeneous symbols, i.e. elements $a \in S^{m}_{ph}(\R^{p}; \R^n) \subset S^{m}_\infty(\R^{p}; \R^n)$ such that
         \begin{align*}
         a \sim \sum_{j} a_{m - j}
         \end{align*} 
-        for some $a_{m -j} \in S^{m}_\infty(\R^{p}; \R^n)$ that are homogeneous of order $m - j$  in $\xi$, i.e. $a_{m, j}(x, t \xi) = t^{m - j}a_{m - j}(x, \xi)$ whenever $t \in \R_{> 0}$, $\abs{\xi} \geq 1$. The sum above are taken in the sense of (\ref{def : asymptotic sumation}). We note that the characteristic polynomial of any differential operator is a polyhomogeneous symbol. We will denote the pseudodifferential operators that arrises from polyhomogeneous symbols as classical pseudodifferential operators, $\Psi^{m}_{cl}(\R^n)$. 
+        for some $a_{m -j} \in S^{m}_\infty(\R^{p}; \R^n)$ that are homogeneous of order $m - j$  in $\xi$, i.e. $a_{m, j}(x, t \xi) = t^{m - j}a_{m - j}(x, \xi)$ whenever $t \in \R_{> 0}$, $\abs{\xi} \geq 1$. The sum above are taken in the sense of (Definition \ref{def : asymptotic sumation}). We note that the characteristic polynomial of any differential operator is a polyhomogeneous symbol. We will denote the pseudodifferential operators that arrises from polyhomogeneous symbols as classical pseudodifferential operators, $\Psi^{m}_{cl}(\R^n)$. 
         
          \todo{polyhomogeneous subspace}
     \end{itemize}

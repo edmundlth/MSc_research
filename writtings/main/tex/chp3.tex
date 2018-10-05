@@ -11,38 +11,40 @@ Having defined and developed the calculus of pseudodifferential operators, we no
 \begin{align}
 Au = f, \quad A \in \Psi^{m}_{\infty}(\R^n), \, u \in \sch'(\R^n), f \in H^s(\R^n). \label{eq: example diff eq}
 \end{align}
-The goal is to study how regularity and singularity of $Au$ (which is given as $f$), affects that of the solution, $u$ if it exist. 
+The goal is to study how regularity and singularity of $Au$ (which is given as $f$), affects that of the solution, $u$, if it exist. 
 
 \section{Pseudodifferential operators are pseudolocal}
-We shall show two results on the singular support of pseudodifferential operators. The first result is that the singular support of any pseudodifferential operator  is contained within the diagonal, i.e. they are smooth away from $x = y$. The second result is the pseudolocality result that says that action pseudodifferential operator do not increase singular support of distributions. In terms of differential equation (\ref{eq: example diff eq}), we can say that the solution $u$ is singular at all the points where $f$ is singular. 
+We shall show two results pertaining to the singular support of pseudodifferential operators. The first is that the singular support of any pseudodifferential operator  is contained within the diagonal. This is commonly stated as : ``pseudodifferential operators are smooth away from the diagonal, $x = y$". The second result is the pseudolocality result that says that action pseudodifferential operator do not increase singular support of distributions. In terms of differential equation (\ref{eq: example diff eq}), we can say that the solution $u$ is singular at all the points where $f$ is singular. 
 
 \subsection{Support and singular support} 
-First, we need the definition of support and singular supports of operators and distributions. Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
+First, we need the definition of support and singular support of both operators and distributions. Roughly, the support of a distribution in $\R^n$ consist of points $x \in \R^n$ where the distribution is non-zero after any smooth cut-offs near $x$. 
 \begin{fdefinition}
     The \textbf{support of a tempered distribution} $u \in \sch'(\R^n)$ is given by the set
     \[
     \supp(u) = \set{x \in \R^n \wh \exists \chi \in \sch(\R^n), \chi(x) \neq 0, \chi u = 0}^c. 
     \]
-    In words, the support of $u$  are the points $x \in \R^n$ around which  $u$ does not acts as the zero map. 
+    \\
+    
 \end{fdefinition}
-
-And the singular support of a distribution is the set of points where the distribution fails to behave like an element of $\sch(\R^n)$. 
+\hfill \\
+And the singular support of a distribution is the set of points where the distribution fails to behave like an element of $\sch(\R^n)$, i.e. it is either not $C^\infty$ or does not have rapid decay. 
 \begin{fdefinition}
     The \textbf{singular support of a tempered distribution} $ u \in \sch'(\R^n)$ is given by the set 
     \[
     \mathrm{sing supp}(u) = \set{x \in \R^n \wh \exists \phi \in S(R^n), \phi(x) \neq 0, \phi(u) \in \sch(\R^n)}^c
     \]
-    In words, the singular support of $u$ are points $x \in \R^n$ around which $u$ fails to be smooth and rapidly decreasing. 
 \end{fdefinition}
 \begin{rem} \hfill 
     \begin{itemize}
         \item     Note that if the singular support of a tempered distribution is empty, it is then an element of $C^\infty(\R^n)$.     
-        \item We note from the above that supports or singular supports are complement of open sets, therefore they are closed. 
+        \item  Both the supports or singular supports are presented above as complement of open sets, therefore they are closed. \\
+        
     \end{itemize}
 
 \end{rem}
 
 The support of an operator is given by the support of its Schwartz kernel. 
+
 \begin{fdefinition}
     The \textbf{support of a continuous linear operator} $A: S(R^n) \to \sch'(\R^n)$ is given by 
     \[
@@ -146,14 +148,14 @@ Now, we are ready to show that pseudodifferential operators are smooth away from
 
 
 \section{Global ellipticity} 
-There is a subset of operators for which we can conclude much more than just pseudolocality, namely the set of operators that are \textit{elliptic}, i.e. element of the algebra that are invertible up to additive elements in $\Psi^{-\infty}_{\infty}(\R^n)$. 
+There is a subset of operators for which we can conclude much more than just pseudolocality, namely the set of operators that are \textit{elliptic}. These are elements of the algebra $\Psi^{\infty}_{\infty}$ that are invertible up to additive elements in $\Psi^{-\infty}_{\infty}(\R^n)$. 
 
 \begin{fdefinition}
     A pseudodifferential operator $A \in \Psi^{m}_{\infty}(\R^n)$ is elliptic if there exist $B \in \Psi^{-m}_{\infty}(\R^n)$ such that 
     \begin{align*}
     A \circ B - 1 \in \Psi^{-\infty}_{\infty}(\R^n). 
     \end{align*}
-    The approximate inverse $B$ is known as the (global) elliptic parametrix of $A$. 
+    The approximate inverse $B$ is known as the (global) \textbf{elliptic parametrix} of $A$. 
 \end{fdefinition}
 
 A canonical example of elliptic differential operator is the Helmholtz operator 
@@ -168,7 +170,7 @@ We will find out later that ellipticity is in fact a property of the \textit{pri
 
 
 \todo{motivation for elliptic symbols} 
-
+\subsection{Elliptic symbols}
 \begin{fdefinition}
     Given $p, n \in \N$ and $m \in \R$, an order $m$ symbol $a \in S^m_\infty(\R^p; \R^n)$ is (globally) \textbf{elliptic} if there exist $\epsilon \in \R_{>0}$ such that 
     \[
@@ -199,7 +201,7 @@ The importance of elliptic symbol is that they are invertible modulo $S^{-\infty
     0 & \abs{\xi} < 1 / \epsilon. 
     \end{cases}
     \end{align*}
-    We check: 
+    It remains to check: 
     \begin{description}
         \item[$b$ is well-defined and smooth. ] \hfill \\
         We note that $\abs{a(x, \xi)} > 0$ whenever $\abs{\xi} \geq 1/\epsilon$ and therefore $b$ is well defined in that region. For smoothness, we note first that $b$ is smooth in the regions $\abs{\xi} > 1/ \epsilon$ and $\abs{\xi} < 1/\epsilon$. Set $\delta = 1/(2 \epsilon)$. In the region where $1/\epsilon - \delta < \abs{\xi} < 1/\epsilon + \delta$, we have $\abs{\epsilon \xi/ 2} < 1/\epsilon$ and therefore $b(x, \xi) \equiv 0$ in this region and is thus smooth. Since the we have covered $\Omega \times \R^n$ by the three chart domain above, $b$ is smooth by the (smooth) gluing lemma. 
@@ -220,19 +222,15 @@ The importance of elliptic symbol is that they are invertible modulo $S^{-\infty
         as required. 
         
         \item[$b$ is an inverse of $a$ modulo $ S^{-\infty}_\infty(\Omega; \R^n)$. ] \hfill \\
-        The main observation is that the set where $b$ fails to be the multiplicative inverse of $a$ is a compact set (in $\xi$) and thus $a \cdot b - 1$ is in fact a compactly supported smooth function of $\xi$ which is a subset of $S^{-\infty}_\infty(\Omega; \R^n)$. \\
-        \\
-        Explicitly, for any $N \in \N$
+        The main observation is that the set where $b$ fails to be the multiplicative inverse of $a$ is a compact set (in $\xi$) and thus $a \cdot b - 1$ is in fact a compactly supported smooth function of $\xi$ which is a subset of $S^{-\infty}_\infty(\Omega; \R^n)$.  Explicitly, for any $N \in \N$
         \begin{align*}
         \sup_{(x, \xi) \in \mathrm{Int}(\Omega) \times \R^n} \frac{\abs{D^\alpha_x D^\beta_\xi (a\cdot b - 1)} }{\sym[\xi]^{-N}}
         &\leq \sup_{\abs{\xi} \leq 1/ \epsilon} \sym[\xi]^N \abs{D^\alpha_x D^\beta_\xi (\phi(\xi \epsilon / 2))} < \infty.  
         \end{align*}
-        
-    \end{description}
+    \end{description}\end{proof}
 
-\end{proof}
-
-The main theorem regarding globally elliptic pseudodifferential operator is the following. 
+\subsection{Elliptic pseudodifferential opertors}
+The following theorem characterise globally elliptic pseudodifferential operators. 
 \begin{ftheorem}
     Let $A \in \Psi^{m}_{\infty}(\R^n)$ be a pseudodifferential operator. Then, the following are equivalent
     \begin{enumerate}
@@ -256,7 +254,7 @@ The main theorem regarding globally elliptic pseudodifferential operator is the 
 \end{proof}
 
 
-An important characteristic of elliptic pseudodifferential operators is that they are completely regularising, meaning solutions to $Au = f$ have to be smooth if we know that $f$ is smooth. 
+An important characteristic of elliptic pseudodifferential operators is that they are completely regularising. In particular, solutions to $Au = f$ have to be smooth if we know that $f$ is smooth. For instance, solutions to homogeneous equations $Au = 0$ have to be smooth. 
 
 \begin{fprop}
     Let $A \in \Psi^{m}_{\infty}(\R^n)$  be  elliptic. For any $u \in \sch'(\R^n)$, 
@@ -452,6 +450,20 @@ Instead of global ellipticity, we will now define a notion of \textit{ellipticit
 
 
 
+\subsection{Wavefront set for tempered distributions}
+The notion of wavefront set, $\WF$,  is central to microlocal analysis. Roughly, given a distribution $u$, a point $(x, \xi) \in T^*\R^n$ is \textbf{not} in the the wavefront set $\WF(u)$ if there exist a ``microlocal cut-off" $A \in \Psi^{0}_{\infty}(\R^n)$, 
+such that $A u $ is smooth. The role of $A$ is to locally around $x$ in the base space and conically locallise around $\xi$, i.e. we care only of the direction. 
+\begin{center}
+    \begin{tikzpicture}
+    \draw [fill=black] (0, 0) circle [radius=0.1]; \node at (-0.3, -0.3) {$x$}; 
+    \filldraw[fill=gray!20!white]
+    (0,0) -- (3, 2) arc (0:40:3) -- (0,0);
+    \filldraw[fill=white!20!white, dashed]
+    (0,0) -- (1, 0.66666) arc (0:40:1) -- (0,0);
+    \draw [-> ] (0, 0) -- (2, 2); \node at (2.2, 2.2) {$\xi$};
+    \end{tikzpicture}
+    \captionof{figure}{Microlocalisation in phase space.}
+\end{center}
 
 \begin{fdefinition}
     The \textbf{wavefront set} of a compactly supported tempered distribution 
@@ -468,7 +480,7 @@ Instead of global ellipticity, we will now define a notion of \textit{ellipticit
     \end{align*}
 \end{fdefinition} 
 
-
+The next proposition shows that wavefront set is a refinement of the singular support. 
 \begin{fprop}
     For compactly supported tempered distribution, $u \in C^{-\infty}_c(\R^n)$, 
     \begin{align*}
@@ -515,6 +527,7 @@ Instead of global ellipticity, we will now define a notion of \textit{ellipticit
     
 \end{proof}
 
+\subsection{Wavefront set for pseudodifferential operators}
 
 \begin{fdefinition}
     Let $a \in S^{m}_\infty(\R^{p}; \R^n)$ for some $m \in \R$, $p, n \in \N$ be a symbol. We say $a$ is of order $-\infty$ at a point $(x_0, \xi_0) \in \R^p \times \R^n \setminus \set{0}$ (write $a = O(\sym[\xi]^{-\infty})$) if there exist $\epsilon \in \R_{> 0}$ such that for all $M \in \R$, there is a constant $C_M > 0$ such that 

@@ -11,7 +11,7 @@
 %A : H^s \to H^{s - m}. 
 %\end{align*}
 
-Having develop a substantial theory for elliptic pseudodifferential operators, we shall presently turn our attention to a simple non-elliptic problem. Specifically, we will consider the Fredholm problem of the wave operator on the torus. \\
+Having develop a substantial theory for elliptic pseudodifferential operators, we shall presently turn our attention to a non-elliptic problem. Specifically, we will construct Fredholm problems for the wave operator on the torus after a perturbation by an operator with purely imaginary principal symbol which acts like a complex absorbing potential. We work on the torus, which is a compact manifold,  as oppose to Minkwoski space to utilise the nice property of Sobolev spaces on compact manifolds. \\
 
 \begin{fdefinition} 
 Let $\S^1 = [0,1] / (0 \sim 1)$ denote the circle and for any $k \in \N$ let
@@ -102,7 +102,7 @@ where $g, h$ are continuous functions defining the right and left moving waves r
 \begin{center}
     \begin{tikzpicture}
     \draw[->] (0, 3) -- (6, 3);
-    \node at (6.2, -0.2) {$x$}; 
+    \node at (6.2, 2.8) {$x$}; 
     \draw[->, thick] (0, 0) -- (0, 6);
     \node at (-0.2, 6.2) {$t$};  
     
@@ -397,15 +397,15 @@ With the definitions, in place, we are ready to prove:
      \\
      For the second estimate, observe that 
      \begin{align*}
-     Q^* = (\chi(t)^2 \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
+     Q^* = (\chi(t) \p_t^2)^* = \chi(t) \p_t^2 + \chi'(t)\p_t + \chi''(t)
      \end{align*}
-     which has the same principal symbol as that of $Q$, namely $\chi(t) \tau^2$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  : $\exists C > 0$
+     which has the same principal symbol as that of $Q$, namely $\chi(t) \tau^2$. Therefore, using the same argument, replacing $-iQ$ with $+iQ^*$, reversing the direction of the hamiltonian flow $\exp(-\sigma H_p)$, we get a similar estimate for $\Box + i Q^*$, namely,  $\exists C > 0$
      \begin{align*}
      \norm[u]_{H^s} \leq C \brac{ \norm[(\Box + i Q^*)u]_{H^{s - 1}} + \norm[u]_{H^N}}. 
      \end{align*}
-     We have thus obtain both Fredholm estimates for $\Box - iQ$. 
+     We have thus obtain both Fredholm estimates for $\Box - iQ$. \end{proof}
 
-\end{proof}
+
 
 
 
