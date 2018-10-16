@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{presentation_style}
+\usepackage{presentation_notes}
 
 \usepackage{geometry}
 \geometry{margin=1in}
@@ -62,7 +62,7 @@ There are a couple of missing information in these statements which we will rect
 
 
 \section{Fredholm Operators} 
-So, we recall Fredholm maps. \todo{and an excuse to introduce spaces and notations used later.}
+So, we recall Fredholm maps. \todo{and an excuse to introduce spaces and notations for later.}
 \begin{definition}[Fredholm operators]
     A continuous linear operator $T : \X \to\Y$ between Banach spaces $\X$ and $\Y$ is Fredholm, if 
     \begin{itemize}
@@ -134,7 +134,7 @@ In practise, instead of topological statements, we translates properties like co
      then the image, $T(\X)$ is closed, and $T$ has finite dimensional kernel. 
 \end{theorem}
 
-For differential operators between Sobolev spaces, $P : H^s \to H^N$,  the estimate we want is 
+For differential operators between Sobolev spaces, $P : H^s \to H^{s'}$,  the estimate we want is 
 \begin{align*}
 \norm[u]_{H^s} \leq C \brac{\norm[Pu]_{H^{s'}} + \norm[u]_{H^{N}}}. 
 \end{align*}
@@ -315,6 +315,21 @@ such that $A u $ is smooth. The role of $A$ is to locallise around $x$ in the ba
     \end{align*}
 \end{fdefinition} 
 
+
+
+\section{Fredholm problem for the wave operator on torus} 
+
+\begin{definition} 
+    Let $\S^1 = [0,1] / (0 \sim 1)$ denote the circle and for any $k \in \N$ let
+    \begin{align*}
+    \T^k := \underbrace{\S^1 \times \S^1 \times \dots \times \S^1}_{k}
+    \end{align*}
+    denote the $k$-dimensional torus. We shall study the totally periodic wave operator, on $M :=  = \T_t^1 \times \T_x^{n}$ given by
+    \begin{align}\label{eq: d'Alembertian}
+    \Box := \p_t^2 - \sum_{j = 1}^{n -1} \p_{x_j}^2
+    \end{align}
+    where $(t, x_1, \dots, x_n)$ are the local coordinates on $M$. 
+\end{definition}
 
 
 

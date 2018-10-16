@@ -9,8 +9,6 @@
 \usepackage{bbm}
 \usepackage{color}
 \usetikzlibrary{calc}
-\usepackage{scrextend}
-
 
 % Hyperref styles 
 \usepackage{hyperref}
@@ -24,12 +22,6 @@
 
 %\usepackage[capitalize]{cleveref} %clever cross-referencing 
 % (NOTE: cleveref must the be loaded last among packages that does referencing, e.g. hyperref)
-
-
-
-
-\newcommand{\todo}[1]{\textcolor{red}{#1}}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Style Choices
@@ -61,6 +53,7 @@
 \newcommand{\X}{\mathcal{X}}
 \newcommand{\Y}{\mathcal{Y}}
 
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
 
 \renewcommand\d[1][x]{\, \mathrm{d}#1}
 \renewcommand{\leq}{\leqslant}
@@ -99,14 +92,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsthm}
 \theoremstyle{plain}% default
-%\newtheorem{theorem}{Theorem}[section]
-%\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 %\newtheorem*{cor}{Corollary}
 %\newtheorem*{claim}{Claim}
 %
 %\theoremstyle{definition}
-%\newtheorem{definition}{Definition}[section]
+\newtheorem{definition}{Definition}[section]
 %\newtheorem{conjecture}{Conjecture}[chapter]
 %\newtheorem{example}{Example}[chapter]
 %
