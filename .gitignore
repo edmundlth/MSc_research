@@ -9,4 +9,6 @@
 *.blg
 *.lof
 *.lot
-
+*.swp
+*.nav
+*.snm
