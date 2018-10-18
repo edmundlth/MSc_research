@@ -12,7 +12,144 @@
 \begin{document}
 \maketitle
 
+%------------------------------------------------ Section : Speech 
+\pagebreak
+\section{Speech script} 
 
+\subsection{Slide 1: Introducing partial differential operator}
+Thanks for the introduction. I promise I will clarify what I meant by non-elliptic Fredholm problem in the next few minutes. \\
+
+First, here's something familiar. A linear partial differential operator in $\R^n$ (or in local coordinate on manifold) of order $k$, which we will denote as $P$ throughout, is just a sum of partial derivatives with smooth bounded coefficient. Here we have used the multi-index notation, which is just $n$-tuples of powers that adds up to less than $k$, because it's of order $k$ and $D_x^\alpha$ is just a notation for the multiplication with each term raise to their corresponding power. Because of how important Fourier transform is to us, we will use multiply the usual partial derivative by $-i$ just so we have the nicer looking identity, which says that Fourier transform of the mix-partial derivatives is the same as doing fourier transform first and then multiply by the monomial with the same multi-index. \\
+
+That's a lot of notation to absorb. Here's some concrete examples. In fact, they are each representative of two very important classes of differential operator. The Laplace operator which is in the class of elliptic operator and the wave operator which is hyperbolic. 
+
+
+\subsection{Slide 2: Introducing PDE}
+Another familiar thing. This is an order $k$ linear partial differential equation. $P$ the operator and $f$ the forcing term are the givens and $u$ the solution. Since we are taking derivative, we might expect $u$ and $f$ to be smooth functions, but a more effective way of studying pde is to allow weak solution and forcing called tempered distributions. These are linear functional that takes in rapidly decaying smooth functions and spits out a complex scalar. Rapid decay is just a short way of saying that the phi's are smooth functions and their derivatives decay faster than any polynomial. \\
+
+Given a PDE, we can and we will 3 all important questions
+
+
+\subsection{Slide 3: Introducing the main questions in PDE} 
+One, existence: For which $f$ can we find solution $u$? \\
+Two, the uniqueness question: if we found one, is it the only one? \\
+Three, regularity: How does the regularity of the forcing affect regularity of the solution? For instance, does smooth $f$ beget smooth $u$? \\
+
+In this talk, we will employ Fredholm theory from functional analysis to tackle all three question in one swoop. \\
+It's my job now to explain how. 
+
+
+
+\subsection{Slide 4: Overview}
+First I will define Fredholm operators and explain what it has to do with existence, uniqueness and regularity? \\
+After explaining the why, we get into the how. \\
+I will prove things in general for a class of operator call the elliptic operators. I will define that later. \\
+For non-elliptic ones, the situation is more complicated. It's only recently that we have the technology to tackle them. I will prove a particular example in this class too. 
+
+%After that we will actually try to prove that some class of operators are Fredholm. 
+%The Fredholm problem of a particular kind of operator known as elliptic operators has been solved very beautifully, we will see how.\\
+%For non-elliptic ones it's more complicated, but some exciting recent work says that there are non-elliptic Fredholm operators too. We will define and prove an example of that. 
+
+\subsection{Fredholm Operators}
+Let's dive into it. Fredholm operators. Given Banach spaces X and Y and a continuous linear map $T$ between them. We say $T$ is Fredholm if its image in Y is a closed set and both it's kernel and cokernel are finite dimensional. \\
+
+Suppose you're given a $y$ and you want to solve Tx = y. Linear algebra says, a solution exist if and only if y is perpendicular to the cokernel. and the solution is unique if and only if the kernel is trivial. \\
+
+If we know T is Fredholm, we have then reduce existence and uniqueness to finite dimensional linear algebra! 
+
+
+\subsection{Slide 5: Fredholm estimate}
+In analysis, we usually translates topological or algebraic statements into estimates. I am sure most of you are familiar with checking continuity of linear operator is the same as checking an inequality.  Continuity have continuity estimates, Fredholm has Fredholm estimate too. 
+
+Again, T is continuous linear between X and Y. If the size of every element in the domain X is control by the size of its image under T in Y plus a small term, then T is semi-Fredholm. That is it has closed image and finite dimensional kernel. 
+We think of the last term being small because we require that X be compactly contained in Z. The only thing missing for semi-Fredholm operator is finite dimensional cokernel. Notice that using Banach isomorphism theorem, if we manage to prove the same estimate for the dual of T, then T will be fully Fredholm. 
+
+\subsection{Slide 6: Fredholm problem}
+That's quite enough functional analysis. Let's go back to PDE. An operator can't be Fredholm in isolation, we need to specify its domain and codomain!\\
+
+So when we say ``contructing a Fredholm problem for a differential operator P", we mean, find solution space X and Y so that P acts as a Fredholm map between them. \\
+
+If you're following, you will notice that I owe you something: I have said something about existence and uniquess, but I owe you regularity. The strategy here is to built some measures of regularity into X and Y. 
+
+Happily, this has been done for us in the form of Sobolev space. 
+
+
+\subsection{Slide 7: Sobolev space}
+Sobolev space are space of distributions with global regularity and decay data built into its Hilbert space structure. A distribution is in the kth orde Sobolev space if and only if and weak derivative of order at most k is square integrable. Fourier analysis tells us that this is equivalent to saying that its fourier transform decay fast enough that even when we try to grow it by a kth order polynomial, it is still square integrable. This weighting condition allow us to generalise from integer order $k$ to non-integer order $s$. 
+
+Note that we can give it a Hilbert inner product that induce a norm of the this form. The first term measure global decay of the distribution itself. The rest measure decay of the derivative upto order k. 
+
+
+\subsection{Slide 8: Sobolec space on closed manifold}
+Spoiler alert, we will be working on the torus later. For that and other reasons we would really like to have Sobolev space on closed manifold, that is smooth compact manifold without boundary, like the torus. These are just distribution on the manifold that locally in a coordinate patch looks behaves like an element of the Sobolev space of $\R^n$. 
+
+For the rest of the talk, M will either be $\R^n$ or closed manifold. 
+
+\subsection{Slide 9: General strategy}
+I have told you why we care if an operator is Fredholm, I haven't tell you how. Hopefully this is not a surprise by now, we do that by proving estimates on sobolev spaces, something that looks a lot like Fredholm estimate. \\
+
+
+More precisely, we want to control the regularity of distribution by the regularity of its forcing term Pu (remember this is just f). We need to handle this annoying last term, which is usually taken to be highly negative so that higher order sobolev space s is compactly contained in it. This is only possible on closed manifold M. For non-compact one like $\R^n$ we need extra conditions which we will not discuss today. \\
+
+Looking ahead: 
+For the nice class of elliptic operators, we can do this for any s, provided regularity of the forcing term s' is of lower order. How much lower depends on the order m of the differential operator. \\
+
+For non-elliptic one, we need a bit more, we need the forcing term to have one order higher regularity to the estimate to work. \\
+
+
+\subsection{Slide 10: Elliptic operators}
+Let's get into the hows of proving estimates now. There is a common refrain in PDE that says: ``Elliptic operators are Fredholm". That's because of the following elliptic regularity theorem: 
+
+Suppose $P$ is an order $m$ elliptic differential operator. I will owe you for now the definition of ellipticity. 
+If we know before hand that a potential solution $u$ is has at least regularity $N$ (think negative a million). If the equation tell us that the forcing term has regularity $s$, we immediately know that any solution have m order better regularity. Furthermore, the regularity is control by that of its forcing term plus its a priori estimate. \\
+
+The only thing you need get out of this now is: This is precisely the Fredholm estimate we needed! \\
+
+We will now go about proving elliptic regularity
+
+\subsection{Slide 11: Elliptic operator}
+First some intuition about what is elliptic operator. They are operators that generalise the Laplace operator. To avoid smoothness issue later, we will discuss del +1 here. Again, recall that fourier transform and integration by parts says that we make differential operators into multiplicative ones. Using this fact, the action of del +1 on distribution u is the same as:  first taking the fourier transform, multiply by this second order polynomial and then take inverse transform. We call that polynomial the symbol for del +1\\
+
+If we stare at that long enough we might say, hey what if we have another operator that multiply by the inverse of that symbol? Well ok, suppose we can, and boldly denote it as del +1 inverse, we can check that that will indeed invert the del +1 operator! 
+
+\subsection{Slide 12: Pseudodifferential operator}
+But the question is, what is this del + 1 inverse operator? The answer is its our first example of pseudodifferential operator! What are these things. We have seen that using fourier transform the usual differential operator acts by integrating its input u againts wave amplitude amplitude p(x, xi) which are polynomial in xi. Pseudodifferential operator generalise this by allow a more general class of amplitudes called symbols. These are just smooth functions that satisfies bounds that you would expect if they are polynomials. 
+That is, an mth order symbol is bounded in x but we allow m order growth in xi, but if you differentiate in xi the growth order have to be reduced accordingly as well. \\
+
+
+An mth order pseudodifferential operator is then just an operator that act on distribution by integrating against amplitude given by an mth order symbol. \\
+
+Admittedly we are suppressing a lot of convergence and functional analytic issue here where it is fully developed in the research. Also, these definitions can be shown to be diffeomorphism invariant and hence generalisable to closed manifold. In that case, we say $x \in M$ is the space variable of the base space M and $\xi$ is the dual variable in that belong to the cotangent space $T^*M$. 
+
+\subsection{Slide 13: Properties of Pseudos} 
+Sometimes solution comes hand in hand with generalisation. The following lemma about pseudodifferential operators will allow us to prove elliptic regularity with suprising ease: 
+
+If P is a pseudo of order m on some manifold, then 
+one, it is a continuous map between the s order sobolev space to m order lower sobolev space. 
+two, if P is elliptic... ah now I better pay you back the definition of ellipticity by now, here it is ... P is elliptic if it has symbol is not only bounded above by order m polynomial, but is bounded below by m order polynomial as well. Actually, we only need that to be true away from some compact set around the origin in fibre of the cotangent space. 
+
+so if P is elliptic, then we can construct something call the parametrix Q of P. Which is something very close to an inverse. More precisely, Q is an order -m pseudo and the difference of QP with the identity is continuous between any two sobolev space! 
+
+
+\subsection{Slide 14: Proof of elliptic regularity}
+We are now set to prove elliptic regularity. \\
+
+So we are given $P$ an elliptic pseudo of order m and we know we have a parametrix Q. We are also given u in some $H^N$. First, we add and substract QPu to rewrite u as follow. Recall that our goal is to bound the $H^{s + m}$ norm, triangle inequality give us that the norm s + m norm of u is bounded by the norm of QPu and the norm of the second term. But from before, we have continuity of Q and and QP -1. Continuity translate to inequality and we have the desired elliptic regularity estimate! \\
+
+On closed manifold, we can now conclude P is semi fredholm between s + m to s. 
+The theory of pseudodifferential operator also tell us that the dual of elliptic operator is also elliptic. So we can run the same argument and show that P is indeed fully fredholm. 
+
+\subsection{Slide 15: Non-elliptic Fredholm Problem}
+We will now move on to the more complicated and perhaps more exciting recent progress in non-elliptic fredholm problem. 
+
+
+%------------------------------------------------ End
+
+
+
+
+% --------- The rest of this document contain notes used for the development of the slides. 
+\appendix
 % ---------------------------- Section: Introduction
 \section*{Abstract}
 
@@ -332,17 +469,11 @@ such that $A u $ is smooth. The role of $A$ is to locallise around $x$ in the ba
 \end{definition}
 
 
-%------------------------------------------------ Section : Speech 
-\pagebreak
-\section{Speech script} 
 
-
-
-%------------------------------------------------ Edn
 
 
 \pagebreak 
-\appendix
+
 \section{Notes:}
 %From Vasy's talk (youtube: non-elliptic fredholm problem): 
 "propagation of singularity" is one of the most basic phenomenon in non-elliptic setting (connected microlocal energy esitmates). If $P \in \Psi^{m}_{\infty}(\R^n)$, with real homogeneous principal symbol
