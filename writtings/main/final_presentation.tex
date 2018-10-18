@@ -56,7 +56,7 @@ Supervised by: Dr Jesse Gell-Redman}
 
 
 %######################################### Section: Introduction
-\section{Introduction} 
+\section*{Introduction} 
 %------------------------- Frame : Introduction 1
 \begin{frame}{Introduction}
 A linear partial differential operator of order $k \in \N$ in $\R^n$ : 
@@ -66,10 +66,10 @@ P = P(x, D_x) = \sum_{\abs{\alpha} \leq k} c_\alpha(x) D^\alpha_x , \quad c_\alp
 \onslide<2->
 where 
 \begin{align*}
-\alpha &= (\alpha_1, \alpha_2, \dots, \alpha_n) \in \N^n \tag*{ multi-index } \\
-\abs{\alpha} &= \alpha_1 + \alpha_2 + \dots + \alpha_n \tag*{order of multi-index} \\
+%\alpha &= (\alpha_1, \alpha_2, \dots, \alpha_n) \in \N^n \tag*{ multi-index } \\
+%\abs{\alpha} &= \alpha_1 + \alpha_2 + \dots + \alpha_n \tag*{order of multi-index} \\
 %c_\alpha &\in C^\infty_\infty(\R^n) \tag*{ bounded  smooth functions} \\
-D_x^\alpha & = \brac{-i \p_{x_1}}^{\alpha_1}\brac{-i \p_{x_2}}^{\alpha_2} \dots \brac{-i \p_{x_n}}^{\alpha_n} \\
+%D_x^\alpha & = \brac{-i \p_{x_1}}^{\alpha_1}\brac{-i \p_{x_2}}^{\alpha_2} \dots \brac{-i \p_{x_n}}^{\alpha_n} \\
 D_{x_i} &= -i \p_{x_i} \implies \F D_{x}^\alpha = \xi^\alpha \F 
 \end{align*}
 \onslide<3->
@@ -116,7 +116,7 @@ u : \sch(\R^n) & \to \C \\
 %Given a PDE, $P u = f$, the all important questions are 
 \begin{description}
     \item[Existence]<1-> For which $f$ can we find solution $u$? 
-    \item[Uniqueness ]<2->  If that's possible,  is it the only one? 
+    \item[Uniqueness ]<2->  If we do find one,  is it the only one? 
     \item[Regularity ]<3-> How does the regularity of $f$ affect regularity of $u$? \\
     E.g. Does smooth beget smooth? 
 \end{description}
@@ -161,7 +161,7 @@ $\leadsto$ existence and uniqueness reduce to finite dimensional linear algebra.
 
 %------------------------- Frame : Fredholm estimates
 \begin{frame}{Fredholm Estimate}
-In PDE, we would like  topological / algebraic statements $\leadsto$ estimates. 
+In analysis,topological / algebraic statements $\leadsto$ estimates. 
 \pause
 \begin{theorem}[Fredholm Estimate] \label{theorem: fredholm estimates}
     Let $\X$, $\Y$, $\mathcal{Z}$ be Banach spaces.  If 
@@ -186,13 +186,15 @@ In PDE, we would like  topological / algebraic statements $\leadsto$ estimates.
 
 %------------------------- Frame : Fredholm problem 
 \begin{frame}{Constructing a \textit{Fredholm problem}} 
-What's a Fredholm differential operator? $\dots $ what's $\X$ and $\Y$? 
+%What's a Fredholm differential operator? $\dots $ what's $\X$ and $\Y$? 
 \begin{block}{Fredholm Problem}
     Given a differential operator $P$, can we construct solution spaces $\X$ and $ \Y$,  so that $$P : \X \to \Y$$ is Fredholm? 
 \end{block}
 \pause 
 
-What's the link to \textit{regularity}? Sobolev Space! 
+What's the link to \textit{regularity}? 
+\pause 
+Sobolev Space! 
 
 \end{frame} 
 % ------------------------- End Frame 
@@ -213,7 +215,7 @@ What's the link to \textit{regularity}? Sobolev Space!
 %\widehat{u}(\xi) &:= \F u(\xi)  = \frac{1}{(2\pi)^{n/2}} \int e^{-ix \cdot \xi} u(x)\d[x] 
 \end{align*}
 
-Hilbert space structure that keeps track of (global) regularity data of $u$. 
+Hilbert space structure keeps track of (global) regularity data of $u$. 
 \begin{align*}
     \norm[u]_{H^k} = \underbrace{\norm[u]_{L^2}}_{\text{ global decay}}  + \underbrace{\sum_{\abs{\alpha} \leq k} \norm[D^\alpha u ]_{L^2} }_{\text{ $k$ times differentiable}} 
 \end{align*}
@@ -238,23 +240,25 @@ Henceforth, $M$ is either $\R^n$ or a closed $n$-manifold.
 %Given differential operator $P$ on manifold $M$: 
 Existence, uniqueness, regularity $\leadsto$ 
 \begin{block}{} 
-     For what $s, s' \in \R$ can we prove 
+    We want to prove 
+    $$P: H^s(M) \to H^{s'}(M)$$
+     is semi-Fredholm by proving 
      \begin{align*}
-     \norm[u]_{H^s} \leq C \brac{\norm[Pu]_{H^{s'}} + \norm[u]_{H^{N}}}. 
-     \end{align*}  
-     so that $P: H^s(M) \to H^{s'}(M)$ is (semi-) Fredholm? 
+     \norm[u]_{H^s} \leq C \brac{\norm[Pu]_{H^{s'}} + \norm[u]_{H^{N}}}
+     \end{align*} 
+     for some Sobolev orders $s, s', N \in \R$. Semi-Fredholm for compact $M$ only! 
 \end{block}
 
 For \textbf{elliptic operators}: 
-\begin{center}
-    any $s + m$ and $s' = s$. 
-\end{center}
-For \textbf{non-elliptic operators}: 
-\begin{center}
-    any $s + m$ and $s' = s + 1$. \\
-    Only certain subsets of Sobolev spaces allowed. 
-\end{center}
+\begin{align*}
+H^{s + m} \to H^{s}
+\end{align*}
 
+For \textbf{non-elliptic operators}: 
+\begin{align*}
+H^{s + m} \to H^{s + 1}
+\end{align*}
+%$\dots$ not quite $H^{s + m}$ 
 \end{frame} 
 % ------------------------- End Frame 
 
@@ -315,22 +319,26 @@ P(x, D_x) u = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} p(x, \xi) u(y) \d[y
     \end{align*}
     for any multi-index $\alpha, \beta \in \N^n$. \\
     
-    A pseudodifferential operator, $P \in \Psi^{m}_{\infty}(\R^n)$ of order $m$ with (left reduced) symbol $p \in S^{m}_\infty(\R^{n}; \R^n)$ has action on $u \in \sch'(\R^n)$ given by the integral above. 
+
 \end{definition}
 \end{frame} 
 
 %------------------------- Frame : Prove of elliptic regularity
 \begin{frame}{Pseudodifferential operators}
+
+If $P \in \Psi^{m}_{\infty}(M)$ for some $m \in \R$, with symbol $p(x, \xi)$, then it is \textbf{elliptic} if 
+\begin{align*}
+    \abs{p(x, \xi)} \geq \epsilon \sym[\xi]^m \tag*{ in $\abs{\xi} > 1/\epsilon$ for some $\epsilon > 0$ } 
+\end{align*}
+Ellipticity is a property of the principal symbol. 
+\pause 
+
 \begin{lemma}
     %The total spaces $\cup_{m} S^{m}_\infty(\R^{n}; \R^n)$ and $\cup_{m} \Psi^{m}_{\infty}(\R^n)$ form filtered *-algebra over $\C$. 
-    If $P \in \Psi^{m}_{\infty}(M)$ for some $m \in \R$, 
+
     \begin{enumerate}
         \item $P : H^{s}(M) \to H^{s - m}(M)$ is continuous for any $s \in \R$. 
-        \item If $P$ is \textbf{elliptic} of order $m$, i.e. its symbol $p$ satisfies
-        \begin{align*}
-        \abs{p(x, \xi)} \geq \epsilon \sym[\xi]^m \tag*{ in $\abs{\xi} > \epsilon$ for some $\epsilon > 0$ } 
-        \end{align*}
-        then there exist \textit{parametrix} $Q \in \Psi^{-m}_{\infty}(M)$ such that 
+        \item If $P$ is \textbf{elliptic} then there exist \textit{parametrix} $Q \in \Psi^{-m}_{\infty}(M)$ such that 
         $$QP - 1: H^{s}(M) \to H^{s'}(M)$$
          is continuous for any $s, s' \in \R$. 
     \end{enumerate}
@@ -339,15 +347,15 @@ P(x, D_x) u = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} p(x, \xi) u(y) \d[y
 
 % ------------------------------ Frame: Proof elliptic regularity 
 \begin{frame}{Proof of Elliptic Regularity}
-$P$ elliptic with parametrix $Q$. Given $u \in H^N(M)$. 
-\onslide<1->Given any $u \in H^N(M)$. Write $u = QP u -  \brac{QP - 1} u$. 
-\onslide<2->
+$P$ elliptic with parametrix $Q$. 
+\onslide<2->Given any $u \in H^N(M)$. Write $$u = QP u -  \brac{QP - 1} u$$. 
+\onslide<3->
 \begin{align*}
 \norm[u]_{H^{s + m}} 
 &\leq \underbrace{\norm[QPu]_{H^{s + m}}}_{\leq C \norm[Pu]_{H^s}} + \underbrace{\norm[\brac{QP - 1}u]_{H^{s +m}}}_{\leq C \norm[u]_{H^N}}
 \end{align*}
-using continuity $Q: H^{s +m} \to H^{s}$ and $(QP - 1): H^{s + m} \to H^{N}$.  \\
-\onslide<3->
+using continuity $Q: H^{s} \to H^{s + m}$ and $(QP - 1): H^{N} \to H^{s + m}$.  \\
+\onslide<4->
 We get 
 \begin{align*}
 \norm[u]_{H^{s + m}} \leq C \norm[Pu]_{H^s} + C \norm[u]_{H^N}. 
@@ -364,15 +372,20 @@ We get
 %Recent work by \cite{Vasy, Gell-Redman} show that we can construct Fredholm problem for \textbf{non-elliptic} operators too! \\
 %%We'll illustrate by sketching the proof for a pertubation of the  wave operator 
 \begin{theorem}[Main theorem] 
-    There exist a perturbation $Q$ of the wave operator $\Box$ on $\T^{1 + n}$ and a subspace $\X^{s + 2} \subset H^{s+ 2}(\T^{1 +n})$ for each $s \in \R$, such that the operator: 
+    There exist a perturbation $Q$ of the wave operator $\Box$ on $\T^{1 + n}$ such that the following estimate holds for any $s, N \in \R$
     \begin{align*}
-    (\Box - iQ): \mathcal{X}^{s + 2} \to H^{s + 1}(\T^n)
+    \norm[u]_{H^{s + 2}} \leq C\brac{\norm[(\Box - iQ)u]_{H^{s + 1}} + \norm[u]_{H^N}}
     \end{align*}
-    is Fredholm. 
+    for some $C > 0$. 
+%    and a subspace $\X^{s + 2} \subset H^{s+ 2}(\T^{1 +n})$ for each $s \in \R$, such that the operator: 
+%    \begin{align*}
+%    (\Box - iQ): \mathcal{X}^{s + 2} \to H^{s + 1}(\T^n)
+%    \end{align*}
+%    is Fredholm. 
 \end{theorem}
 \begin{align*}
 \T^{1 + n} &:= \S^1_t \times  \underbrace{\S^1_{x_1} \times \S^1_{x_2} \times \dots \times \S^1_{x_n}}_{n} \\
-\Box &:= \p_t^2 - \sum_{j = 1}^{n -1} \p_{x_j}^2, \quad p(t, x, \tau, \xi) = \abs{\xi}^2 - \tau^2
+\Box &:= \p_t^2 - \sum_{j = 1}^{n} \p_{x_j}^2, \quad p(t, x, \tau, \xi) = \abs{\xi}^2 - \tau^2
 \end{align*}
 \end{frame} 
 % ------------------------- End Frame 
@@ -380,11 +393,11 @@ We get
 %------------------------- Frame : Microlocalisation
 \begin{frame}{Microlocal Viewpoint}
 \only<1>{
-Global ellipticity \\
+Global elliptic \\
 $\iff$ $\abs{\abs{\xi}^2 - \tau^2} \geq \epsilon \sym[(\tau, \xi)]^2$ whenever $ \abs{(\tau, \xi)} > 1/\epsilon$.\\
 } 
 \only<2->{
-Microlocal ellipticity at a point $(t_0, x_0, \tau_0, \xi_0) \in T^*\T^{1 + n} \setminus 0$ \\
+Microlocal elliptic at a point $(t_0, x_0, \tau_0, \xi_0) \in T^*\T^{1 + n} \setminus 0$ \\
 $\iff$ $\abs{\abs{\xi}^2 - \tau^2} \geq \epsilon \sym[(\tau, \xi)]^2$ in }
 \onslide<3->
 \begin{center}
@@ -405,7 +418,7 @@ $\iff$ $\abs{\abs{\xi}^2 - \tau^2} \geq \epsilon \sym[(\tau, \xi)]^2$ in }
 $\Ell^2=  \set{\text{points in phase space where $p$ is elliptic}} \setminus 0 $ \\
 $\Char^2 = \Ell^m(\Box)^c \setminus 0$. 
 
-Note: For differential operators: Elliptic $\iff$  principal symbol is non-zero (outside of zero section). 
+For $\Box$: Elliptic $\iff$  not vanishing (outside of $(\tau, \xi) = 0$). 
 \end{frame} 
 % ------------------------- End Frame 
 
@@ -443,8 +456,8 @@ Note: For differential operators: Elliptic $\iff$  principal symbol is non-zero 
 \end{theorem}
 \begin{center}
     \begin{tikzpicture}[scale=0.9]
-    \draw [fill=gray!10!white, dashed] (-5, -0.5) rectangle (5, 3.5); 
-    \node [fill=white] at (5, 3) {$\Ell^0(\chi_3)$}; 
+%    \draw [fill=gray!10!white, dashed] (-5, -0.5) rectangle (5, 3.5); 
+%    \node [fill=white] at (5, 3) {$\Ell^0(\chi_3)$}; 
     
     \draw [fill=gray!20!white, dashed] (-3, 1.5) circle [radius=1.7]; 
     \node [fill=white] at (-5, 1.5) {$\supp \chi_1$}; 
@@ -452,14 +465,16 @@ Note: For differential operators: Elliptic $\iff$  principal symbol is non-zero 
     \draw [fill=gray!20!white, dashed] (3, 1.5) circle [radius=1.7]; 
     \node [fill=white] at (5, 1.5) {$\supp \chi_2$}; 
     
+    \draw [rounded corners] (-3, -0.1) -- (-4, 1) -- (-2, 2) -- (-3, 3.1); 
+    \node [fill=white] at (-2, 0.5) {$\Char^m(P)$}; 
+    
+    \pause
+        
     \draw [<-, dashed] (-4, 0) -- (4, 0); 
     \draw [<-, dashed] (-4, 1) -- (4, 1); 
     \draw [<-, dashed] (-4, 2) -- (4, 2); 
     \draw [<-, dashed] (-4, 3) -- (4, 3); 
     \node [fill=white] at (0, 0.5) {$H_p$}; 
-    
-    \draw [rounded corners] (-3, -0.1) -- (-4, 1) -- (-2, 2) -- (-3, 3.1); 
-    \node [fill=white] at (-2, 0.5) {$\Char^m(P)$}; 
     \end{tikzpicture}
 \end{center}
 \end{frame} 
@@ -486,7 +501,7 @@ Note: For differential operators: Elliptic $\iff$  principal symbol is non-zero 
 
 %------------------------- Frame : 
 \begin{frame}{Constructions}
-Main idea : Create enough elliptic region! $\Box - iQ = \Box - i \chi(t) \p_t^2$. 
+Main idea : Create larger elliptic set to absorp singuarity! $Q = \chi(t) \p_t^2$. 
 
 \begin{center}
     \begin{tikzpicture}[scale=0.8]
@@ -498,33 +513,36 @@ Main idea : Create enough elliptic region! $\Box - iQ = \Box - i \chi(t) \p_t^2$
     
     \draw[pattern=north west lines, pattern color=blue, opacity=0.5] (0, 0) rectangle (8, 2);
     \draw[pattern=north west lines, pattern color=blue, opacity=0.5] (0, 6) rectangle (8, 8);
+    \draw[pattern=north east lines, pattern color=red, opacity=0.5] (0, 2.5) rectangle (8, 5.5); 
+    \node [fill=white]  at (4, 4) {$\chi(t) \equiv 0$ };
+    
     \node at (8.6, 6) {$1 - \delta$};
     \node at (8.6, 2) {$\delta$};
-    \node [fill=white]  at (4, 7) {$U_1 :=  \set{\chi(t) \equiv 1}$ };
+    \node [fill=white]  at (4, 7) {$\chi(t) \equiv 1$ };
     \pause 
     
-    \draw [->, thick] (-0.5, 0) -- (-3, 0); 
-    \draw [->, thick] (-0.5, 0) -- (-0.5, 8);
-    \draw [-, thick] (-2.5, 0.1) -- (-2.5, -0.1);
-    \node at (-3.3, -0.3) {$\chi(t)$};
-    \node at (-2.5, -0.3) {1}; 
+%    \draw [->, thick] (-0.5, 0) -- (-3, 0); 
+%    \draw [->, thick] (-0.5, 0) -- (-0.5, 8);
+%    \draw [-, thick] (-2.5, 0.1) -- (-2.5, -0.1);
+%    \node at (-3.3, -0.3) {$\chi(t)$};
+%    \node at (-2.5, -0.3) {1}; 
+%    
+%    \draw (-2.5, 0) -- (-2.5, 2);5
+%    \draw[rounded corners=8pt] (-2.5, 2) -- (-2.5, 2.24) -- (-1, 2.25) -- (-0.5, 2.5);
+%    \node at (-2.5, 8) (right start) {};
+%    
+%    \draw (-2.5, 8) -- (-2.5, 8 - 2);
+%    \draw[rounded corners=8pt] (-2.5, 8 - 2) -- (-2.5, 8 - 2.24) -- (-1, 8 - 2.25) -- (-0.5, 8 - 2.5);
+%    
+%    \draw  [dashed] (-2.5, 2) -- (8.1, 2);
+%    \draw  [dashed] (-2.5, 6) -- (8.1, 6);
+%    \draw  [dashed] (-0.5, 5.5) -- (8.1, 5.5);
+%    \draw  [dashed] (-0.5, 2.5) -- (8.1, 2.5);
+%    \pause 
     
-    \draw (-2.5, 0) -- (-2.5, 2);5
-    \draw[rounded corners=8pt] (-2.5, 2) -- (-2.5, 2.24) -- (-1, 2.25) -- (-0.5, 2.5);
-    \node at (-2.5, 8) (right start) {};
-    
-    \draw (-2.5, 8) -- (-2.5, 8 - 2);
-    \draw[rounded corners=8pt] (-2.5, 8 - 2) -- (-2.5, 8 - 2.24) -- (-1, 8 - 2.25) -- (-0.5, 8 - 2.5);
-    
-    \draw  [dashed] (-2.5, 2) -- (8.1, 2);
-    \draw  [dashed] (-2.5, 6) -- (8.1, 6);
-    \draw  [dashed] (-0.5, 5.5) -- (8.1, 5.5);
-    \draw  [dashed] (-0.5, 2.5) -- (8.1, 2.5);
-    \pause 
-    
-    \draw[pattern=north east lines, pattern color=red, opacity=0.5] (0, 2.5) rectangle (8, 5.5); 
+
     \node [fill=white]at (4, 4) {$\abs{\xi}^2 - \tau^2 $}; 
-    \node [fill=white] at (4, 1) {$\abs{\xi}^2 - \tau^2 + i \tau^2$};
+    \node [fill=white] at (4, 7) {$\abs{\xi}^2 - \tau^2 + i \tau^2$};
     \end{tikzpicture}
 \end{center}
 \end{frame} 
@@ -538,8 +556,8 @@ Hamiltonian flow: $\exp(sH_ p)(t, x, \tau, \xi) = (t + s\tau, x + s \xi, \tau, \
 \begin{center}
     \begin{tikzpicture}[scale=0.8]
     \draw [] (0, 0) rectangle (8, 8);
-    \fill [gray, opacity=0.5] (0, 0) rectangle (8, 2);
-    \fill [gray, opacity=0.5] (0, 6) rectangle (8, 8);
+    \draw[pattern=north west lines, pattern color=blue, opacity=0.5] (0, 0) rectangle (8, 2);
+    \draw[pattern=north west lines, pattern color=blue, opacity=0.5] (0, 6) rectangle (8, 8);
     \draw [dashed] (0, 2) -- (8, 2);
     \draw [dashed] (0, 6) -- (8, 6);
     
@@ -581,25 +599,25 @@ Hamiltonian flow: $\exp(sH_ p)(t, x, \tau, \xi) = (t + s\tau, x + s \xi, \tau, \
 %------------------------- Frame : 
 \begin{frame}{Conclusion}
 
-\begin{itemize}
-    \item (principal) symbol of the form $p - iq$, $p = \sigma_2(\Box)$, $q \geq 0$. (\checkmark)
-    \item Elliptic region that propagates to hit every point in $\Char^2(\Box - iQ)$. (\checkmark)
-\end{itemize}
-\onslide<2->
+%\begin{itemize}
+%    \item (principal) symbol of the form $p - iq$, $p = \sigma_2(\Box)$, $q \geq 0$. (\checkmark)
+%    \item Elliptic region that propagates to hit every point in $\Char^2(\Box - iQ)$. (\checkmark)
+%\end{itemize}
+%\onslide<2->
 Propagation of singularity $\implies$
 
 \begin{align*}
-    \norm[\chi_1 u]_{H^{s + m}} &\leq C \norm[\chi_2 u]_{H^s} + C\norm[\chi_3 Pu]_{H^{s + 1}} + \norm[u]_{H^{N}} \\
-    \onslide<3->{\norm[u]_{H^{s + 2}} &\leq C \underbrace{\norm[\chi(t) u]_{H^s}}_{\text{elliptic region!}} + C\norm[(\Box - iQ) u]_{H^{s + 1}} + C \norm[u]_{H^{N}}}\\
-    \onslide<4->{\norm[u]_{H^{s + 2}} &\leq C' \norm[\Box - iQ]_{H^{s -2}} + C\norm[(\Box - iQ) u]_{H^{s + 1}} + C' \norm[u]_{H^{N}}}\\
-    \onslide<5->{\norm[u]_{H^{s + 2}} &\leq C'' \brac{\norm[(\Box - iQ) u]_{H^{s + 1}} + \norm[u]_{H^{N}}}}\\
+%    \norm[\chi_1 u]_{H^{s + m}} &\leq C \norm[\chi_2 u]_{H^s} + C\norm[\chi_3 Pu]_{H^{s + 1}} + \norm[u]_{H^{N}} \\
+    \onslide<1->{\norm[u]_{H^{s + 2}} &\leq C \underbrace{\norm[\chi(t) u]_{H^s}}_{\text{elliptic region!}} + C\norm[(\Box - iQ) u]_{H^{s + 1}} + C \norm[u]_{H^{N}}}\\
+    \onslide<2->{\norm[u]_{H^{s + 2}} &\leq C' \norm[\Box - iQ]_{H^{s -2}} + C\norm[(\Box - iQ) u]_{H^{s + 1}} + C' \norm[u]_{H^{N}}}\\
+    \onslide<3->{\norm[u]_{H^{s + 2}} &\leq C'' \brac{\norm[(\Box - iQ) u]_{H^{s + 1}} + \norm[u]_{H^{N}}}}\\
 \end{align*}
 \end{frame}
 % ------------------------- End Frame 
 
 % ------------------------------ Frame
-\begin{frame}{}
-Almost there! 
+\begin{frame}{Conclusion}
+%Almost there! 
 \begin{align*}
 \norm[u]_{H^{s + 2}} &\leq C'' \brac{\norm[(\Box - iQ) u]_{H^{s + 1}} + \norm[u]_{H^{N}}}
 \end{align*}
@@ -611,7 +629,7 @@ And
 \begin{align*}
 \Box - iQ : \X^{s + 2} \to H^{s + 1}
 \end{align*}
-is (semi-) Fredholm for any $s \in \R$. 
+is Fredholm for any $s \in \R$. 
 \end{frame} 
 % ------------------------------ End Frame
 
@@ -621,7 +639,7 @@ is (semi-) Fredholm for any $s \in \R$.
 \begin{frame}{The End}
 \begin{center}
     \LARGE Thank you! \\[3em]
-    Questions are welcomed! 
+%    Questions are welcomed! 
 \end{center}
 \end{frame} 
 % ------------------------- End Frame 
