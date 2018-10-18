@@ -140,9 +140,70 @@ On closed manifold, we can now conclude P is semi fredholm between s + m to s.
 The theory of pseudodifferential operator also tell us that the dual of elliptic operator is also elliptic. So we can run the same argument and show that P is indeed fully fredholm. 
 
 \subsection{Slide 15: Non-elliptic Fredholm Problem}
-We will now move on to the more complicated and perhaps more exciting recent progress in non-elliptic fredholm problem. 
+We will now move on to the more complicated and perhaps more exciting recent progress in non-elliptic fredholm problem. We will illustrate this by proving the following result: 
+
+This is a result about the Fredholm problem of the wave operator on the n +1 torus, we distinguish one extra dimension for time. \\
+The wave operator in local coordinates looks like this and it's a second order differential operator. If it were elliptic we would expect it to be fredholm from Hs+2 to Hs, but it is not elliptic, so need to make compromises. 
+One, we need to perturb it a little by some operator Q. 
+Two, we need to assume more regularity on the forcing, that is the codomain is Hs+1 instead of Hs. 
+Three, we need to restrict to a subspace X of Hs+2. 
+
+The claim is that, there is a perturbation Q, a subspace X such that the perturb operator box -iQ act as a fredholm map. 
+
+In what follows, p is the symbol for the wave operator. It is a function of the cotangent space of the torus, with t, x being the base variable and tau xi the dual variable. Happily, our symbol is independent of t and x. For now. 
+
+\subsection{Slide 16: Microlocal viewpoint}
+To tackle this problem we need to graduate ourselves to the microlocal viewpoint. 
+Recall that p will be globally elliptic if it is bounded below for large dual variables everywhere. But our symbol is zero on what we call the light cone, that is when xi and tau have the same magnitude. So it is not globally elliptic. 
+
+But there is a notion of microlocal ellipticity. Microlocal because we are not only locallising in the base manifold, but also in the cotangent fibre. Our symbol is microlocally elliptic at the point t0 x0 in the base space and tau0 and xi0 in the fibre if the same bound holds, not everywhere, but in some neighbourhood of the base point and in some span of direction near tau0 xi0. So our symbol is microlocally elliptic whenever we stay away from the light cone. 
+
+We call the set set of points in cotangent space where p is elliptic the elliptic set of the wave operator and where it is not, we call it the characteristic set. Since we only care about the direction in the fibre, we will remove the zero section from our discussion. 
+
+%Note that, we can prove that both notion of ellipticity is the same as the leading order of the symbol being non-zero. 
+
+\subsection{Slide 17: Microlocal elliptic regularity}
+Now, we need two more ingredients to prove our theorem. The first one is the microlocal version of elliptic regularity. This theorem says that as long as you stay in the elliptic set of your operator, you get the very same elliptic estimate. The "Staying within" part can be achieve by multiplying all your terms by cut-offs functions that is zero outside of the elliptic set. 
+
+So, if we know something about the regularity of the image of u under P somewhere in the elliptic set, we can conclude m order better regularity anywhere else in the elliptic set. 
+
+Side note: for the microlocal analyst among us, I have forgo defining wavefront sets. What I have said is a weaker version that suits our purpose.
 
 
+\subsection{Slide 18: Propagation of singularities }
+The second and perhaps the most important ingredient is the propagation of singularity estimate. The previous theorem tells us how to handle thing in the elliptic set and this one will tell us how to handle the characteristic set. \\
+
+
+So here's the characteristic set, it happens to be a codimension one submanifold. We want to know the regularity of u in this neighbourhood so we cut-off using a bump function chi1. Suppressing a little sympletic geometry, the horizontal lines represents the hamilton flow of the principal symbol. For our purpose, this is translates to following the light rays. The theorem says that if every point in the characteristic set is hit by a light ray originating from the support of another bump function, all the while staying in the elliptic region of another bump function, then if we know u is Hs here, we can conclude u is m order better here. In a sense we are propagating regularity information along the hamilton flow within elliptic sets. 
+
+But compare to just ellipticity we have a lousier bound. Inregion that we desire information, the regularity is bounded by the region we propagate from plus the m - 1 order lower norm of the image under P, as oppose to m order lower. And then there is always the residue. 
+
+\subsection{Slide 19: Constructions}
+We are now equipped with everything we need to prove fredholm estimate. The main idea is the following. Knowing that we can propagate regularity along light rays, we will perturb the wave operator Q judicially to introduce a big enough elliptic region. We do this by a bump function in the time dimension. 
+
+Here's the fundamental domain of our torus. Time runs vertically and all the space dimension is collapsed to one dimension running horizontally in our picture. 
+
+Our elliptic region will be where the bump function is identically 1. So in the time variable the graph will look like this. In the red region, the pertubation is zero, so we regain our wave operator with principal symbol like that. We know it is non-elliptic on the light cone.  In the blue region, however,  our principal symbol becomes. For it to be non-elliptic we need it to be zero. So both the real and imaginary part needs to vanish. That means fisrt that tau is zero, which means that xi is also zero. But that means that we are on the zero section which if you remember is excluded from our discussion. 
+
+\subsection{Slide 20: Hamilton flow}
+Remember that the hamilton flow of xi2 - tau2 is given by the light ray which are just 45 degree rays originating from the base point you choose. The important thing to realise here is that every point in the middle where we have characteristic set, comes from a light ray that originates in the gray region where we have full ellipticity. 
+
+
+\subsection{Slide 21: Conclusion}
+Finally, we are in this happy scenario where every point in the elliptic region propagates to hit every point in our characteristic set. So, propagation of singularity applies. 
+Recall this is the estimate provided. 
+Everything needs to be in the elliptic set of chi3. But we are on compact manifold, might as well take it to be the identity. 
+We can also take chi1 to be the identity since our elliptic region propagates to hit characteristic point everywhere. 
+chi2 needs to be supported in the elliptic region, so just take chi(t) we define before. 
+m is 2 since the wave operator is order 2 operator. We get the estimate. 
+Not quite like a Fredholm estimate yet. We need to get rid of this extra term, happily it's in the elliptic region, microlocal elliptic estimate applies and give 
+Absorbing smaller terms into higher term paying the price of larger contants we get our desired Fredholm estimate. 
+
+We are almost there. We just need to specify the domain. The estimate suggest that we need a priori better regularity or the forcing term. So, we just define a subspace where that is achieved. It is easy to show that this is again a Hilbert space. Finally, conclude that box -iQ is Fredholm between said subspace and Hs+1. 
+
+
+
+ 
 %------------------------------------------------ End
 
 

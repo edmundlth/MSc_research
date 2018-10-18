@@ -76,7 +76,7 @@ D_{x_i} &= -i \p_{x_i} \implies \F D_{x}^\alpha = \xi^\alpha \F
 Examples: 
 \begin{align*}
 &\Delta = D_{x_1}^2  + \dots + D_{x_n}^2  \tag*{Laplace operator} \\
-&\Box u = D_{x_1}^2  + \dots + D_{x_n}^2 - D_{t}^2    \tag*{Wave operator} 
+&\Box  = D_{x_1}^2  + \dots + D_{x_n}^2 - D_{t}^2    \tag*{Wave operator} 
 \end{align*}
 \end{frame} 
 % ------------------------- End Frame 
@@ -303,7 +303,7 @@ We expect an inverse $\dots$
 \end{frame} 
 
 %------------------------- Frame : Pseudodifferential operator
-\begin{frame}{Pseudodifferential operator}
+\begin{frame}{Pseudodifferential operators}
 Question: What is $\brac{\Delta + 1}^{-1}$? Answer: \textbf{pseudo}differential operator. 
 \begin{align*}
 P(x, D_x) u = \frac{1}{(2\pi)^n} \int e^{i(x - y) \cdot \xi} p(x, \xi) u(y) \d[y] \d[\xi]  \label{eq: action of symbol} 
@@ -361,8 +361,8 @@ We get
 
 %------------------------- Frame : Non-Elliptic Fredholm Problem
 \begin{frame}{Non-elliptic Fredholm problem}
-Recent work by \cite{Vasy, Gell-Redman} show that we can construct Fredholm problem for \textbf{non-elliptic} operators too! \\
-%We'll illustrate by sketching the proof for a pertubation of the  wave operator 
+%Recent work by \cite{Vasy, Gell-Redman} show that we can construct Fredholm problem for \textbf{non-elliptic} operators too! \\
+%%We'll illustrate by sketching the proof for a pertubation of the  wave operator 
 \begin{theorem}[Main theorem] 
     There exist a perturbation $Q$ of the wave operator $\Box$ on $\T^{1 + n}$ and a subspace $\X^{s + 2} \subset H^{s+ 2}(\T^{1 +n})$ for each $s \in \R$, such that the operator: 
     \begin{align*}
@@ -381,11 +381,11 @@ Recent work by \cite{Vasy, Gell-Redman} show that we can construct Fredholm prob
 \begin{frame}{Microlocal Viewpoint}
 \only<1>{
 Global ellipticity \\
-$\iff$ $\abs{p(t, x, \tau, \xi)} \geq \epsilon \sym[(\tau, \xi)]^2$ whenever $ \abs{(\tau, \xi)} > 1/\epsilon$.\\
+$\iff$ $\abs{\abs{\xi}^2 - \tau^2} \geq \epsilon \sym[(\tau, \xi)]^2$ whenever $ \abs{(\tau, \xi)} > 1/\epsilon$.\\
 } 
 \only<2->{
 Microlocal ellipticity at a point $(t_0, x_0, \tau_0, \xi_0) \in T^*\T^{1 + n} \setminus 0$ \\
-$\iff$ $\abs{p(t, x, \tau, \xi)} \geq \epsilon \sym[(\tau, \xi)]^2$ in }
+$\iff$ $\abs{\abs{\xi}^2 - \tau^2} \geq \epsilon \sym[(\tau, \xi)]^2$ in }
 \onslide<3->
 \begin{center}
     \begin{tikzpicture}
@@ -579,7 +579,7 @@ Hamiltonian flow: $\exp(sH_ p)(t, x, \tau, \xi) = (t + s\tau, x + s \xi, \tau, \
 
 
 %------------------------- Frame : 
-\begin{frame}{Constructions}
+\begin{frame}{Conclusion}
 
 \begin{itemize}
     \item (principal) symbol of the form $p - iq$, $p = \sigma_2(\Box)$, $q \geq 0$. (\checkmark)
@@ -605,11 +605,11 @@ Almost there!
 \end{align*}
 Which suggest the Hilbert space domain that we want is 
 \begin{align*}
-\X^s = \set{u \in H^{s + 2} \wh (\Box - iQ) u \in H^{s + }}. 
+\X^s = \set{u \in H^{s} \wh (\Box - iQ) u \in H^{s -1}}. 
 \end{align*}
 And
 \begin{align*}
-\Box - iQ : \X^s \to H^{s + 1}
+\Box - iQ : \X^{s + 2} \to H^{s + 1}
 \end{align*}
 is (semi-) Fredholm for any $s \in \R$. 
 \end{frame} 
